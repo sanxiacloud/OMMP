@@ -24,7 +24,6 @@ Function ChangeOpCreate(ByVal ParamArray Args() as Object)
     drChangeOpCreate("id") = drChangeOp("_Identify")
     drChangeOpCreate.save
 
-    Dim oChange As New Change
 End Function
 
 '修改字段
@@ -87,12 +86,20 @@ End Function
 #Region 控件绘制
 
 #Region 通用工具
-'
-Function CreateListViewColumns(ByVal ParamArray Args() as Object)
+'初始化listview，绘制表头
+Function InitListView(ByVal ParamArray Args() as Object)
     Dim lv As WinForm.ListView = args(0)
     Dim names() As String = args(1) ' 名称列表
     Dim texts() As String = args(2) ' 文本列表
     Dim wds() As Integer = args(3) ' 宽度列表
+
+    lv.StopRedraw()
+    lv.MultiSelect = False    
+    lv.Columns.Clear() ' 清除原来的列
+    lv.Rows.Clear() ' 清除原来的行
+    lv.Images.Clear() ' 清除原来的图片
+    lv.View = ViewMode.Details ' 显示模式为详细信息
+    lv.GridLines = True ' 显示网格线
 
     For i As Integer = 0 To names.Length - 1
         Dim c As WinForm.ListViewColumn = lv.Columns.Add()
@@ -102,12 +109,21 @@ Function CreateListViewColumns(ByVal ParamArray Args() as Object)
             c.Width = wds(i)
         End If
     Next
+    lv.ResumeRedraw()
+End Function
+'清理listview，删除所有行
+Function ClearListView(ByVal ParamArray Args() as Object)
+    Dim lv As WinForm.ListView = args(0)】
+    lv.StopRedraw()
+    lv.Rows.Clear() ' 清除原来的行
+    lv.ResumeRedraw()
 End Function
 
 #End Region
 
 #Region 应用系统
 
+#Region 组织treeview
 ' 根据过滤条件绘制应用系统tab组织treeview
 Function ReDrawAppTvOrg(ByVal ParamArray Args() as Object)   
     Dim filter As String = Forms("主窗口").Controls("tb_app_org_sch").Text.Trim ' 搜索条件
@@ -115,14 +131,11 @@ Function ReDrawAppTvOrg(ByVal ParamArray Args() as Object)
     Dim dt As DataTable = DataTables("Organization")
 
     Dim drs As List(Of DataRow) = dt.Select("name like '%" & filter & "%' And _IsDeleted = false","code")
-
     Dim rowCount As Integer = drs.Count
-    If rowCount = 0 Then
-        MessageBox.Show("未找到相关组织.")
-    Else
-        tv.StopRedraw()
-        tv.Nodes.Clear()
 
+    Functions.Execute("ClearAppTvOrg")
+    If rowCount <> 0 Then       
+        tv.StopRedraw()
         '添加根节点
         Dim drAnc As DataRow = dt.Find("code='" & drs(0)("code").SubString(0, 2) & "'") '祖先节点行        
         Dim rnode As WinForm.TreeNode = tv.Nodes.Add(drAnc("code"), drAnc("name")) '根节点
@@ -150,51 +163,81 @@ Function ReDrawAppTvOrg(ByVal ParamArray Args() as Object)
                 node.Text = node.Text & "(" & ncount & ")"
             End If
         Next
-        tv.Nodes(0).Expand
-        tv.ResumeRedraw()
+        IF filter <> "" Then
+            tv.ExpandAll()
+        End IF 
+        tv.Nodes(0).Expand()
 
+        tv.ResumeRedraw()
     End If
+
+    Forms("主窗口").Controls("tb_app_org_sch").Enabled = True
+    Forms("主窗口").Controls("bt_app_org_sch").Enabled = True
+    Forms("主窗口").Controls("bt_app_org_add").Enabled = True    
+    Forms("主窗口").Controls("bt_app_org_rfh").Enabled = True
 End Function
+' 初始化时需要先让所有相关按钮、文本框不可用
+Function ClearAppTvOrg(ByVal ParamArray Args() as Object)
+    Dim tv As WinForm.TreeView = Forms("主窗口").Controls("tv_app_org")
+    tv.StopRedraw()
+    tv.Nodes.Clear()
+    tv.ResumeRedraw()
+
+    Forms("主窗口").Controls("tb_app_org_sch").Enabled = False
+    Forms("主窗口").Controls("bt_app_org_sch").Enabled = False
+    Forms("主窗口").Controls("bt_app_org_add").Enabled = False
+    Forms("主窗口").Controls("bt_app_org_mod").Enabled = False
+    Forms("主窗口").Controls("bt_app_org_rfh").Enabled = False
+
+    Functions.Execute("ClearAppLvApp")
+End Function
+
+#End Region 组织treeview
+
+#Region 应用系统listview
 ' 重新绘制应用系统tab主listview
 Function ReDrawAppLvApp(ByVal ParamArray Args() as Object)
     Dim node As WinForm.TreeNode = Forms("主窗口").Controls("tv_app_org").SelectedNode
-    Dim lvApp As WinForm.ListView =  Forms("主窗口").Controls("lv_app_app")
-    ' 重新初始化listview
-    Dim coln() As String = {"name","organization","status","start_date","sla"} ' name
-    Dim colt() As String = {"应用名称", "归属单位", "系统状态", "上线日期", "保障要求" } ' text
-    Dim colw() As Integer = {240,150,75,95,95} ' 宽度
-    lvApp.MultiSelect = False
-    lvApp.StopRedraw() ' 暂停绘制
-    lvApp.Columns.Clear() ' 清除原来的列
-    lvApp.Rows.Clear() ' 清除原来的行
-    lvApp.Images.Clear() ' 清除原来的图片
-    lvApp.View = ViewMode.Details ' 显示模式为详细信息
-    lvApp.GridLines = True ' 显示网格线
-    ' 左边组织treeview上方文本框中的搜索条件
-    Dim filter As String = Forms("主窗口").Controls("tb_app_org_sch").Text.Trim
+    Dim lvApp As WinForm.ListView =  Forms("主窗口").Controls("lv_app_app")    
 
-    Functions.Execute("CreateListViewColumns",lvApp,coln,colt,colw)
+    Functions.Execute("ClearAppLvApp")
+
+    lvApp.StopRedraw() ' 暂停绘制
 
     Dim count As Integer = 0 ' 应用系统计数
-    ' 通过code前缀符合当前选择的组织，以及名称符合当前组织过滤条件，查找出组织id
-    For Each  drOrg As DataRow In DataTables("Organization").Select("code like '" & node.Name & "%' And _IsDeleted=false And name like '%" & filter & "%'")
-        
-        Dim _id As Integer = drOrg("_Identify")
-        ' 通过组织id查找出对应应用系统
+
+    ' 通过遍历当前treeview，获取所有org，treenode的tag中记录了org的Identify
+    Dim stack1 As New Stack(Of WinForm.TreeNode)
+    Dim stack2 As New Stack(Of WinForm.TreeNode)
+    Dim tnCur As WinForm.TreeNode
+    ' 后根DFS
+    stack1.Push(node)
+    Do While stack1.Count > 0
+        tnCur = stack1.Pop()
+        stack2.Push(tnCur)
+        For Each tnCld As WinForm.TreeNode In tnCur.Nodes
+            stack1.Push(tnCld)
+        Next
+    Loop  
+    For Each node In stack2
+        Dim _id As String = node.Tag ' tag中存放的组织表的identify
+        ' 通过组织identify查找出对应应用系统
         For Each drLK As DataRow In DataTables("LnkFunctionalCIToOrganization").Select("_IsDeleted=0 And organization_identify =" & _id)
 
-            Dim drAS As DataRow= DataTables("ApplicationSolution").Find("id=" & drLK("functionalci_identify"))
-
-            IF drAS IsNot Nothing Then
-                Dim drCI As DataRow= DataTables("FunctionalCI").Find("_Identify=" & drLK("functionalci_identify"))
+            'Dim drAS As DataRow= DataTables("ApplicationSolution").Find("id=" & drLK("functionalci_identify"))
+            Dim drCI As DataRow= DataTables("FunctionalCI").Find("_Identify=" & drLK("functionalci_identify"))
+            IF drCI("finalclass") = "ApplicationSolution" Then
+            'IF drAS IsNot Nothing Then
+                'Dim drCI As DataRow= DataTables("FunctionalCI").Find("_Identify=" & drLK("functionalci_identify"))
+                Dim drAS As DataRow= DataTables("ApplicationSolution").Find("id=" & drLK("functionalci_identify"))
                 Dim row As WinForm.ListViewRow = lvApp.Rows.Add()
                 count = count + 1
                 row("name") = drCI("name")
-                row("organization") = DataTables("Organization").Find("_Identify = " & drLK("organization_identify"))("name")
+                row("organization") = DataTables("Organization").Find("_Identify=" & drLK("organization_identify"))("name")
                 row("status") = Functions.Execute("TranslateCode","应用程序状态",drAS("code_application_status"))
                 row("start_date") = drCI("move2production")
                 row("sla") = Functions.Execute("TranslateCode","保障要求",drAS("code_sla"))
-                row.Tag = drAS
+                row.Tag = drCI ' todo 什么用？
             End IF
         Next
     Next
@@ -202,8 +245,84 @@ Function ReDrawAppLvApp(ByVal ParamArray Args() as Object)
     Dim tabApp As WinForm.TabPage = tcApp.TabPages("app") '中间主tabcontrol，单选，用于展示 应用系统四个字以及应用系统数量
     tabApp.Text = "应用系统(" & count & ")"
     lvApp.ResumeRedraw() '恢复绘制
-    ' Functions.Execute("RebuildHostList","-1")   
+
+    Forms("主窗口").Controls("bt_app_app_add").Enabled = True    
 End Function
+
+Function ClearAppLvApp(ByVal ParamArray Args() as Object)
+    Dim lvApp As WinForm.ListView =  Forms("主窗口").Controls("lv_app_app")
+    lvApp.StopRedraw()
+    lvApp.Rows.Clear() ' 清除原来的行
+    lvApp.ResumeRedraw()
+
+    Forms("主窗口").Controls("bt_app_app_add").Enabled = False
+    Forms("主窗口").Controls("bt_app_app_del").Enabled = False
+
+    Functions.Execute("ClearAppLvHost")
+    ' todo others
+End Function
+#End Region
+
+#Region  dev tab中的host listview
+' 重新绘制dev tab中host listview
+Function ReDrawAppLvHost(ByVal ParamArray Args() as Object)
+    Dim appId As String = args(0)
+    Dim lvHost As WinForm.ListView = Forms("主窗口").Controls("lv_app_dev_host")
+    Dim pmSelected As Boolean = Forms("主窗口").Controls("cb_app_dev_host_pm").Checked
+    Dim vmSelected As Boolean = Forms("主窗口").Controls("cb_app_dev_host_vm").Checked
+    
+    Functions.Execute("ClearAppLvHost")
+
+    lvHost.StopRedraw() ' 暂停绘制
+    
+    Dim count As Integer = 0   
+    For Each drLK As DataRow In DataTables("LnkApplicationSolutionToFunctionalCI").Select("_IsDeleted=0 And applicationsolution_identify=" & appId)
+        Dim drCI As DataRow= DataTables("FunctionalCI").Find("_Identify=" & drLK("functionalci_identify"))
+        IF drCI("finalclass") = "VirtualMachine" And vmSelected Then
+            Dim row As WinForm.ListViewRow = lvHost.Rows.Add()
+            Dim drVM As DataRow = DataTables("VirtualMachine").Find("id=" & drLK("functionalci_identify"))
+            Dim drIP As DataRow = DataTables("IPAddressv4").Find("id=" & drVM ("managementip_identify"))
+            count = count + 1
+            row("type") = "虚拟机"
+            row("name") = drCI("name")
+            row("ip") = drIP("ip")
+            row("start_date") = drCI("move2production")
+            row("description") = drCI("description")
+            row.Tag = drCI ' todo 什么用？
+        End IF
+        IF drCI("finalclass") = "Server" And pmSelected Then
+            ' todo添加物理机 
+            Dim row As WinForm.ListViewRow = lvHost.Rows.Add()
+            row("type") = "物理机"           
+            row.Tag = drCI
+        End IF
+    Next
+
+    Dim tcDev As WinForm.TabControl = Forms("主窗口").Controls("tc_app_dev")
+    Dim tabHost As WinForm.TabPage = tcDev.TabPages("host") '中间主tabcontrol，单选，用于展示 应用系统四个字以及应用系统数量
+    tabHost.Text = "主机(" & count & ")"
+    lvHost.ResumeRedraw() '恢复绘制
+
+    Forms("主窗口").Controls("bt_app_host_add").Enabled = True
+    Forms("主窗口").Controls("cb_app_dev_host_pm").Enabled = True
+    Forms("主窗口").Controls("cb_app_dev_host_vm").Enabled = True
+
+End Function
+
+Function ClearAppLvHost(ByVal ParamArray Args() as Object)
+    Dim lvHost As WinForm.ListView = Forms("主窗口").Controls("lv_app_dev_host")
+    lvHost.StopRedraw()
+    lvHost.Rows.Clear() ' 清除原来的行
+    lvHost.ResumeRedraw()
+
+    ' 同时disable所有相关按钮
+    Forms("主窗口").Controls("bt_app_host_add").Enabled = False
+    Forms("主窗口").Controls("bt_app_host_del").Enabled = False
+    Forms("主窗口").Controls("cb_app_dev_host_pm").Enabled = False
+    Forms("主窗口").Controls("cb_app_dev_host_vm").Enabled = False
+End Function
+
+#End Region
 
 #End Region
 
