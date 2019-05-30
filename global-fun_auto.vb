@@ -568,7 +568,7 @@ Next
 tab_org.Text = "应用系统(" & count & ")"
 lv_org.ResumeRedraw() '恢复绘制
 
-''' RebuildHostList 重载主机列表
+''' RebuildHostList 重新绘制主机列表
 
 Dim e As WinForm.Form = Forms("应用管理")
 'Dim dr As DataRow = args(0)
@@ -616,7 +616,7 @@ For Each drAS2FCI As DataRow In DataTables("LnkApplicationSolutionToFunctionalCI
                     vr(cl) = drFCI("move2production")
                 Case cln(3)
                     vr(cl) = drFCI("description")
-            End Select
+            End Select  
             vr.Tag= drAS2FCI '将DataRow赋值给ListViewRow的Tag属性,将二者联系起来
         Next        
 Next

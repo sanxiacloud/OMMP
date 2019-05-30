@@ -65,6 +65,23 @@ End Function
 #Region 中间listview
 
 #Region lv_app_app
+' 行上双击或者回车
+Function RowActivate(e)
+    Dim dr As DataRow = e.Sender.Current.Tag
+    Dim identify As String = dr("_Identify")
+    Dim drAS As DataRow = Datatables("ApplicationSolution").
+    SetFormParam("应用系统编辑", "type", "modify")
+    SetFormParam("应用系统编辑", "orgId", "modify")
+    SetFormParam("应用系统编辑", "_Identify", identify)
+    SetFormParam("应用系统编辑", "type", "modify")
+
+
+
+Dim dic As New Dictionary(Of String,String)
+dic.Add("selected_app",CStr(dr("_Identify")))
+'MessageBox.Show(dic("selected_app"))
+Functions.Execute("startForm","应用系统编辑",dic)
+End Function
 
 ' 行选择状态变化
 Function RowSelectionChanged(e)
@@ -77,6 +94,15 @@ Function RowSelectionChanged(e)
 End Function
 
 #End Region lv_app_app
+
+#Region  bt_app_app_add
+
+Function Click(e)
+    SetFormParam("应用系统编辑", "orgId", e.Form.Controls("tv_app_org").SelectedNode.Tag)
+    Forms("应用系统编辑").Open()
+End Function
+
+#End Region bt_app_app_add
 
 #End Region 中间listview
 
