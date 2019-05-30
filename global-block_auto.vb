@@ -15,16 +15,16 @@ Class Change
 
     ReadOnly Public Property Identify() As Integer
         Get
-        Return m_Identify
+            Return m_Identify
         End Get
     End Property
 
     Public Property UserName() As String
         Get
-        Return m_user_name
+            Return m_user_name
         End Get
         Set(ByVal strUserName As String)
-        m_user_name = strUserName
+            m_user_name = strUserName
         End Set
     End Property
 End Class

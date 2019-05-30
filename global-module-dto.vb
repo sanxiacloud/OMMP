@@ -1,6 +1,6 @@
 ' ------------------------------
 ' Others 
-Class CIGroupDTO
+Public Class CIGroupDTO
 
     Private _code_cigroup_status As Integer
     Private _code_cigroup_type As Integer
@@ -93,7 +93,7 @@ Class CIGroupDTO
 End Class
 
 
-Class ConfigAccessDTO
+Public Class ConfigAccessDTO
 
     Private _access_port As String
     Private _description As String
@@ -176,7 +176,7 @@ Class ConfigAccessDTO
 End Class
 
 
-Class ConfigPortDTO
+Public Class ConfigPortDTO
 
     Private _description As String
     Private _Identify As Integer
@@ -259,7 +259,7 @@ Class ConfigPortDTO
 End Class
 
 
-Class BackupsDTO
+Public Class BackupsDTO
 
     Private _backup_content As String
     Private _backuper_identify As Integer
@@ -332,7 +332,7 @@ Class BackupsDTO
 End Class
 
 
-Class CodeDTO
+Public Class CodeDTO
 
     Private __SortKey As Decimal
     Private _des As String
@@ -405,7 +405,7 @@ Class CodeDTO
 End Class
 
 
-Class ContactDTO
+Public Class ContactDTO
 
     Private _description As String
     Private _duty As String
@@ -538,7 +538,7 @@ Class ContactDTO
 End Class
 
 
-Class DocumentsDTO
+Public Class DocumentsDTO
 
     Private _code_document_status As Integer
     Private _code_document_tyype As Integer
@@ -631,7 +631,7 @@ Class DocumentsDTO
 End Class
 
 
-Class DNSObjectDTO
+Public Class DNSObjectDTO
 
     Private _comment As String
     Private _finalclass As String
@@ -694,7 +694,7 @@ Class DNSObjectDTO
 End Class
 
 
-Class DomainDTO : Inherits DNSObjectDTO
+Public Class DomainDTO : Inherits DNSObjectDTO
     Private _code_renewal As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -789,7 +789,7 @@ Class DomainDTO : Inherits DNSObjectDTO
 End Class
 
 
-Class LocationDTO
+Public Class LocationDTO
 
     Private _city As String
     Private _country As String
@@ -872,7 +872,7 @@ Class LocationDTO
 End Class
 
 
-Class LogicalVolumeDTO
+Public Class LogicalVolumeDTO
 
     Private _description As String
     Private _Identify As Integer
@@ -965,7 +965,7 @@ Class LogicalVolumeDTO
 End Class
 
 
-Class OrganizationDTO
+Public Class OrganizationDTO
 
     Private _parent_code As String
     Private __sort As Decimal
@@ -1078,7 +1078,7 @@ Class OrganizationDTO
 End Class
 
 
-Class PasswdDTO
+Public Class PasswdDTO
 
     Private __use As String
     Private _account As String
@@ -1151,7 +1151,7 @@ Class PasswdDTO
 End Class
 
 
-Class SecurityStrategyDTO
+Public Class SecurityStrategyDTO
 
     Private _code_security_strategy_type As Integer
     Private _config_port_identify As Integer
@@ -1224,7 +1224,7 @@ Class SecurityStrategyDTO
 End Class
 
 
-Class SoftwareDTO
+Public Class SoftwareDTO
 
     Private _code_software_type As Integer
     Private _Identify As Integer
@@ -1287,7 +1287,7 @@ Class SoftwareDTO
 End Class
 
 
-Class VLANDTO
+Public Class VLANDTO
 
     Private _description As String
     Private _Identify As Integer
@@ -1344,7 +1344,7 @@ End Class
 
 ' Change * 
 
-Class ChangeDTO
+Public Class ChangeDTO
 
     Private _code_origin As Integer
     Private _date As Date
@@ -1387,7 +1387,7 @@ Class ChangeDTO
 End Class
 
 
-Class ChangeOpDTO
+Public Class ChangeOpDTO
 
     Private _change_identify As Integer
     Private _Identify As Integer
@@ -1440,7 +1440,7 @@ Class ChangeOpDTO
 End Class
 
 
-Class ChangeOpCreateDTO : Inherits ChangeOpDTO
+Public Class ChangeOpCreateDTO : Inherits ChangeOpDTO
     Private _id As Integer
 
     Public Property id() As Integer
@@ -1455,7 +1455,7 @@ Class ChangeOpCreateDTO : Inherits ChangeOpDTO
 End Class
 
 
-Class ChangeOpDeleteDTO : Inherits ChangeOpDTO
+Public Class ChangeOpDeleteDTO : Inherits ChangeOpDTO
     Private _fclass As String
     Private _fname As String
     Private _id As Integer
@@ -1490,7 +1490,7 @@ Class ChangeOpDeleteDTO : Inherits ChangeOpDTO
 End Class
 
 
-Class ChangeOpLinksDTO : Inherits ChangeOpDTO
+Public Class ChangeOpLinksDTO : Inherits ChangeOpDTO
     Private _id As Integer
     Private _item_class As String
     Private _item_identify As Integer
@@ -1525,7 +1525,7 @@ Class ChangeOpLinksDTO : Inherits ChangeOpDTO
 End Class
 
 
-Class ChangeOpLinksAddRemoveDTO : Inherits ChangeOpLinksDTO
+Public Class ChangeOpLinksAddRemoveDTO : Inherits ChangeOpLinksDTO
     Private _id As Integer
     Private _type As String
 
@@ -1550,7 +1550,7 @@ Class ChangeOpLinksAddRemoveDTO : Inherits ChangeOpLinksDTO
 End Class
 
 
-Class ChangeOpSetAttDTO : Inherits ChangeOpDTO
+Public Class ChangeOpSetAttDTO : Inherits ChangeOpDTO
     Private _attcode As String
     Private _id As Integer
 
@@ -1575,7 +1575,7 @@ Class ChangeOpSetAttDTO : Inherits ChangeOpDTO
 End Class
 
 
-Class ChangeOpSetAttPwdDTO : Inherits ChangeOpSetAttDTO
+Public Class ChangeOpSetAttPwdDTO : Inherits ChangeOpSetAttDTO
     Private _id As Integer
     Private _prev_pwd_hash As String
     Private _prev_pwd_salt As String
@@ -1610,7 +1610,7 @@ Class ChangeOpSetAttPwdDTO : Inherits ChangeOpSetAttDTO
 End Class
 
 
-Class ChangeOpSetAttScalarDTO : Inherits ChangeOpSetAttDTO
+Public Class ChangeOpSetAttScalarDTO : Inherits ChangeOpSetAttDTO
     Private _id As Integer
     Private _newvalue As String
     Private _oldvalue As String
@@ -1645,7 +1645,7 @@ Class ChangeOpSetAttScalarDTO : Inherits ChangeOpSetAttDTO
 End Class
 
 
-Class ChangeOpSetAttTextDTO : Inherits ChangeOpSetAttDTO
+Public Class ChangeOpSetAttTextDTO : Inherits ChangeOpSetAttDTO
     Private _id As Integer
     Private _newvalue As String
     Private _oldvalue As String
@@ -1680,7 +1680,7 @@ Class ChangeOpSetAttTextDTO : Inherits ChangeOpSetAttDTO
 End Class
 
 
-Class ChangeOpSetAttUrlDTO : Inherits ChangeOpSetAttDTO
+Public Class ChangeOpSetAttUrlDTO : Inherits ChangeOpSetAttDTO
     Private _id As Integer
     Private _newvalue As String
     Private _oldvalue As String
@@ -1718,7 +1718,7 @@ End Class
 
 ' Contract *
 
-Class ContractDTO
+Public Class ContractDTO
 
     Private _billing_frequency As String
     Private _buyer_agent_identify As Integer
@@ -1881,7 +1881,7 @@ Class ContractDTO
 End Class
 
 
-Class ContractDetailDTO
+Public Class ContractDetailDTO
 
     Private _amount As Integer
     Private _contract_identify As Integer
@@ -2004,7 +2004,7 @@ Class ContractDetailDTO
 End Class
 
 
-Class CustomerContractDTO : Inherits ContractDTO
+Public Class CustomerContractDTO : Inherits ContractDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -2029,7 +2029,7 @@ Class CustomerContractDTO : Inherits ContractDTO
 End Class
 
 
-Class ProviderContractDTO : Inherits ContractDTO
+Public Class ProviderContractDTO : Inherits ContractDTO
     Private _coverage As String
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -2075,7 +2075,7 @@ End Class
 ' ------------------------------
 
 'FunctionalCI *
-Class FunctionalCIDTO
+Public Class FunctionalCIDTO
 
     Private _code_risk_rating As Integer
     Private _description As String
@@ -2158,7 +2158,7 @@ Class FunctionalCIDTO
 End Class
 
 
-Class ApplicationSolutionDTO : Inherits FunctionalCIDTO
+Public Class ApplicationSolutionDTO : Inherits FunctionalCIDTO
     Private _attention As String
     Private _code_application_status As Integer
     Private _code_sla As Integer
@@ -2233,7 +2233,7 @@ Class ApplicationSolutionDTO : Inherits FunctionalCIDTO
 End Class
 
 
-Class DatabasesSchemaDTO : Inherits FunctionalCIDTO
+Public Class DatabasesSchemaDTO : Inherits FunctionalCIDTO
     Private _comment As String
     Private _create_time As Date
     Private _dbserver_identify As Integer
@@ -2318,7 +2318,7 @@ Class DatabasesSchemaDTO : Inherits FunctionalCIDTO
 End Class
 
 
-Class MiddlewareInstanceDTO : Inherits FunctionalCIDTO
+Public Class MiddlewareInstanceDTO : Inherits FunctionalCIDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
     Private _middleware_identify As Integer
@@ -2353,7 +2353,7 @@ Class MiddlewareInstanceDTO : Inherits FunctionalCIDTO
 End Class
 
 
-Class WebApplicationDTO : Inherits FunctionalCIDTO
+Public Class WebApplicationDTO : Inherits FunctionalCIDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
     Private _url As String
@@ -2398,7 +2398,7 @@ Class WebApplicationDTO : Inherits FunctionalCIDTO
 End Class
 
 
-Class PhysicalDeviceDTO : Inherits FunctionalCIDTO
+Public Class PhysicalDeviceDTO : Inherits FunctionalCIDTO
     Private _asset_number As String
     Private _code_brand_name As Integer
     Private _code_model_name As Integer
@@ -2503,7 +2503,7 @@ Class PhysicalDeviceDTO : Inherits FunctionalCIDTO
 End Class
 
 
-Class VirtualDeviceDTO : Inherits FunctionalCIDTO
+Public Class VirtualDeviceDTO : Inherits FunctionalCIDTO
     Private _code_virtualdevice_status As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -2538,7 +2538,7 @@ Class VirtualDeviceDTO : Inherits FunctionalCIDTO
 End Class
 
 
-Class SoftwareInstanceDTO : Inherits FunctionalCIDTO
+Public Class SoftwareInstanceDTO : Inherits FunctionalCIDTO
     Private _functionalci_identify As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -2613,7 +2613,7 @@ Class SoftwareInstanceDTO : Inherits FunctionalCIDTO
 End Class
 
 
-Class WANLinkDTO : Inherits FunctionalCIDTO
+Public Class WANLinkDTO : Inherits FunctionalCIDTO
     Private _burst_rate As String
     Private _carrier_identify As Integer
     Private _code_wanlink_status As Integer
@@ -2769,7 +2769,7 @@ End Class
 
 ' ------------------------------
 ' PhysicalDevice*
-Class RackDTO : Inherits PhysicalDeviceDTO
+Public Class RackDTO : Inherits PhysicalDeviceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
     Private _nb_u As Integer
@@ -2803,7 +2803,7 @@ Class RackDTO : Inherits PhysicalDeviceDTO
 
 End Class
 
-Class EnclosureDTO : Inherits PhysicalDeviceDTO
+Public Class EnclosureDTO : Inherits PhysicalDeviceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
     Private _nb_u As String
@@ -2848,7 +2848,7 @@ Class EnclosureDTO : Inherits PhysicalDeviceDTO
 End Class
 
 
-Class PeripheralDTO : Inherits PhysicalDeviceDTO
+Public Class PeripheralDTO : Inherits PhysicalDeviceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -2873,7 +2873,7 @@ Class PeripheralDTO : Inherits PhysicalDeviceDTO
 End Class
 
 
-Class ConnectableCIDTO : Inherits PhysicalDeviceDTO
+Public Class ConnectableCIDTO : Inherits PhysicalDeviceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -2898,7 +2898,7 @@ Class ConnectableCIDTO : Inherits PhysicalDeviceDTO
 End Class
 
 
-Class DataCenterDeviceDTO : Inherits ConnectableCIDTO
+Public Class DataCenterDeviceDTO : Inherits ConnectableCIDTO
     Private _enclosure_identity As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -2973,7 +2973,7 @@ Class DataCenterDeviceDTO : Inherits ConnectableCIDTO
 End Class
 
 
-Class SANSwitchDTO : Inherits DataCenterDeviceDTO
+Public Class SANSwitchDTO : Inherits DataCenterDeviceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -2998,7 +2998,7 @@ Class SANSwitchDTO : Inherits DataCenterDeviceDTO
 End Class
 
 
-Class NASDTO : Inherits DataCenterDeviceDTO
+Public Class NASDTO : Inherits DataCenterDeviceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -3023,7 +3023,7 @@ Class NASDTO : Inherits DataCenterDeviceDTO
 End Class
 
 
-Class StorageSystemDTO : Inherits DataCenterDeviceDTO
+Public Class StorageSystemDTO : Inherits DataCenterDeviceDTO
     Private _code_storage_type As Integer
     Private _disk_path As String
     Private _disk_size As Decimal
@@ -3078,7 +3078,7 @@ Class StorageSystemDTO : Inherits DataCenterDeviceDTO
 End Class
 
 
-Class ServerDTO : Inherits DataCenterDeviceDTO
+Public Class ServerDTO : Inherits DataCenterDeviceDTO
     Private _cpu As String
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -3153,7 +3153,7 @@ Class ServerDTO : Inherits DataCenterDeviceDTO
 End Class
 
 
-Class NetworkDeviceDTO : Inherits DataCenterDeviceDTO
+Public Class NetworkDeviceDTO : Inherits DataCenterDeviceDTO
     Private _code_isoversion As Integer
     Private _code_networkdevicetype As Integer
     Private _id As Integer
@@ -3209,7 +3209,7 @@ End Class
 
 ' ------------------------------
 ' VirtualDevice * 
-Class VirtualHostDTO : Inherits VirtualDeviceDTO
+Public Class VirtualHostDTO : Inherits VirtualDeviceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -3234,7 +3234,7 @@ Class VirtualHostDTO : Inherits VirtualDeviceDTO
 End Class
 
 
-Class VirtualMachineDTO : Inherits VirtualDeviceDTO
+Public Class VirtualMachineDTO : Inherits VirtualDeviceDTO
     Private _code_backup_plan As Integer
     Private _cpu As String
     Private _id As Integer
@@ -3339,7 +3339,7 @@ Class VirtualMachineDTO : Inherits VirtualDeviceDTO
 End Class
 
 
-Class FarmDTO : Inherits VirtualHostDTO
+Public Class FarmDTO : Inherits VirtualHostDTO
     Private _code_deployment_area As Integer
     Private _code_farm_status As Integer
     Private _code_farm_type As Integer
@@ -3404,7 +3404,7 @@ Class FarmDTO : Inherits VirtualHostDTO
 End Class
 
 
-Class HypervisorDTO : Inherits VirtualHostDTO
+Public Class HypervisorDTO : Inherits VirtualHostDTO
     Private _farm_identify As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -3451,7 +3451,7 @@ End Class
 
 ' ------------------------------
 ' SoftwareInstance * 
-Class DBServerDTO : Inherits SoftwareInstanceDTO
+Public Class DBServerDTO : Inherits SoftwareInstanceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -3476,7 +3476,7 @@ Class DBServerDTO : Inherits SoftwareInstanceDTO
 End Class
 
 
-Class MiddlewareDTO : Inherits SoftwareInstanceDTO
+Public Class MiddlewareDTO : Inherits SoftwareInstanceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -3501,7 +3501,7 @@ Class MiddlewareDTO : Inherits SoftwareInstanceDTO
 End Class
 
 
-Class WebServerDTO : Inherits SoftwareInstanceDTO
+Public Class WebServerDTO : Inherits SoftwareInstanceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -3527,7 +3527,7 @@ End Class
 
 ' ------------------------------
 ' IPObject * 
-Class IPObjectDTO
+Public Class IPObjectDTO
 
     Private _allocation_date As Date
     Private _code_ipobject_status As Integer
@@ -3620,7 +3620,7 @@ Class IPObjectDTO
 End Class
 
 
-Class IPBlockDTO : Inherits IPObjectDTO
+Public Class IPBlockDTO : Inherits IPObjectDTO
     Private _children_occupancy As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -3715,7 +3715,7 @@ Class IPBlockDTO : Inherits IPObjectDTO
 End Class
 
 
-Class IPBlockv4DTO : Inherits IPBlockDTO
+Public Class IPBlockv4DTO : Inherits IPBlockDTO
     Private _firstip As String
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -3790,7 +3790,7 @@ Class IPBlockv4DTO : Inherits IPBlockDTO
 End Class
 
 
-Class IPSubnetDTO : Inherits IPObjectDTO
+Public Class IPSubnetDTO : Inherits IPObjectDTO
     Private _alarm_water_mark As String
     Private _id As Integer
     Private _ip_occupancy As Integer
@@ -3875,7 +3875,7 @@ Class IPSubnetDTO : Inherits IPObjectDTO
 End Class
 
 
-Class IPSubnetv4DTO : Inherits IPSubnetDTO
+Public Class IPSubnetv4DTO : Inherits IPSubnetDTO
     Private __use As String
     Private _code As String
     Private _code_deployment_area As Integer
@@ -4020,7 +4020,7 @@ Class IPSubnetv4DTO : Inherits IPSubnetDTO
 End Class
 
 
-Class IPAddressDTO : Inherits IPObjectDTO
+Public Class IPAddressDTO : Inherits IPObjectDTO
     Private _code_ipaddress_usage As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -4065,7 +4065,7 @@ Class IPAddressDTO : Inherits IPObjectDTO
 End Class
 
 
-Class IPAddressv4DTO : Inherits IPAddressDTO
+Public Class IPAddressv4DTO : Inherits IPAddressDTO
     Private _code_ipv4address_usage As Integer
     Private _description As String
     Private _id As Integer
@@ -4131,7 +4131,7 @@ End Class
 
 ' ------------------------------
 ' Typology * 
-Class TypologyDTO
+Public Class TypologyDTO
 
     Private _finalclass As String
     Private _Identify As Integer
@@ -4174,7 +4174,7 @@ Class TypologyDTO
 End Class
 
 
-Class OSFamilyDTO : Inherits TypologyDTO
+Public Class OSFamilyDTO : Inherits TypologyDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
 
@@ -4199,7 +4199,7 @@ Class OSFamilyDTO : Inherits TypologyDTO
 End Class
 
 
-Class OSVersionDTO : Inherits TypologyDTO
+Public Class OSVersionDTO : Inherits TypologyDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
     Private _osfamily_id As Integer
@@ -4235,7 +4235,7 @@ End Class
 
 ' ------------------------------
 ' NetworkInterface* 
-Class NetworkInterfaceDTO
+Public Class NetworkInterfaceDTO
 
     Private _finalclass As String
     Private _Identify As Integer
@@ -4288,7 +4288,7 @@ Class NetworkInterfaceDTO
 End Class
 
 
-Class FiberChannelInterfaceDTO : Inherits NetworkInterfaceDTO
+Public Class FiberChannelInterfaceDTO : Inherits NetworkInterfaceDTO
     Private _datacenterdevice_identify As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -4353,7 +4353,7 @@ Class FiberChannelInterfaceDTO : Inherits NetworkInterfaceDTO
 End Class
 
 
-Class IPInterfaceDTO : Inherits NetworkInterfaceDTO
+Public Class IPInterfaceDTO : Inherits NetworkInterfaceDTO
     Private _comment As String
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -4408,7 +4408,7 @@ Class IPInterfaceDTO : Inherits NetworkInterfaceDTO
 End Class
 
 
-Class LogicalInterfaceDTO : Inherits IPInterfaceDTO
+Public Class LogicalInterfaceDTO : Inherits IPInterfaceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
     Private _virtualmachine_identify As Integer
@@ -4443,7 +4443,7 @@ Class LogicalInterfaceDTO : Inherits IPInterfaceDTO
 End Class
 
 
-Class PhysicalInterfaceDTO : Inherits IPInterfaceDTO
+Public Class PhysicalInterfaceDTO : Inherits IPInterfaceDTO
     Private _connectableci_identify As Integer
     Private _id As Integer
     Private _IsDeleted As Boolean
@@ -4479,7 +4479,7 @@ End Class
 
 ' ------------------------------
 ' Licence * 
-Class LicenceDTO
+Public Class LicenceDTO
 
     Private _description As String
     Private _end_date As Date
@@ -4602,7 +4602,7 @@ Class LicenceDTO
 End Class
 
 
-Class OSLicenceDTO : Inherits LicenceDTO
+Public Class OSLicenceDTO : Inherits LicenceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
     Private _osversion_identify As Integer
@@ -4636,7 +4636,7 @@ Class OSLicenceDTO : Inherits LicenceDTO
 End Class
 
 
-Class SoftwareLicenceDTO : Inherits LicenceDTO
+Public Class SoftwareLicenceDTO : Inherits LicenceDTO
     Private _id As Integer
     Private _IsDeleted As Boolean
     Private _software_identify As Integer
@@ -4673,7 +4673,7 @@ End Class
 
 ' ------------------------------
 ' Lnk *
-Class LnkApplicationSolutionToFunctionalCIDTO
+Public Class LnkApplicationSolutionToFunctionalCIDTO
 
     Private _applicationsolution_identify As Integer
     Private _functionalci_identify As Integer
@@ -4716,7 +4716,7 @@ Class LnkApplicationSolutionToFunctionalCIDTO
 End Class
 
 
-Class LnkBackupsToFunctionalCIDTO
+Public Class LnkBackupsToFunctionalCIDTO
 
     Private _backups_identify As Integer
     Private _functionalci_identify As Integer
@@ -4759,7 +4759,7 @@ Class LnkBackupsToFunctionalCIDTO
 End Class
 
 
-Class LnkCIGroupToCIDTO
+Public Class LnkCIGroupToCIDTO
 
     Private _ci_identify As Integer
     Private _cigroup_identify As Integer
@@ -4812,7 +4812,7 @@ Class LnkCIGroupToCIDTO
 End Class
 
 
-Class LnkConnectableCIToNetworkDeviceDTO
+Public Class LnkConnectableCIToNetworkDeviceDTO
 
     Private _code_connectable_type As Integer
     Private _connectableci_identify As Integer
@@ -4885,7 +4885,7 @@ Class LnkConnectableCIToNetworkDeviceDTO
 End Class
 
 
-Class LnkContactToContractDTO
+Public Class LnkContactToContractDTO
 
     Private _contact_identify As Integer
     Private _contract_identify As Integer
@@ -4928,7 +4928,7 @@ Class LnkContactToContractDTO
 End Class
 
 
-Class LnkContactToFunctionalCIDTO
+Public Class LnkContactToFunctionalCIDTO
 
     Private _contact_identify As Integer
     Private _functionalci_identify As Integer
@@ -4971,7 +4971,7 @@ Class LnkContactToFunctionalCIDTO
 End Class
 
 
-Class LnkContactToIPObjectDTO
+Public Class LnkContactToIPObjectDTO
 
     Private _contact_identify As Integer
     Private _Identify As Integer
@@ -5014,7 +5014,7 @@ Class LnkContactToIPObjectDTO
 End Class
 
 
-Class LnkContractToDocumentDTO
+Public Class LnkContractToDocumentDTO
 
     Private _contract_identify As Integer
     Private _document_identify As Integer
@@ -5057,7 +5057,7 @@ Class LnkContractToDocumentDTO
 End Class
 
 
-Class LnkCustomerContractToProviderContractDTO
+Public Class LnkCustomerContractToProviderContractDTO
 
     Private _customercontract_identify As Integer
     Private _Identify As Integer
@@ -5100,7 +5100,7 @@ Class LnkCustomerContractToProviderContractDTO
 End Class
 
 
-Class LnkDatacenterDeviceToSanDTO
+Public Class LnkDatacenterDeviceToSanDTO
 
     Private _datacenterdevice_id As Integer
     Private _datacenterdevice_port As String
@@ -5163,7 +5163,7 @@ Class LnkDatacenterDeviceToSanDTO
 End Class
 
 
-Class LnkDocumentToFunctionalCIDTO
+Public Class LnkDocumentToFunctionalCIDTO
 
     Private _document_identify As Integer
     Private _functionalci_identify As Integer
@@ -5207,7 +5207,7 @@ End Class
 
 ' ----------------------------------
 
-Class LnkDocumentToIPObjectDTO
+Public Class LnkDocumentToIPObjectDTO
 
     Private _document_identify As Integer
     Private _Identify As Integer
@@ -5250,7 +5250,7 @@ Class LnkDocumentToIPObjectDTO
 End Class
 
 
-Class LnkDocumentToLicenceDTO
+Public Class LnkDocumentToLicenceDTO
 
     Private _document_identify As Integer
     Private _Identify As Integer
@@ -5293,7 +5293,7 @@ Class LnkDocumentToLicenceDTO
 End Class
 
 
-Class LnkDocumentToSoftwareDTO
+Public Class LnkDocumentToSoftwareDTO
 
     Private _document_identify As Integer
     Private _Identify As Integer
@@ -5336,7 +5336,7 @@ Class LnkDocumentToSoftwareDTO
 End Class
 
 
-Class LnkFunctionalCIToOrganizationDTO
+Public Class LnkFunctionalCIToOrganizationDTO
 
     Private _description As String
     Private _functionalci_identify As Integer
@@ -5389,7 +5389,7 @@ Class LnkFunctionalCIToOrganizationDTO
 End Class
 
 
-Class LnkFunctionalCIToProviderContractDTO
+Public Class LnkFunctionalCIToProviderContractDTO
 
     Private _functionalci_identify As Integer
     Private _Identify As Integer
@@ -5432,7 +5432,7 @@ Class LnkFunctionalCIToProviderContractDTO
 End Class
 
 
-Class LnkIPAddressToIPAddressDTO
+Public Class LnkIPAddressToIPAddressDTO
 
     Private _Identify As Integer
     Private _ip1_identify As Integer
@@ -5475,7 +5475,7 @@ Class LnkIPAddressToIPAddressDTO
 End Class
 
 
-Class LnkIPInterfaceToIPAddressDTO
+Public Class LnkIPInterfaceToIPAddressDTO
 
     Private _Identify As Integer
     Private _ipaddress_identify As Integer
@@ -5520,7 +5520,7 @@ End Class
 ' ----------------------------------
 
 
-Class LnkIPSubnetToLocationDTO
+Public Class LnkIPSubnetToLocationDTO
 
     Private _Identify As Integer
     Private _ipsubnet_identify As Integer
@@ -5563,7 +5563,7 @@ Class LnkIPSubnetToLocationDTO
 End Class
 
 
-Class LnkIPSubnetToVLANDTO
+Public Class LnkIPSubnetToVLANDTO
 
     Private _Identify As Integer
     Private _ipsubnet_identify As Integer
@@ -5606,7 +5606,7 @@ Class LnkIPSubnetToVLANDTO
 End Class
 
 
-Class LnkPasswdToFunctionalCIDTO
+Public Class LnkPasswdToFunctionalCIDTO
 
     Private _functionalci_identify As Integer
     Private _Identify As Integer
@@ -5649,7 +5649,7 @@ Class LnkPasswdToFunctionalCIDTO
 End Class
 
 
-Class LnkPhysicalInterfaceToVLANDTO
+Public Class LnkPhysicalInterfaceToVLANDTO
 
     Private _Identify As Integer
     Private _IsDeleted As Boolean
@@ -5692,7 +5692,7 @@ Class LnkPhysicalInterfaceToVLANDTO
 End Class
 
 
-Class LnkServerToVolumeDTO
+Public Class LnkServerToVolumeDTO
 
     Private _Identify As Integer
     Private _IsDeleted As Boolean
@@ -5745,7 +5745,7 @@ Class LnkServerToVolumeDTO
 End Class
 
 
-Class LnkSubnetToVLANDTO
+Public Class LnkSubnetToVLANDTO
 
     Private _Identify As Integer
     Private _IsDeleted As Boolean
@@ -5788,7 +5788,7 @@ Class LnkSubnetToVLANDTO
 End Class
 
 
-Class LnkVirtualDeviceToVolumeDTO
+Public Class LnkVirtualDeviceToVolumeDTO
 
     Private _Identify As Integer
     Private _IsDeleted As Boolean
