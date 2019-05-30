@@ -1,0 +1,3 @@
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\bin\Release\opdatalib.dao.dll
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\bin\Release\opdatalib.dao.pdb
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\bin\Release\opdatalib.dao.xml

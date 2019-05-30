@@ -1,0 +1,1759 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+opdatalib.dao
+</name>
+</assembly>
+<members>
+<member name="T:opdatalib.dao.cmdbDataSet.ApplicationSolutionDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.BackupsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.BlankDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpCreateDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpDeleteDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpLinksDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpLinksAddRemoveDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttPwdDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttScalarDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttTextDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttUrlDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CIGroupDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CodeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConfigAccessDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConfigPortDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConnectableCIDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContactDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContractDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContractDetailDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CustomerContractDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DatabasesSchemaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DataCenterDeviceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DBServerDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DNSObjectDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DocumentsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DomainDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.EnclosureDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FarmDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FiberChannelInterfaceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FunctionalCIDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.HypervisorDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPAddressDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPAddressv4DataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPBlockDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPBlockv4DataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPInterfaceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPObjectDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPSubnetDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPSubnetv4DataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LicenceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkApplicationSolutionToFunctionalCIDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkBackupsToFunctionalCIDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkCIGroupToCIDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkConnectableCIToNetworkDeviceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToContractDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToFunctionalCIDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToIPObjectDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContractToDocumentDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkCustomerContractToProviderContractDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDatacenterDeviceToSanDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToFunctionalCIDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToIPObjectDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToLicenceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToSoftwareDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkFunctionalCIToOrganizationDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkFunctionalCIToProviderContractDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPAddressToIPAddressDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPInterfaceToIPAddressDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPSubnetToLocationDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPSubnetToVLANDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkPasswdToFunctionalCIDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkPhysicalInterfaceToVLANDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkServerToVolumeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkSubnetToVLANDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkVirtualDeviceToVolumeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LocationDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogicalInterfaceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogicalVolumeDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogsDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MessagesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MiddlewareDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MiddlewareInstanceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NASDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NetworkDeviceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NetworkInterfaceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OrganizationDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSFamilyDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSLicenceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSVersionDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PasswdDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PeripheralDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PhysicalDeviceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PhysicalInterfaceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ProviderContractDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.RackDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SANSwitchDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SecurityStrategyDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ServerDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareInstanceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareLicenceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.StorageSystemDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.TypologyDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.UsersDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualDeviceDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualHostDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualMachineDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VisualAuthorizationDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VLANDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WANLinkDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WebApplicationDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WebServerDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ViewOrganizationDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ViewOrganizationCTEDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ApplicationSolutionRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.BackupsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.BlankRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpCreateRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpDeleteRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpLinksRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpLinksAddRemoveRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttPwdRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttScalarRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttTextRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttUrlRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CIGroupRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CodeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConfigAccessRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConfigPortRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConnectableCIRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContactRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContractRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContractDetailRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CustomerContractRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DatabasesSchemaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DataCenterDeviceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DBServerRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DNSObjectRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DocumentsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DomainRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.EnclosureRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FarmRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FiberChannelInterfaceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FunctionalCIRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.HypervisorRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPAddressRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPAddressv4Row">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPBlockRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPBlockv4Row">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPInterfaceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPObjectRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPSubnetRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPSubnetv4Row">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LicenceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkApplicationSolutionToFunctionalCIRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkBackupsToFunctionalCIRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkCIGroupToCIRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkConnectableCIToNetworkDeviceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToContractRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToFunctionalCIRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToIPObjectRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContractToDocumentRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkCustomerContractToProviderContractRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDatacenterDeviceToSanRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToFunctionalCIRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToIPObjectRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToLicenceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToSoftwareRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkFunctionalCIToOrganizationRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkFunctionalCIToProviderContractRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPAddressToIPAddressRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPInterfaceToIPAddressRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPSubnetToLocationRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPSubnetToVLANRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkPasswdToFunctionalCIRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkPhysicalInterfaceToVLANRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkServerToVolumeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkSubnetToVLANRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkVirtualDeviceToVolumeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LocationRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogicalInterfaceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogicalVolumeRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogsRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MessagesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MiddlewareRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MiddlewareInstanceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NASRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NetworkDeviceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NetworkInterfaceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OrganizationRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSFamilyRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSLicenceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSVersionRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PasswdRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PeripheralRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PhysicalDeviceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PhysicalInterfaceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ProviderContractRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.RackRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SANSwitchRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SecurityStrategyRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ServerRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareInstanceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareLicenceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.StorageSystemRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.TypologyRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.UsersRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualDeviceRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualHostRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualMachineRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VisualAuthorizationRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VLANRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WANLinkRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WebApplicationRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WebServerRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ViewOrganizationRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ViewOrganizationCTERow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ApplicationSolutionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.BackupsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.BlankRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpCreateRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpDeleteRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpLinksRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpLinksAddRemoveRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttPwdRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttScalarRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttTextRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ChangeOpSetAttUrlRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CIGroupRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CodeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConfigAccessRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConfigPortRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ConnectableCIRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContactRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContractRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ContractDetailRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.CustomerContractRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DatabasesSchemaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DataCenterDeviceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DBServerRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DNSObjectRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DocumentsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.DomainRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.EnclosureRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FarmRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FiberChannelInterfaceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.FunctionalCIRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.HypervisorRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPAddressRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPAddressv4RowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPBlockRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPBlockv4RowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPInterfaceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPObjectRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPSubnetRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.IPSubnetv4RowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LicenceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkApplicationSolutionToFunctionalCIRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkBackupsToFunctionalCIRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkCIGroupToCIRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkConnectableCIToNetworkDeviceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToContractRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToFunctionalCIRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContactToIPObjectRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkContractToDocumentRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkCustomerContractToProviderContractRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDatacenterDeviceToSanRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToFunctionalCIRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToIPObjectRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToLicenceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkDocumentToSoftwareRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkFunctionalCIToOrganizationRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkFunctionalCIToProviderContractRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPAddressToIPAddressRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPInterfaceToIPAddressRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPSubnetToLocationRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkIPSubnetToVLANRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkPasswdToFunctionalCIRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkPhysicalInterfaceToVLANRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkServerToVolumeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkSubnetToVLANRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LnkVirtualDeviceToVolumeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LocationRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogicalInterfaceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogicalVolumeRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.LogsRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MessagesRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MiddlewareRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.MiddlewareInstanceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NASRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NetworkDeviceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.NetworkInterfaceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OrganizationRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSFamilyRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSLicenceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.OSVersionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PasswdRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PeripheralRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PhysicalDeviceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.PhysicalInterfaceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ProviderContractRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.RackRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SANSwitchRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SecurityStrategyRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ServerRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareInstanceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.SoftwareLicenceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.StorageSystemRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.TypologyRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.UsersRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualDeviceRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualHostRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VirtualMachineRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VisualAuthorizationRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.VLANRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WANLinkRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WebApplicationRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.WebServerRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ViewOrganizationRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet.ViewOrganizationCTERowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSet">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ApplicationSolutionTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.BackupsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.BlankTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpCreateTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpDeleteTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpLinksTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpLinksAddRemoveTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpSetAttTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpSetAttPwdTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpSetAttScalarTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpSetAttTextTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ChangeOpSetAttUrlTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.CIGroupTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.CodeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ConfigAccessTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ConfigPortTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ConnectableCITableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ContactTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ContractTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ContractDetailTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.CustomerContractTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.DatabasesSchemaTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.DataCenterDeviceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.DBServerTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.DNSObjectTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.DocumentsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.DomainTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.EnclosureTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.FarmTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.FiberChannelInterfaceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.FunctionalCITableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.HypervisorTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.IPAddressTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.IPAddressv4TableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.IPBlockTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.IPBlockv4TableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.IPInterfaceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.IPObjectTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.IPSubnetTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.IPSubnetv4TableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LicenceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkApplicationSolutionToFunctionalCITableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkBackupsToFunctionalCITableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkCIGroupToCITableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkConnectableCIToNetworkDeviceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkContactToContractTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkContactToFunctionalCITableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkContactToIPObjectTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkContractToDocumentTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkCustomerContractToProviderContractTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkDatacenterDeviceToSanTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkDocumentToFunctionalCITableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkDocumentToIPObjectTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkDocumentToLicenceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkDocumentToSoftwareTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkFunctionalCIToOrganizationTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkFunctionalCIToProviderContractTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkIPAddressToIPAddressTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkIPInterfaceToIPAddressTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkIPSubnetToLocationTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkIPSubnetToVLANTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkPasswdToFunctionalCITableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkPhysicalInterfaceToVLANTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkServerToVolumeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkSubnetToVLANTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LnkVirtualDeviceToVolumeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LocationTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LogicalInterfaceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LogicalVolumeTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.LogsTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.MessagesTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.MiddlewareTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.MiddlewareInstanceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.NASTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.NetworkDeviceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.NetworkInterfaceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.OrganizationTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.OSFamilyTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.OSLicenceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.OSVersionTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.PasswdTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.PeripheralTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.PhysicalDeviceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.PhysicalInterfaceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ProviderContractTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.RackTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.SANSwitchTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.SecurityStrategyTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ServerTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.SoftwareTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.SoftwareInstanceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.SoftwareLicenceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.StorageSystemTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.TypologyTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.UsersTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.VirtualDeviceTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.VirtualHostTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.VirtualMachineTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.VisualAuthorizationTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.VLANTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.WANLinkTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.WebApplicationTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.WebServerTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ViewOrganizationTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.ViewOrganizationCTETableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:opdatalib.dao.cmdbDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(opdatalib.dao.cmdbDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:opdatalib.dao.cmdbDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(opdatalib.dao.cmdbDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:opdatalib.dao.cmdbDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(opdatalib.dao.cmdbDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:opdatalib.dao.cmdbDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:opdatalib.dao.cmdbDataSetTableAdapters.TableAdapterManager.UpdateAll(opdatalib.dao.cmdbDataSet)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:opdatalib.dao.cmdbDataSetTableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+</members>
+</doc>

@@ -1,0 +1,9 @@
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\bin\Release\opdatalib.dto.dll
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\bin\Release\opdatalib.dto.pdb
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\bin\Release\opdatalib.dto.xml
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\obj\Release\ResolveAssemblyReference.cache
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\obj\Release\opdatalib.dto.Resources.resources
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\obj\Release\opdatalib.dto.vbproj.GenerateResource.Cache
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\obj\Release\opdatalib.dto.dll
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\obj\Release\opdatalib.dto.xml
+D:\mydocument\repo_github\OMMP\dll\opdatalib.dto\opdatalib.dto\obj\Release\opdatalib.dto.pdb
