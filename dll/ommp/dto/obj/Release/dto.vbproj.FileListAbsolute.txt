@@ -1,0 +1,12 @@
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\bin\Release\ommp.dto.dll
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\bin\Release\ommp.dto.pdb
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\bin\Release\ommp.dto.xml
+D:\mydocument\repo_github\OMMP\dll\ommp\releases\ommp.dto.dll
+D:\mydocument\repo_github\OMMP\dll\ommp\releases\ommp.dto.pdb
+D:\mydocument\repo_github\OMMP\dll\ommp\releases\ommp.dto.xml
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\obj\Release\ResolveAssemblyReference.cache
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\obj\Release\ommp.Resources.resources
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\obj\Release\dto.vbproj.GenerateResource.Cache
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\obj\Release\ommp.dto.dll
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\obj\Release\ommp.dto.xml
+D:\mydocument\repo_github\OMMP\dll\ommp\dto\obj\Release\ommp.dto.pdb
