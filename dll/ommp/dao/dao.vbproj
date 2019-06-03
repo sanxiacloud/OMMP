@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationSolutionDAO.vb" />
+    <Compile Include="BaseDAO.vb" />
     <Compile Include="OrganizationDAO.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

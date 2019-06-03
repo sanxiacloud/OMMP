@@ -31,11 +31,13 @@ Namespace dao
             Return item
         End Function
 
-
-        ' New SQLJoinTableBuilder(TableName, BaseTable)
-        ' AddTable(Table1,Col1,Table2,Col2)
-        ' AddCols(Col1, Col2, Col3...)
-        ' AddExp(Name, Expression)
+        ' 用法说明
+        'Dim dao As new ommp.dao.ApplicationSolutionDAO
+        'Dim lists As IList(Of ommp.dto.ApplicationSolution) = dao.FindList("[name] Like '%Zabbix%'", "id DESC")
+        'output.Show("Count : " & lists.Count )
+        'For Each app As ommp.dto.ApplicationSolution In lists 
+        '    output.Show(app.name)
+        'Next
         Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of ApplicationSolution)
             Dim lists As IList(Of ApplicationSolution) = New Generic.List(Of ApplicationSolution)()
 
@@ -58,14 +60,13 @@ Namespace dao
                 For Each dr As DataRow In drs
                     item = New ApplicationSolution
 
-                    item.Identify = dr("_Identify")
+                    item.Identify = dr("id")
                     item.name = dr("name")
                     item.description = dr("description")
                     item.code_risk_rating = dr("code_risk_rating")
                     item.move2production = dr("move2production")
                     item.finalclass = dr("finalclass")
                     item.obsolescence_date = dr("obsolescence_date")
-                    item.IsDeleted = dr("_IsDeleted")
 
                     item.id = dr("id")
                     item.code_application_status = dr("code_application_status")
@@ -73,7 +74,6 @@ Namespace dao
                     item.code_sla = dr("code_sla")
                     item.fault_effects = dr("fault_effects")
                     item.attention = dr("attention")
-                    item.IsDeleted = dr("_IsDeleted")
 
                     lists.Add(item)
                 Next
