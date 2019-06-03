@@ -31,7 +31,7 @@ Namespace dao
             Return item
         End Function
 
-        ' 用法说明
+        ' 查询应用方案列表
         'Dim dao As new ommp.dao.ApplicationSolutionDAO
         'Dim lists As IList(Of ommp.dto.ApplicationSolution) = dao.FindList("[name] Like '%Zabbix%'", "id DESC")
         'output.Show("Count : " & lists.Count )
