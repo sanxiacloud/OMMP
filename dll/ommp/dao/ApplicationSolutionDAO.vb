@@ -2,10 +2,11 @@
 Imports Foxtable
 
 Namespace dao
-    Public Class ApplicationSolutionDAO
+    Public Class ApplicationSolutionDAO : Inherits BaseDAO
 
         Private Const TABLE_FunctionalCI As String = "FunctionalCI"
         Private Const TABLE_ApplicationSolution As String = "ApplicationSolution"
+        Private Const QT_ApplicationSolution As String = "QTApplicationSolution"
 
         Private Function SetProperties(ByVal drFCI As DataRow, ByVal drAS As DataRow) As ApplicationSolution
             Dim item As New ApplicationSolution()
@@ -24,37 +25,60 @@ Namespace dao
             item.redundancy = drAS("redundancy")
             item.code_sla = drAS("code_sla")
             item.fault_effects = drAS("fault_effects")
-            item.code_sla = drAS("code_sla")
             item.attention = drAS("attention")
             item.IsDeleted = drAS("_IsDeleted")
 
             Return item
         End Function
 
-        'Relations 表示关联集合，可以获得指定名称的关联
-        'Add(RelationName, ParentCol, ChildCol,Visible, RelationPath) 
-        'RelationName:    关联名称
-        'ParentCol:       父表关联列
-        'ChildCol:        子表关联列
-        'Visible:         可选参数,是否显示关联表  
-        'RelationPath:    RelationPathEnum型枚举，用于设置关联表生成模式，有三个可选值，分别是:One(单向生成),Both(双向生成),None(不生成)
+
+        ' New SQLJoinTableBuilder(TableName, BaseTable)
+        ' AddTable(Table1,Col1,Table2,Col2)
+        ' AddCols(Col1, Col2, Col3...)
+        ' AddExp(Name, Expression)
         Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of ApplicationSolution)
             Dim lists As IList(Of ApplicationSolution) = New Generic.List(Of ApplicationSolution)()
-            Relations.Add("rASofFCI", DataTables(TABLE_FunctionalCI).DataCols("_Identify"), DataTables(TABLE_ApplicationSolution).DataCols("id"), True, RelationPathEnum.One)
-            Dim re As Relation = Relations("rASofFCI")
+
+            Dim jb As New SQLJoinTableBuilder(QT_ApplicationSolution, TABLE_FunctionalCI)
+            jb.ConnectionName = CONNECTION_NAME
+            jb.AddTable(TABLE_FunctionalCI, "_Identify", TABLE_ApplicationSolution, "id")
+            jb.AddCols("name", "description", "code_risk_rating", "move2production", "finalclass", "obsolescence_date")
+            jb.AddCols("id", "code_application_status", "redundancy", "code_sla", "fault_effects", "attention")
+            jb.Build()
+            'Output.Show(jb.BuildSql()) ' 测试打印出生成的SQL语句
 
             Try
                 Dim drs As List(Of DataRow)
+                Dim item As ApplicationSolution
                 If sort IsNot Nothing Then
-                    drs = DataTables(TABLE_NAME).Select(filter, sort)
+                    drs = DataTables(QT_ApplicationSolution).Select(filter, sort)
                 Else
-                    drs = DataTables(TABLE_NAME).Select(filter)
+                    drs = DataTables(QT_ApplicationSolution).Select(filter)
                 End If
                 For Each dr As DataRow In drs
-                    lists.Add(SetProperties(dr))
+                    item = New ApplicationSolution
+
+                    item.Identify = dr("_Identify")
+                    item.name = dr("name")
+                    item.description = dr("description")
+                    item.code_risk_rating = dr("code_risk_rating")
+                    item.move2production = dr("move2production")
+                    item.finalclass = dr("finalclass")
+                    item.obsolescence_date = dr("obsolescence_date")
+                    item.IsDeleted = dr("_IsDeleted")
+
+                    item.id = dr("id")
+                    item.code_application_status = dr("code_application_status")
+                    item.redundancy = dr("redundancy")
+                    item.code_sla = dr("code_sla")
+                    item.fault_effects = dr("fault_effects")
+                    item.attention = dr("attention")
+                    item.IsDeleted = dr("_IsDeleted")
+
+                    lists.Add(item)
                 Next
             Catch ex As Exception
-                Output.Show(TABLE_NAME & "->FindList:" & ex.Message)
+                Output.Show(QT_ApplicationSolution & "->FindList:" & ex.Message)
             End Try
 
             Return lists

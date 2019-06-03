@@ -2,7 +2,7 @@
 Imports Foxtable
 
 Namespace dao
-    Public Class OrganizationDAO
+    Public Class OrganizationDAO : Inherits BaseDAO
 
         Private Const TABLE_NAME As String = "Organization"
 
