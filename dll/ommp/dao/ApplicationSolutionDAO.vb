@@ -8,13 +8,13 @@ Namespace dao
 
         Public Sub New()
             ' 创建查询表，用于查询方法使用
-            Dim jtBuilder As New SQLJoinTableBuilder(QT_ApplicationSolution, FunctionalCI.TABLE_NAME)
-            jtBuilder.ConnectionName = CONNECTION_NAME
-            jtBuilder.AddTable(FunctionalCI.TABLE_NAME, FunctionalCI.C__IDENTIFY, ApplicationSolution.TABLE_NAME, ApplicationSolution.C_ID)
-            jtBuilder.AddCols(FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
-            jtBuilder.AddCols(ApplicationSolution.C_ID, ApplicationSolution.C_CODE_APPLICATION_STATUS, ApplicationSolution.C_REDUNDANCY, ApplicationSolution.C_CODE_SLA, ApplicationSolution.C_FAULT_EFFECTS, ApplicationSolution.C_ATTENTION)
-            jtBuilder.Build()
-            'Output.Show(jb.BuildSql()) ' 测试打印出生成的SQL语句
+            Dim builder As New SQLJoinTableBuilder(QT_ApplicationSolution, FunctionalCI.TABLE_NAME)
+            builder.ConnectionName = CONNECTION_NAME
+            builder.AddTable(FunctionalCI.TABLE_NAME, FunctionalCI.C__IDENTIFY, ApplicationSolution.TABLE_NAME, ApplicationSolution.C_ID)
+            builder.AddCols(FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
+            builder.AddCols(ApplicationSolution.C_ID, ApplicationSolution.C_CODE_APPLICATION_STATUS, ApplicationSolution.C_REDUNDANCY, ApplicationSolution.C_CODE_SLA, ApplicationSolution.C_FAULT_EFFECTS, ApplicationSolution.C_ATTENTION)
+            builder.Build()
+            'Output.Show(builder.BuildSql()) ' 测试打印出生成的SQL语句
         End Sub
 
         ' 添加一个应用方案

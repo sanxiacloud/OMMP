@@ -64,8 +64,6 @@ Namespace dao
                 Output.Show(Organization.TABLE_NAME & "->Insert:" & ex.Message)
             End Try
 
-            Output.Show("Insert is invoked successful!")
-
             Return result
         End Function
 
@@ -81,8 +79,8 @@ Namespace dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find("_Identify = " & obj.Identify)
-                If obj.parent_identify > 0 Then
+                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & obj.Identify)
+                If obj.parent_identify >= 0 Then
                     dr(Organization.C_PARENT_IDENTIFY) = obj.parent_identify
                 End If
                 If obj.name IsNot Nothing Then
@@ -97,7 +95,7 @@ Namespace dao
                 If obj.status = False Or obj.status = True Then
                     dr(Organization.C_STATUS) = obj.status
                 End If
-                If obj.code_org_type > 0 Then
+                If obj.code_org_type >= 0 Then
                     dr(Organization.C_CODE_ORG_TYPE) = obj.code_org_type
                 End If
                 If obj.short_name IsNot Nothing Then
@@ -109,7 +107,7 @@ Namespace dao
                 If obj.IsDeleted = False Or obj.IsDeleted = True Then
                     dr(Organization.C__ISDELETED) = obj.IsDeleted
                 End If
-                If obj._sort > 0 Then
+                If obj._sort >= 0 Then
                     dr(Organization.C__SORT) = obj._sort
                 End If
                 dr.Save()
@@ -117,8 +115,6 @@ Namespace dao
             Catch ex As Exception
                 Output.Show(Organization.TABLE_NAME & "->Update:" & ex.Message)
             End Try
-
-            Output.Show("Update is invoked successful!")
 
             Return result
         End Function
@@ -131,14 +127,12 @@ Namespace dao
         Public Function Delete(ByVal id As Integer) As Boolean
             Dim result As Boolean = False
             Try
-                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find("_Identify = " & id)
+                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & id)
                 dr(Organization.C__ISDELETED) = True
                 dr.Save()
             Catch ex As Exception
                 Output.Show(Organization.TABLE_NAME & "->Delete:" & ex.Message)
             End Try
-
-            Output.Show("Delete is invoked successful!")
 
             Return result
         End Function
@@ -150,7 +144,7 @@ Namespace dao
         Public Function FindObject(ByVal id As Integer) As Organization
             Dim item As New Organization()
             Try
-                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find("_Identify = " & id)
+                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & id)
                 If dr IsNot Nothing Then
                     item = SetProperties(dr)
                 End If
