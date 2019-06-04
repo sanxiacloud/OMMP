@@ -4,50 +4,169 @@ Imports Foxtable
 Namespace dao
     Public Class ApplicationSolutionDAO : Inherits BaseDAO
 
-        Private Const TABLE_FunctionalCI As String = "FunctionalCI"
-        Private Const TABLE_ApplicationSolution As String = "ApplicationSolution"
         Private Const QT_ApplicationSolution As String = "QTApplicationSolution"
 
-        Private Function SetProperties(ByVal drFCI As DataRow, ByVal drAS As DataRow) As ApplicationSolution
+        Public Sub New()
+            ' 创建查询表，用于查询方法使用
+            Dim jtBuilder As New SQLJoinTableBuilder(QT_ApplicationSolution, FunctionalCI.TABLE_NAME)
+            jtBuilder.ConnectionName = CONNECTION_NAME
+            jtBuilder.AddTable(FunctionalCI.TABLE_NAME, FunctionalCI.C__IDENTIFY, ApplicationSolution.TABLE_NAME, ApplicationSolution.C_ID)
+            jtBuilder.AddCols(FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
+            jtBuilder.AddCols(ApplicationSolution.C_ID, ApplicationSolution.C_CODE_APPLICATION_STATUS, ApplicationSolution.C_REDUNDANCY, ApplicationSolution.C_CODE_SLA, ApplicationSolution.C_FAULT_EFFECTS, ApplicationSolution.C_ATTENTION)
+            jtBuilder.Build()
+            'Output.Show(jb.BuildSql()) ' 测试打印出生成的SQL语句
+        End Sub
+
+        ' 添加一个应用方案
+        'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
+        'Dim result As Boolean = False
+        'Dim dto As New ommp.dto.ApplicationSolution()
+        'dto.name = "测试应用系统1-20190603"
+        'dto.code_application_status= 2
+        'dto.redundancy = 3
+        'dto.code_sla = 1
+        'dto.fault_effects = 0
+        'dto.attention = "测试注意事项内容"
+        'dto.IsDeleted = False
+        'result = dao.Insert(dto)
+        'Output.Show(result)
+        Public Function Insert(ByVal obj As ApplicationSolution) As Boolean
+            Dim result As Boolean = False
+
+            Try
+                Dim drFCI As DataRow = DataTables(FunctionalCI.TABLE_NAME).AddNew()
+
+                drFCI(FunctionalCI.C_NAME) = obj.name
+                drFCI(FunctionalCI.C_DESCRIPTION) = obj.description
+                drFCI(FunctionalCI.C_CODE_RISK_RATING) = obj.code_risk_rating
+                drFCI(FunctionalCI.C_MOVE2PRODUCTION) = obj.move2production
+                drFCI(FunctionalCI.C_FINALCLASS) = ApplicationSolution.TABLE_NAME
+                drFCI(FunctionalCI.C_OBSOLESCENCE_DATE) = obj.obsolescence_date
+                If obj.IsDeleted = True Or obj.IsDeleted = False Then
+                    drFCI(FunctionalCI.C__ISDELETED) = obj.IsDeleted
+                Else
+                    drFCI(FunctionalCI.C__ISDELETED) = False
+                End If
+
+                drFCI.Save()
+
+
+                Dim drAS As DataRow = DataTables(ApplicationSolution.TABLE_NAME).AddNew()
+
+                drAS(ApplicationSolution.C_ID) = drFCI(FunctionalCI.C__IDENTIFY)
+                drAS(ApplicationSolution.C_CODE_APPLICATION_STATUS) = obj.code_application_status
+                drAS(ApplicationSolution.C_REDUNDANCY) = obj.redundancy
+                drAS(ApplicationSolution.C_CODE_SLA) = obj.code_sla
+                drAS(ApplicationSolution.C_FAULT_EFFECTS) = obj.fault_effects
+                drAS(ApplicationSolution.C_ATTENTION) = obj.attention
+                If obj.IsDeleted = True Or obj.IsDeleted = False Then
+                    drAS(ApplicationSolution.C__ISDELETED) = obj.IsDeleted
+                Else
+                    drAS(ApplicationSolution.C__ISDELETED) = False
+                End If
+
+                drAS.Save()
+
+                result = True
+            Catch ex As Exception
+                Output.Show(ApplicationSolution.TABLE_NAME & "->Insert:" & ex.Message)
+            End Try
+
+            Return result
+        End Function
+
+        '删除一个应用方案
+        'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
+        'Dim result As Boolean = False
+        'result = dao.Delete(591)
+        'Output.Show(result)
+        Public Function Delete(ByVal id As Integer) As Boolean
+            Dim result As Boolean = False
+            Try
+                Dim drAS As DataRow = DataTables(ApplicationSolution.TABLE_NAME).Find(ApplicationSolution.C_ID & " = " & id)
+                drAS(ApplicationSolution.C__ISDELETED) = True
+                drAS.Save()
+
+                Dim drFCI As DataRow = DataTables(FunctionalCI.TABLE_NAME).Find(FunctionalCI.C__IDENTIFY & " = " & id)
+                drFCI(FunctionalCI.C__ISDELETED) = True
+                drFCI.Save()
+
+                result = True
+            Catch ex As Exception
+                Output.Show(ApplicationSolution.TABLE_NAME & ":" & FunctionalCI.TABLE_NAME & "->Delete:" & ex.Message)
+            End Try
+
+            Return result
+        End Function
+
+        ' 查找一个应用方案
+        'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
+        'Dim dto As ommp.dto.ApplicationSolution = dao.FindObject(331)
+        'Output.Show("name = " & dto.name) ' 短信平台
+        'Output.Show("code_risk_rating = " & dto.code_risk_rating) 
+        'Output.Show("move2production = " & dto.move2production) 
+        'Output.Show("obsolescence_date = " & dto.obsolescence_date) 
+        'Output.Show("finalclass = " & dto.finalclass) 
+
+        'Output.Show("code_application_status = " & dto.code_application_status) 
+        'Output.Show("redundancy = " & dto.redundancy) 
+        'Output.Show("code_sla = " & dto.code_sla) 
+        'Output.Show("fault_effects = " & dto.fault_effects) 
+        'Output.Show("attention = " & dto.attention) 
+        'Output.Show("_IsDeleted = " & dto.IsDeleted) 
+        Public Function FindObject(ByVal id As Integer) As ApplicationSolution
             Dim item As New ApplicationSolution()
+            Try
+                Dim dr As DataRow = DataTables(QT_ApplicationSolution).Find(ApplicationSolution.C_ID & " = " & id)
 
-            item.Identify = drFCI("_Identify")
-            item.name = drFCI("name")
-            item.description = drFCI("description")
-            item.code_risk_rating = drFCI("code_risk_rating")
-            item.move2production = drFCI("move2production")
-            item.finalclass = drFCI("finalclass")
-            item.obsolescence_date = drFCI("obsolescence_date")
-            item.IsDeleted = drFCI("_IsDeleted")
+                If dr IsNot Nothing Then
+                    item = New ApplicationSolution()
 
-            item.id = drAS("id")
-            item.code_application_status = drAS("code_application_status")
-            item.redundancy = drAS("redundancy")
-            item.code_sla = drAS("code_sla")
-            item.fault_effects = drAS("fault_effects")
-            item.attention = drAS("attention")
-            item.IsDeleted = drAS("_IsDeleted")
+                    item.Identify = dr(ApplicationSolution.C_ID)
+                    item.name = dr(FunctionalCI.C_NAME)
+                    item.description = dr(FunctionalCI.C_DESCRIPTION)
+                    item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
+                    item.move2production = dr(FunctionalCI.C_MOVE2PRODUCTION)
+                    item.finalclass = dr(FunctionalCI.C_FINALCLASS)
+                    item.obsolescence_date = dr(FunctionalCI.C_OBSOLESCENCE_DATE)
+
+                    item.id = dr(ApplicationSolution.C_ID)
+                    item.code_application_status = dr(ApplicationSolution.C_CODE_APPLICATION_STATUS)
+                    item.redundancy = dr(ApplicationSolution.C_REDUNDANCY)
+                    item.code_sla = dr(ApplicationSolution.C_CODE_SLA)
+                    item.fault_effects = dr(ApplicationSolution.C_FAULT_EFFECTS)
+                    item.attention = dr(ApplicationSolution.C_ATTENTION)
+                End If
+
+            Catch ex As Exception
+                Output.Show(ApplicationSolution.TABLE_NAME & "->FindObject:" & ex.Message)
+            End Try
 
             Return item
         End Function
 
         ' 查询应用方案列表
-        'Dim dao As new ommp.dao.ApplicationSolutionDAO
+        'Dim dao As New ommp.dao.ApplicationSolutionDAO
         'Dim lists As IList(Of ommp.dto.ApplicationSolution) = dao.FindList("[name] Like '%Zabbix%'", "id DESC")
         'output.Show("Count : " & lists.Count )
-        'For Each app As ommp.dto.ApplicationSolution In lists 
-        '    output.Show(app.name)
+        'Output.Show(" --------------------- ") 
+        'For Each dto As ommp.dto.ApplicationSolution In lists 
+        '    Output.Show("name = " & dto.name) ' 短信平台
+        '    Output.Show("code_risk_rating = " & dto.code_risk_rating) 
+        '    Output.Show("move2production = " & dto.move2production) 
+        '    Output.Show("obsolescence_date = " & dto.obsolescence_date) 
+        '    Output.Show("finalclass = " & dto.finalclass) 
+
+        '    Output.Show("code_application_status = " & dto.code_application_status) 
+        '    Output.Show("redundancy = " & dto.redundancy) 
+        '    Output.Show("code_sla = " & dto.code_sla) 
+        '    Output.Show("fault_effects = " & dto.fault_effects) 
+        '    Output.Show("attention = " & dto.attention) 
+        '    Output.Show("_IsDeleted = " & dto.IsDeleted) 
+        '    Output.Show(" --------------------- ") 
         'Next
         Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of ApplicationSolution)
             Dim lists As IList(Of ApplicationSolution) = New Generic.List(Of ApplicationSolution)()
-
-            Dim jb As New SQLJoinTableBuilder(QT_ApplicationSolution, TABLE_FunctionalCI)
-            jb.ConnectionName = CONNECTION_NAME
-            jb.AddTable(TABLE_FunctionalCI, "_Identify", TABLE_ApplicationSolution, "id")
-            jb.AddCols("name", "description", "code_risk_rating", "move2production", "finalclass", "obsolescence_date")
-            jb.AddCols("id", "code_application_status", "redundancy", "code_sla", "fault_effects", "attention")
-            jb.Build()
-            'Output.Show(jb.BuildSql()) ' 测试打印出生成的SQL语句
 
             Try
                 Dim drs As List(Of DataRow)
@@ -60,20 +179,20 @@ Namespace dao
                 For Each dr As DataRow In drs
                     item = New ApplicationSolution
 
-                    item.Identify = dr("id")
-                    item.name = dr("name")
-                    item.description = dr("description")
-                    item.code_risk_rating = dr("code_risk_rating")
-                    item.move2production = dr("move2production")
-                    item.finalclass = dr("finalclass")
-                    item.obsolescence_date = dr("obsolescence_date")
+                    item.Identify = dr(ApplicationSolution.C_ID)
+                    item.name = dr(FunctionalCI.C_NAME)
+                    item.description = dr(FunctionalCI.C_DESCRIPTION)
+                    item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
+                    item.move2production = dr(FunctionalCI.C_MOVE2PRODUCTION)
+                    item.finalclass = dr(FunctionalCI.C_FINALCLASS)
+                    item.obsolescence_date = dr(FunctionalCI.C_OBSOLESCENCE_DATE)
 
-                    item.id = dr("id")
-                    item.code_application_status = dr("code_application_status")
-                    item.redundancy = dr("redundancy")
-                    item.code_sla = dr("code_sla")
-                    item.fault_effects = dr("fault_effects")
-                    item.attention = dr("attention")
+                    item.id = dr(ApplicationSolution.C_ID)
+                    item.code_application_status = dr(ApplicationSolution.C_CODE_APPLICATION_STATUS)
+                    item.redundancy = dr(ApplicationSolution.C_REDUNDANCY)
+                    item.code_sla = dr(ApplicationSolution.C_CODE_SLA)
+                    item.fault_effects = dr(ApplicationSolution.C_FAULT_EFFECTS)
+                    item.attention = dr(ApplicationSolution.C_ATTENTION)
 
                     lists.Add(item)
                 Next
@@ -83,93 +202,6 @@ Namespace dao
 
             Return lists
         End Function
-
-        Public Function FindObject(ByVal id As Integer) As ApplicationSolution
-            Dim item As New ApplicationSolution()
-            Try
-                Dim drAS As DataRow = DataTables(TABLE_ApplicationSolution).Find("id = " & id)
-                Dim drFCI As DataRow = DataTables(TABLE_FunctionalCI).Find("_Identify = " & id)
-
-                If drAS IsNot Nothing And drFCI IsNot Nothing Then
-                    item = SetProperties(drFCI, drAS)
-                End If
-
-            Catch ex As Exception
-                Output.Show(TABLE_ApplicationSolution & "->FindObject:" & ex.Message)
-            End Try
-
-            Return item
-        End Function
-
-        Public Function Delete(ByVal id As Integer) As Boolean
-            Dim result As Boolean = False
-            Try
-                Dim drAS As DataRow = DataTables(TABLE_ApplicationSolution).Find("id = " & id)
-                drAS("_IsDeleted") = True
-                drAS.Save()
-
-                Dim drFCI As DataRow = DataTables(TABLE_FunctionalCI).Find("_Identify = " & id)
-                drFCI("_IsDeleted") = True
-                drFCI.Save()
-
-                result = True
-            Catch ex As Exception
-                Output.Show(TABLE_ApplicationSolution & "->Delete:" & ex.Message)
-                Output.Show(TABLE_FunctionalCI & "->Delete:" & ex.Message)
-            End Try
-
-            Output.Show("Delete is invoked successful!")
-
-            Return result
-        End Function
-
-        Public Function Insert(ByVal obj As ApplicationSolution) As Boolean
-            Dim result As Boolean = False
-
-            Try
-                Dim drFCI As DataRow = DataTables(TABLE_FunctionalCI).AddNew()
-
-                drFCI("name") = obj.name
-                drFCI("description") = obj.description
-                drFCI("code_risk_rating") = obj.code_risk_rating
-                drFCI("move2production") = obj.move2production
-                drFCI("finalclass") = TABLE_ApplicationSolution
-                drFCI("obsolescence_date") = obj.obsolescence_date
-                If obj.IsDeleted = True Or obj.IsDeleted = False Then
-                    drFCI("_IsDeleted") = obj.IsDeleted
-                Else
-                    drFCI("_IsDeleted") = False
-                End If
-
-                drFCI.Save()
-
-
-                Dim drAS As DataRow = DataTables(TABLE_ApplicationSolution).AddNew()
-
-                drAS("id") = drFCI("_Identify")
-                drAS("code_application_status") = obj.code_application_status
-                drAS("redundancy") = obj.redundancy
-                drAS("code_sla") = obj.code_sla
-                drAS("fault_effects") = obj.fault_effects
-                drAS("attention") = obj.attention
-                If obj.IsDeleted = True Or obj.IsDeleted = False Then
-                    drAS("_IsDeleted") = obj.IsDeleted
-                Else
-                    drAS("_IsDeleted") = False
-                End If
-
-                drAS.Save()
-
-                result = True
-            Catch ex As Exception
-                Output.Show(TABLE_ApplicationSolution & "->Insert:" & ex.Message)
-            End Try
-
-            Output.Show("Insert is invoked successful!")
-
-            Return result
-        End Function
-
 
     End Class
 

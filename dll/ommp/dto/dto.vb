@@ -13,6 +13,18 @@
         Private _organization_identify As Integer
         Private _parent_identify As Integer
 
+        Public Const TABLE_NAME As String = "CIGroup"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_CODE_CIGROUP_STATUS As String = "code_cigroup_status"
+        Public Const C_CODE_CIGROUP_TYPE As String = "code_cigroup_type"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_NAME As String = "name"
+        Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
+        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
+        Public Const C_PARENT_IDENTIFY As String = "parent_identify"
+
         Public Property code_cigroup_status() As Integer
             Get
                 Return _code_cigroup_status
@@ -108,6 +120,17 @@
         Private _remote_ip1_identify As Integer
         Private _remote_ip2_identify As Integer
 
+        Public Const TABLE_NAME As String = "ConfigAccess"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_ACCESS_PORT As String = "access_port"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_LOCAL_IP1_IDENTIFY As String = "local_ip1_identify"
+        Public Const C_LOCAL_IP2_IDENTIFY As String = "local_ip2_identify"
+        Public Const C_REMOTE_IP1_IDENTIFY As String = "remote_ip1_identify"
+        Public Const C_REMOTE_IP2_IDENTIFY As String = "remote_ip2_identify"
+
         Public Property access_port() As String
             Get
                 Return _access_port
@@ -194,6 +217,17 @@
         Private _port2 As Integer
         Private _type As Integer
 
+        Public Const TABLE_NAME As String = "ConfigPort"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_IP1_IDENTIFY As String = "ip1_identify"
+        Public Const C_IP2_IDENTIFY As String = "ip2_identify"
+        Public Const C_PORT1 As String = "port1"
+        Public Const C_PORT2 As String = "port2"
+        Public Const C_TYPE As String = "type"
+
         Public Property description() As String
             Get
                 Return _description
@@ -279,6 +313,16 @@
         Private _IsDeleted As Boolean
         Private _name As String
 
+        Public Const TABLE_NAME As String = "Backups"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_BACKUP_CONTENT As String = "backup_content"
+        Public Const C_BACKUPER_IDENTIFY As String = "backuper_identify"
+        Public Const C_CODE_BACKUP_TYPE As String = "code_backup_type"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_NAME As String = "name"
+
         Public Property backup_content() As String
             Get
                 Return _backup_content
@@ -354,6 +398,16 @@
         Private _label As String
         Private _t As String
         Private _v As Integer
+
+        Public Const TABLE_NAME As String = "Code"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C__SORTKEY As String = "_SortKey"
+        Public Const C_DES As String = "des"
+        Public Const C_LABEL As String = "label"
+        Public Const C_T As String = "t"
+        Public Const C_V As String = "v"
 
         Public Property _SortKey() As Decimal
             Get
@@ -1010,6 +1064,20 @@
         Private _IsDeleted As Boolean
         Private __sort As Decimal
 
+        Public Const TABLE_NAME As String = "Organization"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__SORT As String = "_sort"
+        Public Const C_CODE As String = "code"
+        Public Const C__CODE As String = "_code"
+        Public Const C_NAME As String = "name"
+        Public Const C_STATUS As String = "status"
+        Public Const C_PARENT_IDENTIFY As String = "parent_identify"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_SHORT_NAME As String = "short_name"
+        Public Const C_CODE_ORG_TYPE As String = "code_org_type"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+
         Public Property parent_code() As String
             Get
                 Return _parent_code
@@ -1397,6 +1465,13 @@
         Private _Identify As Integer
         Private _user_name As String
 
+        Public Const TABLE_NAME As String = "Change"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C_CODE_ORIGIN As String = "code_origin"
+        Public Const C_DATE As String = "date"
+        Public Const C_USER_NAME As String = "user_name"
+
         Public Property code_origin() As Integer
             Get
                 Return _code_origin
@@ -1443,6 +1518,14 @@
         Private _objclass As String
         Private _objkey As Integer
         Private _optype As String
+
+        Public Const TABLE_NAME As String = "ChangeOp"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C_CHANGE_IDENTIFY As String = "change_identify"
+        Public Const C_OBJCLASS As String = "objclass"
+        Public Const C_OBJKEY As String = "objkey"
+        Public Const C_OPTYPE As String = "optype"
 
         Public Property change_identify() As Integer
             Get
@@ -1495,6 +1578,10 @@
     Public Class ChangeOpCreate : Inherits ChangeOp
         Private _id As Integer
 
+        Public Shadows Const TABLE_NAME As String = "ChangeOpCreate"
+
+        Public Const C_ID As String = "id"
+
         Public Property id() As Integer
             Get
                 Return _id
@@ -1511,6 +1598,12 @@
         Private _fclass As String
         Private _fname As String
         Private _id As Integer
+
+        Public Shadows Const TABLE_NAME As String = "ChangeOpDelete"
+
+        Public Const C_FCLASS As String = "fclass"
+        Public Const C_FNAME As String = "fname"
+        Public Const C_ID As String = "id"
 
         Public Property fclass() As String
             Get
@@ -1547,6 +1640,12 @@
         Private _item_class As String
         Private _item_identify As Integer
 
+        Public Shadows Const TABLE_NAME As String = "ChangeOpLinks"
+
+        Public Const C_ID As String = "id"
+        Public Const C_ITEM_CLASS As String = "item_class"
+        Public Const C_ITEM_IDENTIFY As String = "item_identify"
+
         Public Property id() As Integer
             Get
                 Return _id
@@ -1581,6 +1680,11 @@
         Private _id As Integer
         Private _type As String
 
+        Public Shadows Const TABLE_NAME As String = "ChangeOpLinksAddRemove"
+
+        Public Shadows Const C_ID As String = "id"
+        Public Const C_TYPE As String = "type"
+
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -1605,6 +1709,11 @@
     Public Class ChangeOpSetAtt : Inherits ChangeOp
         Private _attcode As String
         Private _id As Integer
+
+        Public Shadows Const TABLE_NAME As String = "ChangeOpSetAtt"
+
+        Public Const C_ATTCODE As String = "attcode"
+        Public Const C_ID As String = "id"
 
         Public Property attcode() As String
             Get
@@ -1631,6 +1740,12 @@
         Private _id As Integer
         Private _prev_pwd_hash As String
         Private _prev_pwd_salt As String
+
+        Public Shadows Const TABLE_NAME As String = "ChangeOpSetAttPwd"
+
+        Public Shadows Const C_ID As String = "id"
+        Public Const C_PREV_PWD_HASH As String = "prev_pwd_hash"
+        Public Const C_PREV_PWD_SALT As String = "prev_pwd_salt"
 
         Public Overloads Property id() As Integer
             Get
@@ -1667,6 +1782,12 @@
         Private _newvalue As String
         Private _oldvalue As String
 
+        Public Shadows Const TABLE_NAME As String = "ChangeOpSetAttScalar"
+
+        Public Shadows Const C_ID As String = "id"
+        Public Const C_NEWVALUE As String = "newvalue"
+        Public Const C_OLDVALUE As String = "oldvalue"
+
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -1702,6 +1823,12 @@
         Private _newvalue As String
         Private _oldvalue As String
 
+        Public Shadows Const TABLE_NAME As String = "ChangeOpSetAttText"
+
+        Public Shadows Const C_ID As String = "id"
+        Public Const C_NEWVALUE As String = "newvalue"
+        Public Const C_OLDVALUE As String = "oldvalue"
+
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -1736,6 +1863,12 @@
         Private _id As Integer
         Private _newvalue As String
         Private _oldvalue As String
+
+        Public Shadows Const TABLE_NAME As String = "ChangeOpSetAttUrl"
+
+        Public Shadows Const C_ID As String = "id"
+        Public Const C_NEWVALUE As String = "newvalue"
+        Public Const C_OLDVALUE As String = "oldvalue"
 
         Public Overloads Property id() As Integer
             Get
@@ -2144,6 +2277,17 @@
         Private _name As String
         Private _obsolescence_date As Date
 
+        Public Const TABLE_NAME As String = "FunctionalCI"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_CODE_RISK_RATING As String = "code_risk_rating"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_FINALCLASS As String = "finalclass"
+        Public Const C_MOVE2PRODUCTION As String = "move2production"
+        Public Const C_NAME As String = "name"
+        Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
+
         Public Property code_risk_rating() As Integer
             Get
                 Return _code_risk_rating
@@ -2227,6 +2371,16 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
         Private _redundancy As String
+
+        Public Shadows Const TABLE_NAME As String = "ApplicationSolution"
+
+        Public Const C_ID As String = "id"
+        Public Const C_CODE_APPLICATION_STATUS As String = "code_application_status"
+        Public Const C_REDUNDANCY As String = "redundancy"
+        Public Const C_CODE_SLA As String = "code_sla"
+        Public Const C_FAULT_EFFECTS As String = "fault_effects"
+        Public Const C_ATTENTION As String = "attention"
+        Public Shadows Const C__ISDELETED As String = "_IsDeleted"
 
         Public Property attention() As String
             Get
@@ -2937,6 +3091,11 @@
     Public Class ConnectableCI : Inherits PhysicalDevice
         Private _id As Integer
         Private _IsDeleted As Boolean
+
+        Public Shadows Const TABLE_NAME As String = "ConnectableCI"
+
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Shadows Const C_ID As String = "id"
 
         Public Overloads Property id() As Integer
             Get
@@ -5448,6 +5607,14 @@
         Private _Identify As Integer
         Private _IsDeleted As Boolean
         Private _organization_identify As Integer
+
+        Public Const TABLE_NAME As String = "LnkFunctionalCIToOrganization"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
+        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
 
         Public Property description() As String
             Get
