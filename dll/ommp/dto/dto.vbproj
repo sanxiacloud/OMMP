@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8BC6595A-9EF4-4E63-A281-76C25966FED5}</ProjectGuid>
+    <ProjectGuid>{CCECA59C-F127-4BC3-9E0E-C536674270DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ommp</RootNamespace>
     <AssemblyName>ommp.dto</AssemblyName>

@@ -62,6 +62,40 @@ Namespace dao
             Return result
         End Function
 
+        '查询链接列表
+        'Dim dao As new ommp.dao.LnkFunctionalCIToOrganizationDAO
+        'Dim lists As IList(Of ommp.dto.LnkFunctionalCIToOrganization) = dao.FindList("[name] Like '%三峡云%'", "name desc")
+        'output.Show("Count : " & lists.Count )
+        'For Each obj As ommp.dto.LnkFunctionalCIToOrganization In lists 
+        '    output.Show(obj.name)
+        '    output.Show(obj.name)
+        '    output.Show(obj.name)
+        'Next
+        Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of LnkFunctionalCIToOrganization)
+            Dim lists As IList(Of LnkFunctionalCIToOrganization) = New Generic.List(Of LnkFunctionalCIToOrganization)()
+            Try
+                Dim drs As List(Of DataRow)
+                If sort IsNot Nothing Then
+                    drs = DataTables(LnkFunctionalCIToOrganization.TABLE_NAME).Select(filter, sort)
+                Else
+                    drs = DataTables(LnkFunctionalCIToOrganization.TABLE_NAME).Select(filter)
+                End If
+                For Each dr As DataRow In drs
+                    Dim item As New LnkFunctionalCIToOrganization()
+
+                    item.Identify = dr(LnkFunctionalCIToOrganization.C__IDENTIFY)
+                    item.functionalci_identify = dr(LnkFunctionalCIToOrganization.C_FUNCTIONALCI_IDENTIFY)
+                    item.organization_identify = dr(LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY)
+
+                    lists.Add(item)
+                Next
+            Catch ex As Exception
+                Output.Show(LnkFunctionalCIToOrganization.TABLE_NAME & "->FindList:" & ex.Message)
+            End Try
+
+            Return lists
+        End Function
+
     End Class
 End Namespace
 

@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dao", "dao\dao.vbproj", "{B54DDF2B-ADBF-43F3-A5EA-21CAB192739E}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dto", "dto\dto.vbproj", "{CCECA59C-F127-4BC3-9E0E-C536674270DB}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dto", "dto\dto.vbproj", "{8BC6595A-9EF4-4E63-A281-76C25966FED5}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dao", "dao\dao.vbproj", "{F959093A-3675-4222-B08C-916FD3215FF7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CCECA59C-F127-4BC3-9E0E-C536674270DB} = {CCECA59C-F127-4BC3-9E0E-C536674270DB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +14,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B54DDF2B-ADBF-43F3-A5EA-21CAB192739E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B54DDF2B-ADBF-43F3-A5EA-21CAB192739E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B54DDF2B-ADBF-43F3-A5EA-21CAB192739E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B54DDF2B-ADBF-43F3-A5EA-21CAB192739E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8BC6595A-9EF4-4E63-A281-76C25966FED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BC6595A-9EF4-4E63-A281-76C25966FED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BC6595A-9EF4-4E63-A281-76C25966FED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BC6595A-9EF4-4E63-A281-76C25966FED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCECA59C-F127-4BC3-9E0E-C536674270DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCECA59C-F127-4BC3-9E0E-C536674270DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCECA59C-F127-4BC3-9E0E-C536674270DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCECA59C-F127-4BC3-9E0E-C536674270DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F959093A-3675-4222-B08C-916FD3215FF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F959093A-3675-4222-B08C-916FD3215FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F959093A-3675-4222-B08C-916FD3215FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F959093A-3675-4222-B08C-916FD3215FF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

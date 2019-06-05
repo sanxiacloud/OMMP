@@ -8,6 +8,7 @@ Namespace dao
 
         Public Sub New()
             ' 创建查询表，用于查询方法使用
+
             Dim builder As New SQLJoinTableBuilder(QT_ApplicationSolution, FunctionalCI.TABLE_NAME)
             builder.ConnectionName = CONNECTION_NAME
             builder.AddTable(FunctionalCI.TABLE_NAME, FunctionalCI.C__IDENTIFY, ApplicationSolution.TABLE_NAME, ApplicationSolution.C_ID)

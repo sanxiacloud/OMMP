@@ -3094,7 +3094,7 @@
 
         Public Shadows Const TABLE_NAME As String = "ConnectableCI"
 
-        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Shadows Const C__ISDELETED As String = "_IsDeleted"
         Public Shadows Const C_ID As String = "id"
 
         Public Overloads Property id() As Integer
