@@ -68,9 +68,57 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationSolutionDAO.vb" />
-    <Compile Include="BaseDAO.vb" />
-    <Compile Include="LnkFunctionalCIToOrganizationDAO.vb" />
+    <Compile Include="EntityDAO\ApplicationSolutionDAO.vb" />
+    <Compile Include="EntityDAO\BackupsDAO.vb" />
+    <Compile Include="EntityDAO\BaseDAO.vb" />
+    <Compile Include="EntityDAO\ChangeOpLinksAddRemoveDAO.vb" />
+    <Compile Include="EntityDAO\ChangeOpSetAttScalarDAO.vb" />
+    <Compile Include="EntityDAO\CIGroupDAO.vb" />
+    <Compile Include="EntityDAO\CodeDAO.vb" />
+    <Compile Include="EntityDAO\ConfigAccessDAO.vb" />
+    <Compile Include="EntityDAO\ConfigPortDAO.vb" />
+    <Compile Include="EntityDAO\ContactDAO.vb" />
+    <Compile Include="EntityDAO\CustomerContractDAO.vb" />
+    <Compile Include="EntityDAO\DatabasesSchemaDAO.vb" />
+    <Compile Include="EntityDAO\DBServerDAO.vb" />
+    <Compile Include="EntityDAO\DocumentsDAO.vb" />
+    <Compile Include="EntityDAO\DomainDAO.vb" />
+    <Compile Include="EntityDAO\EnclosureDAO.vb" />
+    <Compile Include="EntityDAO\FarmDAO.vb" />
+    <Compile Include="EntityDAO\FiberChannelInterfaceDAO.vb" />
+    <Compile Include="EntityDAO\HypervisorDAO.vb" />
+    <Compile Include="EntityDAO\IPAddressv4DAO.vb" />
+    <Compile Include="EntityDAO\IPBlockv4DAO.vb" />
+    <Compile Include="EntityDAO\IPSubnetv4DAO.vb" />
+    <Compile Include="LinkDAO\LnkApplicationSolutionToFunctionalCIDAO.vb" />
+    <Compile Include="LinkDAO\LnkCIGroupToCIDAO.vb" />
+    <Compile Include="LinkDAO\LnkConnectableCIToNetworkDeviceDAO.vb" />
+    <Compile Include="LinkDAO\LnkContactToContractDAO.vb" />
+    <Compile Include="LinkDAO\LnkContactToFunctionalCIDAO.vb" />
+    <Compile Include="LinkDAO\LnkContactToIPObjectDAO.vb" />
+    <Compile Include="LinkDAO\LnkContractToDocumentDAO.vb" />
+    <Compile Include="LinkDAO\LnkCustomerContractToProviderContractDAO.vb" />
+    <Compile Include="LinkDAO\LnkDatacenterDeviceToSanDAO.vb" />
+    <Compile Include="LinkDAO\LnkDocumentToFunctionalCIDAO.vb" />
+    <Compile Include="LinkDAO\LnkDocumentToIPObjectDAO.vb" />
+    <Compile Include="LinkDAO\LnkDocumentToLicenceDAO.vb" />
+    <Compile Include="LinkDAO\LnkDocumentToSoftwareDAO.vb" />
+    <Compile Include="LinkDAO\LnkFunctionalCIToOrganizationDAO.vb" />
+    <Compile Include="EntityDAO\LocationDAO.vb" />
+    <Compile Include="EntityDAO\LogicalInterfaceDAO.vb" />
+    <Compile Include="EntityDAO\LogicalVolumeDAO.vb" />
+    <Compile Include="EntityDAO\MiddlewareDAO.vb" />
+    <Compile Include="EntityDAO\MiddlewareInstanceDAO.vb" />
+    <Compile Include="LinkDAO\LnkFunctionalCIToProviderContractDAO.vb" />
+    <Compile Include="LinkDAO\LnkIPAddressToIPAddressDAO.vb" />
+    <Compile Include="LinkDAO\LnkIPInterfaceToIPAddressDAO.vb" />
+    <Compile Include="LinkDAO\LnkIPSubnetToLocationDAO.vb" />
+    <Compile Include="LinkDAO\LnkIPSubnetToVLANDAO.vb" />
+    <Compile Include="LinkDAO\LnkPasswdToFunctionalCIDAO.vb" />
+    <Compile Include="LinkDAO\LnkPhysicalInterfaceToVLANDAO.vb" />
+    <Compile Include="LinkDAO\LnkServerToVolumeDAO.vb" />
+    <Compile Include="LinkDAO\LnkSubnetToVLANDAO.vb" />
+    <Compile Include="LinkDAO\LnkVirtualDeviceToVolumeDAO.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -86,8 +134,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="OrganizationDAO.vb" />
-    <Compile Include="VirtualMachineDAO.vb" />
+    <Compile Include="EntityDAO\NASDAO.vb" />
+    <Compile Include="EntityDAO\NetworkDeviceDAO.vb" />
+    <Compile Include="EntityDAO\OrganizationDAO.vb" />
+    <Compile Include="EntityDAO\OSFamilyDAO.vb" />
+    <Compile Include="EntityDAO\OSLicenceDAO.vb" />
+    <Compile Include="EntityDAO\OSVersionDAO.vb" />
+    <Compile Include="EntityDAO\PasswdDAO.vb" />
+    <Compile Include="EntityDAO\PeripheralDAO.vb" />
+    <Compile Include="EntityDAO\PhysicalInterfaceDAO.vb" />
+    <Compile Include="EntityDAO\ProviderContractDAO.vb" />
+    <Compile Include="EntityDAO\RackDAO.vb" />
+    <Compile Include="EntityDAO\SANSwitchDAO.vb" />
+    <Compile Include="EntityDAO\SecurityStrategyDAO.vb" />
+    <Compile Include="EntityDAO\ServerDAO.vb" />
+    <Compile Include="EntityDAO\SoftwareDAO.vb" />
+    <Compile Include="EntityDAO\SoftwareLicenceDAO.vb" />
+    <Compile Include="EntityDAO\StorageSystemDAO.vb" />
+    <Compile Include="EntityDAO\VirtualMachineDAO.vb" />
+    <Compile Include="EntityDAO\VLANDAO.vb" />
+    <Compile Include="EntityDAO\WANLinkDAO.vb" />
+    <Compile Include="EntityDAO\WebApplicationDAO.vb" />
+    <Compile Include="EntityDAO\WebServerDAO.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -113,6 +181,10 @@
       <Project>{CCECA59C-F127-4BC3-9E0E-C536674270DB}</Project>
       <Name>dto</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dll\foxtable.exe" />
+    <Content Include="dll\Foxtable.Lib.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

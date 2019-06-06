@@ -2280,13 +2280,13 @@
         Public Const TABLE_NAME As String = "FunctionalCI"
 
         Public Const C__IDENTIFY As String = "_Identify"
-        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_NAME As String = "name"
         Public Const C_CODE_RISK_RATING As String = "code_risk_rating"
         Public Const C_DESCRIPTION As String = "description"
-        Public Const C_FINALCLASS As String = "finalclass"
         Public Const C_MOVE2PRODUCTION As String = "move2production"
-        Public Const C_NAME As String = "name"
         Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
+        Public Const C_FINALCLASS As String = "finalclass"
+        Public Const C__ISDELETED As String = "_IsDeleted"
 
         Public Property code_risk_rating() As Integer
             Get

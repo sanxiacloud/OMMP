@@ -76,6 +76,61 @@ Namespace dao
             Return result
         End Function
 
+        '修改应用方案
+        'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
+        'Dim result As Boolean = False
+        'Dim dto As ommp.dto.ApplicationSolution = dao.FindObject(593)
+        'dto.code_application_status = 2
+        'dto.name = "test abc 2"
+        'result  = dao.Update(dto)
+        'Output.Show(result)
+        Public Function Update(ByVal obj As ApplicationSolution) As Boolean
+            Dim result As Boolean = False
+
+            Try
+                Dim dr As DataRow = DataTables(ApplicationSolution.TABLE_NAME).Find(ApplicationSolution.C__IDENTIFY & " = " & obj.Identify)
+
+                If obj.name IsNot Nothing Then
+                    dr(ApplicationSolution.C_NAME) = obj.name
+                End If
+                If obj.code_sla >= 0 Then
+                    dr(ApplicationSolution.C_CODE_RISK_RATING) = obj.code_risk_rating
+                End If
+                If obj.description IsNot Nothing Then
+                    dr(ApplicationSolution.C_DESCRIPTION) = obj.description
+                End If
+                If obj.move2production <> Nothing Then
+                    dr(ApplicationSolution.C_MOVE2PRODUCTION) = obj.move2production
+                End If
+                If obj.obsolescence_date <> Nothing Then
+                    dr(ApplicationSolution.C_OBSOLESCENCE_DATE) = obj.obsolescence_date
+                End If
+
+                If obj.code_application_status >= 0 Then
+                    dr(ApplicationSolution.C_CODE_APPLICATION_STATUS) = obj.code_application_status
+                End If
+                If obj.redundancy IsNot Nothing Then
+                    dr(ApplicationSolution.C_REDUNDANCY) = obj.redundancy
+                End If
+                If obj.code_sla >= 0 Then
+                    dr(ApplicationSolution.C_CODE_SLA) = obj.code_sla
+                End If
+                If obj.fault_effects IsNot Nothing Then
+                    dr(ApplicationSolution.C_FAULT_EFFECTS) = obj.fault_effects
+                End If
+                If obj.attention IsNot Nothing Then
+                    dr(ApplicationSolution.C_ATTENTION) = obj.attention
+                End If
+
+                dr.Save()
+                result = True
+            Catch ex As Exception
+                Output.Show(ApplicationSolution.TABLE_NAME & "->Update:" & ex.Message)
+            End Try
+
+            Return result
+        End Function
+
         '删除一个应用方案
         'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
         'Dim result As Boolean = False
