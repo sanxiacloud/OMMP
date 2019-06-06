@@ -10,18 +10,25 @@ Function AfterLoad(e)
     
     Dim type As String = GetFormParam("应用系统编辑", "type")
     Dim param As String
-    IF param = "modify" Then
+    IF type = "modify" Then
         e.Form.Text = "修改应用系统"
-        e.Form.Controls("cb_sla").SelectedIndex = GetFormParam("应用系统编辑", "sla")
-        e.Form.Controls("cb_risk").SelectedIndex = GetFormParam("应用系统编辑", "risk")
-        e.Form.Controls("cb_stat").SelectedIndex = GetFormParam("应用系统编辑", "stat")
-        e.Form.Controls("dtp_mtp").Value = GetFormParam("应用系统编辑", "mtp")
+        ' 应用系统相关属性
+        Dim identify As String = GetFormParam("应用系统编辑", "_Identify")
+        Dim drCI As DataRow = Datatables("FunctionalCI").Find("_Identify=" & identify)
+        Dim drAS As DataRow = Datatables("ApplicationSolution").Find("id=" & identify)
+        e.Form.Controls("tb_name").Value = drCI("name")
+        e.Form.Controls("cb_sla").SelectedIndex = drAS("code_sla")
+        e.Form.Controls("cb_risk").SelectedIndex = drCI("code_risk_rating")
+        e.Form.Controls("cb_stat").SelectedIndex = drAS("code_application_status")
+        e.Form.Controls("dtp_mtp").Value = drCI("move2production")
+        ' 组织相关属性
         Dim orgId As String = GetFormParam("应用系统编辑", "orgId")
+        Dim drOrg As DataRow = DataTables("Organization").Find("_Identify=" & orgId)
+        e.Form.Controls("db_org").Value = drOrg("name")
+
+        SetFormVariable("应用系统编辑", "type", "modify")
         SetFormVariable("应用系统编辑", "orgId", orgId)
-        Dim dr As DataRow = DataTables("Organization").Find("_Identify=" & orgId)
-        e.Form.Controls("db_org").Value = dr("name")
-        ClearFormParams("应用系统编辑")
-        SetFormParam("主管部门下拉树", "filter", dr("name"))
+        SetFormVariable("应用系统编辑", "_Identify", identify)
     Else
         e.Form.Text = "新增应用系统"
         e.Form.Controls("cb_sla").SelectedIndex = 0 
@@ -29,6 +36,7 @@ Function AfterLoad(e)
         e.Form.Controls("cb_stat").SelectedIndex = 0
         e.Form.Controls("dtp_mtp").Value = Date.Today()
     End If
+    ClearFormParams("应用系统编辑")
 End Function
 
 #End Region main
@@ -80,7 +88,7 @@ Function KeyPress(e)
     Dim drp As WinForm.DropDownBox = e.Sender
     If drp.DroppedDown = False '如果下拉窗口没有打开
         ' 设置绘制下拉树所需参数
-        SetFormParam("主管部门下拉树", "filter", e.Form.Controls("db_org").Value)
+        SetFormParam("主管部门下拉树", "filter", e.Form.Controls("db_org").Text)
         drp.OpenDropDown() '打开下拉窗口
     End If
 End Function 
@@ -90,7 +98,13 @@ Function Leave(e)
     If drp.DroppedDown = True '如果下拉窗口打开
         drp.CloseDropDown() '关闭下拉窗口
     End If
-    SetFormVariable("应用系统编辑", "orgId", GetFormResult("主管部门下拉树", "orgId"))
+    e.Sender.Value = e.Sender.Text
+    Dim dr As DataRow = DataTables("Organization").Find("name='" & e.Sender.Value & "'")
+    IF dr Is Nothing Then
+        SetFormVariable("应用系统编辑", "orgId", "-1")
+    Else    
+        SetFormVariable("应用系统编辑", "orgId", dr("_Identify"))
+    End IF
 End Function
 
 Function Click(e)
@@ -98,9 +112,9 @@ Function Click(e)
     If drp.DroppedDown = True '如果下拉窗口打开
         drp.CloseDropDown() '关闭下拉窗口
     Else
-        SetFormParam("主管部门下拉树", "filter", e.Form.Controls("db_org").Value)
+        SetFormParam("主管部门下拉树", "filter", e.Form.Controls("db_org").Text)
         drp.OpenDropDown()
-    End If
+    End If    
 End Function
 
 #End Region db_org 组织选择下拉树

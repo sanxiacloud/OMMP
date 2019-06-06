@@ -67,20 +67,14 @@ End Function
 #Region lv_app_app
 ' 行上双击或者回车
 Function RowActivate(e)
-    Dim dr As DataRow = e.Sender.Current.Tag
-    Dim identify As String = dr("_Identify")
-    Dim drAS As DataRow = Datatables("ApplicationSolution").
+    Dim drCI As DataRow = e.Sender.Current.Tag
+    Dim identify As String = drCI("_Identify")
+    Dim drAS As DataRow = Datatables("ApplicationSolution").Find("id=" & identify)
     SetFormParam("应用系统编辑", "type", "modify")
-    SetFormParam("应用系统编辑", "orgId", "modify")
+    Dim drLK As DataRow = DataTables("LnkFunctionalCIToOrganization").Find("functionalci_identify=" & identify)
+    SetFormParam("应用系统编辑", "orgId", drLK("organization_identify"))
     SetFormParam("应用系统编辑", "_Identify", identify)
-    SetFormParam("应用系统编辑", "type", "modify")
-
-
-
-Dim dic As New Dictionary(Of String,String)
-dic.Add("selected_app",CStr(dr("_Identify")))
-'MessageBox.Show(dic("selected_app"))
-Functions.Execute("startForm","应用系统编辑",dic)
+    Forms("应用系统编辑").Open()
 End Function
 
 ' 行选择状态变化

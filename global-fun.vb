@@ -241,7 +241,7 @@ Function ReDrawAppLvApp(ByVal ParamArray Args() as Object)
             End IF
         Next
     Next
-    Dim tcApp As WinForm.TabControl = Forms("主窗口").Controls("tc_app_app")
+    Dim tcApp As WinForm.TabControl = Forms("主窗口").Controls("tc_app_m")
     Dim tabApp As WinForm.TabPage = tcApp.TabPages("app") '中间主tabcontrol，单选，用于展示 应用系统四个字以及应用系统数量
     tabApp.Text = "应用系统(" & count & ")"
     lvApp.ResumeRedraw() '恢复绘制
