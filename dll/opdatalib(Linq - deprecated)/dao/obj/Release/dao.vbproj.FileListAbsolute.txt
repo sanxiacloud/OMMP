@@ -1,0 +1,12 @@
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\bin\Release\opdatalib.dao.dll
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\bin\Release\opdatalib.dao.pdb
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\bin\Release\opdatalib.dao.xml
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\obj\Release\ResolveAssemblyReference.cache
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\obj\Release\ommp.dao.Resources.resources
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\obj\Release\dao.vbproj.GenerateResource.Cache
+D:\mydocument\repo_github\OMMP\dll\opdatalib\release_dlls\ommp.dao.dll
+D:\mydocument\repo_github\OMMP\dll\opdatalib\release_dlls\ommp.dao.pdb
+D:\mydocument\repo_github\OMMP\dll\opdatalib\release_dlls\ommp.dao.xml
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\obj\Release\ommp.dao.dll
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\obj\Release\ommp.dao.xml
+D:\mydocument\repo_github\OMMP\dll\opdatalib\dao\obj\Release\ommp.dao.pdb
