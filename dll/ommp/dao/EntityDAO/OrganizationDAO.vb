@@ -80,38 +80,40 @@ Namespace dao
 
             Try
                 Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & obj.Identify)
-                If obj.parent_identify >= 0 Then
-                    dr(Organization.C_PARENT_IDENTIFY) = obj.parent_identify
+                If dr IsNot Nothing Then
+                    If obj.parent_identify >= 0 Then
+                        dr(Organization.C_PARENT_IDENTIFY) = obj.parent_identify
+                    End If
+                    If obj.name IsNot Nothing Then
+                        dr(Organization.C_NAME) = obj.name
+                    End If
+                    If obj.code IsNot Nothing Then
+                        dr(Organization.C_CODE) = obj.code
+                    End If
+                    If obj.parent_code IsNot Nothing Then
+                        dr(Organization.C__CODE) = obj.parent_code
+                    End If
+                    If obj.status = False Or obj.status = True Then
+                        dr(Organization.C_STATUS) = obj.status
+                    End If
+                    If obj.code_org_type >= 0 Then
+                        dr(Organization.C_CODE_ORG_TYPE) = obj.code_org_type
+                    End If
+                    If obj.short_name IsNot Nothing Then
+                        dr(Organization.C_SHORT_NAME) = obj.short_name
+                    End If
+                    If obj.description IsNot Nothing Then
+                        dr(Organization.C_DESCRIPTION) = obj.description
+                    End If
+                    If obj.IsDeleted = False Or obj.IsDeleted = True Then
+                        dr(Organization.C__ISDELETED) = obj.IsDeleted
+                    End If
+                    If obj._sort >= 0 Then
+                        dr(Organization.C__SORT) = obj._sort
+                    End If
+                    dr.Save()
+                    result = True
                 End If
-                If obj.name IsNot Nothing Then
-                    dr(Organization.C_NAME) = obj.name
-                End If
-                If obj.code IsNot Nothing Then
-                    dr(Organization.C_CODE) = obj.code
-                End If
-                If obj.parent_code IsNot Nothing Then
-                    dr(Organization.C__CODE) = obj.parent_code
-                End If
-                If obj.status = False Or obj.status = True Then
-                    dr(Organization.C_STATUS) = obj.status
-                End If
-                If obj.code_org_type >= 0 Then
-                    dr(Organization.C_CODE_ORG_TYPE) = obj.code_org_type
-                End If
-                If obj.short_name IsNot Nothing Then
-                    dr(Organization.C_SHORT_NAME) = obj.short_name
-                End If
-                If obj.description IsNot Nothing Then
-                    dr(Organization.C_DESCRIPTION) = obj.description
-                End If
-                If obj.IsDeleted = False Or obj.IsDeleted = True Then
-                    dr(Organization.C__ISDELETED) = obj.IsDeleted
-                End If
-                If obj._sort >= 0 Then
-                    dr(Organization.C__SORT) = obj._sort
-                End If
-                dr.Save()
-                result = True
             Catch ex As Exception
                 Output.Show(Organization.TABLE_NAME & "->Update:" & ex.Message)
             End Try
