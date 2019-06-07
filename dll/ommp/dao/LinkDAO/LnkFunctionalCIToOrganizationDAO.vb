@@ -2,7 +2,9 @@
 Imports Foxtable
 
 Namespace dao
-    Public Class LnkFunctionalCIToOrganizationDAO : Inherits BaseDAO
+    Public Class LnkFunctionalCIToOrganizationDAO
+        Inherits BaseDAO
+        Implements ILinkDAO
 
         Public Sub New()
             ' 构造函数，默认为空
@@ -14,14 +16,14 @@ Namespace dao
         'Dim result As Boolean = False
         'result = dao.Link(1870, 593)
         'Output.Show(result)
-        Public Function Link(ByVal functionalci_identify As Integer, ByVal organization_identify As Integer) As Boolean
+        Public Function Link(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.Link
             Dim result As Boolean = False
 
             Try
                 Dim dr As DataRow = DataTables(LnkFunctionalCIToOrganization.TABLE_NAME).AddNew()
 
-                dr(LnkFunctionalCIToOrganization.C_FUNCTIONALCI_IDENTIFY) = functionalci_identify
-                dr(LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY) = organization_identify
+                dr(LnkFunctionalCIToOrganization.C_FUNCTIONALCI_IDENTIFY) = fromId
+                dr(LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY) = toId
                 dr(LnkFunctionalCIToOrganization.C__ISDELETED) = False
 
                 dr.Save()
@@ -39,12 +41,12 @@ Namespace dao
         'Dim result As Boolean = False
         'result = dao.UnLink(1870, 593)
         'Output.Show(result)
-        Public Function UnLink(ByVal functionalci_identify As Integer, ByVal organization_identify As Integer) As Boolean
+        Public Function UnLink(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.UnLink
             Dim result As Boolean = False
 
             Try
-                Dim filter As String = LnkFunctionalCIToOrganization.C_FUNCTIONALCI_IDENTIFY & " = " & functionalci_identify
-                filter = filter & " AND " & LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY & " = " & organization_identify
+                Dim filter As String = LnkFunctionalCIToOrganization.C_FUNCTIONALCI_IDENTIFY & " = " & fromId
+                filter = filter & " AND " & LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY & " = " & toId
 
                 Dim drs As List(Of DataRow)
                 drs = DataTables(LnkFunctionalCIToOrganization.TABLE_NAME).Select(filter)

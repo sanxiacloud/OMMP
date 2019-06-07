@@ -2,7 +2,9 @@
 Imports Foxtable
 
 Namespace dao
-    Public Class OrganizationDAO : Inherits BaseDAO
+    Public Class OrganizationDAO
+        Inherits BaseDAO
+        Implements IEntityDAO
 
         Public Sub New()
             ' 构造函数，默认为空
@@ -35,7 +37,8 @@ Namespace dao
         'orgdto.IsDeleted = True
         'result = dao.Insert(orgdto)
         'Output.Show(result)
-        Public Function Insert(ByVal obj As Organization) As Boolean
+        Public Function Insert(ByVal o As Object) As Boolean Implements IEntityDAO.Insert
+            Dim obj As Organization = CType(o, Organization)
             Dim result As Boolean = False
 
             Try
@@ -75,7 +78,8 @@ Namespace dao
         'dto.name = "test abc 2"
         'result  = dao.Update(dto)
         'Output.Show(result)
-        Public Function Update(ByVal obj As Organization) As Boolean
+        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
+            Dim obj As Organization = CType(o, Organization)
             Dim result As Boolean = False
 
             Try
@@ -126,7 +130,7 @@ Namespace dao
         'Dim result As Boolean = False
         'result = dao.Delete(593)
         'Output.Show(result)
-        Public Function Delete(ByVal id As Integer) As Boolean
+        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
             Dim result As Boolean = False
             Try
                 Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & id)
@@ -143,7 +147,7 @@ Namespace dao
         'Dim dao As ommp.dao.OrganizationDAO = New ommp.dao.OrganizationDAO()
         'Dim dto As ommp.dto.Organization = dao.FindObject(593)
         'Output.Show("code_org_type = " & dto.code_org_type)
-        Public Function FindObject(ByVal id As Integer) As Organization
+        Public Function FindObject(ByVal id As Integer) As Object Implements IEntityDAO.FindObject
             Dim item As New Organization()
             Try
                 Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & id)
@@ -164,7 +168,7 @@ Namespace dao
         'For Each org As ommp.dto.Organization In lists 
         '    output.Show(org.name)
         'Next
-        Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of Organization)
+        Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of Object) Implements IEntityDAO.FindList
             Dim lists As IList(Of Organization) = New Generic.List(Of Organization)()
             Try
                 Dim drs As List(Of DataRow)

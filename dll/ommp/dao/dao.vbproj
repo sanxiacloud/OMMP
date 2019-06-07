@@ -70,7 +70,7 @@
   <ItemGroup>
     <Compile Include="EntityDAO\ApplicationSolutionDAO.vb" />
     <Compile Include="EntityDAO\BackupsDAO.vb" />
-    <Compile Include="EntityDAO\BaseDAO.vb" />
+    <Compile Include="BaseDAO.vb" />
     <Compile Include="EntityDAO\ChangeOpLinksAddRemoveDAO.vb" />
     <Compile Include="EntityDAO\ChangeOpSetAttScalarDAO.vb" />
     <Compile Include="EntityDAO\CIGroupDAO.vb" />
@@ -87,9 +87,11 @@
     <Compile Include="EntityDAO\FarmDAO.vb" />
     <Compile Include="EntityDAO\FiberChannelInterfaceDAO.vb" />
     <Compile Include="EntityDAO\HypervisorDAO.vb" />
+    <Compile Include="EntityDAO\IEntityDAO.vb" />
     <Compile Include="EntityDAO\IPAddressv4DAO.vb" />
     <Compile Include="EntityDAO\IPBlockv4DAO.vb" />
     <Compile Include="EntityDAO\IPSubnetv4DAO.vb" />
+    <Compile Include="LinkDAO\ILinkDAO.vb" />
     <Compile Include="LinkDAO\LnkApplicationSolutionToFunctionalCIDAO.vb" />
     <Compile Include="LinkDAO\LnkCIGroupToCIDAO.vb" />
     <Compile Include="LinkDAO\LnkConnectableCIToNetworkDeviceDAO.vb" />
