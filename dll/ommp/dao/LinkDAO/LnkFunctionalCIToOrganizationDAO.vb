@@ -73,7 +73,7 @@ Namespace dao
         '    output.Show(obj.name)
         '    output.Show(obj.name)
         'Next
-        Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of LnkFunctionalCIToOrganization)
+        Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of Object) Implements ILinkDAO.FindList
             Dim lists As IList(Of LnkFunctionalCIToOrganization) = New Generic.List(Of LnkFunctionalCIToOrganization)()
             Try
                 Dim drs As List(Of DataRow)

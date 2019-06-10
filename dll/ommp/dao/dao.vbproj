@@ -68,29 +68,33 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityDAO\ApplicationSolutionDAO.vb" />
-    <Compile Include="EntityDAO\BackupsDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ApplicationSolutionDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\BackupsDAO.vb" />
     <Compile Include="BaseDAO.vb" />
-    <Compile Include="EntityDAO\ChangeOpLinksAddRemoveDAO.vb" />
-    <Compile Include="EntityDAO\ChangeOpSetAttScalarDAO.vb" />
-    <Compile Include="EntityDAO\CIGroupDAO.vb" />
-    <Compile Include="EntityDAO\CodeDAO.vb" />
-    <Compile Include="EntityDAO\ConfigAccessDAO.vb" />
-    <Compile Include="EntityDAO\ConfigPortDAO.vb" />
-    <Compile Include="EntityDAO\ContactDAO.vb" />
-    <Compile Include="EntityDAO\CustomerContractDAO.vb" />
-    <Compile Include="EntityDAO\DatabasesSchemaDAO.vb" />
-    <Compile Include="EntityDAO\DBServerDAO.vb" />
-    <Compile Include="EntityDAO\DocumentsDAO.vb" />
-    <Compile Include="EntityDAO\DomainDAO.vb" />
-    <Compile Include="EntityDAO\EnclosureDAO.vb" />
-    <Compile Include="EntityDAO\FarmDAO.vb" />
-    <Compile Include="EntityDAO\FiberChannelInterfaceDAO.vb" />
-    <Compile Include="EntityDAO\HypervisorDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ChangeOpLinksAddRemoveDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ChangeOpSetAttScalarDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\CIGroupDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\CodeDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ConfigAccessDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ConfigPortDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ContactDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\CustomerContractDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\DatabasesSchemaDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\DBServerDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\DocumentsDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\DomainDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\EnclosureDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\FarmDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\FiberChannelInterfaceDAO.vb" />
+    <Compile Include="EntityDAO\FunctionalCIDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\HypervisorDAO.vb" />
+    <Compile Include="EntityDAO\IChangeDAO.vb" />
     <Compile Include="EntityDAO\IEntityDAO.vb" />
-    <Compile Include="EntityDAO\IPAddressv4DAO.vb" />
-    <Compile Include="EntityDAO\IPBlockv4DAO.vb" />
-    <Compile Include="EntityDAO\IPSubnetv4DAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\IPAddressv4DAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\IPBlockv4DAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\IPSubnetv4DAO.vb" />
+    <Compile Include="EntityDAO\VirtualDeviceDAO.vb" />
+    <Compile Include="EntityDAO\VirtualHostDAO.vb" />
     <Compile Include="LinkDAO\ILinkDAO.vb" />
     <Compile Include="LinkDAO\LnkApplicationSolutionToFunctionalCIDAO.vb" />
     <Compile Include="LinkDAO\LnkCIGroupToCIDAO.vb" />
@@ -106,11 +110,11 @@
     <Compile Include="LinkDAO\LnkDocumentToLicenceDAO.vb" />
     <Compile Include="LinkDAO\LnkDocumentToSoftwareDAO.vb" />
     <Compile Include="LinkDAO\LnkFunctionalCIToOrganizationDAO.vb" />
-    <Compile Include="EntityDAO\LocationDAO.vb" />
-    <Compile Include="EntityDAO\LogicalInterfaceDAO.vb" />
-    <Compile Include="EntityDAO\LogicalVolumeDAO.vb" />
-    <Compile Include="EntityDAO\MiddlewareDAO.vb" />
-    <Compile Include="EntityDAO\MiddlewareInstanceDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\LocationDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\LogicalInterfaceDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\LogicalVolumeDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\MiddlewareDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\MiddlewareInstanceDAO.vb" />
     <Compile Include="LinkDAO\LnkFunctionalCIToProviderContractDAO.vb" />
     <Compile Include="LinkDAO\LnkIPAddressToIPAddressDAO.vb" />
     <Compile Include="LinkDAO\LnkIPInterfaceToIPAddressDAO.vb" />
@@ -136,28 +140,28 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="EntityDAO\NASDAO.vb" />
-    <Compile Include="EntityDAO\NetworkDeviceDAO.vb" />
-    <Compile Include="EntityDAO\OrganizationDAO.vb" />
-    <Compile Include="EntityDAO\OSFamilyDAO.vb" />
-    <Compile Include="EntityDAO\OSLicenceDAO.vb" />
-    <Compile Include="EntityDAO\OSVersionDAO.vb" />
-    <Compile Include="EntityDAO\PasswdDAO.vb" />
-    <Compile Include="EntityDAO\PeripheralDAO.vb" />
-    <Compile Include="EntityDAO\PhysicalInterfaceDAO.vb" />
-    <Compile Include="EntityDAO\ProviderContractDAO.vb" />
-    <Compile Include="EntityDAO\RackDAO.vb" />
-    <Compile Include="EntityDAO\SANSwitchDAO.vb" />
-    <Compile Include="EntityDAO\SecurityStrategyDAO.vb" />
-    <Compile Include="EntityDAO\ServerDAO.vb" />
-    <Compile Include="EntityDAO\SoftwareDAO.vb" />
-    <Compile Include="EntityDAO\SoftwareLicenceDAO.vb" />
-    <Compile Include="EntityDAO\StorageSystemDAO.vb" />
-    <Compile Include="EntityDAO\VirtualMachineDAO.vb" />
-    <Compile Include="EntityDAO\VLANDAO.vb" />
-    <Compile Include="EntityDAO\WANLinkDAO.vb" />
-    <Compile Include="EntityDAO\WebApplicationDAO.vb" />
-    <Compile Include="EntityDAO\WebServerDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\NASDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\NetworkDeviceDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\OrganizationDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\OSFamilyDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\OSLicenceDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\OSVersionDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\PasswdDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\PeripheralDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\PhysicalInterfaceDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ProviderContractDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\RackDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\SANSwitchDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\SecurityStrategyDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ServerDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\SoftwareDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\SoftwareLicenceDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\StorageSystemDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\VirtualMachineDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\VLANDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\WANLinkDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\WebApplicationDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\WebServerDAO.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -168,6 +172,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

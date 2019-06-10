@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ommp.dao.BaseDAO" Collapsed="true">
+    <Position X="17" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseDAO.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ommp.dao.FunctionalCIDAO" Collapsed="true">
+    <Position X="18.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FunctionalCIDAO.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ommp.dao.VirtualDeviceDAO" Collapsed="true">
+    <Position X="18.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>EntityDAO\VirtualDeviceDAO.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ommp.dao.VirtualHostDAO" Collapsed="true">
+    <Position X="18.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>EntityDAO\VirtualHostDAO.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ommp.dao.ApplicationSolutionDAO" Collapsed="true">
+    <Position X="20.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEACAAAAAAAAAAAAAAAAAAEAACAAAAEAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FinalClasses\ApplicationSolutionDAO.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ommp.dao.VirtualMachineDAO" Collapsed="true">
+    <Position X="16" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEACAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FinalClasses\VirtualMachineDAO.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ommp.dao.IChangeDAO" Collapsed="true">
+    <Position X="20.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\IChangeDAO.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ommp.dao.IEntityDAO" Collapsed="true">
+    <Position X="20.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\IEntityDAO.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ommp.dao.ILinkDAO" Collapsed="true">
+    <Position X="18.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEQAAAAAA=</HashCode>
+      <FileName>LinkDAO\ILinkDAO.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

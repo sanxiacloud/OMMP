@@ -2723,6 +2723,11 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "VirtualDevice"
+
+        Public Const C_CODE_VIRTUALDEVICE_STATUS As String = "code_virtualdevice_status"
+        Public Const C_ID As String = "id"
+
         Public Property code_virtualdevice_status() As Integer
             Get
                 Return _code_virtualdevice_status
@@ -3433,6 +3438,8 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "VirtualHost"
+
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3455,16 +3462,27 @@
 
 
     Public Class VirtualMachine : Inherits VirtualDevice
-        Private _code_backup_plan As Integer
-        Private _cpu As String
         Private _id As Integer
-        Private _IsDeleted As Boolean
-        Private _managementip_identify As Integer
+        Private _virtualhost_identify As Integer
         Private _osfamily_identify As Integer
         Private _oslicence_identify As Integer
         Private _osversion_identify As Integer
+        Private _managementip_identify As Integer
+        Private _code_backup_plan As Integer
+        Private _cpu As String
         Private _ram As String
-        Private _virtualhost_identify As Integer
+        Private _IsDeleted As Boolean
+
+        Public Shadows Const TABLE_NAME As String = "VirtualMachine"
+
+        Public Const C_VIRTUALHOST_IDENTIFY As String = "virtualhost_identify"
+        Public Const C_OSFAMILY_IDENTIFY As String = "osfamily_identify"
+        Public Const C_OSLICENCE_IDENTIFY As String = "oslicence_identify"
+        Public Const C_OSVERSION_IDENTIFY As String = "osversion_identify"
+        Public Const C_MANAGEMENTIP_IDENTIFY As String = "managementip_identify"
+        Public Const C_CODE_BACKUP_PLAN As String = "code_backup_plan"
+        Public Const C_CPU As String = "cpu"
+        Public Const C_RAM As String = "ram"
 
         Public Property code_backup_plan() As Integer
             Get
