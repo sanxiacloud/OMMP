@@ -1,7 +1,9 @@
 ﻿Namespace dao
 
     Public Interface IEntityDAO
-        Inherits IChangeDAO
+        Inherits IQueryDAO
+
+        Function Insert(ByVal o As Object) As Boolean
 
         Function Update(ByVal o As Object) As Boolean
 

@@ -6,8 +6,6 @@ Namespace dao
         Inherits VirtualDeviceDAO
         Implements IEntityDAO
 
-        Private Const TABLE_NAME As String = VirtualMachine.TABLE_NAME
-
         Private Const QUERY_TABLE_NAME As String = "QTVirtualMachine"
 
         Public Sub New()
@@ -25,7 +23,13 @@ Namespace dao
             'Output.Show(builder.BuildSql())
         End Sub
 
-        Private Function SetProperties(ByVal dr As DataRow) As VirtualMachine
+        Protected Overrides ReadOnly Property TABLE_NAME() As String
+            Get
+                Return VirtualMachine.TABLE_NAME
+            End Get
+        End Property
+
+        Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New VirtualMachine()
 
             item.Identify = dr(ApplicationSolution.C_ID)
@@ -51,44 +55,6 @@ Namespace dao
             Return item
         End Function
 
-        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IChangeDAO.FindList
-            Dim lists As IList(Of VirtualMachine) = New Generic.List(Of VirtualMachine)()
-
-            Try
-                Dim drs As List(Of DataRow)
-                Dim item As VirtualMachine
-                If sort IsNot Nothing Then
-                    drs = DataTables(QUERY_TABLE_NAME).Select(filter, sort)
-                Else
-                    drs = DataTables(QUERY_TABLE_NAME).Select(filter)
-                End If
-                For Each dr As DataRow In drs
-                    item = SetProperties(dr)
-
-                    lists.Add(item)
-                Next
-            Catch ex As Exception
-                Output.Show(QUERY_TABLE_NAME & "->FindList:" & ex.Message)
-            End Try
-
-            Return lists
-        End Function
-
-        Public Function FindObject(ByVal id As Integer) As Object Implements IChangeDAO.FindObject
-            Dim item As New VirtualMachine()
-            Try
-                Dim dr As DataRow = DataTables(QUERY_TABLE_NAME).Find(C_ID & " = " & id)
-
-                If dr IsNot Nothing Then
-                    item = SetProperties(dr)
-                End If
-
-            Catch ex As Exception
-                Output.Show(QUERY_TABLE_NAME & "->FindObject:" & ex.Message)
-            End Try
-
-            Return item
-        End Function
 
         Public Function Insert(ByVal o As Object) As Boolean Implements IEntityDAO.Insert
             Dim obj As VirtualMachine = CType(o, VirtualMachine)
@@ -99,7 +65,8 @@ Namespace dao
 
                 Dim dr As DataRow = DataTables(TABLE_NAME).AddNew()
 
-                dr(VirtualMachine.C_ID) = identify
+                dr(C_ID) = identify
+                dr(C__ISDELETED) = False
                 dr(VirtualMachine.C_VIRTUALHOST_IDENTIFY) = obj.virtualhost_identify
                 dr(VirtualMachine.C_OSFAMILY_IDENTIFY) = obj.osfamily_identify
                 dr(VirtualMachine.C_OSLICENCE_IDENTIFY) = obj.oslicence_identify
@@ -108,11 +75,6 @@ Namespace dao
                 dr(VirtualMachine.C_CODE_BACKUP_PLAN) = obj.code_backup_plan
                 dr(VirtualMachine.C_CODE_BACKUP_PLAN) = obj.cpu
                 dr(VirtualMachine.C_RAM) = obj.ram
-                If obj.IsDeleted = True Or obj.IsDeleted = False Then
-                    dr(VirtualMachine.C__ISDELETED) = obj.IsDeleted
-                Else
-                    dr(VirtualMachine.C__ISDELETED) = False
-                End If
 
                 dr.Save()
 
@@ -176,6 +138,14 @@ Namespace dao
             End Try
 
             Return result
+        End Function
+
+        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IQueryDAO.FindList
+            Return FindRows(TABLE_NAME, filter, sort)
+        End Function
+
+        Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
+            Return FindRow(TABLE_NAME, id)
         End Function
     End Class
 End Namespace

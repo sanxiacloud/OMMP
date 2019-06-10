@@ -1,3 +1,6 @@
+Imports ommp.dto
+Imports Foxtable
+
 Namespace dao
 
     Public Class BackupsDAO
@@ -9,15 +12,18 @@ Namespace dao
             ' 构造函数，默认为空
         End Sub
 
+        Protected Overrides ReadOnly Property TABLE_NAME() As String
+            Get
+                Return Backups.TABLE_NAME
+            End Get
+        End Property
+
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
 
         End Function
 
-        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IEntityDAO.FindList
-            Return Nothing
-        End Function
+        Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
 
-        Public Function FindObject(ByVal id As Integer) As Object Implements IEntityDAO.FindObject
             Return Nothing
         End Function
 
@@ -27,6 +33,14 @@ Namespace dao
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
 
+        End Function
+
+        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IQueryDAO.FindList
+            Return FindRows(TABLE_NAME, filter, sort)
+        End Function
+
+        Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
+            Return FindRow(TABLE_NAME, id)
         End Function
     End Class
 

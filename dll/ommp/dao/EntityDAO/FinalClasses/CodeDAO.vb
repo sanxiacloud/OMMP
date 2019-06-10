@@ -11,39 +11,13 @@ Namespace dao
             ' 构造函数，默认为空
         End Sub
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Dim result As Boolean = False
-            Try
-                Dim dr As DataRow = DataTables(Code.TABLE_NAME).Find(Code.C__IDENTIFY & " = " & id)
-                dr(Organization.C__ISDELETED) = True
-                dr.Save()
-            Catch ex As Exception
-                Output.Show(Organization.TABLE_NAME & "->Delete:" & ex.Message)
-            End Try
+        Protected Overrides ReadOnly Property TABLE_NAME() As String
+            Get
+                Return Code.TABLE_NAME
+            End Get
+        End Property
 
-            Return result
-        End Function
-
-        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IEntityDAO.FindList
-            Dim lists As IList(Of Code) = New Generic.List(Of Code)()
-            Try
-                Dim drs As List(Of DataRow)
-                If sort IsNot Nothing Then
-                    drs = DataTables(Code.TABLE_NAME).Select(filter, sort)
-                Else
-                    drs = DataTables(Code.TABLE_NAME).Select(filter)
-                End If
-                For Each dr As DataRow In drs
-                    lists.Add(SetProperties(dr))
-                Next
-            Catch ex As Exception
-                Output.Show(Code.TABLE_NAME & "->FindList:" & ex.Message)
-            End Try
-
-            Return lists
-        End Function
-
-        Private Function SetProperties(ByVal dr As DataRow) As Code
+        Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New Code()
 
             item.Identify = dr(Code.C__IDENTIFY)
@@ -57,18 +31,17 @@ Namespace dao
             Return item
         End Function
 
-        Public Function FindObject(ByVal id As Integer) As Object Implements IEntityDAO.FindObject
-            Dim item As New Code()
+        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+            Dim result As Boolean = False
             Try
-                Dim dr As DataRow = DataTables(Code.TABLE_NAME).Find(Code.C__IDENTIFY & " = " & id)
-                If dr IsNot Nothing Then
-                    item = SetProperties(dr)
-                End If
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(Code.C__IDENTIFY & " = " & id)
+                dr(Organization.C__ISDELETED) = True
+                dr.Save()
             Catch ex As Exception
-                Output.Show(Code.TABLE_NAME & "->FindObject:" & ex.Message)
+                Output.Show(TABLE_NAME & "->Delete:" & ex.Message)
             End Try
 
-            Return item
+            Return result
         End Function
 
         Public Function Insert(ByVal o As Object) As Boolean Implements IEntityDAO.Insert
@@ -76,7 +49,7 @@ Namespace dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(Code.TABLE_NAME).AddNew()
+                Dim dr As DataRow = DataTables(TABLE_NAME).AddNew()
 
                 dr(Code.C_T) = obj.t
                 dr(Code.C_V) = obj.v
@@ -92,7 +65,7 @@ Namespace dao
                 dr.Save()
                 result = True
             Catch ex As Exception
-                Output.Show(Code.TABLE_NAME & "->Insert:" & ex.Message)
+                Output.Show(TABLE_NAME & "->Insert:" & ex.Message)
             End Try
 
             Return result
@@ -103,7 +76,7 @@ Namespace dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(Code.TABLE_NAME).Find(Code.C__IDENTIFY & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(Code.C__IDENTIFY & " = " & obj.Identify)
                 If dr IsNot Nothing Then
                     If obj.t >= 0 Then
                         dr(Code.C_T) = obj.t
@@ -127,10 +100,18 @@ Namespace dao
                     result = True
                 End If
             Catch ex As Exception
-                Output.Show(Code.TABLE_NAME & "->Update:" & ex.Message)
+                Output.Show(TABLE_NAME & "->Update:" & ex.Message)
             End Try
 
             Return result
+        End Function
+
+        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IQueryDAO.FindList
+            Return FindRows(TABLE_NAME, filter, sort)
+        End Function
+
+        Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
+            Return FindRow(TABLE_NAME, id)
         End Function
     End Class
 

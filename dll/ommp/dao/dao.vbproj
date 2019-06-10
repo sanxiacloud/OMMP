@@ -88,7 +88,7 @@
     <Compile Include="EntityDAO\FinalClasses\FiberChannelInterfaceDAO.vb" />
     <Compile Include="EntityDAO\FunctionalCIDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\HypervisorDAO.vb" />
-    <Compile Include="EntityDAO\IChangeDAO.vb" />
+    <Compile Include="EntityDAO\IQueryDAO.vb" />
     <Compile Include="EntityDAO\IEntityDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\IPAddressv4DAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\IPBlockv4DAO.vb" />

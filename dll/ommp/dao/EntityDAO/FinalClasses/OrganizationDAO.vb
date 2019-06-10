@@ -10,7 +10,24 @@ Namespace dao
             ' 构造函数，默认为空
         End Sub
 
-        Private Function SetProperties(ByVal dr As DataRow) As Organization
+        Protected Overrides ReadOnly Property TABLE_NAME() As String
+            Get
+                Return Organization.TABLE_NAME
+            End Get
+        End Property
+
+        '查找一个组织
+        'Dim dao As ommp.dao.OrganizationDAO = New ommp.dao.OrganizationDAO()
+        'Dim dto As ommp.dto.Organization = dao.FindObject(593)
+        'Output.Show("code_org_type = " & dto.code_org_type)
+        '查询组织列表
+        'Dim dao As new ommp.dao.OrganizationDAO
+        'Dim lists As IList(Of ommp.dto.Organization) = dao.FindList("[name] Like '%三峡云%'", "name desc")
+        'output.Show("Count : " & lists.Count )
+        'For Each org As ommp.dto.Organization In lists 
+        '    output.Show(org.name)
+        'Next
+        Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New Organization()
 
             item.Identify = dr(Organization.C__IDENTIFY)
@@ -42,8 +59,9 @@ Namespace dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).AddNew()
+                Dim dr As DataRow = DataTables(TABLE_NAME).AddNew()
 
+                dr(C__ISDELETED) = False
                 dr(Organization.C_PARENT_IDENTIFY) = obj.parent_identify
                 dr(Organization.C_NAME) = obj.name
                 dr(Organization.C_CODE) = obj.code
@@ -52,11 +70,6 @@ Namespace dao
                 dr(Organization.C_CODE_ORG_TYPE) = obj.code_org_type
                 dr(Organization.C_SHORT_NAME) = obj.short_name
                 dr(Organization.C_DESCRIPTION) = obj.description
-                If obj.IsDeleted = True Or obj.IsDeleted = False Then
-                    dr(Organization.C__ISDELETED) = obj.IsDeleted
-                Else
-                    dr(Organization.C__ISDELETED) = False
-                End If
                 If obj._sort > 0 Then
                     dr(Organization.C__SORT) = obj._sort
                 End If
@@ -64,7 +77,7 @@ Namespace dao
                 dr.Save()
                 result = True
             Catch ex As Exception
-                Output.Show(Organization.TABLE_NAME & "->Insert:" & ex.Message)
+                Output.Show(TABLE_NAME & "->Insert:" & ex.Message)
             End Try
 
             Return result
@@ -83,7 +96,7 @@ Namespace dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & obj.Identify)
                 If dr IsNot Nothing Then
                     If obj.parent_identify >= 0 Then
                         dr(Organization.C_PARENT_IDENTIFY) = obj.parent_identify
@@ -119,7 +132,7 @@ Namespace dao
                     result = True
                 End If
             Catch ex As Exception
-                Output.Show(Organization.TABLE_NAME & "->Update:" & ex.Message)
+                Output.Show(TABLE_NAME & "->Update:" & ex.Message)
             End Try
 
             Return result
@@ -133,60 +146,23 @@ Namespace dao
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
             Dim result As Boolean = False
             Try
-                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & id)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & id)
                 dr(Organization.C__ISDELETED) = True
                 dr.Save()
             Catch ex As Exception
-                Output.Show(Organization.TABLE_NAME & "->Delete:" & ex.Message)
+                Output.Show(TABLE_NAME & "->Delete:" & ex.Message)
             End Try
 
             Return result
         End Function
 
-        '查找一个组织
-        'Dim dao As ommp.dao.OrganizationDAO = New ommp.dao.OrganizationDAO()
-        'Dim dto As ommp.dto.Organization = dao.FindObject(593)
-        'Output.Show("code_org_type = " & dto.code_org_type)
-        Public Function FindObject(ByVal id As Integer) As Object Implements IEntityDAO.FindObject
-            Dim item As New Organization()
-            Try
-                Dim dr As DataRow = DataTables(Organization.TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & id)
-                If dr IsNot Nothing Then
-                    item = SetProperties(dr)
-                End If
-            Catch ex As Exception
-                Output.Show(Organization.TABLE_NAME & "->FindObject:" & ex.Message)
-            End Try
-
-            Return item
+        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IQueryDAO.FindList
+            Return FindRows(TABLE_NAME, filter, sort)
         End Function
 
-        '查询组织列表
-        'Dim dao As new ommp.dao.OrganizationDAO
-        'Dim lists As IList(Of ommp.dto.Organization) = dao.FindList("[name] Like '%三峡云%'", "name desc")
-        'output.Show("Count : " & lists.Count )
-        'For Each org As ommp.dto.Organization In lists 
-        '    output.Show(org.name)
-        'Next
-        Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of Object) Implements IEntityDAO.FindList
-            Dim lists As IList(Of Organization) = New Generic.List(Of Organization)()
-            Try
-                Dim drs As List(Of DataRow)
-                If sort IsNot Nothing Then
-                    drs = DataTables(Organization.TABLE_NAME).Select(filter, sort)
-                Else
-                    drs = DataTables(Organization.TABLE_NAME).Select(filter)
-                End If
-                For Each dr As DataRow In drs
-                    lists.Add(SetProperties(dr))
-                Next
-            Catch ex As Exception
-                Output.Show(Organization.TABLE_NAME & "->FindList:" & ex.Message)
-            End Try
-
-            Return lists
+        Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
+            Return FindRow(TABLE_NAME, id)
         End Function
-
     End Class
 
 End Namespace

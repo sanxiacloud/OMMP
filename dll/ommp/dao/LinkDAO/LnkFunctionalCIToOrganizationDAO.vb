@@ -10,6 +10,19 @@ Namespace dao
             ' 构造函数，默认为空
         End Sub
 
+        Protected Overrides ReadOnly Property TABLE_NAME() As String
+            Get
+                Return LnkFunctionalCIToOrganization.TABLE_NAME
+            End Get
+        End Property
+
+
+
+        Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
+
+            Return Nothing
+        End Function
+
         ' 添加一个 功能配置项与组织 链接记录
         'todo:test
         'Dim dao As ommp.dao.LnkFunctionalCIToOrganizationDAO = New ommp.dao.LnkFunctionalCIToOrganizationDAO()

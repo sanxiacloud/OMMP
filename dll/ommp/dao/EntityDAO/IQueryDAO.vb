@@ -1,8 +1,6 @@
 ﻿Namespace dao
 
-    Public Interface IChangeDAO
-
-        Function Insert(ByVal o As Object) As Boolean
+    Public Interface IQueryDAO
 
         Function FindObject(ByVal id As Integer) As Object
 

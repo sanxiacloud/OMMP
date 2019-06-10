@@ -2,10 +2,9 @@
 Imports Foxtable
 
 Namespace dao
-    Public Class VirtualDeviceDAO
+    Public MustInherit Class VirtualDeviceDAO
         Inherits FunctionalCIDAO
 
-        Private Const TABLE_NAME As String = VirtualDevice.TABLE_NAME
 
         Protected Function InsertVirtualDevice(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As VirtualDevice = CType(o, VirtualDevice)
@@ -14,21 +13,17 @@ Namespace dao
             Try
                 Dim identify As Integer = InsertFunctionalCI(o, finalclass)
 
-                Dim dr As DataRow = DataTables(TABLE_NAME).AddNew()
+                Dim dr As DataRow = DataTables(VirtualDevice.TABLE_NAME).AddNew()
 
-                dr(VirtualDevice.C_ID) = identify
+                dr(C_ID) = identify
+                dr(C__ISDELETED) = False
                 dr(VirtualDevice.C_CODE_VIRTUALDEVICE_STATUS) = obj.code_virtualdevice_status
-                If obj.IsDeleted = True Or obj.IsDeleted = False Then
-                    dr(VirtualDevice.C__ISDELETED) = obj.IsDeleted
-                Else
-                    dr(VirtualDevice.C__ISDELETED) = False
-                End If
 
                 dr.Save()
 
                 result = True
             Catch ex As Exception
-                Output.Show(TABLE_NAME & "->Insert:" & ex.Message)
+                Output.Show(VirtualDevice.TABLE_NAME & "->Insert:" & ex.Message)
             End Try
 
             Return result
@@ -41,7 +36,7 @@ Namespace dao
             Try
                 Dim result1 As Boolean = UpdateFunctionalCI(o)
 
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(VirtualDevice.C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(VirtualDevice.TABLE_NAME).Find(VirtualDevice.C_ID & " = " & obj.Identify)
                 Dim result2 As Boolean = False
                 If dr IsNot Nothing Then
                     If obj.code_virtualdevice_status >= 0 Then
@@ -55,7 +50,7 @@ Namespace dao
 
                 result = result1 And result2
             Catch ex As Exception
-                Output.Show(TABLE_NAME & "->Update:" & ex.Message)
+                Output.Show(VirtualDevice.TABLE_NAME & "->Update:" & ex.Message)
             End Try
 
             Return result
@@ -63,7 +58,7 @@ Namespace dao
 
         Protected Function DeleteVirtualDevice(ByVal id As Integer) As Boolean
 
-            Return DeleteFunctionalCI(id) And DeleteObject(TABLE_NAME, id)
+            Return DeleteFunctionalCI(id) And DeleteObject(VirtualDevice.TABLE_NAME, id)
 
         End Function
     End Class

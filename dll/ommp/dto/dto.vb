@@ -491,6 +491,22 @@
         Private _qq As String
         Private _weixin As String
 
+        Public Const TABLE_NAME As String = "Contact"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_DUTY As String = "duty"
+        Public Const C_EMAIL As String = "email"
+        Public Const C_LOCATION_IDENTIFY As String = "location_identify"
+        Public Const C_MOBILE_PHONE As String = "mobile_phone"
+        Public Const C_NAME As String = "name"
+        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
+        Public Const C_PHONE As String = "phone"
+        Public Const C_PICTURE As String = "picture"
+        Public Const C_QQ As String = "qq"
+        Public Const C_WEIXIN As String = "weixin"
+
         Public Property description() As String
             Get
                 Return _description
@@ -623,6 +639,16 @@
         Private _obsolescence_date As Date
         Private _version As String
 
+        Public Const TABLE_NAME As String = "Documents"
+
+        Public Const C_CODE_DOCUMENT_STATUS As String = "code_document_status"
+        Public Const C_CODE_DOCUMENT_TYYPE As String = "code_document_tyype"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_FINALCLASS As String = "finalclass"
+        Public Const C_NAME As String = "name"
+        Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
+        Public Const C_VERSION As String = "version"
+
         Public Property code_document_status() As Integer
             Get
                 Return _code_document_status
@@ -716,6 +742,13 @@
         Private _name As String
         Private _organization_identify As Integer
 
+        Public Const TABLE_NAME As String = "DNSObject"
+
+        Public Const C_COMMENT As String = "comment"
+        Public Const C_FINALCLASS As String = "finalclass"
+        Public Const C_NAME As String = "name"
+        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
+
         Public Property comment() As String
             Get
                 Return _comment
@@ -783,6 +816,17 @@
         Private _requestor_identify As Integer
         Private _validity_end As Date
         Private _validity_start As Date
+
+        Public Shadows Const TABLE_NAME As String = "Domain"
+
+        Public Const C_CODE_RENEWAL As String = "code_renewal"
+        Public Const C_ID As String = "id"
+        Public Const C_PARENT_IDENTIFY As String = "parent_identify"
+        Public Const C_REGISTRAR_IDENTIFY As String = "registrar_identify"
+        Public Const C_RELEASE_DATE As String = "release_date"
+        Public Const C_REQUESTOR_IDENTIFY As String = "requestor_identify"
+        Public Const C_VALIDITY_END As String = "validity_end"
+        Public Const C_VALIDITY_START As String = "validity_start"
 
         Public Property code_renewal() As Integer
             Get
@@ -879,6 +923,15 @@
         Private _organization_identify As Integer
         Private _status As Boolean
 
+        Public Const TABLE_NAME As String = "Location"
+
+        Public Const C_CITY As String = "city"
+        Public Const C_COUNTRY As String = "country"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_NAME As String = "name"
+        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
+        Public Const C_STATUS As String = "status"
+
         Public Property city() As String
             Get
                 Return _city
@@ -965,6 +1018,16 @@
         Private _raid_level As String
         Private _size As String
         Private _storagesystem_identify As Integer
+
+        Public Const TABLE_NAME As String = "LogicalVolume"
+
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_LUN_ID As String = "lun_id"
+        Public Const C_NAME As String = "name"
+        Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
+        Public Const C_RAID_LEVEL As String = "raid_level"
+        Public Const C_SIZE As String = "size"
+        Public Const C_STORAGESYSTEM_IDENTIFY As String = "storagesystem_identify"
 
         Public Property description() As String
             Get
@@ -1190,6 +1253,14 @@
         Private _passwd As String
         Private _start_date As Date
 
+        Public Const TABLE_NAME As String = "Passwd"
+
+        Public Const C__USE As String = "_use"
+        Public Const C_ACCOUNT As String = "account"
+        Public Const C_END_DATE As String = "end_date"
+        Public Const C_PASSWD As String = "passwd"
+        Public Const C_START_DATE As String = "start_date"
+
         Public Property _use() As String
             Get
                 Return __use
@@ -1266,6 +1337,14 @@
         Private _name As String
         Private _physical_device_identify As Integer
 
+        Public Const TABLE_NAME As String = "SecurityStrategy"
+
+        Public Const C_CODE_SECURITY_STRATEGY_TYPE As String = "code_security_strategy_type"
+        Public Const C_CONFIG_PORT_IDENTIFY As String = "config_port_identify"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_NAME As String = "name"
+        Public Const C_PHYSICAL_DEVICE_IDENTIFY As String = "physical_device_identify"
+
         Public Property code_security_strategy_type() As Integer
             Get
                 Return _code_security_strategy_type
@@ -1341,6 +1420,13 @@
         Private _vendor As String
         Private _version As String
 
+        Public Const TABLE_NAME As String = "Software"
+
+        Public Const C_CODE_SOFTWARE_TYPE As String = "code_software_type"
+        Public Const C_NAME As String = "name"
+        Public Const C_VENDOR As String = "vendor"
+        Public Const C_VERSION As String = "version"
+
         Public Property code_software_type() As Integer
             Get
                 Return _code_software_type
@@ -1405,6 +1491,12 @@
         Private _IsDeleted As Boolean
         Private _organization_identify As Integer
         Private _vlan_tag As String
+
+        Public Const TABLE_NAME As String = "VLAN"
+
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
+        Public Const C_VLAN_TAG As String = "vlan_tag"
 
         Public Property description() As String
             Get
@@ -1922,6 +2014,25 @@
         Private _status As String
         Private _type As String
 
+        Public Const TABLE_NAME As String = "Contract"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_BILLING_FREQUENCY As String = "billing_frequency"
+        Public Const C_BUYER_AGENT_IDENTIFY As String = "buyer_agent_identify"
+        Public Const C_BUYER_IDENTIFY As String = "buyer_identify"
+        Public Const C_CODE As String = "code"
+        Public Const C_COST As String = "cost"
+        Public Const C_COST_CURRENCY As String = "cost_currency"
+        Public Const C_COST_UNIT As String = "cost_unit"
+        Public Const C_END_DATE As String = "end_date"
+        Public Const C_NAME As String = "name"
+        Public Const C_SELLER_AGENT_IDENTIFY As String = "seller_agent_identify"
+        Public Const C_SELLER_IDENTIFY As String = "seller_identify"
+        Public Const C_START_DATE As String = "start_date"
+        Public Const C_STATUS As String = "status"
+        Public Const C_TYPE As String = "type"
+
         Public Property billing_frequency() As String
             Get
                 Return _billing_frequency
@@ -2084,6 +2195,19 @@
         Private _price As Decimal
         Private _purchase_date As Date
 
+        Public Const TABLE_NAME As String = "ContractDetail"
+
+        Public Const C_AMOUNT As String = "amount"
+        Public Const C_CONTRACT_IDENTIFY As String = "contract_identify"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_END_OF_WARRANTY As String = "end_of_warranty"
+        Public Const C_MANUFACTURER As String = "manufacturer"
+        Public Const C_MODEL As String = "model"
+        Public Const C_NAME As String = "name"
+        Public Const C_NO As String = "no"
+        Public Const C_PRICE As String = "price"
+        Public Const C_PURCHASE_DATE As String = "purchase_date"
+
         Public Property amount() As Integer
             Get
                 Return _amount
@@ -2199,6 +2323,9 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "CustomerContract"
+
+
         Public Property id() As Integer
             Get
                 Return _id
@@ -2225,6 +2352,11 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
         Private _sla As String
+
+        Public Shadows Const TABLE_NAME As String = "ProviderContract"
+
+        Public Const C_COVERAGE As String = "coverage"
+        Public Const C_SLA As String = "sla"
 
         Public Property coverage() As String
             Get
@@ -2458,6 +2590,16 @@
         Private _IsDeleted As Boolean
         Private _pdb_name As String
 
+        Public Shadows Const TABLE_NAME As String = "DatabasesSchema"
+
+        Public Const C_COMMENT As String = "comment"
+        Public Const C_CREATE_TIME As String = "create_time"
+        Public Const C_DBSERVER_IDENTIFY As String = "dbserver_identify"
+        Public Const C_FARM_IDENTIFY As String = "farm_identify"
+        Public Const C_ID As String = "id"
+        Public Const C_INDIVIDUAL As String = "individual"
+        Public Const C_PDB_NAME As String = "pdb_name"
+
         Public Property comment() As String
             Get
                 Return _comment
@@ -2538,6 +2680,10 @@
         Private _IsDeleted As Boolean
         Private _middleware_identify As Integer
 
+        Public Shadows Const TABLE_NAME As String = "MiddlewareInstance"
+
+        Public Const C_MIDDLEWARE_IDENTIFY As String = "middleware_identify"
+
         Public Property id() As Integer
             Get
                 Return _id
@@ -2573,6 +2719,11 @@
         Private _IsDeleted As Boolean
         Private _url As String
         Private _webserver_identify As Integer
+
+        Public Shadows Const TABLE_NAME As String = "WebApplication"
+
+        Public Const C_URL As String = "url"
+        Public Const C_WEBSERVER_IDENTIFY As String = "webserver_identify"
 
         Public Property id() As Integer
             Get
@@ -2624,6 +2775,17 @@
         Private _location_identify As Integer
         Private _purchase_date As Date
         Private _serialnumber As String
+
+        Public Shadows Const TABLE_NAME As String = "PhysicalDevice"
+
+        Public Const C_ASSET_NUMBER As String = "asset_number"
+        Public Const C_CODE_BRAND_NAME As String = "code_brand_name"
+        Public Const C_CODE_MODEL_NAME As String = "code_model_name"
+        Public Const C_CODE_PHYSICALDEVICE_STATUS As String = "code_physicaldevice_status"
+        Public Const C_END_OF_WARRANTY As String = "end_of_warranty"
+        Public Const C_LOCATION_IDENTIFY As String = "location_identify"
+        Public Const C_PURCHASE_DATE As String = "purchase_date"
+        Public Const C_SERIALNUMBER As String = "serialnumber"
 
         Public Property asset_number() As String
             Get
@@ -2767,6 +2929,14 @@
         Private _softwarelicence_identify As Integer
         Private _status As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "SoftwareInstance"
+
+        Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
+        Public Const C_PATH As String = "path"
+        Public Const C_SOFTWARE_IDENTIFY As String = "software_identify"
+        Public Const C_SOFTWARELICENCE_IDENTIFY As String = "softwarelicence_identify"
+        Public Const C_STATUS As String = "status"
+
         Public Property functionalci_identify() As Integer
             Get
                 Return _functionalci_identify
@@ -2849,6 +3019,22 @@
         Private _rate As String
         Private _renewal_date As Date
         Private _underlying_rate As String
+
+        Public Shadows Const TABLE_NAME As String = "WANLink"
+
+        Public Const C_BURST_RATE As String = "burst_rate"
+        Public Const C_CARRIER_IDENTIFY As String = "carrier_identify"
+        Public Const C_CODE_WANLINK_STATUS As String = "code_wanlink_status"
+        Public Const C_CODE_WANLINK_TYPE As String = "code_wanlink_type"
+        Public Const C_DECOMMISSIONING_DATE As String = "decommissioning_date"
+        Public Const C_LOCATION_IDENTIFY1 As String = "location_identify1"
+        Public Const C_LOCATION_IDENTIFY2 As String = "location_identify2"
+        Public Const C_NETWORKINTERFACE_IDENTIFY1 As String = "networkinterface_identify1"
+        Public Const C_NETWORKINTERFACE_IDENTIFY2 As String = "networkinterface_identify2"
+        Public Const C_PURCHASE_DATE As String = "purchase_date"
+        Public Const C_RATE As String = "rate"
+        Public Const C_RENEWAL_DATE As String = "renewal_date"
+        Public Const C_UNDERLYING_RATE As String = "underlying_rate"
 
         Public Property burst_rate() As String
             Get
@@ -2994,6 +3180,10 @@
         Private _IsDeleted As Boolean
         Private _nb_u As Integer
 
+        Public Shadows Const TABLE_NAME As String = "Rack"
+
+        Public Const C_NB_U As String = "nb_u"
+
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3028,6 +3218,11 @@
         Private _IsDeleted As Boolean
         Private _nb_u As String
         Private _rack_identify As Integer
+
+        Public Shadows Const TABLE_NAME As String = "Enclosure"
+
+        Public Const C_NB_U As String = "nb_u"
+        Public Const C_RACK_IDENTIFY As String = "rack_identify"
 
         Public Overloads Property id() As Integer
             Get
@@ -3071,6 +3266,8 @@
     Public Class Peripheral : Inherits PhysicalDevice
         Private _id As Integer
         Private _IsDeleted As Boolean
+
+        Public Shadows Const TABLE_NAME As String = "Peripheral"
 
         Public Overloads Property id() As Integer
             Get
@@ -3131,6 +3328,14 @@
         Private _nb_u As Integer
         Private _rack_identify As Integer
         Private _redundancy As String
+
+        Public Shadows Const TABLE_NAME As String = "DataCenterDevice"
+
+        Public Const C_ENCLOSURE_IDENTITY As String = "enclosure_identity"
+        Public Const C_MANAGEMENTIP As String = "managementip"
+        Public Const C_NB_U As String = "nb_u"
+        Public Const C_RACK_IDENTIFY As String = "rack_identify"
+        Public Const C_REDUNDANCY As String = "redundancy"
 
         Public Property enclosure_identity() As Integer
             Get
@@ -3202,6 +3407,8 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "SANSwitch"
+
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3226,6 +3433,8 @@
     Public Class NAS : Inherits DataCenterDevice
         Private _id As Integer
         Private _IsDeleted As Boolean
+
+        Public Shadows Const TABLE_NAME As String = "NAS"
 
         Public Overloads Property id() As Integer
             Get
@@ -3254,6 +3463,12 @@
         Private _disk_size As Decimal
         Private _id As Integer
         Private _IsDeleted As Boolean
+
+        Public Shadows Const TABLE_NAME As String = "StorageSystem"
+
+        Public Const C_CODE_STORAGE_TYPE As String = "code_storage_type"
+        Public Const C_DISK_PATH As String = "disk_path"
+        Public Const C_DISK_SIZE As String = "disk_size"
 
         Public Property code_storage_type() As Integer
             Get
@@ -3311,6 +3526,14 @@
         Private _oslicence_id As Integer
         Private _osversion_id As Integer
         Private _ram As String
+
+        Public Shadows Const TABLE_NAME As String = "Server"
+
+        Public Const C_CPU As String = "cpu"
+        Public Const C_OSFAMILY_ID As String = "osfamily_id"
+        Public Const C_OSLICENCE_ID As String = "oslicence_id"
+        Public Const C_OSVERSION_ID As String = "osversion_id"
+        Public Const C_RAM As String = "ram"
 
         Public Property cpu() As String
             Get
@@ -3384,6 +3607,12 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
         Private _ram As String
+
+        Public Shadows Const TABLE_NAME As String = "NetworkDevice"
+
+        Public Const C_CODE_ISOVERSION As String = "code_isoversion"
+        Public Const C_CODE_NETWORKDEVICETYPE As String = "code_networkdevicetype"
+        Public Const C_RAM As String = "ram"
 
         Public Property code_isoversion() As Integer
             Get
@@ -3578,12 +3807,19 @@
 
 
     Public Class Farm : Inherits VirtualHost
+        Private _id As Integer
         Private _code_deployment_area As Integer
         Private _code_farm_status As Integer
         Private _code_farm_type As Integer
-        Private _id As Integer
-        Private _IsDeleted As Boolean
         Private _redundancy As Boolean
+        Private _IsDeleted As Boolean
+
+        Public Shadows Const TABLE_NAME As String = "Farm"
+
+        Public Const C_CODE_DEPLOYMENT_AREA As String = "code_deployment_area"
+        Public Const C_CODE_FARM_STATUS As String = "code_farm_status"
+        Public Const C_CODE_FARM_TYPE As String = "code_farm_type"
+        Public Const C_REDUNDANCY As String = "redundancy"
 
         Public Property code_deployment_area() As Integer
             Get
@@ -3648,6 +3884,11 @@
         Private _IsDeleted As Boolean
         Private _server_identify As Integer
 
+        Public Shadows Const TABLE_NAME As String = "Hypervisor"
+
+        Public Const C_FARM_IDENTIFY As String = "farm_identify"
+        Public Const C_SERVER_IDENTIFY As String = "server_identify"
+
         Public Property farm_identify() As Integer
             Get
                 Return _farm_identify
@@ -3693,6 +3934,8 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "DBServer"
+
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3718,6 +3961,8 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "Middleware"
+
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3742,6 +3987,8 @@
     Public Class WebServer : Inherits SoftwareInstance
         Private _id As Integer
         Private _IsDeleted As Boolean
+
+        Public Shadows Const TABLE_NAME As String = "WebServer"
 
         Public Overloads Property id() As Integer
             Get
@@ -3776,6 +4023,16 @@
         Private _organization_identify As Integer
         Private _release_date As Date
         Private _requestor_identify As Integer
+
+        Public Const TABLE_NAME As String = "IPObject"
+
+        Public Const C_ALLOCATION_DATE As String = "allocation_date"
+        Public Const C_CODE_IPOBJECT_STATUS As String = "code_ipobject_status"
+        Public Const C_COMMENT As String = "comment"
+        Public Const C_FINALCLASS As String = "finalclass"
+        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
+        Public Const C_RELEASE_DATE As String = "release_date"
+        Public Const C_REQUESTOR_IDENTIFY As String = "requestor_identify"
 
         Public Property allocation_date() As Date
             Get
@@ -3872,6 +4129,17 @@
         Private _type As String
         Private _write_reason As String
 
+        Public Shadows Const TABLE_NAME As String = "IPBlock"
+
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_CHILDREN_OCCUPANCY As String = "children_occupancy"
+        Public Const C_NAME As String = "name"
+        Public Const C_OCCUPANCY As String = "occupancy"
+        Public Const C_PARENT_IDENTIFY As String = "parent_identify"
+        Public Const C_SUBNET_OCCUPANCY As String = "subnet_occupancy"
+        Public Const C_TYPE As String = "type"
+        Public Const C_WRITE_REASON As String = "write_reason"
+
         Public Property children_occupancy() As Integer
             Get
                 Return _children_occupancy
@@ -3965,6 +4233,14 @@
         Private _parent_identify_left As Integer
         Private _parent_identify_right As Integer
 
+        Public Shadows Const TABLE_NAME As String = "IPBlockv4"
+
+        Public Const C_FIRSTIP As String = "firstip"
+        Public Const C_LASTIP As String = "lastip"
+        Public Shadows Const C_PARENT_IDENTIFY As String = "parent_identify"
+        Public Const C_PARENT_IDENTIFY_LEFT As String = "parent_identify_left"
+        Public Const C_PARENT_IDENTIFY_RIGHT As String = "parent_identify_right"
+
         Public Property firstip() As String
             Get
                 Return _firstip
@@ -4040,6 +4316,17 @@
         Private _range_occupancy As Integer
         Private _type As String
         Private _write_reason As String
+
+        Public Shadows Const TABLE_NAME As String = "IPSubnet"
+
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_ALARM_WATER_MARK As String = "alarm_water_mark"
+        Public Const C_ID As String = "id"
+        Public Const C_IP_OCCUPANCY As String = "ip_occupancy"
+        Public Const C_NAME As String = "name"
+        Public Const C_RANGE_OCCUPANCY As String = "range_occupancy"
+        Public Const C_TYPE As String = "type"
+        Public Const C_WRITE_REASON As String = "write_reason"
 
         Public Property alarm_water_mark() As String
             Get
@@ -4130,6 +4417,21 @@
         Private _netmask As String
         Private _network_no As String
         Private _region As String
+
+        Public Shadows Const TABLE_NAME As String = "IPSubnetv4"
+
+        Public Const C__USE As String = "_use"
+        Public Const C_CODE As String = "code"
+        Public Const C_CODE_DEPLOYMENT_AREA As String = "code_deployment_area"
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_GETEWAY As String = "geteway"
+        Public Const C_IP_END As String = "ip_end"
+        Public Const C_IP_START As String = "ip_start"
+        Public Const C_IPV4BLOCK_IDENTIFY As String = "ipv4block_identify"
+        Public Const C_NETMASK As String = "netmask"
+        Public Const C_NETWORK_NO As String = "network_no"
+        Public Shadows Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
+        Public Const C_REGION As String = "region"
 
         Public Property _use() As String
             Get
@@ -4257,6 +4559,11 @@
         Private _IsDeleted As Boolean
         Private _short_name As String
 
+        Public Shadows Const TABLE_NAME As String = "IPAddress"
+
+        Public Const C_CODE_IPADDRESS_USAGE As String = "code_ipaddress_usage"
+        Public Const C_SHORT_NAME As String = "short_name"
+
         Public Property code_ipaddress_usage() As Integer
             Get
                 Return _code_ipaddress_usage
@@ -4303,6 +4610,13 @@
         Private _ip As String
         Private _IsDeleted As Boolean
         Private _vlan_identify As Integer
+
+        Public Shadows Const TABLE_NAME As String = "IPAddressv4"
+         
+        Public Const C_CODE_IPV4ADDRESS_USAGE As String = "code_ipv4address_usage"
+        Public Const C_DESCRIPTION As String = "description" 
+        Public Const C_IP As String = "ip"
+        Public Const C_VLAN_IDENTIFY As String = "vlan_identify"
 
         Public Property code_ipv4address_usage() As Integer
             Get
@@ -4369,6 +4683,11 @@
         Private _IsDeleted As Boolean
         Private _name As String
 
+        Public Const TABLE_NAME As String = "Typology"
+
+        Public Const C_FINALCLASS As String = "finalclass"
+        Public Const C_NAME As String = "name"
+
         Public Property finalclass() As String
             Get
                 Return _finalclass
@@ -4412,6 +4731,8 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "OSFamily"
+
         Public Property id() As Integer
             Get
                 Return _id
@@ -4437,6 +4758,10 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
         Private _osfamily_id As Integer
+
+        Public Shadows Const TABLE_NAME As String = "OSVersion"
+
+        Public Const C_OSFAMILY_ID As String = "osfamily_id"
 
         Public Property id() As Integer
             Get
@@ -4476,6 +4801,14 @@
         Private _IsDeleted As Boolean
         Private _name As String
         Private _obsolescence_date As Date
+
+        Public Const TABLE_NAME As String = "NetworkInterface"
+
+        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__ISDELETED As String = "_IsDeleted"
+        Public Const C_FINALCLASS As String = "finalclass"
+        Public Const C_NAME As String = "name"
+        Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
 
         Public Property finalclass() As String
             Get
@@ -4532,6 +4865,14 @@
         Private _speed As Decimal
         Private _topology As String
         Private _wwn As String
+
+        Public Shadows Const TABLE_NAME As String = "FiberChannelInterface"
+
+        Public Const C_DATACENTERDEVICE_IDENTIFY As String = "datacenterdevice_identify"
+        Public Const C_ID As String = "id"
+        Public Const C_SPEED As String = "speed"
+        Public Const C_TOPOLOGY As String = "topology"
+        Public Const C_WWN As String = "wwn"
 
         Public Property datacenterdevice_identify() As Integer
             Get
@@ -4596,6 +4937,12 @@
         Private _IsDeleted As Boolean
         Private _macaddress As String
         Private _speed As Decimal
+
+        Public Shadows Const TABLE_NAME As String = "IPInterface"
+
+        Public Const C_COMMENT As String = "comment"
+        Public Const C_MACADDRESS As String = "macaddress"
+        Public Const C_SPEED As String = "speed"
 
         Public Property comment() As String
             Get
@@ -4685,6 +5032,10 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
 
+        Public Shadows Const TABLE_NAME As String = "PhysicalInterface"
+
+        Public Const C_CONNECTABLECI_IDENTIFY As String = "connectableci_identify"
+
         Public Property connectableci_identify() As Integer
             Get
                 Return _connectableci_identify
@@ -4730,6 +5081,19 @@
         Private _perpetual As Boolean
         Private _start_date As Date
         Private _usage_limit As String
+
+        Public Const TABLE_NAME As String = "Licence"
+
+        Public Const C_DESCRIPTION As String = "description"
+        Public Const C_END_DATE As String = "end_date"
+        Public Const C_FINALCLASS As String = "finalclass"
+        Public Const C_LICENCE_KEY As String = "licence_key"
+        Public Const C_NAME As String = "name"
+        Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
+        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
+        Public Const C_PERPETUAL As String = "perpetual"
+        Public Const C_START_DATE As String = "start_date"
+        Public Const C_USAGE_LIMIT As String = "usage_limit"
 
         Public Property description() As String
             Get
@@ -4847,6 +5211,11 @@
         Private _IsDeleted As Boolean
         Private _osversion_identify As Integer
 
+        Public Shadows Const TABLE_NAME As String = "OSLicence"
+
+        Public Const C_ID As String = "id"
+        Public Const C_OSVERSION_IDENTIFY As String = "osversion_identify"
+
         Public Property id() As Integer
             Get
                 Return _id
@@ -4880,6 +5249,10 @@
         Private _id As Integer
         Private _IsDeleted As Boolean
         Private _software_identify As Integer
+
+        Public Shadows Const TABLE_NAME As String = "SoftwareLicence"
+
+        Public Const C_SOFTWARE_IDENTIFY As String = "software_identify"
 
         Public Property id() As Integer
             Get
@@ -4919,6 +5292,11 @@
         Private _functionalci_identify As Integer
         Private _Identify As Integer
         Private _IsDeleted As Boolean
+
+        Public Const TABLE_NAME As String = "LnkApplicationSolutionToFunctionalCI"
+
+        Public Const C_APPLICATIONSOLUTION_IDENTIFY As String = "applicationsolution_identify"
+        Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
 
         Public Property applicationsolution_identify() As Integer
             Get
@@ -4966,6 +5344,11 @@
         Private _Identify As Integer
         Private _IsDeleted As Boolean
 
+        Public Const TABLE_NAME As String = "LnkBackupsToFunctionalCI"
+
+        Public Const C_BACKUPS_IDENTIFY As String = "backups_identify"
+        Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
+
         Public Property backups_identify() As Integer
             Get
                 Return _backups_identify
@@ -5012,6 +5395,12 @@
         Private _Identify As Integer
         Private _IsDeleted As Boolean
         Private _reason As String
+
+        Public Const TABLE_NAME As String = "LnkCIGroupToCI"
+
+        Public Const C_CI_IDENTIFY As String = "ci_identify"
+        Public Const C_CIGROUP_IDENTIFY As String = "cigroup_identify"
+        Public Const C_REASON As String = "reason"
 
         Public Property ci_identify() As Integer
             Get
@@ -5070,6 +5459,14 @@
         Private _IsDeleted As Boolean
         Private _network_port As Integer
         Private _networkdevice_identify As Integer
+
+        Public Const TABLE_NAME As String = "LnkConnectableCIToNetworkDevice"
+
+        Public Const C_CODE_CONNECTABLE_TYPE As String = "code_connectable_type"
+        Public Const C_CONNECTABLECI_IDENTIFY As String = "connectableci_identify"
+        Public Const C_DEVICE_PORT As String = "device_port"
+        Public Const C_NETWORK_PORT As String = "network_port"
+        Public Const C_NETWORKDEVICE_IDENTIFY As String = "networkdevice_identify"
 
         Public Property code_connectable_type() As Integer
             Get
@@ -5144,6 +5541,11 @@
         Private _Identify As Integer
         Private _IsDeleted As Boolean
 
+        Public Const TABLE_NAME As String = "LnkContactToContract"
+
+        Public Const C_CONTACT_IDENTIFY As String = "contact_identify"
+        Public Const C_CONTRACT_IDENTIFY As String = "contract_identify"
+
         Public Property contact_identify() As Integer
             Get
                 Return _contact_identify
@@ -5189,6 +5591,11 @@
         Private _functionalci_identify As Integer
         Private _Identify As Integer
         Private _IsDeleted As Boolean
+
+        Public Const TABLE_NAME As String = "LnkContactToFunctionalCI"
+
+        Public Const C_CONTACT_IDENTIFY As String = "contact_identify"
+        Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
 
         Public Property contact_identify() As Integer
             Get
@@ -5236,6 +5643,11 @@
         Private _ipobject_identify As Integer
         Private _IsDeleted As Boolean
 
+        Public Const TABLE_NAME As String = "LnkContactToIPObject"
+
+        Public Const C_CONTACT_IDENTIFY As String = "contact_identify"
+        Public Const C_IPOBJECT_IDENTIFY As String = "ipobject_identify"
+
         Public Property contact_identify() As Integer
             Get
                 Return _contact_identify
@@ -5282,6 +5694,11 @@
         Private _Identify As Integer
         Private _IsDeleted As Boolean
 
+        Public Const TABLE_NAME As String = "LnkContractToDocument"
+
+        Public Const C_CONTRACT_IDENTIFY As String = "contract_identify"
+        Public Const C_DOCUMENT_IDENTIFY As String = "document_identify"
+
         Public Property contract_identify() As Integer
             Get
                 Return _contract_identify
@@ -5327,6 +5744,11 @@
         Private _Identify As Integer
         Private _IsDeleted As Boolean
         Private _providercontract_identify As Integer
+
+        Public Const TABLE_NAME As String = "LnkCustomerContractToProviderContract"
+
+        Public Const C_CUSTOMERCONTRACT_IDENTIFY As String = "customercontract_identify"
+        Public Const C_PROVIDERCONTRACT_IDENTIFY As String = "providercontract_identify"
 
         Public Property customercontract_identify() As Integer
             Get
@@ -5375,6 +5797,13 @@
         Private _IsDeleted As Boolean
         Private _san_identify As Integer
         Private _san_port As String
+
+        Public Const TABLE_NAME As String = "LnkDatacenterDeviceToSan"
+
+        Public Const C_DATACENTERDEVICE_ID As String = "datacenterdevice_id"
+        Public Const C_DATACENTERDEVICE_PORT As String = "datacenterdevice_port"
+        Public Const C_SAN_IDENTIFY As String = "san_identify"
+        Public Const C_SAN_PORT As String = "san_port"
 
         Public Property datacenterdevice_id() As Integer
             Get
@@ -5440,6 +5869,11 @@
         Private _Identify As Integer
         Private _IsDeleted As Boolean
 
+        Public Const TABLE_NAME As String = "LnkDocumentToFunctionalCI"
+
+        Public Const C_DOCUMENT_IDENTIFY As String = "document_identify"
+        Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
+
         Public Property document_identify() As Integer
             Get
                 Return _document_identify
@@ -5487,6 +5921,11 @@
         Private _ipobject_identify As Integer
         Private _IsDeleted As Boolean
 
+        Public Const TABLE_NAME As String = "LnkDocumentToIPObject"
+
+        Public Const C_DOCUMENT_IDENTIFY As String = "document_identify"
+        Public Const C_IPOBJECT_IDENTIFY As String = "ipobject_identify"
+
         Public Property document_identify() As Integer
             Get
                 Return _document_identify
@@ -5533,6 +5972,11 @@
         Private _IsDeleted As Boolean
         Private _licence_identify As Integer
 
+        Public Const TABLE_NAME As String = "LnkDocumentToLicence"
+
+        Public Const C_DOCUMENT_IDENTIFY As String = "document_identify"
+        Public Const C_LICENCE_IDENTIFY As String = "licence_identify"
+
         Public Property document_identify() As Integer
             Get
                 Return _document_identify
@@ -5578,6 +6022,11 @@
         Private _Identify As Integer
         Private _IsDeleted As Boolean
         Private _software_identify As Integer
+
+        Public Const TABLE_NAME As String = "LnkDocumentToSoftware"
+
+        Public Const C_DOCUMENT_IDENTIFY As String = "document_identify"
+        Public Const C_SOFTWARE_IDENTIFY As String = "software_identify"
 
         Public Property document_identify() As Integer
             Get
@@ -5689,6 +6138,11 @@
         Private _IsDeleted As Boolean
         Private _providercontract_identify As Integer
 
+        Public Const TABLE_NAME As String = "LnkFunctionalCIToProviderContract"
+
+        Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
+        Public Const C_PROVIDERCONTRACT_IDENTIFY As String = "providercontract_identify"
+
         Public Property functionalci_identify() As Integer
             Get
                 Return _functionalci_identify
@@ -5735,6 +6189,11 @@
         Private _ip2_identify As Integer
         Private _IsDeleted As Boolean
 
+        Public Const TABLE_NAME As String = "LnkIPAddressToIPAddress"
+
+        Public Const C_IP1_IDENTIFY As String = "ip1_identify"
+        Public Const C_IP2_IDENTIFY As String = "ip2_identify"
+
         Public Property ip1_identify() As Integer
             Get
                 Return _ip1_identify
@@ -5780,6 +6239,11 @@
         Private _ipaddress_identify As Integer
         Private _ipinterface_identify As Integer
         Private _IsDeleted As Boolean
+
+        Public Const TABLE_NAME As String = "LnkIPInterfaceToIPAddress"
+
+        Public Const C_IPADDRESS_IDENTIFY As String = "ipaddress_identify"
+        Public Const C_IPINTERFACE_IDENTIFY As String = "ipinterface_identify"
 
         Public Property ipaddress_identify() As Integer
             Get
@@ -5829,6 +6293,11 @@
         Private _IsDeleted As Boolean
         Private _location_identify As Integer
 
+        Public Const TABLE_NAME As String = "LnkIPSubnetToLocation"
+
+        Public Const C_IPSUBNET_IDENTIFY As String = "ipsubnet_identify"
+        Public Const C_LOCATION_IDENTIFY As String = "location_identify"
+
         Public Property ipsubnet_identify() As Integer
             Get
                 Return _ipsubnet_identify
@@ -5874,6 +6343,11 @@
         Private _ipsubnet_identify As Integer
         Private _IsDeleted As Boolean
         Private _vlan_identify As Integer
+
+        Public Const TABLE_NAME As String = "LnkIPSubnetToVLAN"
+
+        Public Const C_IPSUBNET_IDENTIFY As String = "ipsubnet_identify"
+        Public Const C_VLAN_IDENTIFY As String = "vlan_identify"
 
         Public Property ipsubnet_identify() As Integer
             Get
@@ -5921,6 +6395,11 @@
         Private _IsDeleted As Boolean
         Private _passwd_identify As Integer
 
+        Public Const TABLE_NAME As String = "LnkPasswdToFunctionalCI"
+
+        Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
+        Public Const C_PASSWD_IDENTIFY As String = "passwd_identify"
+
         Public Property functionalci_identify() As Integer
             Get
                 Return _functionalci_identify
@@ -5966,6 +6445,11 @@
         Private _IsDeleted As Boolean
         Private _physicalinterface_identify As Integer
         Private _vlan_identify As Integer
+
+        Public Const TABLE_NAME As String = "LnkPhysicalInterfaceToVLAN"
+
+        Public Const C_PHYSICALINTERFACE_IDENTIFY As String = "physicalinterface_identify"
+        Public Const C_VLAN_IDENTIFY As String = "vlan_identify"
 
         Public Property IsDeleted() As Boolean
             Get
@@ -6013,6 +6497,12 @@
         Private _server_identify As Integer
         Private _size_used As Integer
         Private _volume_identify As Integer
+
+        Public Const TABLE_NAME As String = "LnkServerToVolume"
+
+        Public Const C_SERVER_IDENTIFY As String = "server_identify"
+        Public Const C_SIZE_USED As String = "size_used"
+        Public Const C_VOLUME_IDENTIFY As String = "volume_identify"
 
         Public Property IsDeleted() As Boolean
             Get
@@ -6069,6 +6559,11 @@
         Private _subnet_identify As Integer
         Private _vlan_identify As Integer
 
+        Public Const TABLE_NAME As String = "LnkSubnetToVLAN"
+
+        Public Const C_SUBNET_IDENTIFY As String = "subnet_identify"
+        Public Const C_VLAN_IDENTIFY As String = "vlan_identify"
+
         Public Property IsDeleted() As Boolean
             Get
                 Return _IsDeleted
@@ -6115,6 +6610,12 @@
         Private _size_used As Integer
         Private _virtualdevice_identify As Integer
         Private _volume_identify As Integer
+
+        Public Const TABLE_NAME As String = "LnkVirtualDeviceToVolume"
+
+        Public Const C_SIZE_USED As String = "size_used"
+        Public Const C_VIRTUALDEVICE_IDENTIFY As String = "virtualdevice_identify"
+        Public Const C_VOLUME_IDENTIFY As String = "volume_identify"
 
         Public Property IsDeleted() As Boolean
             Get
