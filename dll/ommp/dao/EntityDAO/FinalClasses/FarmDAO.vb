@@ -125,11 +125,11 @@ Namespace dao
         End Function
 
         Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IQueryDAO.FindList
-            Return FindRows(TABLE_NAME, filter, sort)
+            Return FindRows(QUERY_TABLE_NAME, filter, sort)
         End Function
 
         Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
-            Return FindRow(TABLE_NAME, id)
+            Return FindRow(QUERY_TABLE_NAME, id)
         End Function
     End Class
 

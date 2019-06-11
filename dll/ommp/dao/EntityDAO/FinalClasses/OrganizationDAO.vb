@@ -2,6 +2,9 @@
 Imports Foxtable
 
 Namespace dao
+
+    ' 已全部测试完成
+    '20190611 by Andy
     Public Class OrganizationDAO
         Inherits BaseDAO
         Implements IEntityDAO
@@ -16,31 +19,22 @@ Namespace dao
             End Get
         End Property
 
-        '查找一个组织
-        'Dim dao As ommp.dao.OrganizationDAO = New ommp.dao.OrganizationDAO()
-        'Dim dto As ommp.dto.Organization = dao.FindObject(593)
-        'Output.Show("code_org_type = " & dto.code_org_type)
-        '查询组织列表
-        'Dim dao As new ommp.dao.OrganizationDAO
-        'Dim lists As IList(Of ommp.dto.Organization) = dao.FindList("[name] Like '%三峡云%'", "name desc")
-        'output.Show("Count : " & lists.Count )
-        'For Each org As ommp.dto.Organization In lists 
-        '    output.Show(org.name)
-        'Next
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New Organization()
 
-            item.Identify = dr(Organization.C__IDENTIFY)
-            item.parent_identify = dr(Organization.C_PARENT_IDENTIFY)
-            item.name = dr(Organization.C_NAME)
-            item.code = dr(Organization.C_CODE)
-            item.parent_code = dr(Organization.C__CODE)
-            item.status = dr(Organization.C_STATUS)
-            item.code_org_type = dr(Organization.C_CODE_ORG_TYPE)
-            item.short_name = dr(Organization.C_SHORT_NAME)
-            item.description = dr(Organization.C_DESCRIPTION)
-            item.IsDeleted = dr(Organization.C__ISDELETED)
-            item._sort = dr(Organization.C__SORT)
+            With item
+                .Identify = dr(Organization.C__IDENTIFY)
+                .parent_identify = dr(Organization.C_PARENT_IDENTIFY)
+                .name = dr(Organization.C_NAME)
+                .code = dr(Organization.C_CODE)
+                .parent_code = dr(Organization.C__CODE)
+                .status = dr(Organization.C_STATUS)
+                .code_org_type = dr(Organization.C_CODE_ORG_TYPE)
+                .short_name = dr(Organization.C_SHORT_NAME)
+                .description = dr(Organization.C_DESCRIPTION)
+                .IsDeleted = dr(Organization.C__ISDELETED)
+                ._sort = dr(Organization.C__SORT)
+            End With
 
             Return item
         End Function
@@ -48,11 +42,11 @@ Namespace dao
         ' 添加一个组织
         'Dim dao As ommp.dao.OrganizationDAO = New ommp.dao.OrganizationDAO()
         'Dim result As Boolean = False
-        'Dim orgdto As New ommp.dto.Organization()
-        'orgdto.name = "test abc"
-        'orgdto.code = "001"
-        'orgdto.IsDeleted = True
-        'result = dao.Insert(orgdto)
+        'Dim dto As New ommp.dto.Organization()
+        'dto.name = "测试组织20190611"
+        'dto.code = "10001"
+        'dto.IsDeleted = True
+        'result = dao.Insert(dto)
         'Output.Show(result)
         Public Function Insert(ByVal o As Object) As Boolean Implements IEntityDAO.Insert
             Dim obj As Organization = CType(o, Organization)
@@ -86,9 +80,9 @@ Namespace dao
         '修改组织
         'Dim dao As ommp.dao.OrganizationDAO = New ommp.dao.OrganizationDAO()
         'Dim result As Boolean = False
-        'Dim dto As ommp.dto.Organization = dao.FindObject(593)
+        'Dim dto As ommp.dto.Organization = dao.FindObject(595)
         'dto.code_org_type = 2
-        'dto.name = "test abc 2"
+        'dto.name = "测试组织20190611修改"
         'result  = dao.Update(dto)
         'Output.Show(result)
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
@@ -96,7 +90,7 @@ Namespace dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C__IDENTIFY & " = " & obj.Identify)
                 If dr IsNot Nothing Then
                     If obj.parent_identify >= 0 Then
                         dr(Organization.C_PARENT_IDENTIFY) = obj.parent_identify
@@ -140,15 +134,14 @@ Namespace dao
 
         '删除一个组织
         'Dim dao As ommp.dao.OrganizationDAO = New ommp.dao.OrganizationDAO()
-        'Dim result As Boolean = False
-        'result = dao.Delete(593)
-        'Output.Show(result)
+        'Output.Show(dao.Delete(595))
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
             Dim result As Boolean = False
             Try
                 Dim dr As DataRow = DataTables(TABLE_NAME).Find(Organization.C__IDENTIFY & " = " & id)
                 dr(Organization.C__ISDELETED) = True
                 dr.Save()
+                result = True
             Catch ex As Exception
                 Output.Show(TABLE_NAME & "->Delete:" & ex.Message)
             End Try
@@ -156,10 +149,43 @@ Namespace dao
             Return result
         End Function
 
+        '查询组织列表
+        'Dim dao As New ommp.dao.OrganizationDAO
+        'Dim lists As IList(Of Object) = dao.FindList("[name] Like '%三峡云%'", "name desc")
+        'output.Show("Count : " & lists.Count )
+        'For Each dto As ommp.dto.Organization In lists 
+        '    Output.Show("code_org_type = " & dto.code_org_type)
+        '    Output.Show("Identify = " & dto.Identify)
+        '    Output.Show("parent_identify = " & dto.parent_identify)
+        '    Output.Show("name = " & dto.name)
+        '    Output.Show("code = " & dto.code)
+        '    Output.Show("parent_code = " & dto.parent_code)
+        '    Output.Show("status = " & dto.status)
+        '    Output.Show("code_org_type = " & dto.code_org_type)
+        '    Output.Show("short_name = " & dto.short_name)
+        '    Output.Show("description = " & dto.description)
+        '    Output.Show("IsDeleted = " & dto.IsDeleted)
+        '    Output.Show("_sort = " & dto._sort)
+        'Next
         Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IQueryDAO.FindList
             Return FindRows(TABLE_NAME, filter, sort)
         End Function
 
+        '查找一个组织
+        'Dim dao As ommp.dao.OrganizationDAO = New ommp.dao.OrganizationDAO()
+        'Dim dto As ommp.dto.Organization = dao.FindObject(595)
+        'Output.Show("code_org_type = " & dto.code_org_type)
+        'Output.Show("Identify = " & dto.Identify)
+        'Output.Show("parent_identify = " & dto.parent_identify)
+        'Output.Show("name = " & dto.name)
+        'Output.Show("code = " & dto.code)
+        'Output.Show("parent_code = " & dto.parent_code)
+        'Output.Show("status = " & dto.status)
+        'Output.Show("code_org_type = " & dto.code_org_type)
+        'Output.Show("short_name = " & dto.short_name)
+        'Output.Show("description = " & dto.description)
+        'Output.Show("IsDeleted = " & dto.IsDeleted)
+        'Output.Show("_sort = " & dto._sort)
         Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
             Return FindRow(TABLE_NAME, id)
         End Function

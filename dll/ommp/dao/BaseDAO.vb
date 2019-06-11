@@ -31,7 +31,13 @@ Namespace dao
         Protected Function DeleteObject(ByVal table As String, ByVal id As Integer) As Boolean
             Dim result As Boolean = False
             Try
-                Dim dr As DataRow = DataTables(table).Find(C_ID & " = " & id)
+                Dim col As String = C__IDENTIFY
+                If DataTables(table).DataCols.Contains(C_ID) Then
+                    col = C_ID
+                End If
+
+                Dim dr As DataRow = DataTables(table).Find(col & " = " & id)
+
                 dr(C__ISDELETED) = True
                 dr.Save()
 
@@ -47,7 +53,12 @@ Namespace dao
         Protected Function FindRow(ByVal table As String, ByVal id As Integer) As Object
             Dim item As New Object()
             Try
-                Dim dr As DataRow = DataTables(table).Find(C_ID & " = " & id)
+                Dim col As String = C__IDENTIFY
+                If DataTables(table).DataCols.Contains(C_ID) Then
+                    col = C_ID
+                End If
+
+                Dim dr As DataRow = DataTables(table).Find(col & " = " & id)
 
                 If dr IsNot Nothing Then
                     item = SetProperties(dr)

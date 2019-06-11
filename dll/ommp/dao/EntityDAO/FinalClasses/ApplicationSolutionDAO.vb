@@ -2,6 +2,9 @@
 Imports Foxtable
 
 Namespace dao
+
+    ' 已全部测试完成
+    '20190611 by Andy
     Public Class ApplicationSolutionDAO
         Inherits FunctionalCIDAO
         Implements IEntityDAO
@@ -29,7 +32,7 @@ Namespace dao
         'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
         'Dim result As Boolean = False
         'Dim dto As New ommp.dto.ApplicationSolution()
-        'dto.name = "测试应用系统1-20190603"
+        'dto.name = "测试应用系统1-20190611"
         'dto.code_application_status= 2
         'dto.redundancy = 3
         'dto.code_sla = 1
@@ -46,15 +49,15 @@ Namespace dao
                 Dim identify As Integer = InsertFunctionalCI(o, TABLE_NAME)
 
                 Dim dr As DataRow = DataTables(TABLE_NAME).AddNew()
-
-                dr(C_ID) = identify
-                dr(C__ISDELETED) = False
-                dr(ApplicationSolution.C_CODE_APPLICATION_STATUS) = obj.code_application_status
-                dr(ApplicationSolution.C_REDUNDANCY) = obj.redundancy
-                dr(ApplicationSolution.C_CODE_SLA) = obj.code_sla
-                dr(ApplicationSolution.C_FAULT_EFFECTS) = obj.fault_effects
-                dr(ApplicationSolution.C_ATTENTION) = obj.attention
-
+                With obj
+                    dr(C_ID) = identify
+                    dr(C__ISDELETED) = False
+                    dr(ApplicationSolution.C_CODE_APPLICATION_STATUS) = .code_application_status
+                    dr(ApplicationSolution.C_REDUNDANCY) = .redundancy
+                    dr(ApplicationSolution.C_CODE_SLA) = .code_sla
+                    dr(ApplicationSolution.C_FAULT_EFFECTS) = .fault_effects
+                    dr(ApplicationSolution.C_ATTENTION) = .attention
+                End With
                 dr.Save()
 
                 result = True
@@ -68,7 +71,7 @@ Namespace dao
         '修改应用方案
         'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
         'Dim result As Boolean = False
-        'Dim dto As ommp.dto.ApplicationSolution = dao.FindObject(1870)
+        'Dim dto As ommp.dto.ApplicationSolution = dao.FindObject(1873)
         'dto.name = dto.name & "-2"
         'dto.code_risk_rating = 1
         'dto.move2production = DateTime.Now
@@ -135,33 +138,33 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New ApplicationSolution()
 
-            item.Identify = dr(ApplicationSolution.C_ID)
-            item.name = dr(FunctionalCI.C_NAME)
-            item.description = dr(FunctionalCI.C_DESCRIPTION)
-            item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
-            item.move2production = dr(FunctionalCI.C_MOVE2PRODUCTION)
-            item.finalclass = dr(FunctionalCI.C_FINALCLASS)
-            item.obsolescence_date = dr(FunctionalCI.C_OBSOLESCENCE_DATE)
+            With item
+                .Identify = dr(ApplicationSolution.C_ID)
+                .name = dr(FunctionalCI.C_NAME)
+                .description = dr(FunctionalCI.C_DESCRIPTION)
+                .code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
+                .move2production = dr(FunctionalCI.C_MOVE2PRODUCTION)
+                .finalclass = dr(FunctionalCI.C_FINALCLASS)
+                .obsolescence_date = dr(FunctionalCI.C_OBSOLESCENCE_DATE)
 
-            item.id = dr(ApplicationSolution.C_ID)
-            item.code_application_status = dr(ApplicationSolution.C_CODE_APPLICATION_STATUS)
-            item.redundancy = dr(ApplicationSolution.C_REDUNDANCY)
-            item.code_sla = dr(ApplicationSolution.C_CODE_SLA)
-            item.fault_effects = dr(ApplicationSolution.C_FAULT_EFFECTS)
-            item.attention = dr(ApplicationSolution.C_ATTENTION)
+                .id = dr(ApplicationSolution.C_ID)
+                .code_application_status = dr(ApplicationSolution.C_CODE_APPLICATION_STATUS)
+                .redundancy = dr(ApplicationSolution.C_REDUNDANCY)
+                .code_sla = dr(ApplicationSolution.C_CODE_SLA)
+                .fault_effects = dr(ApplicationSolution.C_FAULT_EFFECTS)
+                .attention = dr(ApplicationSolution.C_ATTENTION)
+            End With
 
             Return item
         End Function
 
-
-
         ' 查询应用方案列表
         'Dim dao As New ommp.dao.ApplicationSolutionDAO
-        'Dim lists As IList(Of ommp.dto.ApplicationSolution) = dao.FindList("[name] Like '%Zabbix%'", "id DESC")
+        'Dim lists As IList(Of Object) = dao.FindList("[name] Like '%Zabbix%'", "id DESC")
         'output.Show("Count : " & lists.Count )
         'Output.Show(" --------------------- ") 
         'For Each dto As ommp.dto.ApplicationSolution In lists 
-        '    Output.Show("name = " & dto.name) ' 短信平台
+        '    Output.Show("name = " & dto.name)
         '    Output.Show("code_risk_rating = " & dto.code_risk_rating) 
         '    Output.Show("move2production = " & dto.move2production) 
         '    Output.Show("obsolescence_date = " & dto.obsolescence_date) 
@@ -176,13 +179,13 @@ Namespace dao
         '    Output.Show(" --------------------- ") 
         'Next
         Public Function FindList(ByVal filter As String, ByVal sort As String) As IList(Of Object) Implements IQueryDAO.FindList
-            Return FindRows(TABLE_NAME, filter, sort)
+            Return FindRows(QUERY_TABLE_NAME, filter, sort)
         End Function
 
         ' 用于 查找一个应用方案
         'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
-        'Dim dto As ommp.dto.ApplicationSolution = dao.FindObject(331)
-        'Output.Show("name = " & dto.name) ' 短信平台
+        'Dim dto As ommp.dto.ApplicationSolution = dao.FindObject(1873)
+        'Output.Show("name = " & dto.name)
         'Output.Show("code_risk_rating = " & dto.code_risk_rating) 
         'Output.Show("move2production = " & dto.move2production) 
         'Output.Show("obsolescence_date = " & dto.obsolescence_date) 
@@ -195,7 +198,7 @@ Namespace dao
         'Output.Show("attention = " & dto.attention) 
         'Output.Show("_IsDeleted = " & dto.IsDeleted) 
         Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
-            Return FindRow(TABLE_NAME, id)
+            Return FindRow(QUERY_TABLE_NAME, id)
         End Function
     End Class
 

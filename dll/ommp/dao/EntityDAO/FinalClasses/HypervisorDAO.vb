@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dao
 
     Public Class HypervisorDAO
-        Inherits VirtualDeviceDAO
+        Inherits VirtualHostDAO
         Implements IEntityDAO
 
 

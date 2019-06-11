@@ -2592,13 +2592,12 @@
 
         Public Shadows Const TABLE_NAME As String = "DatabasesSchema"
 
-        Public Const C_COMMENT As String = "comment"
-        Public Const C_CREATE_TIME As String = "create_time"
         Public Const C_DBSERVER_IDENTIFY As String = "dbserver_identify"
         Public Const C_FARM_IDENTIFY As String = "farm_identify"
-        Public Const C_ID As String = "id"
-        Public Const C_INDIVIDUAL As String = "individual"
         Public Const C_PDB_NAME As String = "pdb_name"
+        Public Const C_COMMENT As String = "comment"
+        Public Const C_CREATE_TIME As String = "create_time"
+        Public Const C_INDIVIDUAL As String = "individual"
 
         Public Property comment() As String
             Get
@@ -2724,6 +2723,10 @@
 
         Public Const C_URL As String = "url"
         Public Const C_WEBSERVER_IDENTIFY As String = "webserver_identify"
+
+        Public Sub New()
+            finalclass = TABLE_NAME
+        End Sub
 
         Public Property id() As Integer
             Get

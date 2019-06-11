@@ -9,6 +9,20 @@ Namespace dao
             ' empty
         End Sub
 
+        Protected Function SetFunctionalCIProperties(ByVal dr As DataRow) As Object
+            Dim item As New FunctionalCI()
+
+            item.Identify = dr(C_ID)
+            item.name = dr(FunctionalCI.C_NAME)
+            item.description = dr(FunctionalCI.C_DESCRIPTION)
+            item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
+            item.move2production = dr(FunctionalCI.C_MOVE2PRODUCTION)
+            item.finalclass = dr(FunctionalCI.C_FINALCLASS)
+            item.obsolescence_date = dr(FunctionalCI.C_OBSOLESCENCE_DATE)
+
+            Return item
+        End Function
+
         Protected Function InsertFunctionalCI(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As FunctionalCI = CType(o, FunctionalCI)
             Dim identify As Integer = 0
