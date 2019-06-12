@@ -7,8 +7,8 @@
     <ProjectGuid>{5E85A1A1-591E-4BCE-ADE2-5486892DE6A8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bll</RootNamespace>
-    <AssemblyName>ommp-bll</AssemblyName>
+    <RootNamespace>ommp.bll</RootNamespace>
+    <AssemblyName>ommp.bll</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -31,11 +31,13 @@
     <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="foxtable">
-      <HintPath>..\dao\dll\foxtable.exe</HintPath>
+    <Reference Include="foxtable, Version=2019.6.12.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\foxtable.exe</HintPath>
     </Reference>
-    <Reference Include="Foxtable.Lib">
-      <HintPath>..\dao\dll\Foxtable.Lib.dll</HintPath>
+    <Reference Include="Foxtable.Lib, Version=2019.6.12.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Foxtable.Lib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

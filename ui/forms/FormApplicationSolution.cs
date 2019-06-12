@@ -7,7 +7,7 @@ using WF = Foxtable.WinForm;
 using Foxtable;
 using MB = System.Windows.Forms.MessageBox;
 
-namespace ui
+namespace ommp.ui
 {
 	public static class FormApplicationSolution
 	{

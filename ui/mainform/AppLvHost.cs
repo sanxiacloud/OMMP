@@ -6,7 +6,7 @@ using WF = Foxtable.WinForm;
 using Foxtable;
 
 
-namespace ui
+namespace ommp.ui
 {
 	public static class AppLvHost
 	{

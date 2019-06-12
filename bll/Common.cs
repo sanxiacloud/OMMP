@@ -5,9 +5,9 @@ using FT = Foxtable.OO_00oOO;
 using WF = Foxtable.WinForm;
 using Foxtable;
 
-namespace bll
+namespace ommp.bll
 {
-    public class Common
+    public static class Common
     {
 		public static string TranslateCode(string type, int code) {
 			var dt = FT.DataTables["Code"];

@@ -5,7 +5,7 @@ using FT = Foxtable.OO_00oOO;
 using WF = Foxtable.WinForm;
 using Foxtable;
 
-namespace ui
+namespace ommp.ui
 {
 	public class MainForm
 	{
