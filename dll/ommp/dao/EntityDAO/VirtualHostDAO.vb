@@ -5,7 +5,8 @@ Namespace dao
 
     Public MustInherit Class VirtualHostDAO
         Inherits VirtualDeviceDAO
-         
+
+        Private Const _TABLE_NAME = VirtualHost.TABLE_NAME
 
         Protected Function UpdateVirtualHost(ByVal o As Object) As Boolean
             Dim obj As VirtualHost = CType(o, VirtualHost)
@@ -15,7 +16,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateVirtualDevice(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(VirtualHost.TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj.Identify)
 
                 If dr IsNot Nothing Then
                     ' 此表只包含 id 字段，不做更新
@@ -26,7 +27,7 @@ Namespace dao
 
                 result = result1 And result2
             Catch ex As Exception
-                Output.Show(VirtualHost.TABLE_NAME & "->Update:" & ex.Message)
+                Output.Show(_TABLE_NAME & "->Update:" & ex.Message)
             End Try
 
             Return result
@@ -34,7 +35,7 @@ Namespace dao
 
         Protected Function DeleteVirtualHost(ByVal id As Integer) As Boolean
 
-            Return DeleteVirtualDevice(id) And DeleteObject(VirtualHost.TABLE_NAME, id)
+            Return DeleteVirtualDevice(id) And DeleteObject(_TABLE_NAME, id)
 
         End Function
 
@@ -45,7 +46,7 @@ Namespace dao
             Try
                 Dim identify As Integer = InsertVirtualDevice(o, finalclass)
 
-                Dim dr As DataRow = DataTables(VirtualHost.TABLE_NAME).AddNew()
+                Dim dr As DataRow = DataTables(_TABLE_NAME).AddNew()
 
                 dr(C_ID) = identify
                 If obj.IsDeleted = True Or obj.IsDeleted = False Then
@@ -58,11 +59,12 @@ Namespace dao
 
                 result = True
             Catch ex As Exception
-                Output.Show(VirtualHost.TABLE_NAME & "->Insert:" & ex.Message)
+                Output.Show(_TABLE_NAME & "->Insert:" & ex.Message)
             End Try
 
             Return result
         End Function
+ 
     End Class
 
 End Namespace

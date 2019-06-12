@@ -33,7 +33,7 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New VirtualMachine()
 
-            item.Identify = dr(ApplicationSolution.C_ID)
+            item.Identify = dr(C_ID)
             item.name = dr(FunctionalCI.C_NAME)
             item.description = dr(FunctionalCI.C_DESCRIPTION)
             item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)

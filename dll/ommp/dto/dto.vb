@@ -3334,10 +3334,10 @@
 
         Public Shadows Const TABLE_NAME As String = "DataCenterDevice"
 
+        Public Const C_RACK_IDENTIFY As String = "rack_identify"
         Public Const C_ENCLOSURE_IDENTITY As String = "enclosure_identity"
         Public Const C_MANAGEMENTIP As String = "managementip"
         Public Const C_NB_U As String = "nb_u"
-        Public Const C_RACK_IDENTIFY As String = "rack_identify"
         Public Const C_REDUNDANCY As String = "redundancy"
 
         Public Property enclosure_identity() As Integer
@@ -3532,10 +3532,10 @@
 
         Public Shadows Const TABLE_NAME As String = "Server"
 
-        Public Const C_CPU As String = "cpu"
         Public Const C_OSFAMILY_ID As String = "osfamily_id"
         Public Const C_OSLICENCE_ID As String = "oslicence_id"
         Public Const C_OSVERSION_ID As String = "osversion_id"
+        Public Const C_CPU As String = "cpu"
         Public Const C_RAM As String = "ram"
 
         Public Property cpu() As String

@@ -15,13 +15,13 @@ Namespace dao
             builder.ConnectionName = CONNECTION_NAME
             ' FunctionalCI -> VirtualDevice
             builder.AddTable(FunctionalCI.TABLE_NAME, C__IDENTIFY, VirtualDevice.TABLE_NAME, C_ID)
-            builder.AddCols(FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
-            builder.AddCols(VirtualDevice.C_ID, VirtualDevice.C_CODE_VIRTUALDEVICE_STATUS)
+            builder.AddCols(C__IDENTIFY, FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
+            builder.AddCols(VirtualDevice.C_CODE_VIRTUALDEVICE_STATUS)
             ' VirtualDevice -> VirtualHost
             builder.AddTable(VirtualDevice.TABLE_NAME, C_ID, VirtualHost.TABLE_NAME, C_ID)
             ' VirtualHost -> Farm
             builder.AddTable(VirtualHost.TABLE_NAME, C_ID, TABLE_NAME, C_ID)
-            builder.AddCols(Farm.C_ID, Farm.C_CODE_DEPLOYMENT_AREA, Farm.C_CODE_FARM_STATUS, Farm.C_CODE_FARM_TYPE, Farm.C_REDUNDANCY)
+            builder.AddCols(TABLE_NAME & "." & C_ID, Farm.C_CODE_DEPLOYMENT_AREA, Farm.C_CODE_FARM_STATUS, Farm.C_CODE_FARM_TYPE, Farm.C_REDUNDANCY)
 
             builder.Build()
             'Output.Show(builder.BuildSql())

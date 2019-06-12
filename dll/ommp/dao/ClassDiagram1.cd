@@ -55,7 +55,7 @@
   <Class Name="ommp.dao.HypervisorDAO" Collapsed="true">
     <Position X="17.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAMACAAAAAEAAAAAAAAAAAAEAAAAAAAEAAAAAAAA=</HashCode>
+      <HashCode>AAQAAMACAAAAAEAAAAAAAAAAAAEAAAAAAAECAAAAAAA=</HashCode>
       <FileName>EntityDAO\FinalClasses\HypervisorDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -71,7 +71,7 @@
   <Class Name="ommp.dao.WebApplicationDAO" Collapsed="true">
     <Position X="21.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAMACAAAAAEAAAAAAAAAAAAEAAAAAAAEAAAAAAAA=</HashCode>
+      <HashCode>AAQAAMACAAAAAEAAAAAAAAAAAAEAAAAAAAECAAAAAAA=</HashCode>
       <FileName>EntityDAO\FinalClasses\WebApplicationDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

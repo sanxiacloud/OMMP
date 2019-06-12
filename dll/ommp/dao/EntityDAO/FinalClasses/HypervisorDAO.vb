@@ -6,9 +6,22 @@ Namespace dao
         Inherits VirtualHostDAO
         Implements IEntityDAO
 
+        Private Const QUERY_TABLE_NAME As String = "QTHypervisor"
 
         Public Sub New()
-            ' 构造函数，默认为空
+            Dim builder As New SQLJoinTableBuilder(QUERY_TABLE_NAME, FunctionalCI.TABLE_NAME)
+            builder.ConnectionName = CONNECTION_NAME
+            ' FunctionalCI -> VirtualDevice
+            builder.AddTable(FunctionalCI.TABLE_NAME, C__IDENTIFY, VirtualDevice.TABLE_NAME, C_ID)
+            builder.AddCols(C__IDENTIFY, FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
+            builder.AddCols(VirtualDevice.C_CODE_VIRTUALDEVICE_STATUS)
+            ' VirtualDevice -> VirtualHost
+            builder.AddTable(VirtualDevice.TABLE_NAME, C_ID, VirtualHost.TABLE_NAME, C_ID)
+            ' VirtualHost -> Hypervisor
+            builder.AddTable(VirtualHost.TABLE_NAME, C_ID, TABLE_NAME, C_ID)
+            builder.AddCols(TABLE_NAME & "." & C_ID, Hypervisor.C_FARM_IDENTIFY, Hypervisor.C_SERVER_IDENTIFY)
+
+            builder.Build()
         End Sub
 
         Protected Overrides ReadOnly Property TABLE_NAME() As String
@@ -98,11 +111,11 @@ Namespace dao
         End Function
 
         Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IQueryDAO.FindList
-            Return FindRows(TABLE_NAME, filter, sort)
+            Return FindRows(QUERY_TABLE_NAME, filter, sort)
         End Function
 
         Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
-            Return FindRow(TABLE_NAME, id)
+            Return FindRow(QUERY_TABLE_NAME, id)
         End Function
     End Class
 
