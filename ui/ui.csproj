@@ -7,8 +7,8 @@
     <ProjectGuid>{583D65D7-9A78-4D03-ADB3-2AA9A80C75A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ui</RootNamespace>
-    <AssemblyName>ommp-ui</AssemblyName>
+    <RootNamespace>ommp.ui</RootNamespace>
+    <AssemblyName>ommp.ui</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -32,14 +32,17 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="C1.Win.C1Command.4">
-      <HintPath>C:\foxtable\Development\C1.Win.C1Command.4.dll</HintPath>
+    <Reference Include="C1.Win.C1Command.4, Version=4.0.20191.359, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\C1.Win.C1Command.4.dll</HintPath>
     </Reference>
-    <Reference Include="foxtable">
-      <HintPath>..\dao\dll\foxtable.exe</HintPath>
+    <Reference Include="foxtable, Version=2019.6.12.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\foxtable.exe</HintPath>
     </Reference>
-    <Reference Include="Foxtable.Lib">
-      <HintPath>..\dao\dll\Foxtable.Lib.dll</HintPath>
+    <Reference Include="Foxtable.Lib, Version=2019.6.12.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\Foxtable.Lib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

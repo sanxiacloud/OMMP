@@ -4,9 +4,8 @@ using System.Text;
 using FT = Foxtable.OO_00oOO;
 using WF = Foxtable.WinForm;
 using Foxtable;
-using bll;
 
-namespace ui
+namespace ommp.ui
 {
 	public static class AppLvApp
 	{

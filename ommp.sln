@@ -16,6 +16,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ui", "ui\ui.csproj", "{583D
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bll", "bll\bll.csproj", "{5E85A1A1-591E-4BCE-ADE2-5486892DE6A8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F959093A-3675-4222-B08C-916FD3215FF7} = {F959093A-3675-4222-B08C-916FD3215FF7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
