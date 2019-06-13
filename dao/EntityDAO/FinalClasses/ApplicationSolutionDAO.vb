@@ -9,24 +9,27 @@ Namespace dao
         Inherits FunctionalCIDAO
         Implements IEntityDAO
 
-        Private Const QUERY_TABLE_NAME As String = "QTApplicationSolution"
-
-        Public Sub New()
-            ' 创建查询表，用于查询方法使用
-            Dim builder As New SQLJoinTableBuilder(QUERY_TABLE_NAME, FunctionalCI.TABLE_NAME)
-            builder.ConnectionName = CONNECTION_NAME
-            builder.AddTable(FunctionalCI.TABLE_NAME, C__IDENTIFY, TABLE_NAME, C_ID)
-            builder.AddCols(FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
-            builder.AddCols(ApplicationSolution.C_ID, ApplicationSolution.C_CODE_APPLICATION_STATUS, ApplicationSolution.C_REDUNDANCY, ApplicationSolution.C_CODE_SLA, ApplicationSolution.C_FAULT_EFFECTS, ApplicationSolution.C_ATTENTION)
-            builder.Build()
-            'Output.Show(builder.BuildSql()) ' 测试打印出生成的SQL语句
-        End Sub
-
         Protected Overrides ReadOnly Property TABLE_NAME() As String
             Get
                 Return ApplicationSolution.TABLE_NAME
             End Get
         End Property
+
+        Private ReadOnly Property QUERY_TABLE_NAME() As String
+            Get
+                Return ApplicationSolutionQT.TABLE_NAME
+            End Get
+        End Property
+
+        Public Sub New()
+            Dim builder As New SQLJoinTableBuilder(QUERY_TABLE_NAME, FunctionalCI.TABLE_NAME)
+            builder.ConnectionName = CONNECTION_NAME
+            builder.AddTable(FunctionalCI.TABLE_NAME, C__IDENTIFY, TABLE_NAME, C_ID)
+            builder.AddCols(C__IDENTIFY, FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
+            builder.AddCols(TABLE_NAME & "." & C__ISDELETED, ApplicationSolution.C_ID, ApplicationSolution.C_CODE_APPLICATION_STATUS, ApplicationSolution.C_REDUNDANCY, ApplicationSolution.C_CODE_SLA, ApplicationSolution.C_FAULT_EFFECTS, ApplicationSolution.C_ATTENTION)
+            builder.Build()
+            'Output.Show(builder.BuildSql())
+        End Sub
 
         ' 添加一个应用方案
         'Dim dao As ommp.dao.ApplicationSolutionDAO = New ommp.dao.ApplicationSolutionDAO()
@@ -91,7 +94,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateFunctionalCI(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj._Identify)
 
                 If dr IsNot Nothing Then
                     If obj.code_application_status >= 0 Then
@@ -139,7 +142,7 @@ Namespace dao
             Dim item As New ApplicationSolution()
 
             With item
-                .Identify = dr(ApplicationSolution.C_ID)
+                ._Identify = dr(ApplicationSolution.C_ID)
                 .name = dr(FunctionalCI.C_NAME)
                 .description = dr(FunctionalCI.C_DESCRIPTION)
                 .code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)

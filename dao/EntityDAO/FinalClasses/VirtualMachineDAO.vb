@@ -33,7 +33,7 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New VirtualMachine()
 
-            item.Identify = dr(C_ID)
+            item._Identify = dr(C_ID)
             item.name = dr(FunctionalCI.C_NAME)
             item.description = dr(FunctionalCI.C_DESCRIPTION)
             item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
@@ -115,7 +115,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateVirtualDevice(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj._Identify)
                 If dr IsNot Nothing Then
                     If obj.virtualhost_identify >= 0 Then
                         dr(VirtualMachine.C_VIRTUALHOST_IDENTIFY) = obj.virtualhost_identify
@@ -161,7 +161,7 @@ Namespace dao
         'output.Show("Count : " & lists.Count )
         'Output.Show(" --------------------- ") 
         'For Each dto As ommp.dto.VirtualMachine In lists 
-        '    Output.Show("Identify = " & dto.Identify)
+        '    Output.Show("Identify = " & dto._Identify)
         '    Output.Show("name = " & dto.name)
         '    Output.Show("description = " & dto.description)
         '    Output.Show("code_risk_rating = " & dto.code_risk_rating)
@@ -188,7 +188,7 @@ Namespace dao
         '查找一个虚拟机
         'Dim dao As ommp.dao.VirtualMachineDAO = New ommp.dao.VirtualMachineDAO()
         'Dim dto  As ommp.dto.VirtualMachine = dao.FindObject(1868)
-        'Output.Show("Identify = " & dto.Identify)
+        'Output.Show("Identify = " & dto._Identify)
         'Output.Show("name = " & dto.name)
         'Output.Show("description = " & dto.description)
         'Output.Show("code_risk_rating = " & dto.code_risk_rating)

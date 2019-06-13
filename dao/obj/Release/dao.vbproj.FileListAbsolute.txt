@@ -1,0 +1,15 @@
+D:\OMMP\dll\ommp\dao\obj\Release\ResolveAssemblyReference.cache
+D:\OMMP\dll\ommp\dao\obj\Release\ommp.Resources.resources
+D:\OMMP\dll\ommp\dao\obj\Release\dao.vbproj.GenerateResource.Cache
+D:\OMMP\dll\ommp\dao\obj\Release\ommp.dao.dll
+D:\OMMP\dll\ommp\dao\obj\Release\ommp.dao.xml
+D:\OMMP\dll\ommp\dao\obj\Release\ommp.dao.pdb
+E:\p\foxtable\eval\ommp.dao.dll
+E:\p\foxtable\eval\ommp.dao.pdb
+E:\p\foxtable\eval\ommp.dao.xml
+D:\OMMP\dao\obj\Release\ResolveAssemblyReference.cache
+D:\OMMP\dao\obj\Release\ommp.Resources.resources
+D:\OMMP\dao\obj\Release\dao.vbproj.GenerateResource.Cache
+D:\OMMP\dao\obj\Release\ommp.dao.dll
+D:\OMMP\dao\obj\Release\ommp.dao.xml
+D:\OMMP\dao\obj\Release\ommp.dao.pdb

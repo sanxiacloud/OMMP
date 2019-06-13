@@ -34,7 +34,7 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New Hypervisor()
 
-            item.Identify = dr(ApplicationSolution.C_ID)
+            item._Identify = dr(ApplicationSolution.C_ID)
             item.name = dr(FunctionalCI.C_NAME)
             item.description = dr(FunctionalCI.C_DESCRIPTION)
             item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
@@ -88,7 +88,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateVirtualDevice(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj._Identify)
                 If dr IsNot Nothing Then
                     If obj.farm_identify >= 0 Then
                         dr(Hypervisor.C_FARM_IDENTIFY) = obj.farm_identify

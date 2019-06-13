@@ -1,4 +1,5 @@
-﻿Imports ommp.dto
+﻿Imports System.Reflection
+Imports ommp.dto
 Imports Foxtable
 
 Namespace dao
@@ -49,6 +50,28 @@ Namespace dao
             Return result
         End Function
 
+        Protected Function FindRows(ByVal table As String, ByVal filter As String, ByVal sort As String) As IList(Of Object)
+            Dim lists As IList(Of Object) = New Generic.List(Of Object)()
+
+            Try
+                Dim drs As List(Of DataRow)
+                Dim item As Object
+                If sort IsNot Nothing Then
+                    drs = DataTables(table).Select(filter, sort)
+                Else
+                    drs = DataTables(table).Select(filter)
+                End If
+                For Each dr As DataRow In drs
+                    item = SetProperties(dr)
+                    lists.Add(item)
+                Next
+            Catch ex As Exception
+                Output.Show(table & "->FindRows:" & ex.Message)
+            End Try
+
+            Return lists
+        End Function
+
 
         Protected Function FindRow(ByVal table As String, ByVal id As Integer) As Object
             Dim item As New Object()
@@ -71,23 +94,54 @@ Namespace dao
             Return item
         End Function
 
-        Protected Function FindRows(ByVal table As String, ByVal filter As String, ByVal sort As String) As IList(Of Object)
-            Dim lists As IList(Of Object) = New Generic.List(Of Object)()
+        Public Function FindObject2(Of T As {New})(ByVal id As Integer) As T
+            Dim item As New T()
+
+            Try
+                Dim col As String = C__IDENTIFY
+                If DataTables(item.GetType().Name).DataCols.Contains(C_ID) Then
+                    col = C_ID
+                End If
+
+                Dim dr As DataRow = DataTables(item.GetType().Name).Find(col & " = " & id)
+
+                If dr IsNot Nothing Then
+                    For Each info As PropertyInfo In item.GetType().GetProperties()
+                        info.SetValue(item, dr(info.Name), Nothing)
+                    Next
+                End If
+
+            Catch ex As Exception
+                Output.Show(item.GetType().Name & "(DAO) : " & ex.StackTrace)
+            End Try
+
+            Return item
+        End Function
+
+        Public Function FindList2(Of T As {New})(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of T)
+            Dim lists As IList(Of T) = New Generic.List(Of T)()
+            Dim item As New T()
 
             Try
                 Dim drs As List(Of DataRow)
-                Dim item As Object
+
                 If sort IsNot Nothing Then
-                    drs = DataTables(table).Select(filter, sort)
+                    drs = DataTables(item.GetType().Name).Select(filter, sort)
                 Else
-                    drs = DataTables(table).Select(filter)
+                    drs = DataTables(item.GetType().Name).Select(filter)
                 End If
+
                 For Each dr As DataRow In drs
-                    item = SetProperties(dr)
+                    For Each info As PropertyInfo In item.GetType().GetProperties()
+                        info.SetValue(item, dr(info.Name), Nothing)
+                    Next
+
                     lists.Add(item)
                 Next
             Catch ex As Exception
-                Output.Show(table & "->FindRows:" & ex.Message)
+                Output.Show(item.GetType().Name & "(DAO) : ")
+                Output.Show(ex.Message)
+                Output.Show(ex.StackTrace)
             End Try
 
             Return lists

@@ -37,7 +37,7 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New Server()
             With item
-                .Identify = dr(C__IDENTIFY)
+                ._Identify = dr(C__IDENTIFY)
                 .name = dr(FunctionalCI.C_NAME)
                 .description = dr(FunctionalCI.C_DESCRIPTION)
                 .code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
@@ -73,10 +73,35 @@ Namespace dao
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
 
+            Return DeleteDataCenterDevice(id) And DeleteObject(TABLE_NAME, id)
+
         End Function
 
         Public Function Insert(ByVal o As Object) As Boolean Implements IEntityDAO.Insert
+            Dim obj As Server = CType(o, Server)
+            Dim result As Boolean = False
 
+            Try
+                Dim identify As Integer = InsertDataCenterDevice(o, TABLE_NAME)
+
+                Dim dr As DataRow = DataTables(TABLE_NAME).AddNew()
+
+                dr(C_ID) = identify
+                dr(C__ISDELETED) = False
+                dr(Server.C_OSFAMILY_ID) = obj.osfamily_id
+                dr(Server.C_OSLICENCE_ID) = obj.oslicence_id
+                dr(Server.C_OSVERSION_ID) = obj.osversion_id
+                dr(Server.C_CPU) = obj.cpu
+                dr(Server.C_RAM) = obj.ram
+
+                dr.Save()
+
+                result = True
+            Catch ex As Exception
+                Output.Show(TABLE_NAME & "->Insert:" & ex.Message)
+            End Try
+
+            Return result
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update

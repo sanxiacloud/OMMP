@@ -36,7 +36,7 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New Farm()
 
-            item.Identify = dr(C_ID)
+            item._Identify = dr(C_ID)
             item.name = dr(FunctionalCI.C_NAME)
             item.description = dr(FunctionalCI.C_DESCRIPTION)
             item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
@@ -96,7 +96,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateVirtualHost(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj._Identify)
                 If dr IsNot Nothing Then
                     If obj.code_deployment_area >= 0 Then
                         dr(Farm.C_CODE_DEPLOYMENT_AREA) = obj.code_deployment_area

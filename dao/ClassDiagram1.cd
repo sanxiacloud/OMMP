@@ -3,7 +3,7 @@
   <Class Name="ommp.dao.BaseDAO" Collapsed="true">
     <Position X="16" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAgAQAAEAAAAIAEAAAAAAAAAIEBAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAgAQAAEAAAAIAEAAAAAAAAAIkBAEAAAAAAAA=</HashCode>
       <FileName>BaseDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -17,14 +17,14 @@
   <Class Name="ommp.dao.VirtualDeviceDAO" Collapsed="true">
     <Position X="18.25" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAABEAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>EntityDAO\VirtualDeviceDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ommp.dao.VirtualHostDAO" Collapsed="true">
     <Position X="18.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAiAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACAAiAAAA=</HashCode>
       <FileName>EntityDAO\VirtualHostDAO.vb</FileName>
     </TypeIdentifier>
   </Class>

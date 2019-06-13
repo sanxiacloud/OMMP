@@ -27,7 +27,7 @@ Namespace dao
             Dim item As New WebApplication()
 
             With item
-                .Identify = dr(C_ID)
+                ._Identify = dr(C_ID)
                 .name = dr(FunctionalCI.C_NAME)
                 .description = dr(FunctionalCI.C_DESCRIPTION)
                 .code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
@@ -96,7 +96,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateFunctionalCI(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj._Identify)
 
                 If dr IsNot Nothing Then
                     If obj.webserver_identify >= 0 Then

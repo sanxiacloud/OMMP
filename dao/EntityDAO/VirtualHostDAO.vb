@@ -16,7 +16,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateVirtualDevice(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj._Identify)
 
                 If dr IsNot Nothing Then
                     ' 此表只包含 id 字段，不做更新
@@ -49,8 +49,8 @@ Namespace dao
                 Dim dr As DataRow = DataTables(_TABLE_NAME).AddNew()
 
                 dr(C_ID) = identify
-                If obj.IsDeleted = True Or obj.IsDeleted = False Then
-                    dr(C__ISDELETED) = obj.IsDeleted
+                If obj._IsDeleted = True Or obj._IsDeleted = False Then
+                    dr(C__ISDELETED) = obj._IsDeleted
                 Else
                     dr(C__ISDELETED) = False
                 End If

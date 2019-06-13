@@ -22,7 +22,7 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New LnkFunctionalCIToOrganization()
 
-            item.Identify = dr(C__IDENTIFY)
+            item._Identify = dr(C__IDENTIFY)
             item.functionalci_identify = dr(LnkFunctionalCIToOrganization.C_FUNCTIONALCI_IDENTIFY)
             item.organization_identify = dr(LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY)
             item.description = dr(LnkFunctionalCIToOrganization.C_DESCRIPTION)

@@ -20,12 +20,12 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New Code()
 
-            item.Identify = dr(Code.C__IDENTIFY)
+            item._Identify = dr(Code.C__IDENTIFY)
             item.t = dr(Code.C_T)
             item.v = dr(Code.C_V)
             item.label = dr(Code.C_LABEL)
             item.des = dr(Code.C_DES)
-            item.IsDeleted = dr(Code.C__ISDELETED)
+            item._IsDeleted = dr(Code.C__ISDELETED)
             item._SortKey = dr(Code.C__SORTKEY)
 
             Return item
@@ -56,8 +56,8 @@ Namespace dao
                 dr(Code.C_LABEL) = obj.label
                 dr(Code.C_DES) = obj.des
                 dr(Code.C__SORTKEY) = obj._SortKey
-                If obj.IsDeleted = True Or obj.IsDeleted = False Then
-                    dr(Code.C__ISDELETED) = obj.IsDeleted
+                If obj._IsDeleted = True Or obj._IsDeleted = False Then
+                    dr(Code.C__ISDELETED) = obj._IsDeleted
                 Else
                     dr(Code.C__ISDELETED) = False
                 End If
@@ -76,7 +76,7 @@ Namespace dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(Code.C__IDENTIFY & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(Code.C__IDENTIFY & " = " & obj._Identify)
                 If dr IsNot Nothing Then
                     If obj.t >= 0 Then
                         dr(Code.C_T) = obj.t
@@ -90,8 +90,8 @@ Namespace dao
                     If obj.des >= 0 Then
                         dr(Code.C_DES) = obj.des
                     End If
-                    If obj.IsDeleted = False Or obj.IsDeleted = True Then
-                        dr(Code.C__ISDELETED) = obj.IsDeleted
+                    If obj._IsDeleted = False Or obj._IsDeleted = True Then
+                        dr(Code.C__ISDELETED) = obj._IsDeleted
                     End If
                     If obj._SortKey >= 0 Then
                         dr(Code.C__SORTKEY) = obj._SortKey

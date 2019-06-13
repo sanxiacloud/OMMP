@@ -42,7 +42,7 @@ Namespace dao
             Try
                 Dim result1 As Boolean = UpdateConnectableCI(o)
 
-                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj._Identify)
                 Dim result2 As Boolean = False
                 If dr IsNot Nothing Then
                     If obj.enclosure_identity >= 0 Then

@@ -21,7 +21,7 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New LnkApplicationSolutionToFunctionalCI()
 
-            item.Identify = dr(C_ID)
+            item._Identify = dr(C_ID)
             item.functionalci_identify = dr(LnkApplicationSolutionToFunctionalCI.C_FUNCTIONALCI_IDENTIFY)
             item.applicationsolution_identify = dr(LnkApplicationSolutionToFunctionalCI.C_APPLICATIONSOLUTION_IDENTIFY)
 

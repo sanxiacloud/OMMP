@@ -68,6 +68,8 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityDAO\ConnectableCIDAO.vb" />
+    <Compile Include="EntityDAO\DataCenterDeviceDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\ApplicationSolutionDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\BackupsDAO.vb" />
     <Compile Include="BaseDAO.vb" />
@@ -93,6 +95,7 @@
     <Compile Include="EntityDAO\FinalClasses\IPAddressv4DAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\IPBlockv4DAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\IPSubnetv4DAO.vb" />
+    <Compile Include="EntityDAO\PhysicalDeviceDAO.vb" />
     <Compile Include="EntityDAO\VirtualDeviceDAO.vb" />
     <Compile Include="EntityDAO\VirtualHostDAO.vb" />
     <Compile Include="LinkDAO\ILinkDAO.vb" />

@@ -20,7 +20,7 @@ Namespace dao
         Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
             Dim item As New DatabasesSchema()
 
-            item.Identify = dr(C_ID)
+            item._Identify = dr(C_ID)
             item.name = dr(FunctionalCI.C_NAME)
             item.description = dr(FunctionalCI.C_DESCRIPTION)
             item.code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
@@ -79,7 +79,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateFunctionalCI(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(TABLE_NAME).Find(C_ID & " = " & obj._Identify)
 
                 If dr IsNot Nothing Then
                     If obj.dbserver_identify >= 0 Then
