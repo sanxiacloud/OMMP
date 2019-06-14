@@ -6,8 +6,8 @@
         Private _code_cigroup_status As Integer
         Private _code_cigroup_type As Integer
         Private _description As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _obsolescence_date As Date
         Private _organization_identify As Integer
@@ -15,7 +15,7 @@
 
         Public Const TABLE_NAME As String = "CIGroup"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C_CODE_CIGROUP_STATUS As String = "code_cigroup_status"
         Public Const C_CODE_CIGROUP_TYPE As String = "code_cigroup_type"
@@ -52,12 +52,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -97,12 +97,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -113,8 +113,8 @@
 
         Private _access_port As String
         Private _description As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _local_ip1_identify As Integer
         Private _local_ip2_identify As Integer
         Private _remote_ip1_identify As Integer
@@ -122,7 +122,7 @@
 
         Public Const TABLE_NAME As String = "ConfigAccess"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C_ACCESS_PORT As String = "access_port"
         Public Const C_DESCRIPTION As String = "description"
@@ -149,12 +149,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -194,12 +194,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -209,17 +209,17 @@
     Public Class ConfigPort
 
         Private _description As String
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _ip1_identify As Integer
         Private _ip2_identify As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _port1 As Integer
         Private _port2 As Integer
         Private _type As Integer
 
         Public Const TABLE_NAME As String = "ConfigPort"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C_DESCRIPTION As String = "description"
         Public Const C_IP1_IDENTIFY As String = "ip1_identify"
@@ -255,12 +255,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -291,12 +291,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -309,13 +309,13 @@
         Private _backuper_identify As Integer
         Private _code_backup_type As String
         Private _description As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
 
         Public Const TABLE_NAME As String = "Backups"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C_BACKUP_CONTENT As String = "backup_content"
         Public Const C_BACKUPER_IDENTIFY As String = "backuper_identify"
@@ -359,12 +359,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -377,12 +377,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -393,15 +393,15 @@
 
         Private __SortKey As Decimal
         Private _des As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _label As String
         Private _t As String
         Private _v As Integer
 
         Public Const TABLE_NAME As String = "Code"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C__SORTKEY As String = "_SortKey"
         Public Const C_DES As String = "des"
@@ -427,12 +427,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -463,12 +463,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -480,8 +480,8 @@
         Private _description As String
         Private _duty As String
         Private _email As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _location_identify As Integer
         Private _mobile_phone As String
         Private _name As String
@@ -493,7 +493,7 @@
 
         Public Const TABLE_NAME As String = "Contact"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C_DESCRIPTION As String = "description"
         Public Const C_DUTY As String = "duty"
@@ -534,12 +534,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -615,12 +615,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -633,8 +633,8 @@
         Private _code_document_tyype As Integer
         Private _description As String
         Private _finalclass As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _obsolescence_date As Date
         Private _version As String
@@ -685,12 +685,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -721,12 +721,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -737,8 +737,8 @@
 
         Private _comment As String
         Private _finalclass As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _organization_identify As Integer
 
@@ -767,12 +767,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -794,12 +794,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -809,7 +809,7 @@
     Public Class Domain : Inherits DNSObject
         Private _code_renewal As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _parent_identify As Integer
         Private _registrar_identify As Integer
         Private _release_date As Date
@@ -846,12 +846,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -917,8 +917,8 @@
         Private _city As String
         Private _country As String
         Private _description As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _organization_identify As Integer
         Private _status As Boolean
@@ -959,12 +959,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -995,12 +995,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -1010,8 +1010,8 @@
     Public Class LogicalVolume
 
         Private _description As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _lun_id As String
         Private _name As String
         Private _obsolescence_date As Date
@@ -1038,12 +1038,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -1101,12 +1101,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -1115,21 +1115,21 @@
 
     Public Class Organization
 
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _parent_identify As Integer
         Private _name As String
-        Private _code As String
+        Private _child_code As String
         Private _parent_code As String
         Private _status As Boolean
         Private _code_org_type As Integer
         Private _short_name As String
         Private _description As String
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private __sort As Decimal
 
         Public Const TABLE_NAME As String = "Organization"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__SORT As String = "_sort"
         Public Const C_CODE As String = "code"
         Public Const C__CODE As String = "_code"
@@ -1141,7 +1141,7 @@
         Public Const C_CODE_ORG_TYPE As String = "code_org_type"
         Public Const C__ISDELETED As String = "_IsDeleted"
 
-        Public Property parent_code() As String
+        Public Property _code() As String
             Get
                 Return _parent_code
             End Get
@@ -1161,10 +1161,10 @@
 
         Public Property code() As String
             Get
-                Return _code
+                Return _child_code
             End Get
             Set(ByVal _code_value As String)
-                _code = _code_value
+                _child_code = _code_value
             End Set
         End Property
 
@@ -1186,12 +1186,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -1231,12 +1231,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -1248,8 +1248,8 @@
         Private __use As String
         Private _account As String
         Private _end_date As Date
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _passwd As String
         Private _start_date As Date
 
@@ -1288,12 +1288,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -1315,12 +1315,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -1332,8 +1332,8 @@
         Private _code_security_strategy_type As Integer
         Private _config_port_identify As Integer
         Private _description As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _physical_device_identify As Integer
 
@@ -1372,12 +1372,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -1399,12 +1399,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -1414,8 +1414,8 @@
     Public Class Software
 
         Private _code_software_type As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _vendor As String
         Private _version As String
@@ -1436,12 +1436,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -1472,12 +1472,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -1487,8 +1487,8 @@
     Public Class VLAN
 
         Private _description As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _organization_identify As Integer
         Private _vlan_tag As String
 
@@ -1507,12 +1507,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -1534,12 +1534,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -1554,12 +1554,12 @@
 
         Private _code_origin As Integer
         Private _date As Date
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _user_name As String
 
         Public Const TABLE_NAME As String = "Change"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C_CODE_ORIGIN As String = "code_origin"
         Public Const C_DATE As String = "date"
         Public Const C_USER_NAME As String = "user_name"
@@ -1591,12 +1591,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -1606,14 +1606,14 @@
     Public Class ChangeOp
 
         Private _change_identify As Integer
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _objclass As String
         Private _objkey As Integer
         Private _optype As String
 
         Public Const TABLE_NAME As String = "ChangeOp"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C_CHANGE_IDENTIFY As String = "change_identify"
         Public Const C_OBJCLASS As String = "objclass"
         Public Const C_OBJKEY As String = "objkey"
@@ -1655,12 +1655,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -2005,8 +2005,8 @@
         Private _cost_currency As String
         Private _cost_unit As String
         Private _end_date As Date
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _seller_agent_identify As Integer
         Private _seller_identify As Integer
@@ -2016,7 +2016,7 @@
 
         Public Const TABLE_NAME As String = "Contract"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C_BILLING_FREQUENCY As String = "billing_frequency"
         Public Const C_BUYER_AGENT_IDENTIFY As String = "buyer_agent_identify"
@@ -2105,12 +2105,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2168,12 +2168,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -2186,8 +2186,8 @@
         Private _contract_identify As Integer
         Private _description As String
         Private _end_of_warranty As Date
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _manufacturer As String
         Private _model As String
         Private _name As String
@@ -2244,12 +2244,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2307,12 +2307,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -2321,7 +2321,7 @@
 
     Public Class CustomerContract : Inherits Contract
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "CustomerContract"
 
@@ -2335,12 +2335,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2350,7 +2350,7 @@
     Public Class ProviderContract : Inherits Contract
         Private _coverage As String
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _sla As String
 
         Public Shadows Const TABLE_NAME As String = "ProviderContract"
@@ -2376,12 +2376,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2403,15 +2403,15 @@
         Private _code_risk_rating As Integer
         Private _description As String
         Private _finalclass As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _move2production As Date
         Private _name As String
         Private _obsolescence_date As Date
 
         Public Const TABLE_NAME As String = "FunctionalCI"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C_NAME As String = "name"
         Public Const C_CODE_RISK_RATING As String = "code_risk_rating"
         Public Const C_DESCRIPTION As String = "description"
@@ -2447,12 +2447,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2483,17 +2483,23 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
     End Class
 
+
+    Public Class ApplicationSolutionQT : Inherits ApplicationSolution
+        '简单继承，用于查询方法
+        Public Shadows Const TABLE_NAME As String = "ApplicationSolutionQT"
+
+    End Class
 
     Public Class ApplicationSolution : Inherits FunctionalCI
         Private _attention As String
@@ -2501,7 +2507,7 @@
         Private _code_sla As Integer
         Private _fault_effects As String
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _redundancy As String
 
         Public Shadows Const TABLE_NAME As String = "ApplicationSolution"
@@ -2559,12 +2565,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2587,7 +2593,7 @@
         Private _farm_identify As Integer
         Private _id As Integer
         Private _individual As String
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _pdb_name As String
 
         Public Shadows Const TABLE_NAME As String = "DatabasesSchema"
@@ -2653,12 +2659,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2676,7 +2682,7 @@
 
     Public Class MiddlewareInstance : Inherits FunctionalCI
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _middleware_identify As Integer
 
         Public Shadows Const TABLE_NAME As String = "MiddlewareInstance"
@@ -2692,12 +2698,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2715,7 +2721,7 @@
 
     Public Class WebApplication : Inherits FunctionalCI
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _url As String
         Private _webserver_identify As Integer
 
@@ -2737,12 +2743,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2774,7 +2780,7 @@
         Private _code_physicaldevice_status As Integer
         Private _end_of_warranty As Date
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _location_identify As Integer
         Private _purchase_date As Date
         Private _serialnumber As String
@@ -2844,12 +2850,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2886,7 +2892,7 @@
     Public Class VirtualDevice : Inherits FunctionalCI
         Private _code_virtualdevice_status As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "VirtualDevice"
 
@@ -2911,12 +2917,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -2926,7 +2932,7 @@
     Public Class SoftwareInstance : Inherits FunctionalCI
         Private _functionalci_identify As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _path As String
         Private _software_identify As Integer
         Private _softwarelicence_identify As Integer
@@ -2958,12 +2964,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3013,7 +3019,7 @@
         Private _code_wanlink_type As Integer
         Private _decommissioning_date As Date
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _location_identify1 As Integer
         Private _location_identify2 As Integer
         Private _networkinterface_identify1 As Integer
@@ -3093,12 +3099,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3180,7 +3186,7 @@
     ' PhysicalDevice*
     Public Class Rack : Inherits PhysicalDevice
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _nb_u As Integer
 
         Public Shadows Const TABLE_NAME As String = "Rack"
@@ -3196,12 +3202,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3218,7 +3224,7 @@
 
     Public Class Enclosure : Inherits PhysicalDevice
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _nb_u As String
         Private _rack_identify As Integer
 
@@ -3236,12 +3242,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3268,7 +3274,7 @@
 
     Public Class Peripheral : Inherits PhysicalDevice
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "Peripheral"
 
@@ -3281,12 +3287,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3295,7 +3301,7 @@
 
     Public Class ConnectableCI : Inherits PhysicalDevice
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "ConnectableCI"
 
@@ -3311,12 +3317,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3326,7 +3332,7 @@
     Public Class DataCenterDevice : Inherits ConnectableCI
         Private _enclosure_identity As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _managementip As Integer
         Private _nb_u As Integer
         Private _rack_identify As Integer
@@ -3358,12 +3364,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3408,7 +3414,7 @@
 
     Public Class SANSwitch : Inherits DataCenterDevice
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "SANSwitch"
 
@@ -3421,12 +3427,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3435,7 +3441,7 @@
 
     Public Class NAS : Inherits DataCenterDevice
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "NAS"
 
@@ -3448,12 +3454,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3465,7 +3471,7 @@
         Private _disk_path As String
         Private _disk_size As Decimal
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "StorageSystem"
 
@@ -3509,12 +3515,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3524,7 +3530,7 @@
     Public Class Server : Inherits DataCenterDevice
         Private _cpu As String
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _osfamily_id As Integer
         Private _oslicence_id As Integer
         Private _osversion_id As Integer
@@ -3556,12 +3562,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3608,7 +3614,7 @@
         Private _code_isoversion As Integer
         Private _code_networkdevicetype As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _ram As String
 
         Public Shadows Const TABLE_NAME As String = "NetworkDevice"
@@ -3644,12 +3650,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3668,7 +3674,7 @@
     ' VirtualDevice * 
     Public Class VirtualHost : Inherits VirtualDevice
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "VirtualHost"
 
@@ -3681,12 +3687,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3703,7 +3709,7 @@
         Private _code_backup_plan As Integer
         Private _cpu As String
         Private _ram As String
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "VirtualMachine"
 
@@ -3743,12 +3749,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3815,7 +3821,7 @@
         Private _code_farm_status As Integer
         Private _code_farm_type As Integer
         Private _redundancy As Boolean
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "Farm"
 
@@ -3860,12 +3866,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3884,7 +3890,7 @@
     Public Class Hypervisor : Inherits VirtualHost
         Private _farm_identify As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _server_identify As Integer
 
         Public Shadows Const TABLE_NAME As String = "Hypervisor"
@@ -3910,12 +3916,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3935,7 +3941,7 @@
     ' SoftwareInstance * 
     Public Class DBServer : Inherits SoftwareInstance
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "DBServer"
 
@@ -3948,12 +3954,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3962,7 +3968,7 @@
 
     Public Class Middleware : Inherits SoftwareInstance
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "Middleware"
 
@@ -3975,12 +3981,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -3989,7 +3995,7 @@
 
     Public Class WebServer : Inherits SoftwareInstance
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "WebServer"
 
@@ -4002,12 +4008,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4021,8 +4027,8 @@
         Private _code_ipobject_status As Integer
         Private _comment As String
         Private _finalclass As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _organization_identify As Integer
         Private _release_date As Date
         Private _requestor_identify As Integer
@@ -4073,12 +4079,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4109,12 +4115,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -4124,7 +4130,7 @@
     Public Class IPBlock : Inherits IPObject
         Private _children_occupancy As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _occupancy As Integer
         Private _parent_identify As Integer
@@ -4161,12 +4167,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4230,7 +4236,7 @@
     Public Class IPBlockv4 : Inherits IPBlock
         Private _firstip As String
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _lastip As String
         Private _parent_identify As Integer
         Private _parent_identify_left As Integer
@@ -4262,12 +4268,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4314,7 +4320,7 @@
         Private _alarm_water_mark As String
         Private _id As Integer
         Private _ip_occupancy As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _range_occupancy As Integer
         Private _type As String
@@ -4358,12 +4364,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4416,7 +4422,7 @@
         Private _ip_end As String
         Private _ip_start As String
         Private _ipv4block_identify As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _netmask As String
         Private _network_no As String
         Private _region As String
@@ -4517,12 +4523,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4559,7 +4565,7 @@
     Public Class IPAddress : Inherits IPObject
         Private _code_ipaddress_usage As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _short_name As String
 
         Public Shadows Const TABLE_NAME As String = "IPAddress"
@@ -4585,12 +4591,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4611,13 +4617,13 @@
         Private _description As String
         Private _id As Integer
         Private _ip As String
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _vlan_identify As Integer
 
         Public Shadows Const TABLE_NAME As String = "IPAddressv4"
-         
+
         Public Const C_CODE_IPV4ADDRESS_USAGE As String = "code_ipv4address_usage"
-        Public Const C_DESCRIPTION As String = "description" 
+        Public Const C_DESCRIPTION As String = "description"
         Public Const C_IP As String = "ip"
         Public Const C_VLAN_IDENTIFY As String = "vlan_identify"
 
@@ -4657,12 +4663,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4682,8 +4688,8 @@
     Public Class Typology
 
         Private _finalclass As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
 
         Public Const TABLE_NAME As String = "Typology"
@@ -4700,12 +4706,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4718,12 +4724,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -4732,7 +4738,7 @@
 
     Public Class OSFamily : Inherits Typology
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "OSFamily"
 
@@ -4745,12 +4751,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4759,7 +4765,7 @@
 
     Public Class OSVersion : Inherits Typology
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _osfamily_id As Integer
 
         Public Shadows Const TABLE_NAME As String = "OSVersion"
@@ -4775,12 +4781,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4800,14 +4806,14 @@
     Public Class NetworkInterface
 
         Private _finalclass As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _name As String
         Private _obsolescence_date As Date
 
         Public Const TABLE_NAME As String = "NetworkInterface"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C_FINALCLASS As String = "finalclass"
         Public Const C_NAME As String = "name"
@@ -4822,12 +4828,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4849,12 +4855,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -4864,7 +4870,7 @@
     Public Class FiberChannelInterface : Inherits NetworkInterface
         Private _datacenterdevice_identify As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _speed As Decimal
         Private _topology As String
         Private _wwn As String
@@ -4895,12 +4901,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4937,7 +4943,7 @@
     Public Class IPInterface : Inherits NetworkInterface
         Private _comment As String
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _macaddress As String
         Private _speed As Decimal
 
@@ -4965,12 +4971,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -4997,7 +5003,7 @@
 
     Public Class LogicalInterface : Inherits IPInterface
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _virtualmachine_identify As Integer
 
         Public Overloads Property id() As Integer
@@ -5009,12 +5015,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5033,7 +5039,7 @@
     Public Class PhysicalInterface : Inherits IPInterface
         Private _connectableci_identify As Integer
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Shadows Const TABLE_NAME As String = "PhysicalInterface"
 
@@ -5057,12 +5063,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5075,8 +5081,8 @@
         Private _description As String
         Private _end_date As Date
         Private _finalclass As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _licence_key As String
         Private _name As String
         Private _obsolescence_date As Date
@@ -5125,12 +5131,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5197,12 +5203,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5211,7 +5217,7 @@
 
     Public Class OSLicence : Inherits Licence
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _osversion_identify As Integer
 
         Public Shadows Const TABLE_NAME As String = "OSLicence"
@@ -5228,12 +5234,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5250,7 +5256,7 @@
 
     Public Class SoftwareLicence : Inherits Licence
         Private _id As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _software_identify As Integer
 
         Public Shadows Const TABLE_NAME As String = "SoftwareLicence"
@@ -5266,12 +5272,12 @@
             End Set
         End Property
 
-        Public Overloads Property IsDeleted() As Boolean
+        Public Overloads Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5293,8 +5299,8 @@
 
         Private _applicationsolution_identify As Integer
         Private _functionalci_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkApplicationSolutionToFunctionalCI"
 
@@ -5319,21 +5325,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5344,8 +5350,8 @@
 
         Private _backups_identify As Integer
         Private _functionalci_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkBackupsToFunctionalCI"
 
@@ -5370,21 +5376,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5395,8 +5401,8 @@
 
         Private _ci_identify As Integer
         Private _cigroup_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _reason As String
 
         Public Const TABLE_NAME As String = "LnkCIGroupToCI"
@@ -5423,12 +5429,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5441,12 +5447,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5458,8 +5464,8 @@
         Private _code_connectable_type As Integer
         Private _connectableci_identify As Integer
         Private _device_port As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _network_port As Integer
         Private _networkdevice_identify As Integer
 
@@ -5498,12 +5504,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5525,12 +5531,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5541,8 +5547,8 @@
 
         Private _contact_identify As Integer
         Private _contract_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkContactToContract"
 
@@ -5567,21 +5573,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5592,8 +5598,8 @@
 
         Private _contact_identify As Integer
         Private _functionalci_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkContactToFunctionalCI"
 
@@ -5618,21 +5624,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5642,9 +5648,9 @@
     Public Class LnkContactToIPObject
 
         Private _contact_identify As Integer
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _ipobject_identify As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkContactToIPObject"
 
@@ -5669,21 +5675,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5694,8 +5700,8 @@
 
         Private _contract_identify As Integer
         Private _document_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkContractToDocument"
 
@@ -5720,21 +5726,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5744,8 +5750,8 @@
     Public Class LnkCustomerContractToProviderContract
 
         Private _customercontract_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _providercontract_identify As Integer
 
         Public Const TABLE_NAME As String = "LnkCustomerContractToProviderContract"
@@ -5762,12 +5768,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5780,12 +5786,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5796,8 +5802,8 @@
 
         Private _datacenterdevice_id As Integer
         Private _datacenterdevice_port As String
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _san_identify As Integer
         Private _san_port As String
 
@@ -5826,12 +5832,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -5853,12 +5859,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5869,8 +5875,8 @@
 
         Private _document_identify As Integer
         Private _functionalci_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkDocumentToFunctionalCI"
 
@@ -5895,21 +5901,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5920,9 +5926,9 @@
     Public Class LnkDocumentToIPObject
 
         Private _document_identify As Integer
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _ipobject_identify As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkDocumentToIPObject"
 
@@ -5947,21 +5953,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -5971,8 +5977,8 @@
     Public Class LnkDocumentToLicence
 
         Private _document_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _licence_identify As Integer
 
         Public Const TABLE_NAME As String = "LnkDocumentToLicence"
@@ -5989,12 +5995,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6007,12 +6013,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6022,8 +6028,8 @@
     Public Class LnkDocumentToSoftware
 
         Private _document_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _software_identify As Integer
 
         Public Const TABLE_NAME As String = "LnkDocumentToSoftware"
@@ -6040,12 +6046,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6058,12 +6064,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6074,13 +6080,13 @@
 
         Private _description As String
         Private _functionalci_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _organization_identify As Integer
 
         Public Const TABLE_NAME As String = "LnkFunctionalCIToOrganization"
 
-        Public Const C__IDENTIFY As String = "_Identify"
+        Public Const C__IDENTIFY As String = "__Identify"
         Public Const C__ISDELETED As String = "_IsDeleted"
         Public Const C_DESCRIPTION As String = "description"
         Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
@@ -6104,12 +6110,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6122,12 +6128,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6137,8 +6143,8 @@
     Public Class LnkFunctionalCIToProviderContract
 
         Private _functionalci_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _providercontract_identify As Integer
 
         Public Const TABLE_NAME As String = "LnkFunctionalCIToProviderContract"
@@ -6155,12 +6161,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6173,12 +6179,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6187,10 +6193,10 @@
 
     Public Class LnkIPAddressToIPAddress
 
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _ip1_identify As Integer
         Private _ip2_identify As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkIPAddressToIPAddress"
 
@@ -6215,21 +6221,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6238,10 +6244,10 @@
 
     Public Class LnkIPInterfaceToIPAddress
 
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _ipaddress_identify As Integer
         Private _ipinterface_identify As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
 
         Public Const TABLE_NAME As String = "LnkIPInterfaceToIPAddress"
 
@@ -6266,21 +6272,21 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6291,9 +6297,9 @@
 
     Public Class LnkIPSubnetToLocation
 
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _ipsubnet_identify As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _location_identify As Integer
 
         Public Const TABLE_NAME As String = "LnkIPSubnetToLocation"
@@ -6310,12 +6316,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6328,12 +6334,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6342,9 +6348,9 @@
 
     Public Class LnkIPSubnetToVLAN
 
-        Private _Identify As Integer
+        Private __Identify As Integer
         Private _ipsubnet_identify As Integer
-        Private _IsDeleted As Boolean
+        Private __IsDeleted As Boolean
         Private _vlan_identify As Integer
 
         Public Const TABLE_NAME As String = "LnkIPSubnetToVLAN"
@@ -6361,12 +6367,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6379,12 +6385,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6394,8 +6400,8 @@
     Public Class LnkPasswdToFunctionalCI
 
         Private _functionalci_identify As Integer
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _passwd_identify As Integer
 
         Public Const TABLE_NAME As String = "LnkPasswdToFunctionalCI"
@@ -6412,12 +6418,12 @@
             End Set
         End Property
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6430,12 +6436,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6444,8 +6450,8 @@
 
     Public Class LnkPhysicalInterfaceToVLAN
 
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _physicalinterface_identify As Integer
         Private _vlan_identify As Integer
 
@@ -6454,12 +6460,12 @@
         Public Const C_PHYSICALINTERFACE_IDENTIFY As String = "physicalinterface_identify"
         Public Const C_VLAN_IDENTIFY As String = "vlan_identify"
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6481,12 +6487,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6495,8 +6501,8 @@
 
     Public Class LnkServerToVolume
 
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _server_identify As Integer
         Private _size_used As Integer
         Private _volume_identify As Integer
@@ -6507,12 +6513,12 @@
         Public Const C_SIZE_USED As String = "size_used"
         Public Const C_VOLUME_IDENTIFY As String = "volume_identify"
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6543,12 +6549,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6557,8 +6563,8 @@
 
     Public Class LnkSubnetToVLAN
 
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _subnet_identify As Integer
         Private _vlan_identify As Integer
 
@@ -6567,12 +6573,12 @@
         Public Const C_SUBNET_IDENTIFY As String = "subnet_identify"
         Public Const C_VLAN_IDENTIFY As String = "vlan_identify"
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6594,12 +6600,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
@@ -6608,8 +6614,8 @@
 
     Public Class LnkVirtualDeviceToVolume
 
-        Private _Identify As Integer
-        Private _IsDeleted As Boolean
+        Private __Identify As Integer
+        Private __IsDeleted As Boolean
         Private _size_used As Integer
         Private _virtualdevice_identify As Integer
         Private _volume_identify As Integer
@@ -6620,12 +6626,12 @@
         Public Const C_VIRTUALDEVICE_IDENTIFY As String = "virtualdevice_identify"
         Public Const C_VOLUME_IDENTIFY As String = "volume_identify"
 
-        Public Property IsDeleted() As Boolean
+        Public Property _IsDeleted() As Boolean
             Get
                 Return _IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
-                _IsDeleted = _IsDeleted_value
+                __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
@@ -6656,12 +6662,12 @@
             End Set
         End Property
 
-        Public Property Identify() As Integer
+        Public Property _Identify() As Integer
             Get
-                Return _Identify
+                Return __Identify
             End Get
             Set(ByVal __identify_value As Integer)
-                _Identify = __identify_value
+                __Identify = __identify_value
             End Set
         End Property
 
