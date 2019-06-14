@@ -111,14 +111,17 @@ Namespace dao
                 If dr IsNot Nothing Then
 
                     For Each info As System.Reflection.PropertyInfo In item.GetType().GetProperties()
-                        ' finalclass 列 和 _IsDeleted 列不可修改
-                        If Not info.Name.Equals(C_FINALCLASS) Or info.Name.Equals(C__ISDELETED) Then
-                            If (info.PropertyType Is GetType(String)) And info.GetValue(item, Nothing) IsNot Nothing Then
-                                dr(info.Name) = info.GetValue(item, Nothing)
-                            ElseIf (info.PropertyType Is GetType(Int32)) And info.GetValue(item, Nothing) > 0 Then
-                                dr(info.Name) = info.GetValue(item, Nothing)
-                            ElseIf (info.PropertyType Is GetType(DateTime)) And info.GetValue(item, Nothing) <> Nothing Then
-                                dr(info.Name) = info.GetValue(item, Nothing)
+                        If DataTables(table_name).DataCols.Contains(info.Name) Then
+                            'Output.Show("2. " & info.Name & ":" & info.PropertyType.Name & " = " & info.GetValue(item, Nothing))
+                            ' finalclass 列 和 _IsDeleted 列不可修改
+                            If Not info.Name.Equals(C_FINALCLASS) Or info.Name.Equals(C__ISDELETED) Then
+                                If (info.PropertyType Is GetType(String)) And info.GetValue(item, Nothing) IsNot Nothing Then
+                                    dr(info.Name) = info.GetValue(item, Nothing)
+                                ElseIf (info.PropertyType Is GetType(Int32)) And Not info.GetValue(item, Nothing) = Nothing Then
+                                    dr(info.Name) = info.GetValue(item, Nothing)
+                                ElseIf (info.PropertyType Is GetType(DateTime)) And Not info.GetValue(item, Nothing) = Nothing Then
+                                    dr(info.Name) = info.GetValue(item, Nothing)
+                                End If
                             End If
                         End If
                     Next
