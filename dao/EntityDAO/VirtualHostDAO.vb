@@ -3,7 +3,7 @@ Imports Foxtable
 
 Namespace dao
 
-    Public MustInherit Class VirtualHostDAO
+    Public Class VirtualHostDAO
         Inherits VirtualDeviceDAO
 
         Private Const _TABLE_NAME = VirtualHost.TABLE_NAME
@@ -16,7 +16,7 @@ Namespace dao
                 Dim result1 As Boolean = UpdateVirtualDevice(o)
                 Dim result2 As Boolean = False
 
-                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj._Identify)
 
                 If dr IsNot Nothing Then
                     ' 此表只包含 id 字段，不做更新
@@ -35,7 +35,7 @@ Namespace dao
 
         Protected Function DeleteVirtualHost(ByVal id As Integer) As Boolean
 
-            Return DeleteVirtualDevice(id) And DeleteObject(_TABLE_NAME, id)
+            Return DeleteVirtualDevice(id) And DeleteObject(Of VirtualHost)(id)
 
         End Function
 
@@ -49,8 +49,8 @@ Namespace dao
                 Dim dr As DataRow = DataTables(_TABLE_NAME).AddNew()
 
                 dr(C_ID) = identify
-                If obj.IsDeleted = True Or obj.IsDeleted = False Then
-                    dr(C__ISDELETED) = obj.IsDeleted
+                If obj._IsDeleted = True Or obj._IsDeleted = False Then
+                    dr(C__ISDELETED) = obj._IsDeleted
                 Else
                     dr(C__ISDELETED) = False
                 End If
@@ -64,7 +64,7 @@ Namespace dao
 
             Return result
         End Function
- 
+
     End Class
 
 End Namespace

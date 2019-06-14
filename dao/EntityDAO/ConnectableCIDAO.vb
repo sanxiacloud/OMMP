@@ -2,7 +2,7 @@
 Imports Foxtable
 Namespace dao
 
-    Public MustInherit Class ConnectableCIDAO
+    Public Class ConnectableCIDAO
         Inherits PhysicalDeviceDAO
 
         Private Const _TABLE_NAME = ConnectableCI.TABLE_NAME
@@ -17,7 +17,7 @@ Namespace dao
                 Dim dr As DataRow = DataTables(_TABLE_NAME).AddNew()
 
                 dr(C_ID) = identify
-                dr(C__ISDELETED) = False 
+                dr(C__ISDELETED) = False
 
                 dr.Save()
 
@@ -36,7 +36,7 @@ Namespace dao
             Try
                 Dim result1 As Boolean = UpdatePhysicalDevice(o)
 
-                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj._Identify)
                 Dim result2 As Boolean = False
                 If dr IsNot Nothing Then
                     ' Nothing is to updated
@@ -54,7 +54,7 @@ Namespace dao
 
         Protected Function DeleteConnectableCI(ByVal id As Integer) As Boolean
 
-            Return DeletePhysicalDevice(id) And DeleteObject(_TABLE_NAME, id)
+            Return DeletePhysicalDevice(id) And DeleteObject(Of ConnectableCI)(id)
 
         End Function
     End Class

@@ -2,7 +2,7 @@
 Imports Foxtable
 Namespace dao
 
-    Public MustInherit Class PhysicalDeviceDAO
+    Public Class PhysicalDeviceDAO
         Inherits FunctionalCIDAO
 
         Private Const _TABLE_NAME = PhysicalDevice.TABLE_NAME
@@ -44,7 +44,7 @@ Namespace dao
             Try
                 Dim result1 As Boolean = UpdateFunctionalCI(o)
 
-                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj._Identify)
                 Dim result2 As Boolean = False
                 If dr IsNot Nothing Then
                     If obj.asset_number IsNot Nothing Then
@@ -87,7 +87,7 @@ Namespace dao
 
         Protected Function DeletePhysicalDevice(ByVal id As Integer) As Boolean
 
-            Return DeleteFunctionalCI(id) And DeleteObject(_TABLE_NAME, id)
+            Return DeleteFunctionalCI(id) And DeleteObject(Of PhysicalDevice)(id)
 
         End Function
     End Class

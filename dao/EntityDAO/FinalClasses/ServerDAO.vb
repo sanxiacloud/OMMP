@@ -22,74 +22,57 @@ Namespace dao
             builder.AddTable(ConnectableCI.TABLE_NAME, C_ID, DataCenterDevice.TABLE_NAME, C_ID)
             builder.AddCols(DataCenterDevice.C_RACK_IDENTIFY, DataCenterDevice.C_ENCLOSURE_IDENTITY, DataCenterDevice.C_MANAGEMENTIP, DataCenterDevice.C_NB_U, DataCenterDevice.C_REDUNDANCY)
             ' DataCenterDevice -> Server
-            builder.AddTable(Server.TABLE_NAME, C_ID, TABLE_NAME, C_ID)
-            builder.AddCols(TABLE_NAME & "." & C_ID, Server.C_OSFAMILY_ID, Server.C_OSLICENCE_ID, Server.C_OSVERSION_ID, Server.C_CPU, Server.C_RAM)
+            builder.AddTable(Server.TABLE_NAME, C_ID, _TABLE_NAME, C_ID)
+            builder.AddCols(_TABLE_NAME & "." & C_ID, Server.C_OSFAMILY_ID, Server.C_OSLICENCE_ID, Server.C_OSVERSION_ID, Server.C_CPU, Server.C_RAM)
 
             builder.Build()
         End Sub
 
-        Protected Overrides ReadOnly Property TABLE_NAME() As String
+        Private ReadOnly Property _TABLE_NAME() As String
             Get
                 Return Server.TABLE_NAME
             End Get
         End Property
 
-        Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
-            Dim item As New Server()
-            With item
-                .Identify = dr(C__IDENTIFY)
-                .name = dr(FunctionalCI.C_NAME)
-                .description = dr(FunctionalCI.C_DESCRIPTION)
-                .code_risk_rating = dr(FunctionalCI.C_CODE_RISK_RATING)
-                .move2production = dr(FunctionalCI.C_MOVE2PRODUCTION)
-                .finalclass = dr(FunctionalCI.C_FINALCLASS)
-                .obsolescence_date = dr(FunctionalCI.C_OBSOLESCENCE_DATE)
-
-                .id = dr(C_ID)
-                .asset_number = dr(PhysicalDevice.C_ASSET_NUMBER)
-                .code_brand_name = dr(PhysicalDevice.C_CODE_BRAND_NAME)
-                .code_model_name = dr(PhysicalDevice.C_CODE_MODEL_NAME)
-                .code_physicaldevice_status = dr(PhysicalDevice.C_CODE_PHYSICALDEVICE_STATUS)
-                .end_of_warranty = dr(PhysicalDevice.C_END_OF_WARRANTY)
-                .location_identify = dr(PhysicalDevice.C_LOCATION_IDENTIFY)
-                .purchase_date = dr(PhysicalDevice.C_PURCHASE_DATE)
-                .serialnumber = dr(PhysicalDevice.C_SERIALNUMBER)
-
-                .rack_identify = dr(Server.C_RACK_IDENTIFY)
-                .enclosure_identity = dr(Server.C_ENCLOSURE_IDENTITY)
-                .managementip = dr(Server.C_MANAGEMENTIP)
-                .nb_u = dr(Server.C_NB_U)
-                .redundancy = dr(Server.C_REDUNDANCY)
-
-                .osfamily_id = dr(Server.C_OSFAMILY_ID)
-                .oslicence_id = dr(Server.C_OSLICENCE_ID)
-                .osversion_id = dr(Server.C_OSVERSION_ID)
-                .cpu = dr(Server.C_CPU)
-                .ram = dr(Server.C_RAM)
-            End With
-
-            Return item
-        End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
 
+            Return DeleteDataCenterDevice(id) And DeleteObject(Of Server)(id)
+
         End Function
 
-        Public Function Insert(ByVal o As Object) As Boolean Implements IEntityDAO.Insert
+        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
+            Dim obj As Server = CType(o, Server)
+            Dim result As Boolean = False
 
+            Try
+                Dim identify As Integer = InsertDataCenterDevice(o, _TABLE_NAME)
+
+                Dim dr As DataRow = DataTables(_TABLE_NAME).AddNew()
+
+                dr(C_ID) = identify
+                dr(C__ISDELETED) = False
+                dr(Server.C_OSFAMILY_ID) = obj.osfamily_id
+                dr(Server.C_OSLICENCE_ID) = obj.oslicence_id
+                dr(Server.C_OSVERSION_ID) = obj.osversion_id
+                dr(Server.C_CPU) = obj.cpu
+                dr(Server.C_RAM) = obj.ram
+
+                dr.Save()
+
+                result = True
+            Catch ex As Exception
+                Output.Show(_TABLE_NAME & "->Insert:" & ex.Message)
+            End Try
+
+            Return result
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
 
         End Function
 
-        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements IQueryDAO.FindList
-            Return FindRows(QUERY_TABLE_NAME, filter, sort)
-        End Function
 
-        Public Function FindObject(ByVal id As Integer) As Object Implements IQueryDAO.FindObject
-            Return FindRow(QUERY_TABLE_NAME, id)
-        End Function
     End Class
 
 End Namespace

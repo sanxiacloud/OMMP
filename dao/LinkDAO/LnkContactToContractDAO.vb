@@ -10,16 +10,13 @@ Namespace dao
 
 
 
-        Protected Overrides ReadOnly Property TABLE_NAME() As String
+        Private ReadOnly Property _TABLE_NAME() As String
             Get
                 Return LnkContactToContract.TABLE_NAME
             End Get
         End Property
 
-        Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
 
-            Return Nothing
-        End Function
 
     End Class
 

@@ -2,7 +2,7 @@
 Imports Foxtable
 Namespace dao
 
-    Public MustInherit Class DataCenterDeviceDAO
+    Public Class DataCenterDeviceDAO
         Inherits ConnectableCIDAO
 
 
@@ -42,7 +42,7 @@ Namespace dao
             Try
                 Dim result1 As Boolean = UpdateConnectableCI(o)
 
-                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj._Identify)
                 Dim result2 As Boolean = False
                 If dr IsNot Nothing Then
                     If obj.enclosure_identity >= 0 Then
@@ -76,7 +76,7 @@ Namespace dao
 
         Protected Function DeleteDataCenterDevice(ByVal id As Integer) As Boolean
 
-            Return DeleteConnectableCI(id) And DeleteObject(_TABLE_NAME, id)
+            Return DeleteConnectableCI(id) And DeleteObject(Of DataCenterDevice)(id)
 
         End Function
 

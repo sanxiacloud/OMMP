@@ -13,22 +13,12 @@ Namespace dao
             ' 构造函数，默认为空
         End Sub
 
-        Protected Overrides ReadOnly Property TABLE_NAME() As String
+        Private ReadOnly Property _TABLE_NAME() As String
             Get
                 Return LnkFunctionalCIToOrganization.TABLE_NAME
             End Get
         End Property
 
-        Protected Overrides Function SetProperties(ByVal dr As DataRow) As Object
-            Dim item As New LnkFunctionalCIToOrganization()
-
-            item.Identify = dr(C__IDENTIFY)
-            item.functionalci_identify = dr(LnkFunctionalCIToOrganization.C_FUNCTIONALCI_IDENTIFY)
-            item.organization_identify = dr(LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY)
-            item.description = dr(LnkFunctionalCIToOrganization.C_DESCRIPTION)
-
-            Return item
-        End Function
 
         ' 添加一个 功能配置项与组织 链接记录
         'todo:test ok
@@ -40,7 +30,7 @@ Namespace dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(TABLE_NAME).AddNew()
+                Dim dr As DataRow = DataTables(_TABLE_NAME).AddNew()
 
                 dr(LnkFunctionalCIToOrganization.C_FUNCTIONALCI_IDENTIFY) = fromId
                 dr(LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY) = toId
@@ -49,7 +39,7 @@ Namespace dao
                 dr.Save()
                 result = True
             Catch ex As Exception
-                Output.Show(TABLE_NAME & "->Link:" & ex.Message)
+                Output.Show(_TABLE_NAME & "->Link:" & ex.Message)
             End Try
 
             Return result
@@ -69,7 +59,7 @@ Namespace dao
                 filter = filter & " AND " & LnkFunctionalCIToOrganization.C_ORGANIZATION_IDENTIFY & " = " & toId
 
                 Dim drs As List(Of DataRow)
-                drs = DataTables(TABLE_NAME).Select(filter)
+                drs = DataTables(_TABLE_NAME).Select(filter)
 
                 For Each dr As DataRow In drs
                     dr(LnkFunctionalCIToOrganization.C__ISDELETED) = True
@@ -78,7 +68,7 @@ Namespace dao
 
                 result = True
             Catch ex As Exception
-                Output.Show(TABLE_NAME & "->UnLink:" & ex.Message)
+                Output.Show(_TABLE_NAME & "->UnLink:" & ex.Message)
             End Try
 
             Return result
@@ -93,9 +83,7 @@ Namespace dao
         '    output.Show("organization_identify = " & obj.organization_identify)
         '    output.Show("description = " & obj.description)
         'Next
-        Public Function FindList(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of Object) Implements ILinkDAO.FindList
-            Return FindRows(TABLE_NAME, filter, sort)
-        End Function
+
     End Class
 End Namespace
 

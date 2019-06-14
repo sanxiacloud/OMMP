@@ -2,7 +2,7 @@
 Imports Foxtable
 
 Namespace dao
-    Public MustInherit Class VirtualDeviceDAO
+    Public Class VirtualDeviceDAO
         Inherits FunctionalCIDAO
 
         Private Const _TABLE_NAME = VirtualDevice.TABLE_NAME
@@ -37,7 +37,7 @@ Namespace dao
             Try
                 Dim result1 As Boolean = UpdateFunctionalCI(o)
 
-                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(VirtualDevice.C_ID & " = " & obj.Identify)
+                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(VirtualDevice.C_ID & " = " & obj._Identify)
                 Dim result2 As Boolean = False
                 If dr IsNot Nothing Then
                     If obj.code_virtualdevice_status >= 0 Then
@@ -59,7 +59,7 @@ Namespace dao
 
         Protected Function DeleteVirtualDevice(ByVal id As Integer) As Boolean
 
-            Return DeleteFunctionalCI(id) And DeleteObject(_TABLE_NAME, id)
+            Return DeleteFunctionalCI(id) And DeleteObject(Of VirtualDevice)(id)
 
         End Function
     End Class
