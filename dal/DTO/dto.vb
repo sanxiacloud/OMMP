@@ -2585,6 +2585,9 @@
 
     End Class
 
+    Public Class DatabasesSchemaQT : Inherits DatabasesSchema
+        '
+    End Class
 
     Public Class DatabasesSchema : Inherits FunctionalCI
         Private _comment As String
@@ -2679,6 +2682,9 @@
 
     End Class
 
+    Public Class MiddlewareInstanceQT : Inherits MiddlewareInstance
+        '
+    End Class
 
     Public Class MiddlewareInstance : Inherits FunctionalCI
         Private _id As Integer
@@ -2718,6 +2724,9 @@
 
     End Class
 
+    Public Class WebApplicationQT : Inherits WebApplication
+        Public Shadows Const TABLE_NAME As String = "WebApplicationQT"
+    End Class
 
     Public Class WebApplication : Inherits FunctionalCI
         Private _id As Integer
@@ -3184,6 +3193,11 @@
 
     ' ------------------------------
     ' PhysicalDevice*
+
+    Public Class RackQT : Inherits Rack
+        '
+    End Class
+
     Public Class Rack : Inherits PhysicalDevice
         Private _id As Integer
         Private __IsDeleted As Boolean
@@ -3220,6 +3234,10 @@
             End Set
         End Property
 
+    End Class
+
+    Public Class EnclosureQT : Inherits Enclosure
+        ' 
     End Class
 
     Public Class Enclosure : Inherits PhysicalDevice
@@ -3271,12 +3289,13 @@
 
     End Class
 
+    Public Class PeripheralQT : Inherits Peripheral
+        ' 
+    End Class
 
     Public Class Peripheral : Inherits PhysicalDevice
         Private _id As Integer
         Private __IsDeleted As Boolean
-
-        Public Shadows Const TABLE_NAME As String = "Peripheral"
 
         Public Overloads Property id() As Integer
             Get
@@ -3411,12 +3430,14 @@
 
     End Class
 
+    Public Class SANSwitchQT : Inherits SANSwitch
+        ' 
+    End Class
 
     Public Class SANSwitch : Inherits DataCenterDevice
         Private _id As Integer
         Private __IsDeleted As Boolean
-
-        Public Shadows Const TABLE_NAME As String = "SANSwitch"
+         
 
         Public Overloads Property id() As Integer
             Get
@@ -3438,6 +3459,9 @@
 
     End Class
 
+    Public Class NASQT : Inherits NAS
+        '
+    End Class
 
     Public Class NAS : Inherits DataCenterDevice
         Private _id As Integer
@@ -3465,6 +3489,9 @@
 
     End Class
 
+    Public Class StorageSystemQT : Inherits StorageSystem
+        ' 
+    End Class
 
     Public Class StorageSystem : Inherits DataCenterDevice
         Private _code_storage_type As Integer
@@ -3526,6 +3553,9 @@
 
     End Class
 
+    Public Class ServerQT : Inherits Server
+        '
+    End Class
 
     Public Class Server : Inherits DataCenterDevice
         Private _cpu As String
@@ -3609,6 +3639,9 @@
 
     End Class
 
+    Public Class NetworkDeviceQT : Inherits NetworkDevice
+        '
+    End Class
 
     Public Class NetworkDevice : Inherits DataCenterDevice
         Private _code_isoversion As Integer
@@ -3616,12 +3649,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
         Private _ram As String
-
-        Public Shadows Const TABLE_NAME As String = "NetworkDevice"
-
-        Public Const C_CODE_ISOVERSION As String = "code_isoversion"
-        Public Const C_CODE_NETWORKDEVICETYPE As String = "code_networkdevicetype"
-        Public Const C_RAM As String = "ram"
 
         Public Property code_isoversion() As Integer
             Get
@@ -3820,6 +3847,9 @@
 
     End Class
 
+    Public Class FarmQT : Inherits Farm
+        '
+    End Class
 
     Public Class Farm : Inherits VirtualHost
         Private _id As Integer
@@ -3892,6 +3922,9 @@
 
     End Class
 
+    Public Class HypervisorQT : Inherits Hypervisor
+        '
+    End Class
 
     Public Class Hypervisor : Inherits VirtualHost
         Private _farm_identify As Integer

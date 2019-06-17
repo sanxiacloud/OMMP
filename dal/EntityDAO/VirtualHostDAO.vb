@@ -5,8 +5,6 @@ Namespace dal.dao
     Public Class VirtualHostDAO
         Inherits VirtualDeviceDAO
 
-        Private Const _TABLE_NAME = VirtualHost.TABLE_NAME
-
         Protected Function InsertVirtualHost(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As VirtualHost = CType(o, VirtualHost)
             obj.id = InsertVirtualDevice(o, finalclass)

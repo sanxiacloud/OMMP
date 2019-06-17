@@ -6,43 +6,20 @@ Namespace dal.dao
         Inherits VirtualDeviceDAO
         Implements IEntityDAO
 
-        Private ReadOnly Property _TABLE_NAME() As String
-            Get
-                Return VirtualMachine.TABLE_NAME
-            End Get
-        End Property
-
-        Private ReadOnly Property QUERY_TABLE_NAME() As String
-            Get
-                Return VirtualMachineQT.TABLE_NAME
-            End Get
-        End Property
-
         Public Sub New()
-            Dim theObject As New VirtualMachineQT()
+            Dim qtObject As New VirtualMachineQT()
             Dim baseObject As New FunctionalCI()
             Dim joinObject1 As New VirtualDevice()
-            Dim joinObject2 As New VirtualMachine()
+            Dim finalObject As New VirtualMachine()
 
-            Dim queryTableName = theObject.GetType().Name
             Dim baseTableName = baseObject.GetType().Name
-            Dim joinTableName1 = joinObject1.GetType().Name
-            Dim joinTableName2 = joinObject2.GetType().Name
+            Dim joinTableName1 = joinObject1.GetType().Name 
 
-            Dim builder As New SQLJoinTableBuilder(queryTableName, baseTableName)
+            Dim builder As New SQLJoinTableBuilder(qtObject.GetType().Name, baseTableName)
             builder.ConnectionName = CONNECTION_NAME
-
-            'builder.AddCols(C__IDENTIFY, FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
-            ' FunctionalCI -> VirtualDevice
             builder.AddTable(baseTableName, C__IDENTIFY, joinTableName1, C_ID)
-            'builder.AddCols(VirtualDevice.C_CODE_VIRTUALDEVICE_STATUS)
-
-            ' VirtualDevice -> VirtualMachine
-            builder.AddTable(joinTableName1, C_ID, joinTableName2, C_ID)
-            ' builder.AddCols(VirtualDevice.TABLE_NAME & "." & C_ID, VirtualMachine.C_VIRTUALHOST_IDENTIFY, VirtualMachine.C_OSFAMILY_IDENTIFY, VirtualMachine.C_OSLICENCE_IDENTIFY, VirtualMachine.C_OSVERSION_IDENTIFY, VirtualMachine.C_MANAGEMENTIP_IDENTIFY, VirtualMachine.C_CODE_BACKUP_PLAN, VirtualMachine.C_CPU, VirtualMachine.C_RAM)
-
+            builder.AddTable(joinTableName1, C_ID, finalObject.GetType().Name, C_ID)
             AddQueryTableCols(Of VirtualMachine)(builder)
-
             builder.Build()
             'Output.Show(builder.BuildSql())
         End Sub
@@ -93,10 +70,10 @@ Namespace dal.dao
         ' 查询虚拟机列表
         Private Sub TestFindList()
             Dim dao As New ommp.dal.dao.VirtualMachineDAO
-            Dim lists As IList(Of Object) = dao.FindList(Of VirtualMachine)("[name] Like '%Zabbix%'", "id DESC")
+            Dim lists As IList(Of ommp.dal.dto.VirtualMachineQT) = dao.FindList(Of ommp.dal.dto.VirtualMachineQT)("[name] Like '%Zabbix%'", "id DESC")
             Output.Show("Count : " & lists.Count)
             Output.Show(" --------------------- ")
-            For Each dto As ommp.dal.dto.VirtualMachine In lists
+            For Each dto As ommp.dal.dto.VirtualMachineQT In lists
                 Output.Show("Identify = " & dto._Identify)
                 Output.Show("name = " & dto.name)
                 Output.Show("description = " & dto.description)
@@ -122,7 +99,7 @@ Namespace dal.dao
         '查找一个虚拟机
         Private Sub TestFindObject()
             Dim dao As ommp.dal.dao.VirtualMachineDAO = New ommp.dal.dao.VirtualMachineDAO()
-            Dim dto As ommp.dal.dto.VirtualMachine = dao.FindObject(Of ommp.dal.dto.VirtualMachine)(1868)
+            Dim dto As ommp.dal.dto.VirtualMachineQT = dao.FindObject(Of ommp.dal.dto.VirtualMachineQT)(1868)
             Output.Show("Identify = " & dto._Identify)
             Output.Show("name = " & dto.name)
             Output.Show("description = " & dto.description)

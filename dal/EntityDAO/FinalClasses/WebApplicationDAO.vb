@@ -6,23 +6,29 @@ Namespace dal.dao
         Inherits FunctionalCIDAO
         Implements IEntityDAO
 
-        Private Const QUERY_TABLE_NAME As String = "QTWebApplication"
-
         Public Sub New()
-            Dim builder As New SQLJoinTableBuilder(QUERY_TABLE_NAME, FunctionalCI.TABLE_NAME)
+            Dim qtObject As New WebApplicationQT()
+            Dim baseObject As New FunctionalCI()
+            Dim finalObject As New WebApplication()
+
+            Dim baseTableName = baseObject.GetType().Name
+
+            Dim builder As New SQLJoinTableBuilder(qtObject.GetType().Name, baseTableName)
             builder.ConnectionName = CONNECTION_NAME
-            builder.AddTable(FunctionalCI.TABLE_NAME, C__IDENTIFY, _TABLE_NAME, C_ID)
-            builder.AddCols(FunctionalCI.C_NAME, FunctionalCI.C_DESCRIPTION, FunctionalCI.C_CODE_RISK_RATING, FunctionalCI.C_MOVE2PRODUCTION, FunctionalCI.C_FINALCLASS, FunctionalCI.C_OBSOLESCENCE_DATE)
-            builder.AddCols(C_ID, WebApplication.C_URL, WebApplication.C_WEBSERVER_IDENTIFY)
+            builder.AddTable(baseTableName, C__IDENTIFY, finalObject.GetType().Name, C_ID)
+            AddQueryTableCols(Of WebApplication)(builder)
             builder.Build()
         End Sub
 
-        Private ReadOnly Property _TABLE_NAME() As String
-            Get
-                Return WebApplication.TABLE_NAME
-            End Get
-        End Property
+        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
+            Dim obj As WebApplication = CType(o, WebApplication)
+            obj.id = InsertFunctionalCI(o, obj.GetType().Name)
+            Return InsertObject(Of WebApplication)(CType(o, WebApplication))
+        End Function
 
+        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
+            Return UpdateFunctionalCI(o) And UpdateObject(Of WebApplication)(CType(o, WebApplication))
+        End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
             Return DeleteFunctionalCI(id) And DeleteObject(Of WebApplication)(id)
@@ -30,108 +36,58 @@ Namespace dal.dao
 
         ' 添加一个 Web应用
         ' 测试时没有 添加外键表数据字段 dto.webserver_identify = Nothing 无法插入行
-        'Dim dao As ommp.dal.dao.WebApplicationDAO = New ommp.dal.dao.WebApplicationDAO()
-        'Dim result As Boolean = False
-        'Dim dto As New ommp.dal.dto.WebApplication()
-        'dto.name = "Web应用1-20190611-1"
-        'dto.description = "description"
-        'dto.code_risk_rating = 2
-        'dto.move2production = DateTime.Now
-        'dto.finalclass = "WebApplication"
-        'dto.obsolescence_date = Nothing
-
-        'dto.webserver_identify = Nothing
-        'dto.url = "http://www.baidu.com"
-        'dto.IsDeleted = False
-        'result = dao.Insert(dto)
-        'Output.Show(result)
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As WebApplication = CType(o, WebApplication)
+        Private Sub TestInsert()
+            Dim dao As ommp.dal.dao.WebApplicationDAO = New ommp.dal.dao.WebApplicationDAO()
             Dim result As Boolean = False
+            Dim dto As New ommp.dal.dto.WebApplication()
+            dto.name = "Web应用1-20190611-1"
+            dto.description = "description"
+            dto.code_risk_rating = 2
+            dto.move2production = DateTime.Now
+            dto.finalclass = "WebApplication"
+            dto.obsolescence_date = Nothing
 
-            Try
-                Dim identify As Integer = InsertFunctionalCI(o, _TABLE_NAME)
-
-                Dim dr As DataRow = DataTables(_TABLE_NAME).AddNew()
-
-                dr(C_ID) = identify
-                dr(C__ISDELETED) = False
-                dr(WebApplication.C_WEBSERVER_IDENTIFY) = obj.webserver_identify
-                dr(WebApplication.C_URL) = obj.url
-
-                dr.Save()
-
-                result = True
-            Catch ex As Exception
-                Output.Show(_TABLE_NAME & "->Insert:" & ex.Message)
-            End Try
-
-            Return result
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Dim obj As WebApplication = CType(o, WebApplication)
-            Dim result As Boolean = False
-
-            Try
-                Dim result1 As Boolean = UpdateFunctionalCI(o)
-                Dim result2 As Boolean = False
-
-                Dim dr As DataRow = DataTables(_TABLE_NAME).Find(C_ID & " = " & obj._Identify)
-
-                If dr IsNot Nothing Then
-                    If obj.webserver_identify >= 0 Then
-                        dr(WebApplication.C_WEBSERVER_IDENTIFY) = obj.webserver_identify
-                    End If
-                    If obj.url >= 0 Then
-                        dr(WebApplication.C_URL) = obj.url
-                    End If
-
-                    dr.Save()
-                    result2 = True
-
-                End If
-
-                result = result1 And result2
-            Catch ex As Exception
-                Output.Show(_TABLE_NAME & "->Update:" & ex.Message)
-            End Try
-
-            Return result
-        End Function
+            dto.webserver_identify = Nothing
+            dto.url = "http://www.baidu.com"
+            result = dao.Insert(dto)
+            Output.Show(result)
+        End Sub
 
         ' 查询 Web应用 列表
-        'Dim dao As New ommp.dal.dao.WebApplicationDAO
-        'Dim lists As IList(Of Object) = dao.FindList("[name] Like '%Zabbix%'", "id DESC")
-        'output.Show("Count : " & lists.Count )
-        'Output.Show(" --------------------- ") 
-        'For Each dto As ommp.dal.dto.WebApplication In lists 
-        '    Output.Show("name = " & dto.name)
-        '    Output.Show("code_risk_rating = " & dto.code_risk_rating) 
-        '    Output.Show("move2production = " & dto.move2production) 
-        '    Output.Show("obsolescence_date = " & dto.obsolescence_date) 
-        '    Output.Show("finalclass = " & dto.finalclass) 
+        Private Sub TestFindList()
+            Dim dao As New ommp.dal.dao.WebApplicationDAO
+            Dim result As Boolean = False
+            Dim lists As IList(Of ommp.dal.dto.WebApplicationQT) = dao.FindList(Of ommp.dal.dto.WebApplicationQT)("[name] Like '%Zabbix%'", "id DESC")
+            Output.Show("Count : " & lists.Count)
+            Output.Show(" --------------------- ")
+            For Each dto As ommp.dal.dto.WebApplicationQT In lists
+                Output.Show("name = " & dto.name)
+                Output.Show("code_risk_rating = " & dto.code_risk_rating)
+                Output.Show("move2production = " & dto.move2production)
+                Output.Show("obsolescence_date = " & dto.obsolescence_date)
+                Output.Show("finalclass = " & dto.finalclass)
 
-        '    Output.Show("id = " & dto.id) 
-        '    Output.Show("webserver_identify = " & dto.webserver_identify) 
-        '    Output.Show("url = " & dto.url)
-        '    Output.Show(" --------------------- ") 
-        'Next
-
+                Output.Show("id = " & dto.id)
+                Output.Show("webserver_identify = " & dto.webserver_identify)
+                Output.Show("url = " & dto.url)
+                Output.Show(" --------------------- ")
+            Next
+        End Sub
 
         ' 用于 查找一个Web应用
-        'Dim dao As ommp.dal.dao.WebApplicationDAO = New ommp.dal.dao.WebApplicationDAO()
-        'Dim dto As ommp.dal.dto.WebApplication = dao.FindObject(1873)
-        'Output.Show("name = " & dto.name)
-        'Output.Show("code_risk_rating = " & dto.code_risk_rating) 
-        'Output.Show("move2production = " & dto.move2production) 
-        'Output.Show("obsolescence_date = " & dto.obsolescence_date) 
-        'Output.Show("finalclass = " & dto.finalclass) 
+        Private Sub TestFindObject()
+            Dim dao As ommp.dal.dao.WebApplicationDAO = New ommp.dal.dao.WebApplicationDAO()
+            Dim dto As ommp.dal.dto.WebApplicationQT = dao.FindObject(Of ommp.dal.dto.WebApplicationQT)(1873)
+            Output.Show("name = " & dto.name)
+            Output.Show("code_risk_rating = " & dto.code_risk_rating)
+            Output.Show("move2production = " & dto.move2production)
+            Output.Show("obsolescence_date = " & dto.obsolescence_date)
+            Output.Show("finalclass = " & dto.finalclass)
 
-        'Output.Show("id = " & dto.id) 
-        'Output.Show("webserver_identify = " & dto.webserver_identify) 
-        'Output.Show("url = " & dto.url)
-
+            Output.Show("id = " & dto.id)
+            Output.Show("webserver_identify = " & dto.webserver_identify)
+            Output.Show("url = " & dto.url)
+        End Sub
     End Class
 
 End Namespace

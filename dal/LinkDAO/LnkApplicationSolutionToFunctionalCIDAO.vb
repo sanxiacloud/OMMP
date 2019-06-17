@@ -17,9 +17,6 @@ Namespace dal.dao
             End Get
         End Property
 
-
-
-
         Public Function Link(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.Link
             Dim result As Boolean = False
 

@@ -11,7 +11,6 @@ Namespace dal.dao
             Return InsertObject(Of ommp.dal.dto.FunctionalCI)(obj)
         End Function
 
-
         Protected Function UpdateFunctionalCI(ByVal o As Object) As Boolean
             Return UpdateObject(Of FunctionalCI)(CType(o, FunctionalCI))
         End Function

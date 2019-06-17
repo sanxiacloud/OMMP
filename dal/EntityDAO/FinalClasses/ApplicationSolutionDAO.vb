@@ -9,42 +9,39 @@ Namespace dal.dao
         Inherits FunctionalCIDAO
         Implements IEntityDAO
 
-        Private ReadOnly Property _TABLE_NAME() As String
-            Get
-                Return ApplicationSolution.TABLE_NAME
-            End Get
-        End Property
-
-        Private ReadOnly Property QUERY_TABLE_NAME() As String
-            Get
-                Return ApplicationSolutionQT.TABLE_NAME
-            End Get
-        End Property
-
         Public Sub New()
-            Dim theObject As New ApplicationSolutionQT()
+            Dim qtObject As New ApplicationSolutionQT()
             Dim baseObject As New FunctionalCI()
-            Dim joinObject1 As New ApplicationSolution()
+            Dim finalObject As New ApplicationSolution()
 
-            Dim queryTableName = theObject.GetType().Name
-            Dim baseTableName = baseObject.GetType().Name
-            Dim joinTableName1 = joinObject1.GetType().Name
+            Dim baseTableName = baseObject.GetType().Name 
 
-            Dim builder As New SQLJoinTableBuilder(queryTableName, baseTableName)
-
+            Dim builder As New SQLJoinTableBuilder(qtObject.GetType().Name, baseTableName)
             builder.ConnectionName = CONNECTION_NAME
-
-            builder.AddTable(baseTableName, C__IDENTIFY, joinTableName1, C_ID)
-
+            builder.AddTable(baseTableName, C__IDENTIFY, finalObject.GetType().Name, C_ID)
             AddQueryTableCols(Of ApplicationSolution)(builder)
-
             builder.Build()
             'Output.Show(builder.BuildSql())
         End Sub
 
+        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
+            Dim obj As ApplicationSolution = CType(o, ApplicationSolution)
+            obj.id = InsertFunctionalCI(o, obj.GetType().Name)
+            Return InsertObject(Of ApplicationSolution)(CType(o, ApplicationSolution))
+        End Function
+
+        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
+            Return UpdateFunctionalCI(o) And UpdateObject(Of ApplicationSolution)(CType(o, ApplicationSolution))
+        End Function
+
+        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+            Return DeleteFunctionalCI(id) And DeleteObject(Of ApplicationSolution)(id)
+        End Function
+
+
         ' 查询一个应用方案
         Private Sub TestFindObject()
-            Dim dao As ommp.dal.dao.ApplicationSolutionDAO = New ommp.dal.dao.ApplicationSolutionDAO()
+            Dim dao As New ommp.dal.dao.ApplicationSolutionDAO()
             Dim result As Boolean = False
             Dim dto As ommp.dal.dto.ApplicationSolutionQT = dao.FindObject(Of ommp.dal.dto.ApplicationSolutionQT)(1886)
             If dto IsNot Nothing Then
@@ -96,20 +93,6 @@ Namespace dal.dao
             Dim dao As New ommp.dal.dao.ApplicationSolutionDAO()
             Output.Show(dao.Delete(1886))
         End Sub
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As ApplicationSolution = CType(o, ApplicationSolution)
-            obj.id = InsertFunctionalCI(o, obj.GetType().Name)
-            Return InsertObject(Of ommp.dal.dto.ApplicationSolution)(CType(o, ApplicationSolution))
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateFunctionalCI(o) And UpdateObject(Of ApplicationSolution)(CType(o, ApplicationSolution))
-        End Function
-
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteFunctionalCI(id) And DeleteObject(Of ApplicationSolution)(id)
-        End Function
 
     End Class
 

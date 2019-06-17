@@ -5,8 +5,6 @@ Namespace dal.dao
     Public Class VirtualDeviceDAO
         Inherits FunctionalCIDAO
 
-        Private Const _TABLE_NAME = VirtualDevice.TABLE_NAME
-
         Protected Function InsertVirtualDevice(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As VirtualDevice = CType(o, VirtualDevice)
             obj.id = InsertFunctionalCI(o, finalclass)
