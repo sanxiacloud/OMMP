@@ -13,34 +13,32 @@ namespace ommp.ui
 			var form = FT.Forms["主窗口"];
 			var filter = ((WF.TextBox)form.Controls["tb_app_org_sch"]).Text.Trim();
 			var tv = (WF.TreeView)form.Controls["tv_app_org"];
-			var dt = (DataTable)FT.DataTables["Organization"];
-			var drs = dt.Select(String.Format("name like '%{0}%' And _IsDeleted = false", filter), "code");
+			var dt = FT.DataTables["Organization"];
+			var drs = dt.Select(string.Format("name like '%{0}%' And _IsDeleted = false", filter), "code");
 			var rowCount = drs.Count;
-
 			Clear();
-
 			if (rowCount != 0 )
 			{	
 				tv.StopRedraw();
-				var drAnc = dt.Find(String.Format("code='{0}'", ((String)drs[0]["code"]).Substring(0, 2)));
-				var rnode = tv.Nodes.Add((String)drAnc["code"], (String)drAnc["name"]);
-				rnode.Tag = drAnc["_Identify"].ToString();
+				var drAnc = dt.Find(string.Format("code='{0}'", ((string)drs[0]["code"]).Substring(0, 2)));
+				var rnode = tv.Nodes.Add((string)drAnc["code"], (string)drAnc["name"]);
+				rnode.Tag = drAnc["_Identify"].ToString();				
 				for (int i = 0; i < rowCount - 1; i++)
 				{
 					var len = 5;
 					var dr = drs[i];
 					var pnode = rnode;
-					while (len <= ((String)dr["code"]).Length)
+					while (len <= ((string)dr["code"]).Length)
 					{
-						drAnc = dt.Find(String.Format("code='{0}'", ((String)dr["code"]).Substring(0, len)));
-						if (!pnode.Nodes.Contains((String)drAnc["code"]))
+						drAnc = dt.Find(string.Format("code='{0}'", ((string)dr["code"]).Substring(0, len)));
+						if (!pnode.Nodes.Contains((string)drAnc["code"]))
 						{
-							pnode = pnode.Nodes.Add((String)drAnc["code"], (String)drAnc["name"]);
+							pnode = pnode.Nodes.Add((string)drAnc["code"], (string)drAnc["name"]);
 							pnode.Tag = drAnc["_Identify"].ToString();
 						}
 						else
 						{
-							pnode = pnode.Nodes[(String)drAnc["code"]];
+							pnode = pnode.Nodes[(string)drAnc["code"]];
 						}
 						len += 3;
 					}
@@ -84,7 +82,8 @@ namespace ommp.ui
 			AppLvApp.Clear();
 		}
 
-		public static void AfterSelectNode(ControlEventArgs e) {
+		public static void AfterSelectNode(ControlEventArgs e)
+		{
 			var form = FT.Forms["主窗口"];
 			AppLvApp.ReDraw();
 			((WF.Control)form.Controls["bt_app_org_mod"]).Enabled = true;

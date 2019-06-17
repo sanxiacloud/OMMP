@@ -10,9 +10,15 @@ namespace ommp.ui
 {
 	public static class AppLvHost
 	{
-		public static void ReDraw(string appid)
+		public static void ReDraw(string appid=null)
 		{
 			var form = FT.Forms["主窗口"];
+			if (appid == null)
+			{
+				var row = ((WF.ListView)form.Controls["lv_app_app"]).Current;
+				var dr = (DataRow)row.Tag;
+				appid = dr["_Identify"].ToString();
+			}
 			var lv = (WF.ListView)form.Controls["lv_app_dev_host"];
 			var pmSelected = ((WF.CheckBox)form.Controls["cb_app_dev_host_pm"]).Checked;
 			var vmSelected = ((WF.CheckBox)form.Controls["cb_app_dev_host_vm"]).Checked;
@@ -24,12 +30,12 @@ namespace ommp.ui
 			var count = 0;
 			foreach (var drLK in FT.DataTables["LnkApplicationSolutionToFunctionalCI"].Select(string.Format("_IsDeleted=0 And applicationsolution_identify={0}", appid))) 
 			{
-				var drCI = FT.DataTables["FunctionalCI"].Find(string.Format("_Identify={0}", (int)drLK["functionalci_identify"]));
-				if ((string)drCI["finalclass"] == "VirtualMachine" && vmSelected)
+				var drCI = FT.DataTables["FunctionalCI"].Find(string.Format("_IsDeleted=0 And _Identify={0}", (int)drLK["functionalci_identify"]));
+				if (drCI != null && (string)drCI["finalclass"] == "VirtualMachine" && vmSelected)
 				{
 					var row = lv.Rows.Add();
-					var drVM = FT.DataTables["VirtualMachine"].Find(string.Format("id={0}", drLK["functionalci_identify"].ToString()));
-					var drIP = FT.DataTables["IPAddressv4"].Find(string.Format("id={0}", drVM["managementip_identify"].ToString()));
+					var drVM = FT.DataTables["VirtualMachine"].Find(string.Format("_IsDeleted=0 And id={0}", drLK["functionalci_identify"].ToString()));
+					var drIP = FT.DataTables["IPAddressv4"].Find(string.Format("_IsDeleted=0 And id={0}", drVM["managementip_identify"].ToString()));
 					count += 1;
 					row["type"] = "虚拟机";
 					row["name"] = drCI["name"].ToString();

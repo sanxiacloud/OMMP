@@ -10,6 +10,7 @@ namespace ommp.ui
 	public class MainForm
 	{
 		public static void AfterLoad(FormEventArgs e) {
+
 			AppTvOrg.ReDraw();
 
 			var form = e.Form;

@@ -47,7 +47,7 @@ namespace ommp.ui
 		public static void Click(ControlEventArgs e) {
 			int identify = -1;
 			int.TryParse(((WF.TreeView)e.Form.Controls["tv_app_org"]).SelectedNode.Tag, out identify);
-			FormApplicationSolution.Open(ModifyType.create, identify);
+			FormApplicationSolution.Open(identify);
 		}
 	}
 }

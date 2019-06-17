@@ -4,16 +4,17 @@ using System.Text;
 using FT = Foxtable.OO_00oOO;
 using WF = Foxtable.WinForm;
 using Foxtable;
+using ommp.bll.service;
 
 namespace ommp.ui
 {
 	public static class AppLvApp
 	{
-		public static void ReDraw(){
+		public static void ReDraw()
+		{
 			var form = FT.Forms["主窗口"];
 			var lv = (WF.ListView)form.Controls["lv_app_app"];
 			var snode = ((WF.TreeView)form.Controls["tv_app_org"]).SelectedNode;
-
 			Clear();
 
 			lv.StopRedraw();
@@ -38,17 +39,17 @@ namespace ommp.ui
 				var _id = node.Tag;
 				foreach (var drLK in FT.DataTables["LnkFunctionalCIToOrganization"].Select(string.Format("_IsDeleted=0 And organization_identify ={0}",_id)))
 				{
-					var drCI = FT.DataTables["FunctionalCI"].Find(string.Format("_Identify={0}", drLK["functionalci_identify"]));
-					if ((string)drCI["finalclass"] == "ApplicationSolution")
+					var drCI = FT.DataTables["FunctionalCI"].Find(string.Format("_IsDeleted=0 And _Identify={0}", drLK["functionalci_identify"]));
+					if (drCI != null && (string)drCI["finalclass"] == "ApplicationSolution")
 					{
-						var drAS = FT.DataTables["ApplicationSolution"].Find(string.Format("id={0}", drLK["functionalci_identify"]));
+						var drAS = FT.DataTables["ApplicationSolution"].Find(string.Format("_IsDeleted=0 And id={0}", drLK["functionalci_identify"]));
 						var row = lv.Rows.Add();
 						count += 1;
 						row["name"] = (string)drCI["name"];
-						row["organization"] = (string)FT.DataTables["Organization"].Find(string.Format("_Identify={0}", drLK["organization_identify"]))["name"];
-						row["status"] = bll.Common.TranslateCode("应用程序状态", (int)drAS["code_application_status"]);
-						row["start_date"] = ((DateTime)drCI["move2production"]).ToString();
-						row["sla"] = bll.Common.TranslateCode("保障要求", (int)drAS["code_sla"]);
+						row["organization"] = (string)FT.DataTables["Organization"].Find(string.Format("_IsDeleted=0 And _Identify={0}", drLK["organization_identify"]))["name"];
+						row["status"] = CommonService.TranslateCode("应用程序状态", (int)drAS["code_application_status"]);
+						row["start_date"] = ((DateTime)drCI["move2production"]).ToString();						
+						row["sla"] = CommonService.TranslateCode("保障要求", (int)drAS["code_sla"]);						
 						row.Tag = drCI;
 					}
 				}
@@ -84,8 +85,8 @@ namespace ommp.ui
 		{
 			var drCI = (DataRow)((WF.ListView)e.Sender).Current.Tag;
 			var identify = ((int)drCI["_Identify"]);			
-			var drLK = FT.DataTables["LnkFunctionalCIToOrganization"].Find(string.Format("functionalci_identify={0}", identify));
-			FormApplicationSolution.Open(ModifyType.modify, (int)drLK["organization_identify"], identify);
+			var drLK = FT.DataTables["LnkFunctionalCIToOrganization"].Find(string.Format("_IsDeleted=0 And functionalci_identify={0}", identify));
+			FormApplicationSolution.Open((int)drLK["organization_identify"], identify);
 		}
 
 		public static void RowSelectionChanged(ListViewRowEventArgs e)

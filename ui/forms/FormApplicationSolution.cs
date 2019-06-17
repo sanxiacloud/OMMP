@@ -1,67 +1,117 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Foxtable;
+using System;
 using FT = Foxtable.OO_00oOO;
-using WF = Foxtable.WinForm;
-using Foxtable;
 using MB = System.Windows.Forms.MessageBox;
+using WF = Foxtable.WinForm;
+using ommp.bll.dto;
+using service=ommp.bll.service;
 
 namespace ommp.ui
 {
 	public static class FormApplicationSolution
 	{
-		public static ModifyType Type { set; private get; }
-		public static int OrgId { set; private get; }
-		public static int Identify { set; private get; }
+		private static ModifyType type;
+		public static int OrgId { set; private get; }		
+		public static ApplicationSolution Origin { set; private get; }
 
-		public static void Open(ModifyType type, int orgId, int identify=-1)
+		public static void Open(int orgId)
 		{
 			var self = FT.Forms["应用系统编辑"];
-			Type = type;
+			type = ModifyType.create;
 			OrgId = orgId;
-			Identify = identify;
+			Origin = null;
 			self.Open();
 		}
-
+		public static void Open(int orgID, int identify)
+		{
+			var self = FT.Forms["应用系统编辑"];
+			type = ModifyType.modify;
+			Origin = service.ApplicationSolutionService.Find(identify);
+			OrgId = orgID;
+			self.Open();
+		}
 		public static bool Save()
 		{
 			var self = FT.Forms["应用系统编辑"];
+			var name = (string)((WF.TextBox)self.Controls["tb_name"]).Value;
+			if (name == null || name == "")
+			{			
+				MB.Show("请填写应用系统名称");
+				((WF.TextBox)self.Controls["tb_name"]).Select();
+				return false;
+			}
 			if (OrgId == -1)
 			{
-				var result = MB.Show("请正确选择所属组织");
+				MB.Show("请正确选择所属组织");
 				((WF.DropDownBox)self.Controls["db_org"]).Select();
 				return false;
-			}			
+			}
+			var obj = new ApplicationSolution
+			{
+				Name = name,
+				CodeSla = ((WF.ComboBox)self.Controls["cb_sla"]).SelectedIndex,
+				Move2Production = (DateTime)((WF.DateTimePicker)self.Controls["dtp_mtp"]).Value,
+				CodeRiskRating = ((WF.ComboBox)self.Controls["cb_risk"]).SelectedIndex,
+				CodeApplicationStatus = ((WF.ComboBox)self.Controls["cb_stat"]).SelectedIndex,
+				Attention = (string)((WF.TextBox)self.Controls["tb_notice"]).Value,
+				OrgID = OrgId
+			};
+			if (type == ModifyType.create)
+			{
+				var (oid, desc) = service.ApplicationSolutionService.Create(obj);
+				if (oid == -1)
+				{
+					MB.Show("创建失败，请检查数据完整性");
+				}
+			}
+			else
+			{
+				obj.Identify = Origin.Identify;
+				Common.Log(obj.ToString());
+				Common.Log(Origin.ToString());
+				if (Origin.NotChanged(obj))
+				{
+					return true;
+				}
+				var (code, desc) = service.ApplicationSolutionService.Update(obj, Origin.OrgID);
+				if (code != 0)
+				{
+					MB.Show("修改失败，请检查数据完整性");
+				}
+			}
 			return true;
-		}
+		}			
 
 		#region event
-		public static void AfterLoad(FormEventArgs e) {
+		public static void AfterLoad(FormEventArgs e)
+		{
 			((WF.ComboBox)e.Form.Controls["cb_sla"]).ComboList = FT.DataTables["Code"].GetComboListString("label", "[t] = '保障要求'", "v");
 			((WF.ComboBox)e.Form.Controls["cb_risk"]).ComboList = FT.DataTables["Code"].GetComboListString("label", "[t] = '风险评级'", "v");
 			((WF.ComboBox)e.Form.Controls["cb_stat"]).ComboList = FT.DataTables["Code"].GetComboListString("label", "[t] = '应用程序状态'", "v");
 
-			if (Type == ModifyType.modify)
+			if (type == ModifyType.modify)
 			{
 				e.Form.Text = "修改应用系统";
-				var drCI = FT.DataTables["FunctionalCI"].Find(string.Format("_Identify={0}", Identify));
-				var drAS = FT.DataTables["ApplicationSolution"].Find(string.Format("id={0}", Identify));
-				((WF.TextBox)e.Form.Controls["tb_name"]).Value = (string)drCI["name"];
-				((WF.ComboBox)e.Form.Controls["cb_sla"]).SelectedIndex = (int)drAS["code_sla"];
-				((WF.ComboBox)e.Form.Controls["cb_risk"]).SelectedIndex = (int)drCI["code_risk_rating"];
-				((WF.ComboBox)e.Form.Controls["cb_stat"]).SelectedIndex = (int)drAS["code_application_status"];
-				((WF.DateTimePicker)e.Form.Controls["dtp_mtp"]).Value = (DateTime)drCI["move2production"];
-				var drOrg = FT.DataTables["Organization"].Find(string.Format("_Identify={0}", OrgId));
+				((WF.TextBox)e.Form.Controls["tb_name"]).Value = Origin.Name;
+				((WF.ComboBox)e.Form.Controls["cb_sla"]).SelectedIndex = Origin.CodeSla;
+				((WF.ComboBox)e.Form.Controls["cb_risk"]).SelectedIndex = Origin.CodeRiskRating;
+				((WF.ComboBox)e.Form.Controls["cb_stat"]).SelectedIndex = Origin.CodeApplicationStatus;
+				((WF.DateTimePicker)e.Form.Controls["dtp_mtp"]).Value = Origin.Move2Production;
+				// todo 改成通过bll获取org信息
+				var drOrg = FT.DataTables["Organization"].Find(string.Format("_Identify={0}", Origin.OrgID));
 				((WF.DropDownBox)e.Form.Controls["db_org"]).Value = (string)drOrg["name"];
+				((WF.TextBox)e.Form.Controls["tb_notice"]).Value = Origin.Attention;
 			}
 			else
 			{
 				e.Form.Text = "新增应用系统";
+				((WF.TextBox)e.Form.Controls["tb_name"]).Value = "";
+				((WF.TextBox)e.Form.Controls["tb_notice"]).Value = "";
 				((WF.ComboBox)e.Form.Controls["cb_sla"]).SelectedIndex = 0;
 				((WF.ComboBox)e.Form.Controls["cb_risk"]).SelectedIndex = 0;
-				((WF.ComboBox)e.Form.Controls["cb_stat"]).SelectedIndex = 0;
+				((WF.ComboBox)e.Form.Controls["cb_stat"]).SelectedIndex = 1;
 				((WF.DateTimePicker)e.Form.Controls["dtp_mtp"]).Value = DateTime.Today;
+				// todo 改成通过bll获取org信息
 				var drOrg = FT.DataTables["Organization"].Find(string.Format("_Identify={0}", OrgId));
 				((WF.DropDownBox)e.Form.Controls["db_org"]).Value = (string)drOrg["name"];
 			}
@@ -90,7 +140,7 @@ namespace ommp.ui
 			}
 			else
 			{
-				FormOrgDropDownTree.Filter = ((WF.DropDownBox)e.Form.Controls["db_org"]).Text; 
+				FormOrgDropDownTree.Filter = ((WF.DropDownBox)e.Form.Controls["db_org"]).Text;
 				drp.OpenDropDown();
 			}
 		}
@@ -141,7 +191,8 @@ namespace ommp.ui
 			if (result)
 			{
 				e.Form.Close();
-			}			
+				AppLvApp.ReDraw();
+			}
 		}
 	}
 }

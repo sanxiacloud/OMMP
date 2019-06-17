@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using FT = Foxtable.OO_00oOO;
 using WF = Foxtable.WinForm;
 using Foxtable;
+using System.IO;
 
 namespace ommp.ui
 {
@@ -16,7 +17,18 @@ namespace ommp.ui
 
 	class Common
 	{
-		public static void InitListView(WF.ListView lv, string[] names, string[] texts, int[] wds=null) {
+		public static void Log(string msg)
+		{			
+			FileStream fsLog = new FileStream(".\\debug.log", FileMode.Append);
+			StreamWriter swLog = new StreamWriter(fsLog, Encoding.Default);
+			DateTime curTime = DateTime.Now;
+			swLog.WriteLine(curTime + " :" + msg);
+			swLog.Close();
+			fsLog.Close();
+		}
+
+		public static void InitListView(WF.ListView lv, string[] names, string[] texts, int[] wds=null)
+		{
 			lv.StopRedraw();
 			lv.MultiSelect = false;
 			lv.Columns.Clear();
@@ -39,13 +51,13 @@ namespace ommp.ui
 			lv.ResumeRedraw();
 		}
 
-		public static void ClearListView(WF.ListView lv) {
+		public static void ClearListView(WF.ListView lv)
+		{
 			lv.StopRedraw();
 			lv.Rows.Clear();
 			lv.ResumeRedraw();
 		}
 
-		
-	}	
-		
+
+	}		
 }
