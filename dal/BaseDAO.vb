@@ -115,11 +115,14 @@ Namespace dal.dao
                 If DataTables(table_name).DataCols.Contains(C_ID) Then
                     col = C_ID
                 End If
+
+                '传入的对象中只给出 _Identify 值
                 For Each info As PropertyInfo In item.GetType().GetProperties()
-                    If info.Name.Equals(col) Then
+                    If info.Name.Equals(C__IDENTIFY) Then
                         filter = col & "=" & info.GetValue(item, Nothing)
                     End If
                 Next
+
                 'Output.Show("1. filter = " & filter)
                 Dim dr As DataRow = DataTables(table_name).Find(filter)
                 If dr IsNot Nothing Then
