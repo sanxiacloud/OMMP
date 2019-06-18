@@ -5,7 +5,6 @@ Namespace dal.dao
     Public Class DataCenterDeviceDAO
         Inherits ConnectableCIDAO
 
-        Private Const _TABLE_NAME = DataCenterDevice.TABLE_NAME
 
         Protected Function InsertDataCenterDevice(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As DataCenterDevice = CType(o, DataCenterDevice)

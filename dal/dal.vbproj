@@ -57,7 +57,9 @@
     <Compile Include="BaseDAO.vb" />
     <Compile Include="DTO\dto.vb" />
     <Compile Include="EntityDAO\ConnectableCIDAO.vb" />
+    <Compile Include="EntityDAO\ContractDAO.vb" />
     <Compile Include="EntityDAO\DataCenterDeviceDAO.vb" />
+    <Compile Include="EntityDAO\DNSObjectDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\ApplicationSolutionDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\BackupsDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\ChangeOpLinksAddRemoveDAO.vb" />
@@ -108,6 +110,14 @@
     <Compile Include="EntityDAO\FinalClasses\WebServerDAO.vb" />
     <Compile Include="EntityDAO\FunctionalCIDAO.vb" />
     <Compile Include="EntityDAO\IEntityDAO.vb" />
+    <Compile Include="EntityDAO\IPAddressDAO.vb" />
+    <Compile Include="EntityDAO\IPBlockDAO.vb" />
+    <Compile Include="EntityDAO\IPInterfaceDAO.vb" />
+    <Compile Include="EntityDAO\IPObjectDAO.vb" />
+    <Compile Include="EntityDAO\IPSubnetDAO.vb" />
+    <Compile Include="EntityDAO\NetworkInterfaceDAO.vb" />
+    <Compile Include="EntityDAO\SoftwareInstanceDAO.vb" />
+    <Compile Include="EntityDAO\TypologyDAO.vb" />
     <Compile Include="IBaseDAO.vb" />
     <Compile Include="EntityDAO\PhysicalDeviceDAO.vb" />
     <Compile Include="EntityDAO\VirtualDeviceDAO.vb" />

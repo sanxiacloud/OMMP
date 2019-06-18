@@ -42,7 +42,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -108,7 +108,7 @@
         Private _remote_ip1_identify As Integer
         Private _remote_ip2_identify As Integer
 
-        Public Property access_port() As String
+        Public Property Access_port() As String
             Get
                 Return _access_port
             End Get
@@ -117,7 +117,7 @@
             End Set
         End Property
 
-        Public Property description() As String
+        Public Property Description() As String
             Get
                 Return _description
             End Get
@@ -128,14 +128,14 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property local_ip1_identify() As Integer
+        Public Property Local_ip1_identify() As Integer
             Get
                 Return _local_ip1_identify
             End Get
@@ -144,7 +144,7 @@
             End Set
         End Property
 
-        Public Property local_ip2_identify() As Integer
+        Public Property Local_ip2_identify() As Integer
             Get
                 Return _local_ip2_identify
             End Get
@@ -153,7 +153,7 @@
             End Set
         End Property
 
-        Public Property remote_ip1_identify() As Integer
+        Public Property Remote_ip1_identify() As Integer
             Get
                 Return _remote_ip1_identify
             End Get
@@ -162,7 +162,7 @@
             End Set
         End Property
 
-        Public Property remote_ip2_identify() As Integer
+        Public Property Remote_ip2_identify() As Integer
             Get
                 Return _remote_ip2_identify
             End Get
@@ -214,7 +214,7 @@
             End Set
         End Property
 
-        Public Property ip1_identify() As Integer
+        Public Property Ip1_identify() As Integer
             Get
                 Return _ip1_identify
             End Get
@@ -234,7 +234,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -338,7 +338,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -406,7 +406,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -513,7 +513,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -664,7 +664,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -746,7 +746,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -782,6 +782,9 @@
 
     End Class
 
+    Public Class DomainQT : Inherits Domain
+        ' 
+    End Class
 
     Public Class Domain : Inherits DNSObject
         Private _code_renewal As Integer
@@ -825,7 +828,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -938,7 +941,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -996,16 +999,6 @@
         Private _size As String
         Private _storagesystem_identify As Integer
 
-        Public Const TABLE_NAME As String = "LogicalVolume"
-
-        Public Const C_DESCRIPTION As String = "description"
-        Public Const C_LUN_ID As String = "lun_id"
-        Public Const C_NAME As String = "name"
-        Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
-        Public Const C_RAID_LEVEL As String = "raid_level"
-        Public Const C_SIZE As String = "size"
-        Public Const C_STORAGESYSTEM_IDENTIFY As String = "storagesystem_identify"
-
         Public Property description() As String
             Get
                 Return _description
@@ -1017,7 +1010,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -1267,7 +1260,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -1351,7 +1344,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -1415,7 +1408,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -1486,7 +1479,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -1990,25 +1983,16 @@
         Private _start_date As Date
         Private _status As String
         Private _type As String
+        Private _finalclass As String
 
-        Public Const TABLE_NAME As String = "Contract"
-
-        Public Const C__IDENTIFY As String = "__Identify"
-        Public Const C__ISDELETED As String = "_IsDeleted"
-        Public Const C_BILLING_FREQUENCY As String = "billing_frequency"
-        Public Const C_BUYER_AGENT_IDENTIFY As String = "buyer_agent_identify"
-        Public Const C_BUYER_IDENTIFY As String = "buyer_identify"
-        Public Const C_CODE As String = "code"
-        Public Const C_COST As String = "cost"
-        Public Const C_COST_CURRENCY As String = "cost_currency"
-        Public Const C_COST_UNIT As String = "cost_unit"
-        Public Const C_END_DATE As String = "end_date"
-        Public Const C_NAME As String = "name"
-        Public Const C_SELLER_AGENT_IDENTIFY As String = "seller_agent_identify"
-        Public Const C_SELLER_IDENTIFY As String = "seller_identify"
-        Public Const C_START_DATE As String = "start_date"
-        Public Const C_STATUS As String = "status"
-        Public Const C_TYPE As String = "type"
+        Public Property finalclass() As String
+            Get
+                Return _finalclass
+            End Get
+            Set(ByVal _finalclass_value As String)
+                _finalclass = _finalclass_value
+            End Set
+        End Property
 
         Public Property billing_frequency() As String
             Get
@@ -2084,7 +2068,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2223,7 +2207,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2295,6 +2279,9 @@
 
     End Class
 
+    Public Class CustomerContractQT : Inherits CustomerContract
+        ' 
+    End Class
 
     Public Class CustomerContract : Inherits Contract
         Private _id As Integer
@@ -2314,7 +2301,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2323,6 +2310,9 @@
 
     End Class
 
+    Public Class ProviderContractQT : Inherits ProviderContract
+        ' 
+    End Class
 
     Public Class ProviderContract : Inherits Contract
         Private _coverage As String
@@ -2355,7 +2345,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2639,7 +2629,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2681,7 +2671,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2729,7 +2719,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2771,7 +2761,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2859,7 +2849,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2926,7 +2916,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -2973,7 +2963,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3108,7 +3098,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3216,7 +3206,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3260,7 +3250,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3306,7 +3296,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3356,7 +3346,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3408,7 +3398,7 @@
     Public Class SANSwitch : Inherits DataCenterDevice
         Private _id As Integer
         Private __IsDeleted As Boolean
-         
+
 
         Public Overloads Property id() As Integer
             Get
@@ -3421,7 +3411,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3451,7 +3441,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3515,7 +3505,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3650,7 +3640,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3687,7 +3677,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3755,7 +3745,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3875,7 +3865,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3928,7 +3918,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3949,11 +3939,14 @@
 
     ' ------------------------------
     ' SoftwareInstance * 
+    Public Class DBServerQT : Inherits DBServer
+        ' 
+    End Class
+
     Public Class DBServer : Inherits SoftwareInstance
         Private _id As Integer
         Private __IsDeleted As Boolean
 
-        Public Shadows Const TABLE_NAME As String = "DBServer"
 
         Public Overloads Property id() As Integer
             Get
@@ -3966,7 +3959,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -3975,6 +3968,9 @@
 
     End Class
 
+    Public Class MiddlewareQT : Inherits Middleware
+        ' 
+    End Class
 
     Public Class Middleware : Inherits SoftwareInstance
         Private _id As Integer
@@ -3993,7 +3989,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4002,6 +3998,9 @@
 
     End Class
 
+    Public Class WebServerQT : Inherits WebServer
+        '
+    End Class
 
     Public Class WebServer : Inherits SoftwareInstance
         Private _id As Integer
@@ -4020,7 +4019,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4042,16 +4041,6 @@
         Private _organization_identify As Integer
         Private _release_date As Date
         Private _requestor_identify As Integer
-
-        Public Const TABLE_NAME As String = "IPObject"
-
-        Public Const C_ALLOCATION_DATE As String = "allocation_date"
-        Public Const C_CODE_IPOBJECT_STATUS As String = "code_ipobject_status"
-        Public Const C_COMMENT As String = "comment"
-        Public Const C_FINALCLASS As String = "finalclass"
-        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
-        Public Const C_RELEASE_DATE As String = "release_date"
-        Public Const C_REQUESTOR_IDENTIFY As String = "requestor_identify"
 
         Public Property allocation_date() As Date
             Get
@@ -4091,7 +4080,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4179,7 +4168,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4242,6 +4231,9 @@
 
     End Class
 
+    Public Class IPBlockv4QT : Inherits IPBlockv4
+        ' 
+    End Class
 
     Public Class IPBlockv4 : Inherits IPBlock
         Private _firstip As String
@@ -4280,7 +4272,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4376,7 +4368,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4421,6 +4413,9 @@
 
     End Class
 
+    Public Class IPSubnetv4QT : Inherits IPSubnetv4
+        ' 
+    End Class
 
     Public Class IPSubnetv4 : Inherits IPSubnet
         Private __use As String
@@ -4535,7 +4530,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4603,7 +4598,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4621,6 +4616,9 @@
 
     End Class
 
+    Public Class IPAddressv4QT : Inherits IPAddressv4
+        ' 
+    End Class
 
     Public Class IPAddressv4 : Inherits IPAddress
         Private _code_ipv4address_usage As Integer
@@ -4675,7 +4673,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4718,7 +4716,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4745,6 +4743,9 @@
 
     End Class
 
+    Public Class OSFamilyQT : Inherits OSFamily
+        ' 
+    End Class
 
     Public Class OSFamily : Inherits Typology
         Private _id As Integer
@@ -4763,7 +4764,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4772,6 +4773,9 @@
 
     End Class
 
+    Public Class OSVersionQT : Inherits OSVersion
+        ' 
+    End Class
 
     Public Class OSVersion : Inherits Typology
         Private _id As Integer
@@ -4793,7 +4797,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4840,7 +4844,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4876,6 +4880,9 @@
 
     End Class
 
+    Public Class FiberChannelInterfaceQT : Inherits FiberChannelInterface
+        ' 
+    End Class
 
     Public Class FiberChannelInterface : Inherits NetworkInterface
         Private _datacenterdevice_identify As Integer
@@ -4913,7 +4920,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -4983,7 +4990,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5010,6 +5017,9 @@
 
     End Class
 
+    Public Class LogicalInterfaceQT : Inherits LogicalInterface
+        ' 
+    End Class
 
     Public Class LogicalInterface : Inherits IPInterface
         Private _id As Integer
@@ -5027,7 +5037,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5045,6 +5055,9 @@
 
     End Class
 
+    Public Class PhysicalInterfaceQT : Inherits PhysicalInterface
+        ' 
+    End Class
 
     Public Class PhysicalInterface : Inherits IPInterface
         Private _connectableci_identify As Integer
@@ -5075,7 +5088,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5143,7 +5156,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5246,7 +5259,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5284,7 +5297,7 @@
 
         Public Overloads Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5335,7 +5348,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5386,7 +5399,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5439,7 +5452,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5514,7 +5527,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5583,7 +5596,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5634,7 +5647,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5685,7 +5698,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5736,7 +5749,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5778,7 +5791,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5842,7 +5855,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5911,7 +5924,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5963,7 +5976,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -5994,7 +6007,7 @@
         Public Const C_DOCUMENT_IDENTIFY As String = "document_identify"
         Public Const C_LICENCE_IDENTIFY As String = "licence_identify"
 
-        Public Property document_identify() As Integer
+        Public Property Document_identify() As Integer
             Get
                 Return _document_identify
             End Get
@@ -6005,14 +6018,14 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property licence_identify() As Integer
+        Public Property Licence_identify() As Integer
             Get
                 Return _licence_identify
             End Get
@@ -6056,14 +6069,14 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property software_identify() As Integer
+        Public Property Software_identify() As Integer
             Get
                 Return _software_identify
             End Get
@@ -6120,7 +6133,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6171,14 +6184,14 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property providercontract_identify() As Integer
+        Public Property Providercontract_identify() As Integer
             Get
                 Return _providercontract_identify
             End Get
@@ -6211,7 +6224,7 @@
         Public Const C_IP1_IDENTIFY As String = "ip1_identify"
         Public Const C_IP2_IDENTIFY As String = "ip2_identify"
 
-        Public Property ip1_identify() As Integer
+        Public Property Ip1_identify() As Integer
             Get
                 Return _ip1_identify
             End Get
@@ -6231,7 +6244,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6282,7 +6295,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6326,7 +6339,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6377,7 +6390,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6428,7 +6441,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6470,7 +6483,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6523,14 +6536,14 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
             End Set
         End Property
 
-        Public Property server_identify() As Integer
+        Public Property Server_identify() As Integer
             Get
                 Return _server_identify
             End Get
@@ -6539,7 +6552,7 @@
             End Set
         End Property
 
-        Public Property size_used() As Integer
+        Public Property Size_used() As Integer
             Get
                 Return _size_used
             End Get
@@ -6583,7 +6596,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6636,7 +6649,7 @@
 
         Public Property _IsDeleted() As Boolean
             Get
-                Return _IsDeleted
+                Return __IsDeleted
             End Get
             Set(ByVal _IsDeleted_value As Boolean)
                 __IsDeleted = _IsDeleted_value
@@ -6661,7 +6674,7 @@
             End Set
         End Property
 
-        Public Property volume_identify() As Integer
+        Public Property Volume_identify() As Integer
             Get
                 Return _volume_identify
             End Get

@@ -2,20 +2,8 @@ Imports ommp.dal.dto
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class LogicalVolumeDAO : Inherits BaseDAO
-
-        Public Sub New()
-            ' 构造函数，默认为空
-        End Sub
-
-        Private ReadOnly Property _TABLE_NAME() As String
-            Get
-                Return LogicalVolume.TABLE_NAME
-            End Get
-        End Property
-
-
-
+    Public Class LogicalVolumeDAO
+        Inherits BaseDAO
 
     End Class
 

@@ -3,34 +3,39 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class DBServerDAO
-        Inherits BaseDAO
+        Inherits SoftwareInstanceDAO
         Implements IEntityDAO
 
-
-
         Public Sub New()
-            ' 构造函数，默认为空
+            Dim qtObject As New DBServerQT()
+            Dim baseObject As New FunctionalCI()
+            Dim joinObject1 As New SoftwareInstance()
+            Dim finalObject As New DBServer()
+
+            Dim baseTableName = baseObject.GetType().Name
+            Dim joinTableName1 = joinObject1.GetType().Name
+
+            Dim builder As New SQLJoinTableBuilder(qtObject.GetType().Name, baseTableName)
+            builder.ConnectionName = CONNECTION_NAME
+            builder.AddTable(baseTableName, C__IDENTIFY, joinTableName1, C_ID)
+            builder.AddTable(joinTableName1, C_ID, finalObject.GetType().Name, C_ID)
+            AddQueryTableCols(Of DBServer)(builder)
+            builder.Build()
+            'Output.Show(builder.BuildSql())
         End Sub
 
-        Private ReadOnly Property _TABLE_NAME() As String
-            Get
-                Return DBServer.TABLE_NAME
-            End Get
-        End Property
-
-
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-
+        Public Function Insert(o As Object) As Integer Implements IEntityDAO.Insert
+            Dim obj As DBServer = CType(o, DBServer)
+            obj.id = InsertSoftwareInstance(o, obj.GetType().Name)
+            Return InsertObject(Of DBServer)(CType(o, DBServer))
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-
+        Public Function Update(o As Object) As Boolean Implements IEntityDAO.Update
+            Return UpdateSoftwareInstance(o) And UpdateObject(Of DBServer)(CType(o, DBServer))
         End Function
 
-
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteObject(Of DBServer)(id)
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO.Delete
+            Return DeleteSoftwareInstance(id) And DeleteObject(Of DBServer)(id)
         End Function
     End Class
 

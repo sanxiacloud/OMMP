@@ -6,18 +6,18 @@ Namespace dal.dao
     Public Class SoftwareInstanceDAO
         Inherits FunctionalCIDAO
 
-        Protected Function InsertVirtualDevice(ByVal o As Object, ByVal finalclass As String) As Integer
-            Dim obj As VirtualDevice = CType(o, VirtualDevice)
+        Protected Function InsertSoftwareInstance(ByVal o As Object, ByVal finalclass As String) As Integer
+            Dim obj As SoftwareInstance = CType(o, SoftwareInstance)
             obj.id = InsertFunctionalCI(o, finalclass)
-            Return InsertObject(Of ommp.dal.dto.VirtualDevice)(CType(o, VirtualDevice))
+            Return InsertObject(Of ommp.dal.dto.SoftwareInstance)(CType(o, SoftwareInstance))
         End Function
 
-        Protected Function UpdateVirtualDevice(ByVal o As Object) As Boolean
-            Return UpdateFunctionalCI(o) And UpdateObject(Of VirtualDevice)(CType(o, VirtualDevice))
+        Protected Function UpdateSoftwareInstance(ByVal o As Object) As Boolean
+            Return UpdateFunctionalCI(o) And UpdateObject(Of SoftwareInstance)(CType(o, SoftwareInstance))
         End Function
 
-        Protected Function DeleteVirtualDevice(ByVal id As Integer) As Boolean
-            Return DeleteFunctionalCI(id) And DeleteObject(Of VirtualDevice)(id)
+        Protected Function DeleteSoftwareInstance(ByVal id As Integer) As Boolean
+            Return DeleteFunctionalCI(id) And DeleteObject(Of SoftwareInstance)(id)
         End Function
 
     End Class
