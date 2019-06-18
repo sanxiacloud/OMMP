@@ -255,6 +255,17 @@ Namespace dal.dao
             Output.Show(result)
         End Sub
 
+        '修改组织
+        Private Sub TestUpdateObject()
+            Dim dao As ommp.dal.dao.BaseDAO = New ommp.dal.dao.BaseDAO()
+            Dim result As Boolean = False
+            Dim dto As ommp.dal.dto.Organization = dao.FindObject(Of ommp.dal.dto.Organization)(602)
+            dto.code_org_type = 1
+            dto.name = "测试组织-20190614 修改 2"
+            result = dao.UpdateObject(Of ommp.dal.dto.Organization)(dto)
+            Output.Show(result)
+        End Sub
+
         '删除一个对象 - 测试        
         Private Sub TestDeleteObject()
             Dim dao As New ommp.dal.dao.BaseDAO()
@@ -280,17 +291,6 @@ Namespace dal.dao
                 Output.Show("IsDeleted = " & dto._IsDeleted)
                 Output.Show("_sort = " & dto._sort)
             Next
-        End Sub
-
-        '修改组织
-        Private Sub TestUpdateObject()
-            Dim dao As ommp.dal.dao.BaseDAO = New ommp.dal.dao.BaseDAO()
-            Dim result As Boolean = False
-            Dim dto As ommp.dal.dto.Organization = dao.FindObject(Of ommp.dal.dto.Organization)(602)
-            dto.code_org_type = 1
-            dto.name = "测试组织-20190614 修改 2"
-            result = dao.UpdateObject(Of ommp.dal.dto.Organization)(dto)
-            Output.Show(result)
         End Sub
 
         '测试修改 属性

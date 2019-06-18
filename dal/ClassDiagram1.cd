@@ -3,7 +3,7 @@
   <Class Name="ommp.dal.dao.BaseDAO" Collapsed="true">
     <Position X="81.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QABBAAACgAQgAIAAIAIAEAAAQAAAAAAAFAEAAAAAQAA=</HashCode>
+      <HashCode>QABBAAACAAAgAIAAIAIAAAAAQAAAAAAAEAEAAAAAAEA=</HashCode>
       <FileName>BaseDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -169,6 +169,13 @@
       <FileName>EntityDAO\FinalClasses\EnclosureDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ommp.dal.dao.CIGroupDAO" Collapsed="true">
+    <Position X="80" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FinalClasses\CIGroupDAO.vb</FileName>
+    </TypeIdentifier>
   </Class>
   <Interface Name="ommp.dal.dao.IEntityDAO" Collapsed="true">
     <Position X="92.75" Y="1.5" Width="1.5" />

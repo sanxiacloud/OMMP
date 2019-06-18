@@ -13,18 +13,6 @@
         Private _organization_identify As Integer
         Private _parent_identify As Integer
 
-        Public Const TABLE_NAME As String = "CIGroup"
-
-        Public Const C__IDENTIFY As String = "__Identify"
-        Public Const C__ISDELETED As String = "_IsDeleted"
-        Public Const C_CODE_CIGROUP_STATUS As String = "code_cigroup_status"
-        Public Const C_CODE_CIGROUP_TYPE As String = "code_cigroup_type"
-        Public Const C_DESCRIPTION As String = "description"
-        Public Const C_NAME As String = "name"
-        Public Const C_OBSOLESCENCE_DATE As String = "obsolescence_date"
-        Public Const C_ORGANIZATION_IDENTIFY As String = "organization_identify"
-        Public Const C_PARENT_IDENTIFY As String = "parent_identify"
-
         Public Property code_cigroup_status() As Integer
             Get
                 Return _code_cigroup_status
@@ -119,17 +107,6 @@
         Private _local_ip2_identify As Integer
         Private _remote_ip1_identify As Integer
         Private _remote_ip2_identify As Integer
-
-        Public Const TABLE_NAME As String = "ConfigAccess"
-
-        Public Const C__IDENTIFY As String = "__Identify"
-        Public Const C__ISDELETED As String = "_IsDeleted"
-        Public Const C_ACCESS_PORT As String = "access_port"
-        Public Const C_DESCRIPTION As String = "description"
-        Public Const C_LOCAL_IP1_IDENTIFY As String = "local_ip1_identify"
-        Public Const C_LOCAL_IP2_IDENTIFY As String = "local_ip2_identify"
-        Public Const C_REMOTE_IP1_IDENTIFY As String = "remote_ip1_identify"
-        Public Const C_REMOTE_IP2_IDENTIFY As String = "remote_ip2_identify"
 
         Public Property access_port() As String
             Get
@@ -2781,6 +2758,29 @@
 
     End Class
 
+    Public Class ConnectableCI : Inherits PhysicalDevice
+        Private _id As Integer
+        Private __IsDeleted As Boolean
+
+        Public Overloads Property id() As Integer
+            Get
+                Return _id
+            End Get
+            Set(ByVal _id_value As Integer)
+                _id = _id_value
+            End Set
+        End Property
+
+        Public Overloads Property _IsDeleted() As Boolean
+            Get
+                Return _IsDeleted
+            End Get
+            Set(ByVal _IsDeleted_value As Boolean)
+                __IsDeleted = _IsDeleted_value
+            End Set
+        End Property
+
+    End Class
 
     Public Class PhysicalDevice : Inherits FunctionalCI
         Private _asset_number As String
@@ -3318,34 +3318,7 @@
     End Class
 
 
-    Public Class ConnectableCI : Inherits PhysicalDevice
-        Private _id As Integer
-        Private __IsDeleted As Boolean
 
-        Public Shadows Const TABLE_NAME As String = "ConnectableCI"
-
-        Public Shadows Const C__ISDELETED As String = "_IsDeleted"
-        Public Shadows Const C_ID As String = "id"
-
-        Public Overloads Property id() As Integer
-            Get
-                Return _id
-            End Get
-            Set(ByVal _id_value As Integer)
-                _id = _id_value
-            End Set
-        End Property
-
-        Public Overloads Property _IsDeleted() As Boolean
-            Get
-                Return _IsDeleted
-            End Get
-            Set(ByVal _IsDeleted_value As Boolean)
-                __IsDeleted = _IsDeleted_value
-            End Set
-        End Property
-
-    End Class
 
 
     Public Class DataCenterDevice : Inherits ConnectableCI

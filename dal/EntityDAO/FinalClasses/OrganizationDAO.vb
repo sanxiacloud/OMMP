@@ -8,29 +8,6 @@ Namespace dal.dao
     '20190611 by Andy
     Public Class OrganizationDAO
         Inherits BaseDAO
-        Implements IEntityDAO
-
-        Public Sub New()
-            ' 构造函数，默认为空            
-        End Sub
-
-        Private ReadOnly Property _TABLE_NAME() As String
-            Get
-                Return Organization.TABLE_NAME
-            End Get
-        End Property
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Return InsertObject(Of ommp.dal.dto.Organization)(CType(o, Organization))
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateObject(Of ommp.dal.dto.Organization)(CType(o, Organization))
-        End Function
-
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteObject(Of Organization)(id)
-        End Function
 
         Private Sub TestInsert()
             ' 添加一个组织
@@ -47,7 +24,7 @@ Namespace dal.dao
             dto.code_org_type = 2
             dto.description = "测试组织1-描述"
 
-            result = dao.Insert(dto)
+            result = dao.InsertObject(Of Organization)(dto)
             Output.Show(result)
         End Sub
 
@@ -59,14 +36,14 @@ Namespace dal.dao
             dto.code_org_type = 1
             dto.name = "测试组织 20190614 修改3"
             dto.description = DateTime.Now.ToString()
-            result = dao.Update(dto)
+            result = dao.UpdateObject(Of Organization)(dto)
             Output.Show(result)
         End Sub
 
         '删除一个组织
         Private Sub TestDelete()
-            Dim dao As ommp.dal.dao.OrganizationDAO = New ommp.dal.dao.OrganizationDAO()
-            Output.Show(dao.Delete(600))
+            Dim dao As New ommp.dal.dao.OrganizationDAO()
+            Output.Show(dao.DeleteObject(Of Organization)(100000))
         End Sub
     End Class
 
