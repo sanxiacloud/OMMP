@@ -198,13 +198,18 @@ Namespace dal.dao
                 If DataTables(table_name).DataCols.Contains(C_ID) Then
                     col = C_ID
                 End If
-
+                'Output.Show("table_name = " & table_name)
+                'Output.Show("filter = " & col & " = " & id & " AND " & C__ISDELETED & " = False")
                 Dim dr As DataRow = DataTables(table_name).Find(col & " = " & id & " AND " & C__ISDELETED & " = False")
 
                 If dr IsNot Nothing Then
                     For Each info As PropertyInfo In item.GetType().GetProperties()
+                        'Output.Show("column_name = " & info.Name)
                         If DataTables(table_name).DataCols.Contains(info.Name) Then
                             info.SetValue(item, dr(info.Name), Nothing)
+                        ElseIf info.Name.Equals(C__IDENTIFY) Then
+                            'Output.Show("_Identify = " & dr(C__IDENTIFY))
+                            info.SetValue(item, dr(C__IDENTIFY), Nothing)
                         End If
                     Next
                 Else
@@ -222,8 +227,8 @@ Namespace dal.dao
 
         '测试查找一个对象
         Private Sub TestFindObject()
-            Dim dao As ommp.dal.dao.BaseDAO = New ommp.dal.dao.BaseDAO()
-            Dim dto As ommp.dal.dto.Organization = dao.FindObject(Of ommp.dal.dto.Organization)(601)
+            Dim dao As New ommp.dal.dao.BaseDAO()
+            Dim dto As ommp.dal.dto.Organization = dao.FindObject(Of ommp.dal.dto.Organization)(558)
             Output.Show("code_org_type = " & dto.code_org_type)
             Output.Show("Identify = " & dto._Identify)
             Output.Show("parent_identify = " & dto.parent_identify)

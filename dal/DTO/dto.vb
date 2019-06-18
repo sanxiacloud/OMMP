@@ -2474,8 +2474,6 @@
 
     Public Class ApplicationSolutionQT : Inherits ApplicationSolution
         '简单继承，用于查询方法
-        Public Shadows Const TABLE_NAME As String = "ApplicationSolutionQT"
-
     End Class
 
     Public Class ApplicationSolution : Inherits FunctionalCI

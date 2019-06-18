@@ -43,7 +43,7 @@ Namespace dal.dao
         Private Sub TestFindObject()
             Dim dao As New ommp.dal.dao.ApplicationSolutionDAO()
             Dim result As Boolean = False
-            Dim dto As ommp.dal.dto.ApplicationSolutionQT = dao.FindObject(Of ommp.dal.dto.ApplicationSolutionQT)(1886)
+            Dim dto As ommp.dal.dto.ApplicationSolutionQT = dao.FindObject(Of ommp.dal.dto.ApplicationSolutionQT)(1897)
             If dto IsNot Nothing Then
                 Output.Show("Identify = " & dto._Identify)
                 Output.Show("name = " & dto.name)
@@ -82,11 +82,13 @@ Namespace dal.dao
         Private Sub TestUpdate()
             Dim dao As New ommp.dal.dao.ApplicationSolutionDAO()
             Dim result As Boolean = False
-            Dim dto As ommp.dal.dto.ApplicationSolution = dao.FindObject(Of ommp.dal.dto.ApplicationSolution)(1886)
+            Dim dto As ommp.dal.dto.ApplicationSolution = dao.FindObject(Of ommp.dal.dto.ApplicationSolution)(1897)
+            Output.Show(dto.name)
             dto.name = "测试组织 20190614 修改 3"
             dto.move2production = DateTime.Now
             dto.redundancy = "hahahaha..."
             Output.Show(dao.Update(dto))
+            Output.Show(dto.name)
         End Sub
 
         Private Sub TestDelete()
