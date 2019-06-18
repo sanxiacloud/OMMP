@@ -1,15 +1,19 @@
 ﻿using Foxtable;
 using System;
+using log4net;
 using FT = Foxtable.OO_00oOO;
 using MB = System.Windows.Forms.MessageBox;
 using WF = Foxtable.WinForm;
 using ommp.bll.dto;
 using service=ommp.bll.service;
 
+
 namespace ommp.ui
 {
 	public static class FormApplicationSolution
 	{
+		private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 		private static ModifyType type;
 		public static int OrgId { set; private get; }		
 		public static ApplicationSolution Origin { set; private get; }
@@ -66,9 +70,7 @@ namespace ommp.ui
 			}
 			else
 			{
-				obj.Identify = Origin.Identify;
-				Common.Log(obj.ToString());
-				Common.Log(Origin.ToString());
+				obj.Identify = Origin.Identify;			
 				if (Origin.NotChanged(obj))
 				{
 					return true;
@@ -185,11 +187,13 @@ namespace ommp.ui
 
 	public static class FASBtSave
 	{
+		private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		public static void Click(ControlEventArgs e)
 		{
 			var result = FormApplicationSolution.Save();
 			if (result)
 			{
+				log.Debug("保存成功");
 				e.Form.Close();
 				AppLvApp.ReDraw();
 			}

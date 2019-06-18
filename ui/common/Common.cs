@@ -17,16 +17,6 @@ namespace ommp.ui
 
 	class Common
 	{
-		public static void Log(string msg)
-		{			
-			FileStream fsLog = new FileStream(".\\debug.log", FileMode.Append);
-			StreamWriter swLog = new StreamWriter(fsLog, Encoding.Default);
-			DateTime curTime = DateTime.Now;
-			swLog.WriteLine(curTime + " :" + msg);
-			swLog.Close();
-			fsLog.Close();
-		}
-
 		public static void InitListView(WF.ListView lv, string[] names, string[] texts, int[] wds=null)
 		{
 			lv.StopRedraw();

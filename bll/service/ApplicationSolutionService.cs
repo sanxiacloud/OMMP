@@ -84,6 +84,10 @@ namespace ommp.bll.service
 						code = 0;
 					}
 				}
+				else
+				{
+					code = 0;
+				}
 			}
 			return (code, desc);
 		}
