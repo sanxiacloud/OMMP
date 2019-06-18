@@ -217,7 +217,7 @@ Namespace dal.dao
                 End If
 
             Catch ex As Exception
-                Output.Show(table_name & "(DAO) -> FindObject ")
+                Output.Show(table_name & "(DAO) -> FindObject(ByVal filter As String) ")
                 Output.Show(ex.Message)
                 Output.Show(ex.StackTrace)
             End Try
@@ -242,7 +242,7 @@ Namespace dal.dao
                 item = FindObject(Of T)(filter)
 
             Catch ex As Exception
-                Output.Show(table_name & "(DAO) -> FindObject ")
+                Output.Show(table_name & "(DAO) -> FindObject(ByVal id As Integer) ")
                 Output.Show(ex.Message)
                 Output.Show(ex.StackTrace)
             End Try
