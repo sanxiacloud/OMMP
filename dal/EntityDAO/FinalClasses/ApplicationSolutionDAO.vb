@@ -9,12 +9,12 @@ Namespace dal.dao
         Inherits FunctionalCIDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Private Function BuildJoinTable() As Boolean
             Dim qtObject As New ApplicationSolutionQT()
             Dim baseObject As New FunctionalCI()
             Dim finalObject As New ApplicationSolution()
 
-            Dim baseTableName = baseObject.GetType().Name 
+            Dim baseTableName = baseObject.GetType().Name
 
             Dim builder As New SQLJoinTableBuilder(qtObject.GetType().Name, baseTableName)
             builder.ConnectionName = CONNECTION_NAME
@@ -22,6 +22,12 @@ Namespace dal.dao
             AddQueryTableCols(Of ApplicationSolution)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+
+            Return True
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
@@ -31,7 +37,7 @@ Namespace dal.dao
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateFunctionalCI(o) And UpdateObject(Of ApplicationSolution)(CType(o, ApplicationSolution))
+            Return UpdateFunctionalCI(o) And UpdateObject(Of ApplicationSolution)(CType(o, ApplicationSolution)) And BuildJoinTable()
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
@@ -81,13 +87,13 @@ Namespace dal.dao
 
         Private Sub TestUpdate()
             Dim dao As New ommp.dal.dao.ApplicationSolutionDAO()
-            Dim result As Boolean = False
             Dim dto As ommp.dal.dto.ApplicationSolutionQT = dao.FindObject(Of ommp.dal.dto.ApplicationSolutionQT)(1897)
             Output.Show(dto.name)
-            dto.name = "测试组织 20190614 修改 3"
+            dto.name = "测试组织 20190614 修改 222"
             dto.move2production = DateTime.Now
             dto.redundancy = "hahahaha..."
             Output.Show(dao.Update(dto))
+            dto = dao.FindObject(Of ommp.dal.dto.ApplicationSolutionQT)(1897)
             Output.Show(dto.name)
         End Sub
 

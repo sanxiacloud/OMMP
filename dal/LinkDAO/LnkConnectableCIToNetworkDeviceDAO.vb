@@ -2,7 +2,8 @@ Imports ommp.dal.dto
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class LnkConnectableCIToNetworkDeviceDAO : Inherits BaseDAO
+    Public Class LnkConnectableCIToNetworkDeviceDAO
+        Inherits BaseDAO
 
 
     End Class

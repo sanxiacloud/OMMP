@@ -11,13 +11,10 @@ Namespace dal.dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(obj.GetType().Name).AddNew()
+                obj.applicationsolution_identify = fromId
+                obj.functionalci_identify = toId
+                InsertObject(obj)
 
-                dr(LnkApplicationSolutionToFunctionalCI.C_APPLICATIONSOLUTION_IDENTIFY) = fromId
-                dr(LnkApplicationSolutionToFunctionalCI.C_FUNCTIONALCI_IDENTIFY) = toId
-                dr(C__ISDELETED) = False
-
-                dr.Load()
                 result = True
             Catch ex As Exception
                 Output.Show(obj.GetType().Name & "(DAO) -> Link ")
@@ -36,12 +33,11 @@ Namespace dal.dao
                 Dim filter As String = LnkApplicationSolutionToFunctionalCI.C_APPLICATIONSOLUTION_IDENTIFY & " = " & fromId
                 filter = filter & " AND " & LnkApplicationSolutionToFunctionalCI.C_FUNCTIONALCI_IDENTIFY & " = " & toId
 
-                Dim drs As List(Of DataRow)
-                drs = DataTables(obj.GetType().Name).Select(filter)
+                Dim lists As IList(Of LnkApplicationSolutionToFunctionalCI) = FindList(Of LnkApplicationSolutionToFunctionalCI)(filter, Nothing)
 
-                For Each dr As DataRow In drs
-                    dr(C__ISDELETED) = True
-                    dr.Load()
+                For Each dto As LnkApplicationSolutionToFunctionalCI In lists
+                    'Output.Show("Identify = " & dto._Identify)
+                    DeleteObject(Of LnkApplicationSolutionToFunctionalCI)(dto._Identify)
                 Next
 
                 result = True

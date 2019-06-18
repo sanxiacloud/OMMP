@@ -189,6 +189,43 @@ Namespace dal.dao
             Return result
         End Function
 
+        Public Function FindObject(Of T As New)(ByVal filter As String) As T Implements IBaseDAO.FindObject
+            Dim item As New T()
+            Dim table_name As String = item.GetType().Name
+
+            Try
+                Dim col As String = C__IDENTIFY
+                If DataTables(table_name).DataCols.Contains(C_ID) Then
+                    col = C_ID
+                End If
+                'Output.Show("table_name = " & table_name)
+                'Output.Show("filter = " & col & " = " & id & " AND " & C__ISDELETED & " = False")
+                Dim dr As DataRow = DataTables(table_name).Find(col & " = " & id & " AND " & C__ISDELETED & " = False")
+
+                If dr IsNot Nothing Then
+                    For Each info As PropertyInfo In item.GetType().GetProperties()
+                        'Output.Show("column_name = " & info.Name)
+                        If DataTables(table_name).DataCols.Contains(info.Name) Then
+                            info.SetValue(item, dr(info.Name), Nothing)
+                        ElseIf info.Name.Equals(C__IDENTIFY) Then
+                            'Output.Show("_Identify = " & dr(C__IDENTIFY))
+                            info.SetValue(item, dr(C__IDENTIFY), Nothing)
+                        End If
+                    Next
+                Else
+                    item = Nothing
+                End If
+
+            Catch ex As Exception
+                Output.Show(table_name & "(DAO) -> FindObject ")
+                Output.Show(ex.Message)
+                Output.Show(ex.StackTrace)
+            End Try
+
+            Return item
+        End Function
+
+
         Public Function FindObject(Of T As New)(ByVal id As Integer) As T Implements IBaseDAO.FindObject
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
