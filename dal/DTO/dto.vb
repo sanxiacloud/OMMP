@@ -5341,8 +5341,6 @@
         Private __Identify As Integer
         Private __IsDeleted As Boolean
 
-        Public Const TABLE_NAME As String = "LnkApplicationSolutionToFunctionalCI"
-
         Public Const C_APPLICATIONSOLUTION_IDENTIFY As String = "applicationsolution_identify"
         Public Const C_FUNCTIONALCI_IDENTIFY As String = "functionalci_identify"
 
