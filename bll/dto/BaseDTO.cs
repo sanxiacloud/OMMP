@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net;
 using ommp.bll.service;
 
 namespace ommp.bll.dto
 {
 	public class BaseDTO
 	{
+		private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		public bool NotChanged(BaseDTO other)
 		{
 			var type = this.GetType();
@@ -23,7 +25,7 @@ namespace ommp.bll.dto
 					// !!! 无法用==进行比较，否则比较的是地址
 					if (!object.Equals(pi.GetValue(this, null), pi.GetValue(other, null)))
 					{
-						CommonService.Log(string.Format("diff in {0}", pi.Name));
+						log.Info(string.Format("Found differ in attribute '{0}'", pi.Name));
 						return false;
 					}
 				}
@@ -38,7 +40,14 @@ namespace ommp.bll.dto
 			sb.Append(string.Format("{0} object:\n", type.Name));
 			foreach (var pi in type.GetProperties())
 			{
-				sb.Append(string.Format("'\t{0}({1})' is '{2}'\n", pi.Name, pi.PropertyType, pi.GetValue(this, null)));
+				if (pi.GetValue(this, null) == null)
+				{
+					sb.Append(string.Format("'\t{0}({1})' is null\n", pi.Name, pi.PropertyType));
+				}
+				else
+				{
+					sb.Append(string.Format("'\t{0}({1})' is '{2}'\n", pi.Name, pi.PropertyType, pi.GetValue(this, null)));
+				}		
 			}
 			return sb.ToString();
 		}

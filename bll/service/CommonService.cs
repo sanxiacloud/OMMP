@@ -12,17 +12,7 @@ using System.IO;
 namespace ommp.bll.service
 {
 	public static class CommonService
-	{
-		//todo 待改成正规log库
-		public static void Log(string msg)
-		{
-			FileStream fsLog = new FileStream(".\\debug.log", FileMode.Append);
-			StreamWriter swLog = new StreamWriter(fsLog, Encoding.Default);
-			DateTime curTime = DateTime.Now;
-			swLog.WriteLine(curTime + " :" + msg);
-			swLog.Close();
-			fsLog.Close();
-		}
+	{		
 		public static string TranslateCode(string type, int code)
 		{
 			var dt = FT.DataTables["Code"];
