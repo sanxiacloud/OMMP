@@ -6,10 +6,6 @@ Namespace dal.dao
         Inherits BaseDAO
         Implements ILinkDAO
 
-        Public Sub New()
-            ' 构造函数，默认为空
-        End Sub
-
         Public Function Link(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.Link
             Dim obj As New LnkApplicationSolutionToFunctionalCI()
             Dim result As Boolean = False
@@ -21,7 +17,7 @@ Namespace dal.dao
                 dr(LnkApplicationSolutionToFunctionalCI.C_FUNCTIONALCI_IDENTIFY) = toId
                 dr(C__ISDELETED) = False
 
-                dr.Save()
+                dr.Load()
                 result = True
             Catch ex As Exception
                 Output.Show(obj.GetType().Name & "(DAO) -> Link ")
@@ -45,7 +41,7 @@ Namespace dal.dao
 
                 For Each dr As DataRow In drs
                     dr(C__ISDELETED) = True
-                    dr.Save()
+                    dr.Load()
                 Next
 
                 result = True

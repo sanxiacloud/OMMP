@@ -1581,13 +1581,6 @@
         Private _objkey As Integer
         Private _optype As String
 
-        Public Const TABLE_NAME As String = "ChangeOp"
-
-        Public Const C__IDENTIFY As String = "__Identify"
-        Public Const C_CHANGE_IDENTIFY As String = "change_identify"
-        Public Const C_OBJCLASS As String = "objclass"
-        Public Const C_OBJKEY As String = "objkey"
-        Public Const C_OPTYPE As String = "optype"
 
         Public Property change_identify() As Integer
             Get
@@ -1636,6 +1629,9 @@
 
     End Class
 
+    Public Class ChangeOpCreateQT : Inherits ChangeOpCreate
+        ' 
+    End Class
 
     Public Class ChangeOpCreate : Inherits ChangeOp
         Private _id As Integer
@@ -1655,17 +1651,14 @@
 
     End Class
 
+    Public Class ChangeOpDeleteQT : Inherits ChangeOpDelete
+        ' 
+    End Class
 
     Public Class ChangeOpDelete : Inherits ChangeOp
         Private _fclass As String
         Private _fname As String
         Private _id As Integer
-
-        Public Shadows Const TABLE_NAME As String = "ChangeOpDelete"
-
-        Public Const C_FCLASS As String = "fclass"
-        Public Const C_FNAME As String = "fname"
-        Public Const C_ID As String = "id"
 
         Public Property fclass() As String
             Get
@@ -1737,6 +1730,9 @@
 
     End Class
 
+    Public Class ChangeOpLinksAddRemoveQT : Inherits ChangeOpLinksAddRemove
+        ' 
+    End Class
 
     Public Class ChangeOpLinksAddRemove : Inherits ChangeOpLinks
         Private _id As Integer
@@ -1838,6 +1834,9 @@
 
     End Class
 
+    Public Class ChangeOpSetAttScalarQT : Inherits ChangeOpSetAttScalar
+        ' 
+    End Class
 
     Public Class ChangeOpSetAttScalar : Inherits ChangeOpSetAtt
         Private _id As Integer

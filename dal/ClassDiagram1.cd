@@ -443,6 +443,59 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="ommp.dal.dao.ChangeOpDAO" Collapsed="true">
+    <Position X="61.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAACAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\ChangeOpDAO.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ommp.dal.dao.ChangeOpCreateDAO" Collapsed="true">
+    <Position X="62" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FinalClasses\ChangeOpCreateDAO.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ommp.dal.dao.ChangeDAO" Collapsed="true">
+    <Position X="64" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FinalClasses\ChangeDAO.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ommp.dal.dao.ChangeOpDeleteDAO" Collapsed="true">
+    <Position X="64" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FinalClasses\ChangeOpDeleteDAO.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ommp.dal.dao.ChangeOpLinksDAO" Collapsed="true">
+    <Position X="60" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAIACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\ChangeOpLinksDAO.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ommp.dal.dao.ChangeOpLinksAddRemoveDAO" Collapsed="true">
+    <Position X="60" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FinalClasses\ChangeOpLinksAddRemoveDAO.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ommp.dal.dao.ChangeOpSetAttScalarDAO" Collapsed="true">
+    <Position X="58" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\FinalClasses\ChangeOpSetAttScalarDAO.vb</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="ommp.dal.dao.IEntityDAO" Collapsed="true">
     <Position X="92.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>

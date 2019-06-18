@@ -56,12 +56,17 @@
   <ItemGroup>
     <Compile Include="BaseDAO.vb" />
     <Compile Include="DTO\dto.vb" />
+    <Compile Include="EntityDAO\ChangeOpLinksDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ChangeOpCreateDAO.vb" />
+    <Compile Include="EntityDAO\ChangeOpDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ChangeOpDeleteDAO.vb" />
     <Compile Include="EntityDAO\ConnectableCIDAO.vb" />
     <Compile Include="EntityDAO\ContractDAO.vb" />
     <Compile Include="EntityDAO\DataCenterDeviceDAO.vb" />
     <Compile Include="EntityDAO\DNSObjectDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\ApplicationSolutionDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\BackupsDAO.vb" />
+    <Compile Include="EntityDAO\FinalClasses\ChangeDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\ChangeOpLinksAddRemoveDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\ChangeOpSetAttScalarDAO.vb" />
     <Compile Include="EntityDAO\FinalClasses\CIGroupDAO.vb" />
