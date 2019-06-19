@@ -65,7 +65,7 @@ Namespace dal.dao
             Return result
         End Function
 
-        Function ListFunctionalCI(ByRef orgid As Integer, ByRef finalClass As String) As IList(Of Integer)
+        Function ListFunctionalCI(orgid As Integer, finalClass As String) As IList(Of Integer)
             Dim resultList As New Generic.List(Of Integer)()
             For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("organization_identify = " & orgid, C__IDENTIFY)
                 resultList.Add(obj.functionalci_identify)
@@ -73,7 +73,7 @@ Namespace dal.dao
             Return resultList
         End Function
 
-        Function ListOrganization(ByRef fciid As Integer) As IList(Of Integer)
+        Function ListOrganization(fciid As Integer) As IList(Of Integer)
             Dim resultList As New Generic.List(Of Integer)()
             For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("functionalci_identify = " & fciid, C__IDENTIFY)
                 resultList.Add(obj.organization_identify)
