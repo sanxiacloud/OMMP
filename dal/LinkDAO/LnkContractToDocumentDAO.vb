@@ -11,13 +11,10 @@ Namespace dal.dao
             Dim result As Boolean = False
 
             Try
-                Dim dr As DataRow = DataTables(obj.GetType().Name).AddNew()
+                obj.contract_identify = fromId
+                obj.document_identify = toId
+                InsertObject(obj)
 
-                dr(LnkContractToDocument.C_CONTRACT_IDENTIFY) = fromId
-                dr(LnkContractToDocument.C_DOCUMENT_IDENTIFY) = toId
-                dr(C__ISDELETED) = False
-
-                dr.Load()
                 result = True
             Catch ex As Exception
                 Output.Show(obj.GetType().Name & "(DAO) -> Link ")
@@ -30,11 +27,13 @@ Namespace dal.dao
 
         Public Function UnLink(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.UnLink
             Dim obj As New LnkContractToDocument()
+            Dim fromObject As New Contract()
+            Dim toObject As New Documents()
             Dim result As Boolean = False
 
             Try
-                Dim filter As String = LnkContractToDocument.C_CONTRACT_IDENTIFY & " = " & fromId
-                filter = filter & " AND " & LnkContractToDocument.C_DOCUMENT_IDENTIFY & " = " & toId
+                Dim filter As String = fromObject.GetType().Name & C__IDENTIFY & " = " & fromId
+                filter = filter & " AND " & toObject.GetType().Name & C__IDENTIFY & " = " & toId
 
                 Dim drs As List(Of DataRow)
                 drs = DataTables(obj.GetType().Name).Select(filter)

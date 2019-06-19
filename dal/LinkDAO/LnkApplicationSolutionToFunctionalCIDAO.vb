@@ -27,11 +27,13 @@ Namespace dal.dao
 
         Public Function UnLink(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.UnLink
             Dim obj As New LnkApplicationSolutionToFunctionalCI()
+            Dim fromObject As New ApplicationSolution()
+            Dim toObject As New FunctionalCI()
             Dim result As Boolean = False
 
             Try
-                Dim filter As String = LnkApplicationSolutionToFunctionalCI.C_APPLICATIONSOLUTION_IDENTIFY & " = " & fromId
-                filter = filter & " AND " & LnkApplicationSolutionToFunctionalCI.C_FUNCTIONALCI_IDENTIFY & " = " & toId
+                Dim filter As String = fromObject.GetType().Name & C__IDENTIFY & " = " & fromId
+                filter = filter & " AND " & toObject.GetType().Name & C__IDENTIFY & " = " & toId
 
                 Dim lists As IList(Of LnkApplicationSolutionToFunctionalCI) = FindList(Of LnkApplicationSolutionToFunctionalCI)(filter, Nothing)
 

@@ -3,8 +3,6 @@ Imports ommp.dal.dto
 Imports Foxtable
 
 Namespace dal.dao
-    ' 已全部测试完成
-    '20190611 by Andy
     Public Class ApplicationSolutionDAO
         Inherits FunctionalCIDAO
         Implements IEntityDAO
@@ -22,7 +20,6 @@ Namespace dal.dao
             AddQueryTableCols(Of ApplicationSolution)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
-
             Return True
         End Function
 
@@ -43,7 +40,6 @@ Namespace dal.dao
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
             Return DeleteFunctionalCI(id) And DeleteObject(Of ApplicationSolution)(id)
         End Function
-
 
         ' 查询一个应用方案
         Private Sub TestFindObject()
@@ -89,7 +85,7 @@ Namespace dal.dao
             Dim dao As New ommp.dal.dao.ApplicationSolutionDAO()
             Dim dto As ommp.dal.dto.ApplicationSolutionQT = dao.FindObject(Of ommp.dal.dto.ApplicationSolutionQT)(1897)
             Output.Show(dto.name)
-            dto.name = "测试组织 20190614 修改 222"
+            dto.name = "测试组织 20190619 修改 1"
             dto.move2production = DateTime.Now
             dto.redundancy = "hahahaha..."
             Output.Show(dao.Update(dto))
