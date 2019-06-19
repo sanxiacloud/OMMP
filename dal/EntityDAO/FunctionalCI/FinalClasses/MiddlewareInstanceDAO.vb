@@ -28,7 +28,7 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As MiddlewareInstance = CType(o, MiddlewareInstance)
             obj.id = InsertFunctionalCI(o, obj.GetType().Name)
-            Return InsertObject(Of MiddlewareInstance)(CType(o, MiddlewareInstance))
+            Return InsertObject(Of MiddlewareInstance)(CType(o, MiddlewareInstance)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
@@ -36,7 +36,7 @@ Namespace dal.dao
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteFunctionalCI(id) And DeleteObject(Of MiddlewareInstance)(id)
+            Return DeleteFunctionalCI(id) And DeleteObject(Of MiddlewareInstance)(id) And BuildJoinTable()
         End Function
     End Class
 

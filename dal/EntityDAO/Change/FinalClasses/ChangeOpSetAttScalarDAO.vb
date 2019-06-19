@@ -6,7 +6,7 @@ Namespace dal.dao
         Inherits ChangeOpDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New ChangeOpSetAttScalarQT()
             Dim baseObject As New ChangeOp()
             Dim finalObject As New ChangeOpSetAttScalar()
@@ -19,6 +19,10 @@ Namespace dal.dao
             AddQueryTableCols(Of ChangeOpSetAttScalar)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
@@ -28,7 +32,7 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As ChangeOpSetAttScalar = CType(o, ChangeOpSetAttScalar)
             obj.id = InsertChangeOp(o, obj.GetType().Name)
-            Return InsertObject(Of ChangeOpSetAttScalar)(CType(o, ChangeOpSetAttScalar))
+            Return InsertObject(Of ChangeOpSetAttScalar)(CType(o, ChangeOpSetAttScalar)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update

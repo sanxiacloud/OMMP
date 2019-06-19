@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class IPBlockDAO
+    Public MustInherit Class IPBlockDAO
         Inherits IPObjectDAO
 
         Protected Function InsertIPBlock(ByVal o As Object, ByVal finalclass As String) As Integer

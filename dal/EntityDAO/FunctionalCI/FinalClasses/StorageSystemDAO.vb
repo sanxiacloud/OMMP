@@ -37,7 +37,7 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As StorageSystem = CType(o, StorageSystem)
             obj.id = InsertDataCenterDevice(o, obj.GetType().Name)
-            Return InsertObject(Of StorageSystem)(CType(o, StorageSystem))
+            Return InsertObject(Of StorageSystem)(CType(o, StorageSystem)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
@@ -45,7 +45,7 @@ Namespace dal.dao
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteDataCenterDevice(id) And DeleteObject(Of StorageSystem)(id)
+            Return DeleteDataCenterDevice(id) And DeleteObject(Of StorageSystem)(id) And BuildJoinTable()
         End Function
 
     End Class

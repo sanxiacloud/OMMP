@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class NetworkInterfaceDAO
+    Public MustInherit Class NetworkInterfaceDAO
         Inherits BaseDAO
         Protected Function InsertNetworkInterface(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As NetworkInterface = CType(o, NetworkInterface)
@@ -17,5 +17,6 @@ Namespace dal.dao
             Return DeleteObject(Of NetworkInterface)(id)
         End Function
 
+        Protected MustOverride Function BuildJoinTable() As Boolean
     End Class
 End Namespace

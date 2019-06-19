@@ -32,13 +32,13 @@ Namespace dal.dao
         End Sub
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteVirtualHost(id) And DeleteObject(Of Hypervisor)(id)
+            Return DeleteVirtualHost(id) And DeleteObject(Of Hypervisor)(id) And BuildJoinTable()
         End Function
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As Hypervisor = CType(o, Hypervisor)
             obj.id = InsertVirtualHost(o, obj.GetType().Name)
-            Return InsertObject(Of ommp.dal.dto.Hypervisor)(CType(o, Hypervisor))
+            Return InsertObject(Of Hypervisor)(CType(o, Hypervisor)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update

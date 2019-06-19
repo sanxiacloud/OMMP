@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class IPObjectDAO
+    Public MustInherit Class IPObjectDAO
         Inherits BaseDAO
         Protected Function InsertIPObject(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As IPObject = CType(o, IPObject)
@@ -16,6 +16,8 @@ Namespace dal.dao
         Protected Function DeleteIPObject(ByVal id As Integer) As Boolean
             Return DeleteObject(Of IPObject)(id)
         End Function
+
+        Protected MustOverride Function BuildJoinTable() As Boolean
 
     End Class
 End Namespace

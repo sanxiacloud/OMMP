@@ -5,7 +5,8 @@ Namespace dal.dao
     Public Class ChangeOpLinksAddRemoveDAO
         Inherits ChangeOpLinksDAO
         Implements IEntityDAO
-        Public Sub New()
+
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New ChangeOpLinksAddRemoveQT()
             Dim baseObject As New ChangeOp()
             Dim joinObject1 As New ChangeOpLinks()
@@ -21,20 +22,24 @@ Namespace dal.dao
             AddQueryTableCols(Of ChangeOpLinksAddRemove)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Insert(o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As ChangeOpLinksAddRemove = CType(o, ChangeOpLinksAddRemove)
             obj.id = InsertChangeOpLinks(o, obj.GetType().Name)
-            Return InsertObject(Of ChangeOpLinksAddRemove)(CType(o, ChangeOpLinksAddRemove))
+            Return InsertObject(Of ChangeOpLinksAddRemove)(CType(o, ChangeOpLinksAddRemove)) And BuildJoinTable()
         End Function
 
         Public Function Update(o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateChangeOpLinks(o) And UpdateObject(Of ChangeOpLinksAddRemove)(CType(o, ChangeOpLinksAddRemove))
+            Return UpdateChangeOpLinks(o) And UpdateObject(Of ChangeOpLinksAddRemove)(CType(o, ChangeOpLinksAddRemove)) And BuildJoinTable()
         End Function
 
         Public Function Delete(id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteChangeOpLinks(id) And DeleteObject(Of ChangeOpLinksAddRemove)(id)
+            Return DeleteChangeOpLinks(id) And DeleteObject(Of ChangeOpLinksAddRemove)(id) And BuildJoinTable()
         End Function
 
     End Class

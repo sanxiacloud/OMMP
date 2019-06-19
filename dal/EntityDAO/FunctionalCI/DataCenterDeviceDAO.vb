@@ -5,7 +5,6 @@ Namespace dal.dao
     Public MustInherit Class DataCenterDeviceDAO
         Inherits ConnectableCIDAO
 
-
         Protected Function InsertDataCenterDevice(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As DataCenterDevice = CType(o, DataCenterDevice)
             obj.id = InsertConnectableCI(o, finalclass)

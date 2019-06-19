@@ -34,7 +34,7 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As Enclosure = CType(o, Enclosure)
             obj.id = InsertConnectableCI(o, obj.GetType().Name)
-            Return InsertObject(Of Enclosure)(obj)
+            Return InsertObject(Of Enclosure)(obj) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
@@ -42,7 +42,7 @@ Namespace dal.dao
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteConnectableCI(id) And DeleteObject(Of Enclosure)(id)
+            Return DeleteConnectableCI(id) And DeleteObject(Of Enclosure)(id) And BuildJoinTable()
         End Function
 
     End Class

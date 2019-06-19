@@ -31,11 +31,11 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As VirtualMachine = CType(o, VirtualMachine)
             obj.id = InsertVirtualDevice(o, obj.GetType().Name)
-            Return InsertObject(Of ommp.dal.dto.VirtualMachine)(CType(o, VirtualMachine))
+            Return InsertObject(Of VirtualMachine)(CType(o, VirtualMachine)) And BuildJoinTable()
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteVirtualDevice(id) And DeleteObject(Of VirtualMachine)(id)
+            Return DeleteVirtualDevice(id) And DeleteObject(Of VirtualMachine)(id) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update

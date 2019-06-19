@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class ChangeOpDAO
+    Public MustInherit Class ChangeOpDAO
         Inherits BaseDAO
 
         Protected Function InsertChangeOp(ByVal o As Object, ByVal finalclass As String) As Integer
@@ -18,5 +18,6 @@ Namespace dal.dao
             Return DeleteObject(Of ChangeOp)(id)
         End Function
 
+        Protected MustOverride Function BuildJoinTable() As Boolean
     End Class
 End Namespace

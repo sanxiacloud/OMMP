@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class ContractDAO
+    Public MustInherit Class ContractDAO
         Inherits BaseDAO
         Protected Function InsertContract(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As Contract = CType(o, Contract)
@@ -17,5 +17,6 @@ Namespace dal.dao
             Return DeleteObject(Of Contract)(id)
         End Function
 
+        Protected MustOverride Function BuildJoinTable() As Boolean
     End Class
 End Namespace

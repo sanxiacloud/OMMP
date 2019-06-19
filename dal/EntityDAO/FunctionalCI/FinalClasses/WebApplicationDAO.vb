@@ -27,7 +27,7 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As WebApplication = CType(o, WebApplication)
             obj.id = InsertFunctionalCI(o, obj.GetType().Name)
-            Return InsertObject(Of WebApplication)(CType(o, WebApplication))
+            Return InsertObject(Of WebApplication)(CType(o, WebApplication)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
@@ -35,7 +35,7 @@ Namespace dal.dao
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteFunctionalCI(id) And DeleteObject(Of WebApplication)(id)
+            Return DeleteFunctionalCI(id) And DeleteObject(Of WebApplication)(id) And BuildJoinTable()
         End Function
 
         ' 添加一个 Web应用

@@ -36,11 +36,11 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As Farm = CType(o, Farm)
             obj.id = InsertVirtualHost(o, obj.GetType().Name)
-            Return InsertObject(Of ommp.dal.dto.Farm)(CType(o, Farm))
+            Return InsertObject(Of Farm)(CType(o, Farm)) And BuildJoinTable()
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteVirtualHost(id) And DeleteObject(Of Farm)(id)
+            Return DeleteVirtualHost(id) And DeleteObject(Of Farm)(id) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update

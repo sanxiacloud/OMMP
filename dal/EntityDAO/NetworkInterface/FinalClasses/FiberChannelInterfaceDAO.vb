@@ -6,7 +6,7 @@ Namespace dal.dao
         Inherits NetworkInterfaceDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New FiberChannelInterfaceQT()
             Dim baseObject As New NetworkInterface()
             Dim finalObject As New FiberChannelInterface()
@@ -19,20 +19,24 @@ Namespace dal.dao
             AddQueryTableCols(Of FiberChannelInterface)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteNetworkInterface(id) And DeleteObject(Of FiberChannelInterface)(id)
+            Return DeleteNetworkInterface(id) And DeleteObject(Of FiberChannelInterface)(id) And BuildJoinTable()
         End Function
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As FiberChannelInterface = CType(o, FiberChannelInterface)
             obj.id = InsertNetworkInterface(o, obj.GetType().Name)
-            Return InsertObject(Of FiberChannelInterface)(CType(o, FiberChannelInterface))
+            Return InsertObject(Of FiberChannelInterface)(CType(o, FiberChannelInterface)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateNetworkInterface(o) And UpdateObject(Of FiberChannelInterface)(CType(o, FiberChannelInterface))
+            Return UpdateNetworkInterface(o) And UpdateObject(Of FiberChannelInterface)(CType(o, FiberChannelInterface)) And BuildJoinTable()
         End Function
 
 

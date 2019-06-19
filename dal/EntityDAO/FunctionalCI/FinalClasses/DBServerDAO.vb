@@ -31,7 +31,7 @@ Namespace dal.dao
         Public Function Insert(o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As DBServer = CType(o, DBServer)
             obj.id = InsertSoftwareInstance(o, obj.GetType().Name)
-            Return InsertObject(Of DBServer)(CType(o, DBServer))
+            Return InsertObject(Of DBServer)(CType(o, DBServer)) And BuildJoinTable()
         End Function
 
         Public Function Update(o As Object) As Boolean Implements IEntityDAO.Update
@@ -39,7 +39,7 @@ Namespace dal.dao
         End Function
 
         Public Function Delete(id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteSoftwareInstance(id) And DeleteObject(Of DBServer)(id)
+            Return DeleteSoftwareInstance(id) And DeleteObject(Of DBServer)(id) And BuildJoinTable()
         End Function
     End Class
 

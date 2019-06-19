@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class ChangeOpLinksDAO
+    Public MustInherit Class ChangeOpLinksDAO
         Inherits ChangeOpDAO
 
         Protected Function InsertChangeOpLinks(ByVal o As Object, ByVal finalclass As String) As Integer

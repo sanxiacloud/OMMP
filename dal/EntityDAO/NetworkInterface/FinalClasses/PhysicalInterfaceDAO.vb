@@ -6,7 +6,7 @@ Namespace dal.dao
         Inherits IPInterfaceDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New PhysicalInterfaceQT()
             Dim baseObject As New NetworkInterface()
             Dim joinObject1 As New IPInterface()
@@ -22,20 +22,24 @@ Namespace dal.dao
             AddQueryTableCols(Of PhysicalInterface)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As PhysicalInterface = CType(o, PhysicalInterface)
             obj.id = InsertIPInterface(o, obj.GetType().Name)
-            Return InsertObject(Of PhysicalInterface)(CType(o, PhysicalInterface))
+            Return InsertObject(Of PhysicalInterface)(CType(o, PhysicalInterface)) And BuildJoinTable()
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteIPInterface(id) And DeleteObject(Of PhysicalInterface)(id)
+            Return DeleteIPInterface(id) And DeleteObject(Of PhysicalInterface)(id) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateIPInterface(o) And UpdateObject(Of PhysicalInterface)(CType(o, PhysicalInterface))
+            Return UpdateIPInterface(o) And UpdateObject(Of PhysicalInterface)(CType(o, PhysicalInterface)) And BuildJoinTable()
         End Function
 
     End Class

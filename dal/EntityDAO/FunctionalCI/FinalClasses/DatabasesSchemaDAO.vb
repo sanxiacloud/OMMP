@@ -26,13 +26,13 @@ Namespace dal.dao
         End Sub
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteFunctionalCI(id) And DeleteObject(Of DatabasesSchema)(id)
+            Return DeleteFunctionalCI(id) And DeleteObject(Of DatabasesSchema)(id) And BuildJoinTable()
         End Function
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As DatabasesSchema = CType(o, DatabasesSchema)
             obj.id = InsertFunctionalCI(o, obj.GetType().Name)
-            Return InsertObject(Of DatabasesSchema)(CType(o, DatabasesSchema))
+            Return InsertObject(Of DatabasesSchema)(CType(o, DatabasesSchema)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update

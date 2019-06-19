@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class IPSubnetDAO
+    Public MustInherit Class IPSubnetDAO
         Inherits IPObjectDAO
 
         Protected Function InsertIPSubnet(ByVal o As Object, ByVal finalclass As String) As Integer

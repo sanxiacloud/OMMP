@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class IPInterfaceDAO
+    Public MustInherit Class IPInterfaceDAO
         Inherits NetworkInterfaceDAO
 
         Protected Function InsertIPInterface(ByVal o As Object, ByVal finalclass As String) As Integer

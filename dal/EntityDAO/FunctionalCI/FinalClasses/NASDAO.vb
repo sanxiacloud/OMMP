@@ -35,13 +35,13 @@ Namespace dal.dao
         End Sub
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteDataCenterDevice(id) And DeleteObject(Of NAS)(id)
+            Return DeleteDataCenterDevice(id) And DeleteObject(Of NAS)(id) And BuildJoinTable()
         End Function
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As NAS = CType(o, NAS)
             obj.id = InsertDataCenterDevice(o, obj.GetType().Name)
-            Return InsertObject(Of NAS)(CType(o, NAS))
+            Return InsertObject(Of NAS)(CType(o, NAS)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update

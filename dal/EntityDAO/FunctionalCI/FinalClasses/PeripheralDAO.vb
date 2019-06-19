@@ -34,7 +34,7 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As Peripheral = CType(o, Peripheral)
             obj.id = InsertConnectableCI(o, obj.GetType().Name)
-            Return InsertObject(Of Peripheral)(obj)
+            Return InsertObject(Of Peripheral)(obj) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
@@ -42,7 +42,7 @@ Namespace dal.dao
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteConnectableCI(id) And DeleteObject(Of Peripheral)(id)
+            Return DeleteConnectableCI(id) And DeleteObject(Of Peripheral)(id) And BuildJoinTable()
         End Function
 
     End Class

@@ -6,7 +6,7 @@ Namespace dal.dao
         Inherits IPAddressDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New IPAddressv4QT()
             Dim baseObject As New IPObject()
             Dim joinObject1 As New IPAddress()
@@ -22,20 +22,24 @@ Namespace dal.dao
             AddQueryTableCols(Of IPAddressv4)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As IPAddressv4 = CType(o, IPAddressv4)
             obj.id = InsertIPAddress(o, obj.GetType().Name)
-            Return InsertObject(Of IPAddressv4)(CType(o, IPAddressv4))
+            Return InsertObject(Of IPAddressv4)(CType(o, IPAddressv4)) And BuildJoinTable()
         End Function
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return DeleteIPAddress(id) And DeleteObject(Of IPAddressv4)(id)
+            Return DeleteIPAddress(id) And DeleteObject(Of IPAddressv4)(id) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateIPAddress(o) And UpdateObject(Of IPAddressv4)(CType(o, IPAddressv4))
+            Return UpdateIPAddress(o) And UpdateObject(Of IPAddressv4)(CType(o, IPAddressv4)) And BuildJoinTable()
         End Function
 
     End Class
