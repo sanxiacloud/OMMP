@@ -2,7 +2,7 @@
 Imports Foxtable
 
 Namespace dal.dao
-    Public Class VirtualHostDAO
+    Public MustInherit Class VirtualHostDAO
         Inherits VirtualDeviceDAO
 
         Protected Function InsertVirtualHost(ByVal o As Object, ByVal finalclass As String) As Integer

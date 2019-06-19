@@ -6,7 +6,7 @@ Namespace dal.dao
         Inherits VirtualHostDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New HypervisorQT()
             Dim baseObject As New FunctionalCI()
             Dim joinObject1 As New VirtualDevice()
@@ -25,6 +25,10 @@ Namespace dal.dao
             AddQueryTableCols(Of Hypervisor)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
@@ -38,7 +42,7 @@ Namespace dal.dao
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateVirtualHost(o) And UpdateObject(Of Hypervisor)(CType(o, Hypervisor))
+            Return UpdateVirtualHost(o) And UpdateObject(Of Hypervisor)(CType(o, Hypervisor)) And BuildJoinTable()
         End Function
 
     End Class

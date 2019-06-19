@@ -8,7 +8,7 @@ Namespace dal.dao
         Inherits VirtualHostDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New FarmQT()
             Dim baseObject As New FunctionalCI()
             Dim joinObject1 As New VirtualDevice()
@@ -27,6 +27,10 @@ Namespace dal.dao
             AddQueryTableCols(Of Farm)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
@@ -40,7 +44,7 @@ Namespace dal.dao
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateVirtualHost(o) And UpdateObject(Of Farm)(CType(o, Farm))
+            Return UpdateVirtualHost(o) And UpdateObject(Of Farm)(CType(o, Farm)) And BuildJoinTable()
         End Function
 
     End Class
