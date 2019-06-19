@@ -1,7 +1,26 @@
-﻿Namespace dal.dto
+﻿Imports System.Text
+
+Namespace dal.dto
+
+    Public Class BaseDTO
+        Public Overrides Function ToString() As String
+            Dim type As Type = Me.GetType()
+            Dim sb As StringBuilder = New StringBuilder()
+            sb.Append(String.Format("{0} object:\n", type.Name))
+            For Each pi As Reflection.PropertyInfo In type.GetProperties()
+                If pi.GetValue(Me, Nothing) Is Nothing Then
+                    sb.Append(String.Format("\t'{0}'({1}) is null\n", pi.Name, pi.PropertyType))
+                Else
+                    sb.Append(String.Format("\t'{0}'({1}) is '{2}'\n", pi.Name, pi.PropertyType, pi.GetValue(Me, Nothing)))
+                End If
+            Next
+            Return sb.ToString()
+        End Function
+    End Class
+
     ' ------------------------------
     ' Others 
-    Public Class CIGroup
+    Public Class CIGroup : Inherits BaseDTO
 
         Private _code_cigroup_status As Integer
         Private _code_cigroup_type As Integer
@@ -96,8 +115,7 @@
 
     End Class
 
-
-    Public Class ConfigAccess
+    Public Class ConfigAccess : Inherits BaseDTO
 
         Private _access_port As String
         Private _description As String
@@ -182,8 +200,7 @@
 
     End Class
 
-
-    Public Class ConfigPort
+    Public Class ConfigPort : Inherits BaseDTO
 
         Private _description As String
         Private __Identify As Integer
@@ -193,17 +210,6 @@
         Private _port1 As Integer
         Private _port2 As Integer
         Private _type As Integer
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property description() As String
             Get
@@ -279,8 +285,7 @@
 
     End Class
 
-
-    Public Class Backups
+    Public Class Backups : Inherits BaseDTO
 
         Private _backup_content As String
         Private _backuper_identify As Integer
@@ -289,16 +294,6 @@
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _name As String
-
-
-
-
-
-
-
-
-
-
 
         Public Property backup_content() As String
             Get
@@ -365,8 +360,7 @@
 
     End Class
 
-
-    Public Class Code
+    Public Class Code : Inherits BaseDTO
 
         Private __SortKey As Decimal
         Private _des As String
@@ -375,16 +369,6 @@
         Private _label As String
         Private _t As String
         Private _v As Integer
-
-
-
-
-
-
-
-
-
-
 
         Public Property _SortKey() As Decimal
             Get
@@ -451,8 +435,7 @@
 
     End Class
 
-
-    Public Class Contact
+    Public Class Contact : Inherits BaseDTO
 
         Private _description As String
         Private _duty As String
@@ -467,22 +450,6 @@
         Private _picture As String
         Private _qq As String
         Private _weixin As String
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property description() As String
             Get
@@ -603,8 +570,7 @@
 
     End Class
 
-
-    Public Class Documents
+    Public Class Documents : Inherits BaseDTO
 
         Private _code_document_status As Integer
         Private _code_document_tyype As Integer
@@ -615,16 +581,6 @@
         Private _name As String
         Private _obsolescence_date As Date
         Private _version As String
-
-
-
-
-
-
-
-
-
-
 
         Public Property code_document_status() As Integer
             Get
@@ -709,8 +665,7 @@
 
     End Class
 
-
-    Public Class DNSObject
+    Public Class DNSObject : Inherits BaseDTO
 
         Private _comment As String
         Private _finalclass As String
@@ -718,13 +673,6 @@
         Private __IsDeleted As Boolean
         Private _name As String
         Private _organization_identify As Integer
-
-
-
-
-
-
-
 
         Public Property comment() As String
             Get
@@ -796,17 +744,6 @@
         Private _requestor_identify As Integer
         Private _validity_end As Date
         Private _validity_start As Date
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property code_renewal() As Integer
             Get
@@ -891,8 +828,7 @@
 
     End Class
 
-
-    Public Class Location
+    Public Class Location : Inherits BaseDTO
 
         Private _city As String
         Private _country As String
@@ -902,15 +838,6 @@
         Private _name As String
         Private _organization_identify As Integer
         Private _status As Boolean
-
-
-
-
-
-
-
-
-
 
         Public Property city() As String
             Get
@@ -986,8 +913,7 @@
 
     End Class
 
-
-    Public Class LogicalVolume
+    Public Class LogicalVolume : Inherits BaseDTO
 
         Private _description As String
         Private __Identify As Integer
@@ -1082,8 +1008,7 @@
 
     End Class
 
-
-    Public Class Organization
+    Public Class Organization : Inherits BaseDTO
 
         Private __Identify As Integer
         Private _parent_identify As Integer
@@ -1096,20 +1021,6 @@
         Private _description As String
         Private __IsDeleted As Boolean
         Private __sort As Decimal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property _code() As String
             Get
@@ -1212,8 +1123,7 @@
 
     End Class
 
-
-    Public Class Passwd
+    Public Class Passwd : Inherits BaseDTO
 
         Private __use As String
         Private _account As String
@@ -1222,14 +1132,6 @@
         Private __IsDeleted As Boolean
         Private _passwd As String
         Private _start_date As Date
-
-
-
-
-
-
-
-
 
         Public Property _use() As String
             Get
@@ -1296,8 +1198,7 @@
 
     End Class
 
-
-    Public Class SecurityStrategy
+    Public Class SecurityStrategy : Inherits BaseDTO
 
         Private _code_security_strategy_type As Integer
         Private _config_port_identify As Integer
@@ -1306,14 +1207,6 @@
         Private __IsDeleted As Boolean
         Private _name As String
         Private _physical_device_identify As Integer
-
-
-
-
-
-
-
-
 
         Public Property code_security_strategy_type() As Integer
             Get
@@ -1380,8 +1273,7 @@
 
     End Class
 
-
-    Public Class Software
+    Public Class Software : Inherits BaseDTO
 
         Private _code_software_type As Integer
         Private __Identify As Integer
@@ -1389,13 +1281,6 @@
         Private _name As String
         Private _vendor As String
         Private _version As String
-
-
-
-
-
-
-
 
         Public Property code_software_type() As Integer
             Get
@@ -1453,20 +1338,13 @@
 
     End Class
 
-
-    Public Class VLAN
+    Public Class VLAN : Inherits BaseDTO
 
         Private _description As String
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _organization_identify As Integer
         Private _vlan_tag As String
-
-
-
-
-
-
 
         Public Property description() As String
             Get
@@ -1515,24 +1393,16 @@
 
     End Class
 
-
     ' ------------------------------
 
     ' Change * 
 
-    Public Class Change
+    Public Class Change : Inherits BaseDTO
 
         Private _code_origin As Integer
         Private _date As Date
         Private __Identify As Integer
         Private _user_name As String
-
-
-
-
-
-
-
 
         Public Property code_origin() As Integer
             Get
@@ -1572,15 +1442,13 @@
 
     End Class
 
-
-    Public Class ChangeOp
+    Public Class ChangeOp : Inherits BaseDTO
 
         Private _change_identify As Integer
         Private __Identify As Integer
         Private _objclass As String
         Private _objkey As Integer
         Private _optype As String
-
 
         Public Property change_identify() As Integer
             Get
@@ -1636,10 +1504,6 @@
     Public Class ChangeOpCreate : Inherits ChangeOp
         Private _id As Integer
 
-
-
-
-
         Public Property id() As Integer
             Get
                 Return _id
@@ -1689,17 +1553,10 @@
 
     End Class
 
-
     Public Class ChangeOpLinks : Inherits ChangeOp
         Private _id As Integer
         Private _item_class As String
         Private _item_identify As Integer
-
-
-
-
-
-
 
         Public Property id() As Integer
             Get
@@ -1738,11 +1595,6 @@
         Private _id As Integer
         Private _type As String
 
-
-
-
-
-
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -1763,15 +1615,9 @@
 
     End Class
 
-
     Public Class ChangeOpSetAtt : Inherits ChangeOp
         Private _attcode As String
         Private _id As Integer
-
-
-
-
-
 
         Public Property attcode() As String
             Get
@@ -1793,17 +1639,10 @@
 
     End Class
 
-
     Public Class ChangeOpSetAttPwd : Inherits ChangeOpSetAtt
         Private _id As Integer
         Private _prev_pwd_hash As String
         Private _prev_pwd_salt As String
-
-
-
-
-
-
 
         Public Overloads Property id() As Integer
             Get
@@ -1843,12 +1682,6 @@
         Private _newvalue As String
         Private _oldvalue As String
 
-
-
-
-
-
-
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -1877,19 +1710,12 @@
         End Property
 
     End Class
-
 
     Public Class ChangeOpSetAttText : Inherits ChangeOpSetAtt
         Private _id As Integer
         Private _newvalue As String
         Private _oldvalue As String
 
-
-
-
-
-
-
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -1919,17 +1745,10 @@
 
     End Class
 
-
     Public Class ChangeOpSetAttUrl : Inherits ChangeOpSetAtt
         Private _id As Integer
         Private _newvalue As String
         Private _oldvalue As String
-
-
-
-
-
-
 
         Public Overloads Property id() As Integer
             Get
@@ -1964,7 +1783,7 @@
 
     ' Contract *
 
-    Public Class Contract
+    Public Class Contract : Inherits BaseDTO
 
         Private _billing_frequency As String
         Private _buyer_agent_identify As Integer
@@ -2139,8 +1958,7 @@
 
     End Class
 
-
-    Public Class ContractDetail
+    Public Class ContractDetail : Inherits BaseDTO
 
         Private _amount As Integer
         Private _contract_identify As Integer
@@ -2154,19 +1972,6 @@
         Private _no As Integer
         Private _price As Decimal
         Private _purchase_date As Date
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property amount() As Integer
             Get
@@ -2286,9 +2091,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
 
-
-
-
         Public Property id() As Integer
             Get
                 Return _id
@@ -2318,11 +2120,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
         Private _sla As String
-
-
-
-
-
 
         Public Property coverage() As String
             Get
@@ -2364,7 +2161,7 @@
     ' ------------------------------
 
     'FunctionalCI *
-    Public Class FunctionalCI
+    Public Class FunctionalCI : Inherits BaseDTO
 
         Private _code_risk_rating As Integer
         Private _description As String
@@ -2374,17 +2171,6 @@
         Private _move2production As Date
         Private _name As String
         Private _obsolescence_date As Date
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property code_risk_rating() As Integer
             Get
@@ -2460,7 +2246,6 @@
 
     End Class
 
-
     Public Class ApplicationSolutionQT : Inherits ApplicationSolution
         '简单继承，用于查询方法
     End Class
@@ -2473,16 +2258,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
         Private _redundancy As String
-
-
-
-
-
-
-
-
-
-
 
         Public Property attention() As String
             Get
@@ -2562,15 +2337,6 @@
         Private _individual As String
         Private __IsDeleted As Boolean
         Private _pdb_name As String
-
-
-
-
-
-
-
-
-
 
         Public Property comment() As String
             Get
@@ -2654,10 +2420,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
         Private _middleware_identify As Integer
-
-
-
-
 
         Public Property id() As Integer
             Get
@@ -2772,17 +2534,6 @@
         Private _purchase_date As Date
         Private _serialnumber As String
 
-
-
-
-
-
-
-
-
-
-
-
         Public Property asset_number() As String
             Get
                 Return _asset_number
@@ -2875,16 +2626,10 @@
 
     End Class
 
-
     Public Class VirtualDevice : Inherits FunctionalCI
         Private _code_virtualdevice_status As Integer
         Private _id As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property code_virtualdevice_status() As Integer
             Get
@@ -2915,7 +2660,6 @@
 
     End Class
 
-
     Public Class SoftwareInstance : Inherits FunctionalCI
         Private _functionalci_identify As Integer
         Private _id As Integer
@@ -2924,14 +2668,6 @@
         Private _software_identify As Integer
         Private _softwarelicence_identify As Integer
         Private _status As Boolean
-
-
-
-
-
-
-
-
 
         Public Property functionalci_identify() As Integer
             Get
@@ -2998,7 +2734,6 @@
 
     End Class
 
-
     Public Class WANLink : Inherits FunctionalCI
         Private _burst_rate As String
         Private _carrier_identify As Integer
@@ -3015,22 +2750,6 @@
         Private _rate As String
         Private _renewal_date As Date
         Private _underlying_rate As String
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property burst_rate() As String
             Get
@@ -3181,10 +2900,6 @@
         Private __IsDeleted As Boolean
         Private _nb_u As Integer
 
-
-
-
-
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3223,11 +2938,6 @@
         Private __IsDeleted As Boolean
         Private _nb_u As String
         Private _rack_identify As Integer
-
-
-
-
-
 
         Public Overloads Property id() As Integer
             Get
@@ -3295,10 +3005,6 @@
 
     End Class
 
-
-
-
-
     Public Class DataCenterDevice : Inherits ConnectableCI
         Private _enclosure_identity As Integer
         Private _id As Integer
@@ -3307,14 +3013,6 @@
         Private _nb_u As Integer
         Private _rack_identify As Integer
         Private _redundancy As String
-
-
-
-
-
-
-
-
 
         Public Property enclosure_identity() As Integer
             Get
@@ -3389,7 +3087,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
 
-
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3417,8 +3114,6 @@
     Public Class NAS : Inherits DataCenterDevice
         Private _id As Integer
         Private __IsDeleted As Boolean
-
-
 
         Public Overloads Property id() As Integer
             Get
@@ -3450,12 +3145,6 @@
         Private _disk_size As Decimal
         Private _id As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
-
 
         Public Property code_storage_type() As Integer
             Get
@@ -3516,14 +3205,6 @@
         Private _oslicence_id As Integer
         Private _osversion_id As Integer
         Private _ram As String
-
-
-
-
-
-
-
-
 
         Public Property cpu() As String
             Get
@@ -3654,8 +3335,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
 
-
-
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3676,12 +3355,10 @@
 
     End Class
 
-
     Public Class VirtualMachineQT : Inherits VirtualMachine
         ' Nothing
 
     End Class
-
 
     Public Class VirtualMachine : Inherits VirtualDevice
         Private _id As Integer
@@ -3694,17 +3371,6 @@
         Private _cpu As String
         Private _ram As String
         Private __IsDeleted As Boolean
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property code_backup_plan() As Integer
             Get
@@ -3810,13 +3476,6 @@
         Private _redundancy As Boolean
         Private __IsDeleted As Boolean
 
-
-
-
-
-
-
-
         Public Property code_deployment_area() As Integer
             Get
                 Return _code_deployment_area
@@ -3883,11 +3542,6 @@
         Private __IsDeleted As Boolean
         Private _server_identify As Integer
 
-
-
-
-
-
         Public Property farm_identify() As Integer
             Get
                 Return _farm_identify
@@ -3926,7 +3580,6 @@
 
     End Class
 
-
     ' ------------------------------
     ' SoftwareInstance * 
     Public Class DBServerQT : Inherits DBServer
@@ -3936,7 +3589,6 @@
     Public Class DBServer : Inherits SoftwareInstance
         Private _id As Integer
         Private __IsDeleted As Boolean
-
 
         Public Overloads Property id() As Integer
             Get
@@ -3966,8 +3618,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
 
-
-
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -3996,8 +3646,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
 
-
-
         Public Overloads Property id() As Integer
             Get
                 Return _id
@@ -4020,7 +3668,7 @@
 
     ' ------------------------------
     ' IPObject * 
-    Public Class IPObject
+    Public Class IPObject : Inherits BaseDTO
 
         Private _allocation_date As Date
         Private _code_ipobject_status As Integer
@@ -4115,7 +3763,6 @@
 
     End Class
 
-
     Public Class IPBlock : Inherits IPObject
         Private _children_occupancy As Integer
         Private _id As Integer
@@ -4126,17 +3773,6 @@
         Private _subnet_occupancy As Integer
         Private _type As String
         Private _write_reason As String
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property children_occupancy() As Integer
             Get
@@ -4234,14 +3870,6 @@
         Private _parent_identify_left As Integer
         Private _parent_identify_right As Integer
 
-
-
-
-
-
-
-
-
         Public Property firstip() As String
             Get
                 Return _firstip
@@ -4307,7 +3935,6 @@
 
     End Class
 
-
     Public Class IPSubnet : Inherits IPObject
         Private _alarm_water_mark As String
         Private _id As Integer
@@ -4317,17 +3944,6 @@
         Private _range_occupancy As Integer
         Private _type As String
         Private _write_reason As String
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property alarm_water_mark() As String
             Get
@@ -4421,21 +4037,6 @@
         Private _netmask As String
         Private _network_no As String
         Private _region As String
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property _use() As String
             Get
@@ -4556,17 +4157,11 @@
 
     End Class
 
-
     Public Class IPAddress : Inherits IPObject
         Private _code_ipaddress_usage As Integer
         Private _id As Integer
         Private __IsDeleted As Boolean
         Private _short_name As String
-
-
-
-
-
 
         Public Property code_ipaddress_usage() As Integer
             Get
@@ -4617,13 +4212,6 @@
         Private _ip As String
         Private __IsDeleted As Boolean
         Private _vlan_identify As Integer
-
-
-
-
-
-
-
 
         Public Property code_ipv4address_usage() As Integer
             Get
@@ -4683,17 +4271,12 @@
 
     ' ------------------------------
     ' Typology * 
-    Public Class Typology
+    Public Class Typology : Inherits BaseDTO
 
         Private _finalclass As String
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _name As String
-
-
-
-
-
 
         Public Property finalclass() As String
             Get
@@ -4741,8 +4324,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
 
-
-
         Public Property id() As Integer
             Get
                 Return _id
@@ -4771,10 +4352,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
         Private _osfamily_id As Integer
-
-
-
-
 
         Public Property id() As Integer
             Get
@@ -4807,21 +4384,13 @@
 
     ' ------------------------------
     ' NetworkInterface* 
-    Public Class NetworkInterface
+    Public Class NetworkInterface : Inherits BaseDTO
 
         Private _finalclass As String
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _name As String
         Private _obsolescence_date As Date
-
-
-
-
-
-
-
-
 
         Public Property finalclass() As String
             Get
@@ -4882,14 +4451,6 @@
         Private _topology As String
         Private _wwn As String
 
-
-
-
-
-
-
-
-
         Public Property datacenterdevice_identify() As Integer
             Get
                 Return _datacenterdevice_identify
@@ -4946,19 +4507,12 @@
 
     End Class
 
-
     Public Class IPInterface : Inherits NetworkInterface
         Private _comment As String
         Private _id As Integer
         Private __IsDeleted As Boolean
         Private _macaddress As String
         Private _speed As Decimal
-
-
-
-
-
-
 
         Public Property comment() As String
             Get
@@ -5054,10 +4608,6 @@
         Private _id As Integer
         Private __IsDeleted As Boolean
 
-
-
-
-
         Public Property connectableci_identify() As Integer
             Get
                 Return _connectableci_identify
@@ -5089,7 +4639,7 @@
 
     ' ------------------------------
     ' Licence * 
-    Public Class Licence
+    Public Class Licence : Inherits BaseDTO
 
         Private _description As String
         Private _end_date As Date
@@ -5103,19 +4653,6 @@
         Private _perpetual As Boolean
         Private _start_date As Date
         Private _usage_limit As String
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         Public Property description() As String
             Get
@@ -5236,11 +4773,6 @@
         Private __IsDeleted As Boolean
         Private _osversion_identify As Integer
 
-
-
-
-
-
         Public Property id() As Integer
             Get
                 Return _id
@@ -5278,10 +4810,6 @@
         Private __IsDeleted As Boolean
         Private _software_identify As Integer
 
-
-
-
-
         Public Property id() As Integer
             Get
                 Return _id
@@ -5311,18 +4839,14 @@
 
     End Class
 
-
     ' ------------------------------
     ' Lnk *
-    Public Class LnkApplicationSolutionToFunctionalCI
+    Public Class LnkApplicationSolutionToFunctionalCI : Inherits BaseDTO
 
         Private _applicationsolution_identify As Integer
         Private _functionalci_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
-
-
-
 
         Public Property applicationsolution_identify() As Integer
             Get
@@ -5362,18 +4886,12 @@
 
     End Class
 
-
-    Public Class LnkBackupsToFunctionalCI
+    Public Class LnkBackupsToFunctionalCI : Inherits BaseDTO
 
         Private _backups_identify As Integer
         Private _functionalci_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property backups_identify() As Integer
             Get
@@ -5413,20 +4931,13 @@
 
     End Class
 
-
-    Public Class LnkCIGroupToCI
+    Public Class LnkCIGroupToCI : Inherits BaseDTO
 
         Private _ci_identify As Integer
         Private _cigroup_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _reason As String
-
-
-
-
-
-
 
         Public Property ci_identify() As Integer
             Get
@@ -5475,8 +4986,7 @@
 
     End Class
 
-
-    Public Class LnkConnectableCIToNetworkDevice
+    Public Class LnkConnectableCIToNetworkDevice : Inherits BaseDTO
 
         Private _code_connectable_type As Integer
         Private _connectableci_identify As Integer
@@ -5485,14 +4995,6 @@
         Private __IsDeleted As Boolean
         Private _network_port As Integer
         Private _networkdevice_identify As Integer
-
-
-
-
-
-
-
-
 
         Public Property code_connectable_type() As Integer
             Get
@@ -5559,18 +5061,12 @@
 
     End Class
 
-
-    Public Class LnkContactToContract
+    Public Class LnkContactToContract : Inherits BaseDTO
 
         Private _contact_identify As Integer
         Private _contract_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property contact_identify() As Integer
             Get
@@ -5610,18 +5106,12 @@
 
     End Class
 
-
-    Public Class LnkContactToFunctionalCI
+    Public Class LnkContactToFunctionalCI : Inherits BaseDTO
 
         Private _contact_identify As Integer
         Private _functionalci_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property contact_identify() As Integer
             Get
@@ -5661,18 +5151,12 @@
 
     End Class
 
-
-    Public Class LnkContactToIPObject
+    Public Class LnkContactToIPObject : Inherits BaseDTO
 
         Private _contact_identify As Integer
         Private __Identify As Integer
         Private _ipobject_identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property contact_identify() As Integer
             Get
@@ -5712,18 +5196,12 @@
 
     End Class
 
-
-    Public Class LnkContractToDocument
+    Public Class LnkContractToDocument : Inherits BaseDTO
 
         Private _contract_identify As Integer
         Private _document_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property contract_identify() As Integer
             Get
@@ -5763,18 +5241,12 @@
 
     End Class
 
-
-    Public Class LnkCustomerContractToProviderContract
+    Public Class LnkCustomerContractToProviderContract : Inherits BaseDTO
 
         Private _customercontract_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _providercontract_identify As Integer
-
-
-
-
-
 
         Public Property customercontract_identify() As Integer
             Get
@@ -5814,8 +5286,7 @@
 
     End Class
 
-
-    Public Class LnkDatacenterDeviceToSan
+    Public Class LnkDatacenterDeviceToSan : Inherits BaseDTO
 
         Private _datacenterdevice_id As Integer
         Private _datacenterdevice_port As String
@@ -5823,13 +5294,6 @@
         Private __IsDeleted As Boolean
         Private _san_identify As Integer
         Private _san_port As String
-
-
-
-
-
-
-
 
         Public Property datacenterdevice_id() As Integer
             Get
@@ -5887,18 +5351,12 @@
 
     End Class
 
-
-    Public Class LnkDocumentToFunctionalCI
+    Public Class LnkDocumentToFunctionalCI : Inherits BaseDTO
 
         Private _document_identify As Integer
         Private _functionalci_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property document_identify() As Integer
             Get
@@ -5940,17 +5398,12 @@
 
     ' ----------------------------------
 
-    Public Class LnkDocumentToIPObject
+    Public Class LnkDocumentToIPObject : Inherits BaseDTO
 
         Private _document_identify As Integer
         Private __Identify As Integer
         Private _ipobject_identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property document_identify() As Integer
             Get
@@ -5990,18 +5443,12 @@
 
     End Class
 
-
-    Public Class LnkDocumentToLicence
+    Public Class LnkDocumentToLicence : Inherits BaseDTO
 
         Private _document_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _licence_identify As Integer
-
-
-
-
-
 
         Public Property Document_identify() As Integer
             Get
@@ -6041,18 +5488,12 @@
 
     End Class
 
-
-    Public Class LnkDocumentToSoftware
+    Public Class LnkDocumentToSoftware : Inherits BaseDTO
 
         Private _document_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _software_identify As Integer
-
-
-
-
-
 
         Public Property document_identify() As Integer
             Get
@@ -6092,22 +5533,13 @@
 
     End Class
 
-
-    Public Class LnkFunctionalCIToOrganization
+    Public Class LnkFunctionalCIToOrganization : Inherits BaseDTO
 
         Private _description As String
         Private _functionalci_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _organization_identify As Integer
-
-
-
-
-
-
-
-
 
         Public Property description() As String
             Get
@@ -6156,18 +5588,12 @@
 
     End Class
 
-
-    Public Class LnkFunctionalCIToProviderContract
+    Public Class LnkFunctionalCIToProviderContract : Inherits BaseDTO
 
         Private _functionalci_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _providercontract_identify As Integer
-
-
-
-
-
 
         Public Property functionalci_identify() As Integer
             Get
@@ -6207,18 +5633,12 @@
 
     End Class
 
-
-    Public Class LnkIPAddressToIPAddress
+    Public Class LnkIPAddressToIPAddress : Inherits BaseDTO
 
         Private __Identify As Integer
         Private _ip1_identify As Integer
         Private _ip2_identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property Ip1_identify() As Integer
             Get
@@ -6258,18 +5678,12 @@
 
     End Class
 
-
-    Public Class LnkIPInterfaceToIPAddress
+    Public Class LnkIPInterfaceToIPAddress : Inherits BaseDTO
 
         Private __Identify As Integer
         Private _ipaddress_identify As Integer
         Private _ipinterface_identify As Integer
         Private __IsDeleted As Boolean
-
-
-
-
-
 
         Public Property ipaddress_identify() As Integer
             Get
@@ -6311,18 +5725,12 @@
 
     ' ----------------------------------
 
-
-    Public Class LnkIPSubnetToLocation
+    Public Class LnkIPSubnetToLocation : Inherits BaseDTO
 
         Private __Identify As Integer
         Private _ipsubnet_identify As Integer
         Private __IsDeleted As Boolean
         Private _location_identify As Integer
-
-
-
-
-
 
         Public Property ipsubnet_identify() As Integer
             Get
@@ -6362,18 +5770,12 @@
 
     End Class
 
-
-    Public Class LnkIPSubnetToVLAN
+    Public Class LnkIPSubnetToVLAN : Inherits BaseDTO
 
         Private __Identify As Integer
         Private _ipsubnet_identify As Integer
         Private __IsDeleted As Boolean
         Private _vlan_identify As Integer
-
-
-
-
-
 
         Public Property ipsubnet_identify() As Integer
             Get
@@ -6413,18 +5815,12 @@
 
     End Class
 
-
-    Public Class LnkPasswdToFunctionalCI
+    Public Class LnkPasswdToFunctionalCI : Inherits BaseDTO
 
         Private _functionalci_identify As Integer
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _passwd_identify As Integer
-
-
-
-
-
 
         Public Property functionalci_identify() As Integer
             Get
@@ -6464,18 +5860,12 @@
 
     End Class
 
-
-    Public Class LnkPhysicalInterfaceToVLAN
+    Public Class LnkPhysicalInterfaceToVLAN : Inherits BaseDTO
 
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _physicalinterface_identify As Integer
         Private _vlan_identify As Integer
-
-
-
-
-
 
         Public Property _IsDeleted() As Boolean
             Get
@@ -6515,20 +5905,13 @@
 
     End Class
 
-
-    Public Class LnkServerToVolume
+    Public Class LnkServerToVolume : Inherits BaseDTO
 
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _server_identify As Integer
         Private _size_used As Integer
         Private _volume_identify As Integer
-
-
-
-
-
-
 
         Public Property _IsDeleted() As Boolean
             Get
@@ -6577,18 +5960,12 @@
 
     End Class
 
-
-    Public Class LnkSubnetToVLAN
+    Public Class LnkSubnetToVLAN : Inherits BaseDTO
 
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _subnet_identify As Integer
         Private _vlan_identify As Integer
-
-
-
-
-
 
         Public Property _IsDeleted() As Boolean
             Get
@@ -6628,20 +6005,13 @@
 
     End Class
 
-
-    Public Class LnkVirtualDeviceToVolume
+    Public Class LnkVirtualDeviceToVolume : Inherits BaseDTO
 
         Private __Identify As Integer
         Private __IsDeleted As Boolean
         Private _size_used As Integer
         Private _virtualdevice_identify As Integer
         Private _volume_identify As Integer
-
-
-
-
-
-
 
         Public Property _IsDeleted() As Boolean
             Get

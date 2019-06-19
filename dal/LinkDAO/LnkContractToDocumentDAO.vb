@@ -53,8 +53,6 @@ Namespace dal.dao
             Return result
         End Function
 
-
-
     End Class
 
 End Namespace
