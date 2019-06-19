@@ -6,14 +6,14 @@ Namespace dal.dao
         Inherits VirtualDeviceDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New VirtualMachineQT()
             Dim baseObject As New FunctionalCI()
             Dim joinObject1 As New VirtualDevice()
             Dim finalObject As New VirtualMachine()
 
             Dim baseTableName = baseObject.GetType().Name
-            Dim joinTableName1 = joinObject1.GetType().Name 
+            Dim joinTableName1 = joinObject1.GetType().Name
 
             Dim builder As New SQLJoinTableBuilder(qtObject.GetType().Name, baseTableName)
             builder.ConnectionName = CONNECTION_NAME
@@ -22,6 +22,10 @@ Namespace dal.dao
             AddQueryTableCols(Of VirtualMachine)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
@@ -35,7 +39,7 @@ Namespace dal.dao
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateVirtualDevice(o) And UpdateObject(Of VirtualMachine)(CType(o, VirtualMachine))
+            Return UpdateVirtualDevice(o) And UpdateObject(Of VirtualMachine)(CType(o, VirtualMachine)) And BuildJoinTable()
         End Function
 
         ' 添加一台虚拟机

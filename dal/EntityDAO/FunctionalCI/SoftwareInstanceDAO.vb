@@ -3,7 +3,7 @@
 Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class SoftwareInstanceDAO
+    Public MustInherit Class SoftwareInstanceDAO
         Inherits FunctionalCIDAO
 
         Protected Function InsertSoftwareInstance(ByVal o As Object, ByVal finalclass As String) As Integer

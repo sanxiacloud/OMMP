@@ -157,7 +157,7 @@ Namespace dal.dao
             Return result
         End Function
 
-        Protected Function InsertObject(Of T As New)(ByVal item As T) As Integer Implements IBaseDAO.InsertObject
+        Public Function InsertObject(Of T As New)(ByVal item As T) As Integer Implements IBaseDAO.InsertObject
             Dim o As New T()
             Dim table_name As String = o.GetType().Name
             Dim result As Integer = -1
@@ -224,7 +224,6 @@ Namespace dal.dao
 
             Return item
         End Function
-
 
         Public Function FindObject(Of T As New)(ByVal id As Integer) As T Implements IBaseDAO.FindObject
             Dim item As New T()
@@ -329,7 +328,6 @@ Namespace dal.dao
             item.name = "abc"
             item.id = 3
             item.move2production = DateTime.Now
-
 
             For Each info As System.Reflection.PropertyInfo In item.GetType().GetProperties()
 

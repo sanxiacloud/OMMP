@@ -6,7 +6,7 @@ Namespace dal.dao
         Inherits FunctionalCIDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New DatabasesSchemaQT()
             Dim baseObject As New FunctionalCI()
             Dim finalObject As New DatabasesSchema()
@@ -19,6 +19,10 @@ Namespace dal.dao
             AddQueryTableCols(Of DatabasesSchema)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
@@ -32,7 +36,7 @@ Namespace dal.dao
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateFunctionalCI(o) And UpdateObject(Of DatabasesSchema)(CType(o, DatabasesSchema))
+            Return UpdateFunctionalCI(o) And UpdateObject(Of DatabasesSchema)(CType(o, DatabasesSchema)) And BuildJoinTable()
         End Function
 
     End Class

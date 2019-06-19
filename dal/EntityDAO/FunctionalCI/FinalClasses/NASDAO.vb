@@ -6,7 +6,7 @@ Namespace dal.dao
         Inherits DataCenterDeviceDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New NASQT()
             Dim baseObject As New FunctionalCI()
             Dim joinObject1 As New PhysicalDevice()
@@ -28,6 +28,10 @@ Namespace dal.dao
             AddQueryTableCols(Of NAS)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
@@ -41,7 +45,7 @@ Namespace dal.dao
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateDataCenterDevice(o) And UpdateObject(Of NAS)(CType(o, NAS))
+            Return UpdateDataCenterDevice(o) And UpdateObject(Of NAS)(CType(o, NAS)) And BuildJoinTable()
         End Function
     End Class
 

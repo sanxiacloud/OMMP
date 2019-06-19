@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class FunctionalCIDAO
+    Public MustInherit Class FunctionalCIDAO
         Inherits BaseDAO
 
         Protected Function InsertFunctionalCI(ByVal o As Object, ByVal finalclass As String) As Integer
@@ -17,6 +17,8 @@ Namespace dal.dao
         Protected Function DeleteFunctionalCI(ByVal id As Integer) As Boolean
             Return DeleteObject(Of FunctionalCI)(id)
         End Function
+
+        Protected MustOverride Function BuildJoinTable() As Boolean
     End Class
 End Namespace
 

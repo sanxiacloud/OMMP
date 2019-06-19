@@ -7,7 +7,7 @@ Namespace dal.dao
         Inherits FunctionalCIDAO
         Implements IEntityDAO
 
-        Private Function BuildJoinTable() As Boolean
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New ApplicationSolutionQT()
             Dim baseObject As New FunctionalCI()
             Dim finalObject As New ApplicationSolution()

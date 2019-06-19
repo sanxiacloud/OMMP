@@ -2,7 +2,7 @@
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class ConnectableCIDAO
+    Public MustInherit Class ConnectableCIDAO
         Inherits PhysicalDeviceDAO
 
         Protected Function InsertConnectableCI(ByVal o As Object, ByVal finalclass As String) As Integer

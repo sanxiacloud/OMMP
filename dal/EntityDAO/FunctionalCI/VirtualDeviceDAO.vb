@@ -1,7 +1,7 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public Class VirtualDeviceDAO
+    Public MustInherit Class VirtualDeviceDAO
         Inherits FunctionalCIDAO
 
         Protected Function InsertVirtualDevice(ByVal o As Object, ByVal finalclass As String) As Integer

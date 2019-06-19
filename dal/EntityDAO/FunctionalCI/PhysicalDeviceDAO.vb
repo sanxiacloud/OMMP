@@ -2,7 +2,7 @@
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class PhysicalDeviceDAO
+    Public MustInherit Class PhysicalDeviceDAO
         Inherits FunctionalCIDAO
 
         Protected Function InsertPhysicalDevice(ByVal o As Object, ByVal finalclass As String) As Integer

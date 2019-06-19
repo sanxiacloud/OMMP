@@ -6,7 +6,7 @@ Namespace dal.dao
         Inherits SoftwareInstanceDAO
         Implements IEntityDAO
 
-        Public Sub New()
+        Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New DBServerQT()
             Dim baseObject As New FunctionalCI()
             Dim joinObject1 As New SoftwareInstance()
@@ -22,6 +22,10 @@ Namespace dal.dao
             AddQueryTableCols(Of DBServer)(builder)
             builder.Build()
             'Output.Show(builder.BuildSql())
+        End Function
+
+        Public Sub New()
+            BuildJoinTable()
         End Sub
 
         Public Function Insert(o As Object) As Integer Implements IEntityDAO.Insert
@@ -31,7 +35,7 @@ Namespace dal.dao
         End Function
 
         Public Function Update(o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateSoftwareInstance(o) And UpdateObject(Of DBServer)(CType(o, DBServer))
+            Return UpdateSoftwareInstance(o) And UpdateObject(Of DBServer)(CType(o, DBServer)) And BuildJoinTable()
         End Function
 
         Public Function Delete(id As Integer) As Boolean Implements IEntityDAO.Delete

@@ -2,7 +2,7 @@
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class DataCenterDeviceDAO
+    Public MustInherit Class DataCenterDeviceDAO
         Inherits ConnectableCIDAO
 
 
