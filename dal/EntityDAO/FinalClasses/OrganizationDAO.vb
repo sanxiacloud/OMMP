@@ -4,7 +4,7 @@ Imports Foxtable
 
 Namespace dal.dao
 
-    Public Class OrganizationDAO(Of T As New)
+    Public Class OrganizationDAO
         Inherits BaseDAO
         Implements IEntityDAO
 
@@ -30,7 +30,7 @@ Namespace dal.dao
 
         Private Sub TestInsert()
             ' 添加一个组织
-            Dim dao As New ommp.dal.dao.OrganizationDAO(Of Organization)()
+            Dim dao As New ommp.dal.dao.OrganizationDAO()
             Dim result As Boolean = False
             Dim dto As New ommp.dal.dto.Organization()
 
@@ -49,7 +49,7 @@ Namespace dal.dao
 
         '测试修改组织
         Private Sub TestUpdate()
-            Dim dao As New ommp.dal.dao.OrganizationDAO(Of Organization)()
+            Dim dao As New ommp.dal.dao.OrganizationDAO()
             Dim result As Boolean = False
             Dim dto As ommp.dal.dto.Organization = dao.FindObject(Of ommp.dal.dto.Organization)(602)
             dto.code_org_type = 1
@@ -61,7 +61,7 @@ Namespace dal.dao
 
         '删除一个组织
         Private Sub TestDelete()
-            Dim dao As New ommp.dal.dao.OrganizationDAO(Of Organization)()
+            Dim dao As New ommp.dal.dao.OrganizationDAO()
             Output.Show(dao.DeleteObject(Of Organization)(100000))
         End Sub
     End Class

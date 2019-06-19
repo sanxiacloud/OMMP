@@ -54,12 +54,14 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TEST\GenericBaseDAO.vb" />
     <Compile Include="BaseDAO.vb" />
     <Compile Include="DTO\dto.vb" />
     <Compile Include="EntityDAO\Change\ChangeOpLinksDAO.vb" />
     <Compile Include="EntityDAO\Change\FinalClasses\ChangeOpCreateDAO.vb" />
     <Compile Include="EntityDAO\Change\ChangeOpDAO.vb" />
     <Compile Include="EntityDAO\Change\FinalClasses\ChangeOpDeleteDAO.vb" />
+    <Compile Include="TEST\GenericOrganizationDAO.vb" />
     <Compile Include="EntityDAO\FunctionalCI\ConnectableCIDAO.vb" />
     <Compile Include="EntityDAO\Contract\ContractDAO.vb" />
     <Compile Include="EntityDAO\FunctionalCI\DataCenterDeviceDAO.vb" />
@@ -81,6 +83,7 @@
     <Compile Include="EntityDAO\DNSObject\FinalClasses\DomainDAO.vb" />
     <Compile Include="EntityDAO\FunctionalCI\FinalClasses\EnclosureDAO.vb" />
     <Compile Include="EntityDAO\FunctionalCI\FinalClasses\FarmDAO.vb" />
+    <Compile Include="TEST\IGenericEntityDAO.vb" />
     <Compile Include="EntityDAO\Licence\LicenceDAO.vb" />
     <Compile Include="EntityDAO\NetworkInterface\FinalClasses\FiberChannelInterfaceDAO.vb" />
     <Compile Include="EntityDAO\FunctionalCI\FinalClasses\HypervisorDAO.vb" />
