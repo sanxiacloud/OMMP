@@ -65,10 +65,22 @@ Namespace dal.dao
             Return result
         End Function
 
-        Function ListFunctionalCI(orgid As Integer, finalClass As String) As IList(Of Integer)
+        Function ListFunctionalCI(orgid As Integer) As IList(Of Integer)
             Dim resultList As New Generic.List(Of Integer)()
             For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("organization_identify = " & orgid, C__IDENTIFY)
                 resultList.Add(obj.functionalci_identify)
+            Next
+            Return resultList
+        End Function
+
+        Function ListFunctionalCI(orgid As Integer, finalClass As String) As IList(Of Integer)
+            Dim resultList As New Generic.List(Of Integer)()
+            Dim fci As New FunctionalCI()
+            For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("organization_identify = " & orgid, C__IDENTIFY)
+                fci = FindObject(Of FunctionalCI)(obj.functionalci_identify)
+                If fci.finalclass.Equals(finalClass) Then
+                    resultList.Add(obj.functionalci_identify)
+                End If
             Next
             Return resultList
         End Function
