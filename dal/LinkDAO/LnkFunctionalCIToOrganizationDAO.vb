@@ -65,10 +65,26 @@ Namespace dal.dao
             Return result
         End Function
 
+        Function ListFunctionalCI(ByRef orgid As Integer, ByRef finalClass As String) As IList(Of Integer)
+            Dim resultList As New Generic.List(Of Integer)()
+            For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("organization_identify = " & orgid, C__IDENTIFY)
+                resultList.Add(obj.functionalci_identify)
+            Next
+            Return resultList
+        End Function
+
+        Function ListOrganization(ByRef fciid As Integer) As IList(Of Integer)
+            Dim resultList As New Generic.List(Of Integer)()
+            For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("functionalci_identify = " & fciid, C__IDENTIFY)
+                resultList.Add(obj.organization_identify)
+            Next
+            Return resultList
+        End Function
+
         '查询链接列表
         Private Sub TestFindList()
             Dim dao As New ommp.dal.dao.LnkFunctionalCIToOrganizationDAO
-            Dim lists As IList(Of LnkFunctionalCIToOrganization) = dao.FindList(Of LnkFunctionalCIToOrganization)("organization_identify IN(590)", "_identify desc")
+            Dim lists As IList(Of ommp.dal.dto.LnkFunctionalCIToOrganization) = dao.FindList(Of ommp.dal.dto.LnkFunctionalCIToOrganization)("organization_identify IN (590)", "_identify desc")
             Output.Show("Count : " & lists.Count)
             For Each obj As ommp.dal.dto.LnkFunctionalCIToOrganization In lists
                 Output.Show("functionalci_identify = " & obj.functionalci_identify)

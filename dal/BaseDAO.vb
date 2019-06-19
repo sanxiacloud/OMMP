@@ -1,10 +1,13 @@
 ﻿Imports System.Reflection
 Imports ommp.dal.dto
 Imports Foxtable
+Imports log4net
 
 Namespace dal.dao
     Public Class BaseDAO
         Implements IBaseDAO
+
+        Private Shared ReadOnly log As ILog = LogManager.GetLogger(Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
         ReadOnly Property CONNECTION_NAME() As String
             Get
@@ -48,7 +51,7 @@ Namespace dal.dao
             Next
         End Sub
 
-        Public Function DeleteObject(Of T As New)(ByVal id As Integer) As Boolean Implements IBaseDAO.DeleteObject
+        Protected Function DeleteObject(Of T As New)(ByVal id As Integer) As Boolean Implements IBaseDAO.DeleteObject
             Dim result As Boolean = False
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
@@ -66,15 +69,15 @@ Namespace dal.dao
 
                 result = True
             Catch ex As Exception
-                Output.Show(table_name & "(DAO) -> DeleteObject ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
+                log.Error(table_name & "(DAO) -> DeleteObject ")
+                log.Error(ex.Message)
+                log.Error(ex.StackTrace)
             End Try
 
             Return result
         End Function
 
-        Public Function FindList(Of T As New)(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of T) Implements IBaseDAO.FindList
+        Protected Function FindList(Of T As New)(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of T) Implements IBaseDAO.FindList
             Dim lists As IList(Of T) = New Generic.List(Of T)()
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
@@ -97,15 +100,15 @@ Namespace dal.dao
                     lists.Add(item)
                 Next
             Catch ex As Exception
-                Output.Show(table_name & "(DAO) -> FindList ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
+                log.Error(table_name & "(DAO) -> FindList ")
+                log.Error(ex.Message)
+                log.Error(ex.StackTrace)
             End Try
 
             Return lists
         End Function
 
-        Public Function UpdateObject(Of T As New)(ByVal item As T) As Boolean Implements IBaseDAO.UpdateObject
+        Protected Function UpdateObject(Of T As New)(ByVal item As T) As Boolean Implements IBaseDAO.UpdateObject
             Dim o As New T()
             Dim table_name As String = o.GetType().Name
             Dim result As Boolean = False
@@ -123,13 +126,13 @@ Namespace dal.dao
                     End If
                 Next
 
-                'Output.Show("1. filter = " & filter)
+                log.Debug("1. filter = " & filter)
                 Dim dr As DataRow = DataTables(table_name).Find(filter)
                 If dr IsNot Nothing Then
 
                     For Each info As System.Reflection.PropertyInfo In item.GetType().GetProperties()
                         If DataTables(table_name).DataCols.Contains(info.Name) Then
-                            'Output.Show("2. " & info.Name & ":" & info.PropertyType.Name & " = " & info.GetValue(item, Nothing))
+                            log.Debug("2. " & info.Name & ":" & info.PropertyType.Name & " = " & info.GetValue(item, Nothing))
                             ' finalclass 列 和 _IsDeleted 列不可修改
                             If Not info.Name.Equals(C_FINALCLASS) Or info.Name.Equals(C__ISDELETED) Then
                                 If (info.PropertyType Is GetType(String)) And info.GetValue(item, Nothing) IsNot Nothing Then
@@ -149,15 +152,15 @@ Namespace dal.dao
 
                 result = True
             Catch ex As Exception
-                Output.Show(table_name & "(DAO) -> UpdateObject ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
+                log.Error(table_name & "(DAO) -> UpdateObject ")
+                log.Error(ex.Message)
+                log.Error(ex.StackTrace)
             End Try
 
             Return result
         End Function
 
-        Public Function InsertObject(Of T As New)(ByVal item As T) As Integer Implements IBaseDAO.InsertObject
+        Protected Function InsertObject(Of T As New)(ByVal item As T) As Integer Implements IBaseDAO.InsertObject
             Dim o As New T()
             Dim table_name As String = o.GetType().Name
             Dim result As Integer = -1
@@ -167,7 +170,7 @@ Namespace dal.dao
 
                 For Each info As PropertyInfo In item.GetType().GetProperties()
                     If DataTables(table_name).DataCols.Contains(info.Name) Then
-                        'Output.Show(info.Name & ":" & info.GetValue(item, Nothing))
+                        log.Debug(info.Name & ":" & info.GetValue(item, Nothing))
                         dr(info.Name) = info.GetValue(item, Nothing)
                     End If
                 Next
@@ -181,15 +184,15 @@ Namespace dal.dao
 
                 result = dr(col)
             Catch ex As Exception
-                Output.Show(table_name & "(DAO) -> InsertObject ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
+                log.Error(table_name & "(DAO) -> InsertObject ")
+                log.Error(ex.Message)
+                log.Error(ex.StackTrace)
             End Try
 
             Return result
         End Function
 
-        Public Function FindObject(Of T As New)(ByVal filter As String) As T Implements IBaseDAO.FindObject
+        Protected Function FindObject(Of T As New)(ByVal filter As String) As T Implements IBaseDAO.FindObject
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
 
@@ -198,17 +201,17 @@ Namespace dal.dao
                 If DataTables(table_name).DataCols.Contains(C_ID) Then
                     col = C_ID
                 End If
-                'Output.Show("table_name = " & table_name)
-                'Output.Show("filter = " & col & " = " & id & " AND " & C__ISDELETED & " = False")
+                log.Debug("table_name = " & table_name)
+                log.Debug("filter = " & filter & " AND " & C__ISDELETED & " = False")
                 Dim dr As DataRow = DataTables(table_name).Find(filter & " AND " & C__ISDELETED & " = False")
 
                 If dr IsNot Nothing Then
                     For Each info As PropertyInfo In item.GetType().GetProperties()
-                        'Output.Show("column_name = " & info.Name)
+                        log.Debug("column_name = " & info.Name)
                         If DataTables(table_name).DataCols.Contains(info.Name) Then
                             info.SetValue(item, dr(info.Name), Nothing)
                         ElseIf info.Name.Equals(C__IDENTIFY) Then
-                            'Output.Show("_Identify = " & dr(C__IDENTIFY))
+                            log.Debug("_Identify = " & dr(C__IDENTIFY))
                             info.SetValue(item, dr(C__IDENTIFY), Nothing)
                         End If
                     Next
@@ -217,15 +220,15 @@ Namespace dal.dao
                 End If
 
             Catch ex As Exception
-                Output.Show(table_name & "(DAO) -> FindObject(ByVal filter As String) ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
+                log.Error(table_name & "(DAO) -> FindObject(ByVal filter As String) ")
+                log.Error(ex.Message)
+                log.Error(ex.StackTrace)
             End Try
 
             Return item
         End Function
 
-        Public Function FindObject(Of T As New)(ByVal id As Integer) As T Implements IBaseDAO.FindObject
+        Protected Function FindObject(Of T As New)(ByVal id As Integer) As T Implements IBaseDAO.FindObject
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
 
@@ -241,9 +244,9 @@ Namespace dal.dao
                 item = FindObject(Of T)(filter)
 
             Catch ex As Exception
-                Output.Show(table_name & "(DAO) -> FindObject(ByVal id As Integer) ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
+                log.Error(table_name & "(DAO) -> FindObject(ByVal id As Integer) ")
+                log.Error(ex.Message)
+                log.Error(ex.StackTrace)
             End Try
 
             Return item
@@ -253,18 +256,18 @@ Namespace dal.dao
         Private Sub TestFindObject()
             Dim dao As New ommp.dal.dao.BaseDAO()
             Dim dto As ommp.dal.dto.Organization = dao.FindObject(Of ommp.dal.dto.Organization)(558)
-            Output.Show("code_org_type = " & dto.code_org_type)
-            Output.Show("Identify = " & dto._Identify)
-            Output.Show("parent_identify = " & dto.parent_identify)
-            Output.Show("name = " & dto.name)
-            Output.Show("code = " & dto.code)
-            Output.Show("parent_code = " & dto._code)
-            Output.Show("status = " & dto.status)
-            Output.Show("code_org_type = " & dto.code_org_type)
-            Output.Show("short_name = " & dto.short_name)
-            Output.Show("description = " & dto.description)
-            Output.Show("IsDeleted = " & dto._IsDeleted)
-            Output.Show("_sort = " & dto._sort)
+            log.Info("code_org_type = " & dto.code_org_type)
+            log.Info("Identify = " & dto._Identify)
+            log.Info("parent_identify = " & dto.parent_identify)
+            log.Info("name = " & dto.name)
+            log.Info("code = " & dto.code)
+            log.Info("parent_code = " & dto._code)
+            log.Info("status = " & dto.status)
+            log.Info("code_org_type = " & dto.code_org_type)
+            log.Info("short_name = " & dto.short_name)
+            log.Info("description = " & dto.description)
+            log.Info("IsDeleted = " & dto._IsDeleted)
+            log.Info("_sort = " & dto._sort)
         End Sub
 
         '测试添加一个对象(一级对象，未继承)
@@ -281,7 +284,7 @@ Namespace dal.dao
             dto.code_org_type = 2
             dto.description = "测试组织1-描述"
             result = dao.InsertObject(Of ommp.dal.dto.Organization)(dto)
-            Output.Show(result)
+            log.Info(result)
         End Sub
 
         '修改组织
@@ -292,33 +295,33 @@ Namespace dal.dao
             dto.code_org_type = 1
             dto.name = "测试组织-20190614 修改 2"
             result = dao.UpdateObject(Of ommp.dal.dto.Organization)(dto)
-            Output.Show(result)
+            log.Info(result)
         End Sub
 
         '删除一个对象 - 测试        
         Private Sub TestDeleteObject()
             Dim dao As New ommp.dal.dao.BaseDAO()
-            Output.Show(dao.DeleteObject(Of Organization)(599))
+            log.Info(dao.DeleteObject(Of Organization)(599))
         End Sub
 
         '查询组织列表
         Private Sub TestFindList()
             Dim dao As New ommp.dal.dao.BaseDAO
             Dim lists As IList(Of ommp.dal.dto.Organization) = dao.FindList(Of ommp.dal.dto.Organization)("[name] Like '%三峡云%'", "name desc")
-            Output.Show("Count : " & lists.Count)
+            log.Info("Count : " & lists.Count)
             For Each dto As ommp.dal.dto.Organization In lists
-                Output.Show("code_org_type = " & dto.code_org_type)
-                Output.Show("Identify = " & dto._Identify)
-                Output.Show("parent_identify = " & dto.parent_identify)
-                Output.Show("name = " & dto.name)
-                Output.Show("code = " & dto.code)
-                Output.Show("parent_code = " & dto._code)
-                Output.Show("status = " & dto.status)
-                Output.Show("code_org_type = " & dto.code_org_type)
-                Output.Show("short_name = " & dto.short_name)
-                Output.Show("description = " & dto.description)
-                Output.Show("IsDeleted = " & dto._IsDeleted)
-                Output.Show("_sort = " & dto._sort)
+                log.Info("code_org_type = " & dto.code_org_type)
+                log.Info("Identify = " & dto._Identify)
+                log.Info("parent_identify = " & dto.parent_identify)
+                log.Info("name = " & dto.name)
+                log.Info("code = " & dto.code)
+                log.Info("parent_code = " & dto._code)
+                log.Info("status = " & dto.status)
+                log.Info("code_org_type = " & dto.code_org_type)
+                log.Info("short_name = " & dto.short_name)
+                log.Info("description = " & dto.description)
+                log.Info("IsDeleted = " & dto._IsDeleted)
+                log.Info("_sort = " & dto._sort)
             Next
         End Sub
 
@@ -332,16 +335,16 @@ Namespace dal.dao
             For Each info As System.Reflection.PropertyInfo In item.GetType().GetProperties()
 
                 If (info.PropertyType Is GetType(String)) Then
-                    Output.Show(info.Name & ":" & info.PropertyType.Name)
-                    If info.GetValue(item, Nothing) IsNot Nothing Then Output.Show("--------------" & info.Name & "'s value is not nothing")
+                    log.Info(info.Name & ":" & info.PropertyType.Name)
+                    If info.GetValue(item, Nothing) IsNot Nothing Then log.Info("--------------" & info.Name & "'s value is not nothing")
 
                 ElseIf (info.PropertyType Is GetType(Int32)) Then
-                    Output.Show(info.Name & ":" & info.PropertyType.Name)
-                    If info.GetValue(item, Nothing) > 0 Then Output.Show("--------------" & info.Name & "'s value bigger than zero")
+                    log.Info(info.Name & ":" & info.PropertyType.Name)
+                    If info.GetValue(item, Nothing) > 0 Then log.Info("--------------" & info.Name & "'s value bigger than zero")
 
                 ElseIf (info.PropertyType Is GetType(DateTime)) Then
-                    Output.Show(info.Name & ":" & info.PropertyType.Name)
-                    If info.GetValue(item, Nothing) <> Nothing Then Output.Show("--------------" & info.Name & "'s value not equal nothing")
+                    log.Info(info.Name & ":" & info.PropertyType.Name)
+                    If info.GetValue(item, Nothing) <> Nothing Then log.Info("--------------" & info.Name & "'s value not equal nothing")
                 End If
 
             Next

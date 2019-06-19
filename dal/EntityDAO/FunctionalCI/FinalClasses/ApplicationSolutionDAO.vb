@@ -41,6 +41,14 @@ Namespace dal.dao
             Return DeleteFunctionalCI(id) And DeleteObject(Of ApplicationSolution)(id) And BuildJoinTable()
         End Function
 
+        Public Function Find(ByVal id As Integer) As ApplicationSolutionQT
+            Return FindObject(Of ApplicationSolutionQT)(id)
+        End Function
+
+        Public Function List(ByVal Optional filter As String = "", ByVal Optional sort As String = Nothing) As IList(Of ApplicationSolutionQT)
+            Return FindList(Of ApplicationSolutionQT)(filter, sort)
+        End Function
+
         ' 查询一个应用方案
         Private Sub TestFindObject()
             Dim dao As New ommp.dal.dao.ApplicationSolutionDAO()
