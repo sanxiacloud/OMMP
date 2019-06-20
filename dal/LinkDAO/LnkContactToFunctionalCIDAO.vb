@@ -3,7 +3,8 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class LnkContactToFunctionalCIDAO
-        Inherits BaseDAO
+        Inherits GenericLinkDAO(Of LnkContactToFunctionalCI)
+        Implements ILinkDAO
 
 
 

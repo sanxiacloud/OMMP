@@ -3,7 +3,8 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class LnkConnectableCIToNetworkDeviceDAO
-        Inherits BaseDAO
+        Inherits GenericLinkDAO(Of LnkConnectableCIToNetworkDevice)
+        Implements ILinkDAO
 
 
     End Class

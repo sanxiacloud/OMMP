@@ -2,7 +2,9 @@ Imports ommp.dal.dto
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class LnkDocumentToIPObjectDAO : Inherits BaseDAO
+    Public Class LnkDocumentToIPObjectDAO
+        Inherits GenericLinkDAO(Of LnkDocumentToIPObject)
+        Implements ILinkDAO
 
 
 

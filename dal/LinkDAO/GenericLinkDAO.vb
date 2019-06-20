@@ -28,31 +28,30 @@ Namespace dal.dao
             Return FindList(Of T)(String.Format("{0}={1}", rightColumnName, id), C__IDENTIFY)
         End Function
 
-        Public Function Link2(ByVal leftId As Integer, ByVal rightId As Integer) As Boolean
+        Public Function Link(ByVal leftId As Integer, ByVal rightId As Integer) As Boolean
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
-            Dim result As Integer = -1
+            Dim result As Boolean = False
 
             Try
                 Dim dr As DataRow = DataTables(table_name).AddNew()
 
                 For Each info As PropertyInfo In item.GetType().GetProperties()
-                    If DataTables(table_name).DataCols.Contains(info.Name) Then
-                        log.Debug(info.Name & ":" & info.GetValue(item, Nothing))
-                        dr(info.Name) = info.GetValue(item, Nothing)
+                    ' 默认存在对应的列 
+                    'DataTables(table_name).DataCols.Contains(leftColumnName)
+                    'DataTables(table_name).DataCols.Contains(rightColumnName)
+                    If info.Name.Equals(leftColumnName) Then
+                        dr(leftColumnName) = leftId
+                    ElseIf info.Name.Equals(rightColumnName) Then
+                        dr(rightColumnName) = rightId
                     End If
                 Next
                 dr(C__ISDELETED) = False ' 默认设置为 False
                 dr.Load()
 
-                Dim col As String = C__IDENTIFY
-                If DataTables(table_name).DataCols.Contains(C_ID) Then
-                    col = C_ID
-                End If
-
-                result = dr(col)
+                result = True
             Catch ex As Exception
-                log.Error(table_name & "(DAO) -> InsertObject ")
+                log.Error(table_name & "(DAO) -> Link ")
                 log.Error(ex.Message)
                 log.Error(ex.StackTrace)
             End Try

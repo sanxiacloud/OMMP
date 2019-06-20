@@ -2,7 +2,9 @@ Imports ommp.dal.dto
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class LnkIPAddressToIPAddressDAO : Inherits BaseDAO
+    Public Class LnkIPAddressToIPAddressDAO
+        Inherits GenericLinkDAO(Of LnkIPAddressToIPAddress)
+        Implements ILinkDAO
 
 
 

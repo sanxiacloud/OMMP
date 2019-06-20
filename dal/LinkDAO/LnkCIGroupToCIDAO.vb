@@ -3,7 +3,8 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class LnkCIGroupToCIDAO
-        Inherits BaseDAO
+        Inherits GenericLinkDAO(Of LnkCIGroupToCI)
+        Implements ILinkDAO
 
 
 

@@ -6,25 +6,6 @@ Namespace dal.dao
         Inherits GenericLinkDAO(Of LnkApplicationSolutionToFunctionalCI)
         Implements ILinkDAO
 
-        Public Function Link(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.Link
-            Dim obj As New LnkApplicationSolutionToFunctionalCI()
-            Dim result As Boolean = False
-
-            Try
-                obj.applicationsolution_identify = fromId
-                obj.functionalci_identify = toId
-                InsertObject(obj)
-
-                result = True
-            Catch ex As Exception
-                Output.Show(obj.GetType().Name & "(DAO) -> Link ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
-            End Try
-
-            Return result
-
-        End Function
 
         Private Sub TestFindList()
             Dim dao As New ommp.dal.dao.LnkApplicationSolutionToFunctionalCIDAO

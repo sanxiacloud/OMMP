@@ -13,24 +13,7 @@ Namespace dal.dao
         'Dim result As Boolean = False
         'result = dao.Link(1873, 595)
         'Output.Show(result)
-        Public Function Link(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.Link
-            Dim obj As New LnkFunctionalCIToOrganization()
-            Dim result As Boolean = False
 
-            Try
-                obj.functionalci_identify = fromId
-                obj.organization_identify = toId
-                InsertObject(obj)
-
-                result = True
-            Catch ex As Exception
-                Output.Show(obj.GetType().Name & "(DAO) -> Link ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
-            End Try
-
-            Return result
-        End Function
 
         ' 删除一个 功能配置项与组织 链接记录
         'todo:test
@@ -40,41 +23,6 @@ Namespace dal.dao
         'Output.Show(result)
 
 
-        Function ListByFunctionalCI(fciid As Integer) As IList(Of LnkFunctionalCIToOrganization)
-            Return FindList(Of LnkFunctionalCIToOrganization)("functionalci_identify = " & fciid, C__IDENTIFY)
-        End Function
-
-        Function ListByOrganization(orgid As Integer) As IList(Of LnkFunctionalCIToOrganization)
-            Return FindList(Of LnkFunctionalCIToOrganization)("organization_identify = " & orgid, C__IDENTIFY)
-        End Function
-
-        Function ListFunctionalCI(orgid As Integer) As IList(Of Integer)
-            Dim resultList As New Generic.List(Of Integer)()
-            For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("organization_identify = " & orgid, C__IDENTIFY)
-                resultList.Add(obj.functionalci_identify)
-            Next
-            Return resultList
-        End Function
-
-        Function ListFunctionalCI(orgid As Integer, finalClass As String) As IList(Of Integer)
-            Dim resultList As New Generic.List(Of Integer)()
-            Dim fci As New FunctionalCI()
-            For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("organization_identify = " & orgid, C__IDENTIFY)
-                fci = FindObject(Of FunctionalCI)(obj.functionalci_identify)
-                If fci.finalclass.Equals(finalClass) Then
-                    resultList.Add(obj.functionalci_identify)
-                End If
-            Next
-            Return resultList
-        End Function
-
-        Function ListOrganization(fciid As Integer) As IList(Of Integer)
-            Dim resultList As New Generic.List(Of Integer)()
-            For Each obj As LnkFunctionalCIToOrganization In FindList(Of LnkFunctionalCIToOrganization)("functionalci_identify = " & fciid, C__IDENTIFY)
-                resultList.Add(obj.organization_identify)
-            Next
-            Return resultList
-        End Function
 
         '查询链接列表
         Private Sub TestFindList()
