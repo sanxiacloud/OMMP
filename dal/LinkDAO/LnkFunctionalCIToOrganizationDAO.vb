@@ -4,7 +4,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class LnkFunctionalCIToOrganizationDAO
-        Inherits BaseDAO
+        Inherits GenericLinkDAO(Of LnkFunctionalCIToOrganization)
         Implements ILinkDAO
 
         ' 添加一个 功能配置项与组织 链接记录
@@ -38,32 +38,7 @@ Namespace dal.dao
         'Dim result As Boolean = False
         'result = dao.UnLink(1873, 595)
         'Output.Show(result)
-        Public Function UnLink(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.UnLink
-            Dim obj As New LnkFunctionalCIToOrganization()
-            Dim fromObject As New FunctionalCI()
-            Dim toObject As New Organization()
-            Dim result As Boolean = False
 
-            Try
-                Dim filter As String = fromObject.GetType().Name & C__IDENTIFY & " = " & fromId
-                filter = filter & " AND " & toObject.GetType().Name & C__IDENTIFY & " = " & toId
-
-                Dim lists As IList(Of LnkFunctionalCIToOrganization) = FindList(Of LnkFunctionalCIToOrganization)(filter, Nothing)
-
-                For Each dto As LnkFunctionalCIToOrganization In lists
-                    'Output.Show("Identify = " & dto._Identify)
-                    DeleteObject(Of LnkFunctionalCIToOrganization)(dto._Identify)
-                Next
-
-                result = True
-            Catch ex As Exception
-                Output.Show(obj.GetType().Name & "(DAO) -> UnLink ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
-            End Try
-
-            Return result
-        End Function
 
         Function ListByFunctionalCI(fciid As Integer) As IList(Of LnkFunctionalCIToOrganization)
             Return FindList(Of LnkFunctionalCIToOrganization)("functionalci_identify = " & fciid, C__IDENTIFY)

@@ -171,6 +171,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="TEST\IUnitTest.vb" />
+    <Compile Include="TEST\TestGenericSimpleEntityDAO.vb" />
     <Compile Include="TEST\TestOrganizationDAO.vb" />
   </ItemGroup>
   <ItemGroup>

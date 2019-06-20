@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class LnkApplicationSolutionToFunctionalCIDAO
-        Inherits GenericLinkDAO(Of ApplicationSolutionQT)
+        Inherits GenericLinkDAO(Of LnkApplicationSolutionToFunctionalCI)
         Implements ILinkDAO
 
         Public Function Link(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.Link
@@ -23,33 +23,7 @@ Namespace dal.dao
             End Try
 
             Return result
-        End Function
 
-        Public Function UnLink(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.UnLink
-            Dim obj As New LnkApplicationSolutionToFunctionalCI()
-            Dim fromObject As New ApplicationSolution()
-            Dim toObject As New FunctionalCI()
-            Dim result As Boolean = False
-
-            Try
-                Dim filter As String = fromObject.GetType().Name & C__IDENTIFY & " = " & fromId
-                filter = filter & " AND " & toObject.GetType().Name & C__IDENTIFY & " = " & toId
-
-                Dim lists As IList(Of LnkApplicationSolutionToFunctionalCI) = FindList(Of LnkApplicationSolutionToFunctionalCI)(filter, Nothing)
-
-                For Each dto As LnkApplicationSolutionToFunctionalCI In lists
-                    'Output.Show("Identify = " & dto._Identify)
-                    DeleteObject(Of LnkApplicationSolutionToFunctionalCI)(dto._Identify)
-                Next
-
-                result = True
-            Catch ex As Exception
-                Output.Show(obj.GetType().Name & "(DAO) -> UnLink ")
-                Output.Show(ex.Message)
-                Output.Show(ex.StackTrace)
-            End Try
-
-            Return result
         End Function
 
         Private Sub TestFindList()

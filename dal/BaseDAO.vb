@@ -38,6 +38,18 @@ Namespace dal.dao
             End Get
         End Property
 
+        ReadOnly Property S_LNK() As String
+            Get
+                Return "Lnk"
+            End Get
+        End Property
+
+        ReadOnly Property S_TO() As String
+            Get
+                Return "To"
+            End Get
+        End Property
+
         Protected Sub AddQueryTableCols(Of T As New)(ByRef builder As SQLJoinTableBuilder)
             Dim finalClass As New T()
 

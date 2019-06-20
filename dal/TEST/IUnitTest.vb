@@ -1,5 +1,4 @@
-﻿
-Namespace dal.test
+﻿Namespace dal.test
     Public Interface IUnitTest
 
         Function TestInsert() As Boolean
