@@ -90,28 +90,27 @@ Namespace dal.dao
 
         Protected Function FindList(Of T As New)(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of T)
             Dim lists As IList(Of T) = New List(Of T)()
-            Dim item As New T()
-            Dim table_name As String = item.GetType().Name
+            Dim table_name As String = GetType(T).Name
             Dim theFilter As String = String.Format("{0} AND {1}=False", filter, C__ISDELETED)
-            Output.Show(String.Format("theFilter = [{0}]", theFilter))
+            'Output.Show(String.Format("theFilter = [{0}]", theFilter))
             Try
                 Dim drs As List(Of DataRow)
-
                 If sort IsNot Nothing Then
                     drs = DataTables(table_name).Select(theFilter, sort)
                 Else
                     drs = DataTables(table_name).Select(theFilter)
                 End If
 
+                Dim item As T
                 For Each dr As DataRow In drs
+                    item = New T()
                     For Each info As PropertyInfo In item.GetType().GetProperties()
                         info.SetValue(item, dr(info.Name), Nothing)
-                        Output.Show(String.Format("{0} = {1}", info.Name, dr(info.Name)))
+                        'Output.Show(String.Format("{0} = {1}", info.Name, dr(info.Name)))
                     Next
-
                     lists.Add(item)
                 Next
-                Output.Show(String.Format("lists.count = {0}", lists.Count))
+                'Output.Show(String.Format("lists.count = {0}", lists.Count))
             Catch ex As Exception
                 log.Error(table_name & "(DAO) -> FindList ")
                 log.Error(ex.Message)
@@ -122,8 +121,7 @@ Namespace dal.dao
         End Function
 
         Protected Function UpdateObject(Of T As New)(ByVal item As T) As Boolean
-            Dim o As New T()
-            Dim table_name As String = o.GetType().Name
+            Dim table_name As String = GetType(T).Name
             Dim result As Boolean = False
             Dim filter As String = ""
             Dim col As String = C__IDENTIFY
@@ -174,8 +172,7 @@ Namespace dal.dao
         End Function
 
         Protected Function InsertObject(Of T As New)(ByVal item As T) As Integer
-            Dim o As New T()
-            Dim table_name As String = o.GetType().Name
+            Dim table_name As String = GetType(T).Name
             Dim result As Integer = -1
 
             Try
@@ -207,7 +204,7 @@ Namespace dal.dao
 
         Protected Function FindObject(Of T As New)(ByVal filter As String) As T
             Dim item As New T()
-            Dim table_name As String = item.GetType().Name
+            Dim table_name As String = GetType(T).Name
 
             Try
                 Dim col As String = C__IDENTIFY
@@ -242,20 +239,15 @@ Namespace dal.dao
         End Function
 
         Protected Function FindObject(Of T As New)(ByVal id As Integer) As T
+            Dim table_name As String = GetType(T).Name
             Dim item As New T()
-            Dim table_name As String = item.GetType().Name
 
             Try
                 Dim col As String = C__IDENTIFY
-
                 If DataTables(table_name).DataCols.Contains(C_ID) Then
                     col = C_ID
                 End If
-
-                Dim filter As String = col & " = " & id
-
-                item = FindObject(Of T)(filter)
-
+                item = FindObject(Of T)(String.Format("{0}={1}", col, id))
             Catch ex As Exception
                 log.Error(table_name & "(DAO) -> FindObject(ByVal id As Integer) ")
                 log.Error(ex.Message)

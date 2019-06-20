@@ -44,8 +44,8 @@ Namespace dal.test
             lists = dao.List(" t='代码类型' ", " v desc ")
             Output.Show(lists.Count)
             Output.Show(lists(0).ToString())
-            For Each o As ommp.dal.dto.Code In lists
-                Output.Show(String.Format("{0}[{1}] -- {2}={3}", o.t, o.des, o.label, o.v))
+            For Each aaaaa As ommp.dal.dto.Code In lists
+                Output.Show(String.Format("{0}[{1}] -- {2}={3}", aaaaa.t, aaaaa.des, aaaaa.label, aaaaa.v))
             Next
         End Function
 
