@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class StorageSystemDAO
-        Inherits DataCenterDeviceDAO(Of StorageSystem)
+        Inherits DataCenterDeviceDAO(Of StorageSystemQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

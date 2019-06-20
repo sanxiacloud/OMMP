@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class DBServerDAO
-        Inherits SoftwareInstanceDAO(Of DBServer)
+        Inherits SoftwareInstanceDAO(Of DBServerQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean
@@ -42,13 +42,6 @@ Namespace dal.dao
             Return DeleteSoftwareInstance(id) And DeleteObject(Of DBServer)(id) And BuildJoinTable()
         End Function
 
-        Public Function Find(ByVal id As Integer) As DBServer
-            Return FindObject(Of DBServer)(id)
-        End Function
-
-        Public Function List(ByVal Optional filter As String = "", ByVal Optional sort As String = Nothing) As IList(Of DBServer)
-            Return FindList(Of DBServer)(filter, sort)
-        End Function
     End Class
 
 End Namespace

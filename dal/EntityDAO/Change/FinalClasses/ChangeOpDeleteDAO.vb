@@ -2,7 +2,7 @@
 Imports Foxtable
 Namespace dal.dao
     Public Class ChangeOpDeleteDAO
-        Inherits ChangeOpDAO(Of ChangeOpDelete)
+        Inherits ChangeOpDAO(Of ChangeOpDeleteQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class DomainDAO
-        Inherits DNSObjectDAO(Of Domain)
+        Inherits DNSObjectDAO(Of DomainQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean
@@ -32,11 +32,11 @@ Namespace dal.dao
         Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
             Dim obj As Domain = CType(o, Domain)
             obj.id = InsertDNSObject(o, obj.GetType().Name)
-            Return InsertObject(Of Domain)(CType(o, Domain)) And BuildJoinTable()
+            Return InsertObject(CType(o, Domain)) And BuildJoinTable()
         End Function
 
         Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateDNSObject(o) And UpdateObject(Of Domain)(CType(o, Domain)) And BuildJoinTable()
+            Return UpdateDNSObject(o) And UpdateObject(CType(o, Domain)) And BuildJoinTable()
         End Function
 
     End Class

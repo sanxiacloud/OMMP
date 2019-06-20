@@ -3,7 +3,7 @@ Imports Foxtable
 
 Namespace dal.dao
     Public Class VirtualMachineDAO
-        Inherits VirtualDeviceDAO(Of VirtualMachine)
+        Inherits VirtualDeviceDAO(Of VirtualMachineQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

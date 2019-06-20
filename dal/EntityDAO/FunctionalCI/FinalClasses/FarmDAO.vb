@@ -5,7 +5,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class FarmDAO
-        Inherits VirtualHostDAO(Of Farm)
+        Inherits VirtualHostDAO(Of FarmQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean
@@ -47,13 +47,6 @@ Namespace dal.dao
             Return UpdateVirtualHost(o) And UpdateObject(Of Farm)(CType(o, Farm)) And BuildJoinTable()
         End Function
 
-        Public Function Find(ByVal id As Integer) As Farm
-            Return FindObject(Of Farm)(id)
-        End Function
-
-        Public Function List(ByVal Optional filter As String = "", ByVal Optional sort As String = Nothing) As IList(Of Farm)
-            Return FindList(Of Farm)(filter, sort)
-        End Function
     End Class
 
 End Namespace

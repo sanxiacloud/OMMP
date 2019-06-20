@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class EnclosureDAO
-        Inherits ConnectableCIDAO(Of Enclosure)
+        Inherits ConnectableCIDAO(Of EnclosureQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean
@@ -45,13 +45,6 @@ Namespace dal.dao
             Return DeleteConnectableCI(id) And DeleteObject(Of Enclosure)(id) And BuildJoinTable()
         End Function
 
-        Public Function Find(ByVal id As Integer) As Enclosure
-            Return FindObject(Of Enclosure)(id)
-        End Function
-
-        Public Function List(ByVal Optional filter As String = "", ByVal Optional sort As String = Nothing) As IList(Of Enclosure)
-            Return FindList(Of Enclosure)(filter, sort)
-        End Function
     End Class
 
 End Namespace

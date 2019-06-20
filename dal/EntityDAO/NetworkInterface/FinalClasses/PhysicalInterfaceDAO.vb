@@ -2,8 +2,8 @@ Imports ommp.dal.dto
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class PhysicalInterfaceDAO(Of T As New)
-        Inherits IPInterfaceDAO(Of T)
+    Public Class PhysicalInterfaceDAO
+        Inherits IPInterfaceDAO(Of PhysicalInterfaceQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

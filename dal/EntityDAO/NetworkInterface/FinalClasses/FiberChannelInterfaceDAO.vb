@@ -2,8 +2,8 @@ Imports ommp.dal.dto
 Imports Foxtable
 Namespace dal.dao
 
-    Public Class FiberChannelInterfaceDAO(Of T As New)
-        Inherits NetworkInterfaceDAO(Of T)
+    Public Class FiberChannelInterfaceDAO
+        Inherits NetworkInterfaceDAO(Of FiberChannelInterfaceQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

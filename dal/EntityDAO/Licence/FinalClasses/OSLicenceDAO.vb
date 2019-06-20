@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class OSLicenceDAO
-        Inherits LicenceDAO(Of OSLicence)
+        Inherits LicenceDAO(Of OSLicenceQT)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean
