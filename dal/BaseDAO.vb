@@ -92,8 +92,8 @@ Namespace dal.dao
             Dim lists As IList(Of T) = New List(Of T)()
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
-            Dim theFilter As String = filter & " AND " & C__ISDELETED & " = False"
-
+            Dim theFilter As String = String.Format("{0} AND {1}=False", filter, C__ISDELETED)
+            Output.Show(String.Format("theFilter = [{0}]", theFilter))
             Try
                 Dim drs As List(Of DataRow)
 
@@ -106,10 +106,12 @@ Namespace dal.dao
                 For Each dr As DataRow In drs
                     For Each info As PropertyInfo In item.GetType().GetProperties()
                         info.SetValue(item, dr(info.Name), Nothing)
+                        Output.Show(String.Format("{0} = {1}", info.Name, dr(info.Name)))
                     Next
 
                     lists.Add(item)
                 Next
+                Output.Show(String.Format("lists.count = {0}", lists.Count))
             Catch ex As Exception
                 log.Error(table_name & "(DAO) -> FindList ")
                 log.Error(ex.Message)

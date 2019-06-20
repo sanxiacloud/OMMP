@@ -15,9 +15,9 @@ Namespace dal.dao
         Sub New()
             ' LnkApplicationSolutionToFunctionalCI 从类名称中抽取 Lnk 与 To 分隔后的
             tableName = GetType(T).Name
-            Dim str As String() = tableName.Split(S_LNK)(1).Split(S_TO)
-            leftColumnName = str(0).ToLower() & C__IDENTIFY
-            rightColumnName = str(1).ToLower() & C__IDENTIFY
+            Dim str As String() = tableName.Replace(S_LNK, "").Replace(S_TO, ",").Split(",")
+            leftColumnName = str(0).ToLower() & C__IDENTIFY.ToLower()
+            rightColumnName = str(1).ToLower() & C__IDENTIFY.ToLower()
         End Sub
 
         Public Function ListByLeft(id As Integer) As IList(Of T)
