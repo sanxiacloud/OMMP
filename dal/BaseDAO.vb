@@ -5,7 +5,6 @@ Imports log4net
 
 Namespace dal.dao
     Public Class BaseDAO
-        Implements IBaseDAO
 
         Private Shared ReadOnly log As ILog = LogManager.GetLogger(Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
@@ -51,7 +50,7 @@ Namespace dal.dao
             Next
         End Sub
 
-        Protected Function DeleteObject(Of T As New)(ByVal id As Integer) As Boolean Implements IBaseDAO.DeleteObject
+        Protected Function DeleteObject(Of T As New)(ByVal id As Integer) As Boolean
             Dim result As Boolean = False
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
@@ -77,8 +76,8 @@ Namespace dal.dao
             Return result
         End Function
 
-        Protected Function FindList(Of T As New)(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of T) Implements IBaseDAO.FindList
-            Dim lists As IList(Of T) = New Generic.List(Of T)()
+        Protected Function FindList(Of T As New)(ByVal filter As String, ByVal sort As String) As System.Collections.Generic.IList(Of T)
+            Dim lists As IList(Of T) = New List(Of T)()
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
             Dim theFilter As String = filter & " AND " & C__ISDELETED & " = False"
@@ -108,7 +107,7 @@ Namespace dal.dao
             Return lists
         End Function
 
-        Protected Function UpdateObject(Of T As New)(ByVal item As T) As Boolean Implements IBaseDAO.UpdateObject
+        Protected Function UpdateObject(Of T As New)(ByVal item As T) As Boolean
             Dim o As New T()
             Dim table_name As String = o.GetType().Name
             Dim result As Boolean = False
@@ -160,7 +159,7 @@ Namespace dal.dao
             Return result
         End Function
 
-        Protected Function InsertObject(Of T As New)(ByVal item As T) As Integer Implements IBaseDAO.InsertObject
+        Protected Function InsertObject(Of T As New)(ByVal item As T) As Integer
             Dim o As New T()
             Dim table_name As String = o.GetType().Name
             Dim result As Integer = -1
@@ -192,7 +191,7 @@ Namespace dal.dao
             Return result
         End Function
 
-        Protected Function FindObject(Of T As New)(ByVal filter As String) As T Implements IBaseDAO.FindObject
+        Protected Function FindObject(Of T As New)(ByVal filter As String) As T
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
 
@@ -228,7 +227,7 @@ Namespace dal.dao
             Return item
         End Function
 
-        Protected Function FindObject(Of T As New)(ByVal id As Integer) As T Implements IBaseDAO.FindObject
+        Protected Function FindObject(Of T As New)(ByVal id As Integer) As T
             Dim item As New T()
             Dim table_name As String = item.GetType().Name
 

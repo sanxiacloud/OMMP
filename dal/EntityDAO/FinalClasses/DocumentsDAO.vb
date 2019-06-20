@@ -1,9 +1,9 @@
 Imports ommp.dal.dto
-Imports Foxtable
+
 Namespace dal.dao
 
     Public Class DocumentsDAO
-        Inherits BaseDAO
+        Inherits GenericSimpleEntityDAO(Of Documents)
 
     End Class
 

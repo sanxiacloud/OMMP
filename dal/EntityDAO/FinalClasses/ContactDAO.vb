@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class ContactDAO
-        Inherits BaseDAO
+        Inherits GenericSimpleEntityDAO(Of Contact)
 
     End Class
 

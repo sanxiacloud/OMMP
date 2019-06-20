@@ -2,8 +2,8 @@
 Imports Foxtable
 Namespace dal.dao
 
-    Public MustInherit Class PhysicalDeviceDAO
-        Inherits FunctionalCIDAO
+    Public MustInherit Class PhysicalDeviceDAO(Of T As New)
+        Inherits FunctionalCIDAO(Of T)
 
         Protected Function InsertPhysicalDevice(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As PhysicalDevice = CType(o, PhysicalDevice)

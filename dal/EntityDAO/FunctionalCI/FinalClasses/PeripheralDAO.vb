@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class PeripheralDAO
-        Inherits ConnectableCIDAO
+        Inherits ConnectableCIDAO(Of Peripheral)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

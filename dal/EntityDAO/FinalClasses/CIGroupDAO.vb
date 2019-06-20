@@ -1,9 +1,10 @@
+Imports ommp.dal.dto
+
 Namespace dal.dao
 
     Public Class CIGroupDAO
-        Inherits BaseDAO
+        Inherits GenericSimpleEntityDAO(Of CIGroup)
 
-        ' 参考 OrganizationDAO
     End Class
 
 End Namespace

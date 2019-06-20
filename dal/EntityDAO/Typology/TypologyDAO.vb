@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class TypologyDAO
-        Inherits BaseDAO
+    Public MustInherit Class TypologyDAO(Of T As New)
+        Inherits GenericEntityDAO(Of T)
         Protected Function InsertTypology(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As Typology = CType(o, Typology)
             obj.finalclass = finalclass

@@ -2,8 +2,8 @@
 Imports Foxtable
 Namespace dal.dao
 
-    Public MustInherit Class DataCenterDeviceDAO
-        Inherits ConnectableCIDAO
+    Public MustInherit Class DataCenterDeviceDAO(Of T As New)
+        Inherits ConnectableCIDAO(Of T)
 
         Protected Function InsertDataCenterDevice(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As DataCenterDevice = CType(o, DataCenterDevice)

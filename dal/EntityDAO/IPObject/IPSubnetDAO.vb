@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class IPSubnetDAO
-        Inherits IPObjectDAO
+    Public MustInherit Class IPSubnetDAO(Of T As New)
+        Inherits IPObjectDAO(Of T)
 
         Protected Function InsertIPSubnet(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As IPSubnet = CType(o, IPSubnet)

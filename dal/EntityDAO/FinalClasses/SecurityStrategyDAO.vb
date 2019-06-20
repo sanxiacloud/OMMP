@@ -3,8 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class SecurityStrategyDAO
-        Inherits BaseDAO
-
+        Inherits GenericSimpleEntityDAO(Of SecurityStrategy)
 
     End Class
 

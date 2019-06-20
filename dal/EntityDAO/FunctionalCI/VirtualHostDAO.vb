@@ -2,8 +2,8 @@
 Imports Foxtable
 
 Namespace dal.dao
-    Public MustInherit Class VirtualHostDAO
-        Inherits VirtualDeviceDAO
+    Public MustInherit Class VirtualHostDAO(Of T As New)
+        Inherits VirtualDeviceDAO(Of T)
 
         Protected Function InsertVirtualHost(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As VirtualHost = CType(o, VirtualHost)

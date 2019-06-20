@@ -3,8 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class ConfigPortDAO
-        Inherits BaseDAO
-
+        Inherits GenericSimpleEntityDAO(Of ConfigPort)
 
     End Class
 

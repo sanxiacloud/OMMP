@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class LicenceDAO
-        Inherits BaseDAO
+    Public MustInherit Class LicenceDAO(Of T As New)
+        Inherits GenericEntityDAO(Of T)
         Protected Function InsertLicence(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As Licence = CType(o, Licence)
             obj.finalclass = finalclass

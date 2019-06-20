@@ -3,10 +3,9 @@
   <Class Name="ommp.dal.dao.BaseDAO" Collapsed="true">
     <Position X="81.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QABBAAACAAAgAIAAIAIAAAAAQAAAAAAAEAEAAAAAAEA=</HashCode>
+      <HashCode>QABBAAACAAAgAIAAIAIACAAAQAAAAAAAEAEAAAAAAEA=</HashCode>
       <FileName>BaseDAO.vb</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="ommp.dal.dao.ConnectableCIDAO" Collapsed="true">
     <Position X="77.25" Y="5.75" Width="1.75" />
@@ -25,7 +24,7 @@
   <Class Name="ommp.dal.dao.DatabasesSchemaDAO" Collapsed="true">
     <Position X="79.5" Y="4.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMIAAAAAAAAAAAAAAI=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\DatabasesSchemaDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -33,7 +32,7 @@
   <Class Name="ommp.dal.dao.FarmDAO" Collapsed="true">
     <Position X="83.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMIAAAAAAAAAAAAAAI=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\FarmDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -41,7 +40,7 @@
   <Class Name="ommp.dal.dao.HypervisorDAO" Collapsed="true">
     <Position X="82.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\HypervisorDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -49,7 +48,7 @@
   <Class Name="ommp.dal.dao.MiddlewareInstanceDAO" Collapsed="true">
     <Position X="86.25" Y="4.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\MiddlewareInstanceDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -57,7 +56,7 @@
   <Class Name="ommp.dal.dao.ServerDAO" Collapsed="true">
     <Position X="77.25" Y="8.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\ServerDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -65,7 +64,7 @@
   <Class Name="ommp.dal.dao.VirtualMachineDAO" Collapsed="true">
     <Position X="84" Y="5.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAIAAAAAAAAAAQAEAAABAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAIAAAAAAAAAAQAMAAABAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\VirtualMachineDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -73,7 +72,7 @@
   <Class Name="ommp.dal.dao.WebApplicationDAO" Collapsed="true">
     <Position X="88.5" Y="4.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAIAAAAAAAAAAQAEAAABAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAIAAAAAAAAAAQAMAAABAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\WebApplicationDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -81,7 +80,7 @@
   <Class Name="ommp.dal.dao.FunctionalCIDAO" Collapsed="true">
     <Position X="81.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAQAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAQAAQAAAAEAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FunctionalCIDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -109,7 +108,7 @@
   <Class Name="ommp.dal.dao.ApplicationSolutionDAO" Collapsed="true">
     <Position X="84.25" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAUAAEAAAgAAAAAAAAAAAAAAQAMAAABAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAUAAEAAAgAAAAAAAAAAAAAAQAMIAABAAAAAAAAAAAI=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\ApplicationSolutionDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -117,7 +116,7 @@
   <Class Name="ommp.dal.dao.NASDAO" Collapsed="true">
     <Position X="75.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\NASDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -125,7 +124,7 @@
   <Class Name="ommp.dal.dao.NetworkDeviceDAO" Collapsed="true">
     <Position X="73.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\NetworkDeviceDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -133,7 +132,7 @@
   <Class Name="ommp.dal.dao.SANSwitchDAO" Collapsed="true">
     <Position X="72" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\SANSwitchDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -141,7 +140,7 @@
   <Class Name="ommp.dal.dao.StorageSystemDAO" Collapsed="true">
     <Position X="70.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\StorageSystemDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -149,7 +148,7 @@
   <Class Name="ommp.dal.dao.PeripheralDAO" Collapsed="true">
     <Position X="72.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\PeripheralDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -157,7 +156,7 @@
   <Class Name="ommp.dal.dao.RackDAO" Collapsed="true">
     <Position X="75.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\RackDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -165,7 +164,7 @@
   <Class Name="ommp.dal.dao.EnclosureDAO" Collapsed="true">
     <Position X="74.25" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMIAAAAAAAAAAAAAAI=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\EnclosureDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -229,9 +228,10 @@
   <Class Name="ommp.dal.dao.SoftwareDAO" Collapsed="true">
     <Position X="74.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FinalClasses\SoftwareDAO.vb</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="ommp.dal.dao.WANLinkDAO" Collapsed="true">
     <Position X="72.5" Y="2.75" Width="1.5" />
@@ -243,9 +243,10 @@
   <Class Name="ommp.dal.dao.VLANDAO" Collapsed="true">
     <Position X="70.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAI=</HashCode>
       <FileName>EntityDAO\FinalClasses\VLANDAO.vb</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="ommp.dal.dao.SoftwareInstanceDAO" Collapsed="true">
     <Position X="73.25" Y="4.25" Width="1.5" />
@@ -257,7 +258,7 @@
   <Class Name="ommp.dal.dao.MiddlewareDAO" Collapsed="true">
     <Position X="73.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\MiddlewareDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -265,7 +266,7 @@
   <Class Name="ommp.dal.dao.WebServerDAO" Collapsed="true">
     <Position X="71.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\WebServerDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -273,7 +274,7 @@
   <Class Name="ommp.dal.dao.DBServerDAO" Collapsed="true">
     <Position X="75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMIAAAAAAAAAAAAAAI=</HashCode>
       <FileName>EntityDAO\FunctionalCI\FinalClasses\DBServerDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -281,14 +282,14 @@
   <Class Name="ommp.dal.dao.TypologyDAO" Collapsed="true">
     <Position X="92.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAEAAAAAAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>EntityDAO\Typology\TypologyDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ommp.dal.dao.OSFamilyDAO" Collapsed="true">
     <Position X="91.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Typology\FinalClasses\OSFamilyDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -296,7 +297,7 @@
   <Class Name="ommp.dal.dao.OSVersionDAO" Collapsed="true">
     <Position X="93.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Typology\FinalClasses\OSVersionDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -304,14 +305,14 @@
   <Class Name="ommp.dal.dao.ContractDAO" Collapsed="true">
     <Position X="95.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAIAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAIAAAAAAAAAAAAIAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Contract\ContractDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ommp.dal.dao.ProviderContractDAO" Collapsed="true">
     <Position X="95.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Contract\FinalClasses\ProviderContractDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -319,7 +320,7 @@
   <Class Name="ommp.dal.dao.CustomerContractDAO" Collapsed="true">
     <Position X="97.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Contract\FinalClasses\CustomerContractDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -327,9 +328,10 @@
   <Class Name="ommp.dal.dao.SecurityStrategyDAO" Collapsed="true">
     <Position X="68.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\FinalClasses\SecurityStrategyDAO.vb</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="ommp.dal.dao.PasswdDAO" Collapsed="true">
     <Position X="66.25" Y="2.75" Width="1.5" />
@@ -341,14 +343,14 @@
   <Class Name="ommp.dal.dao.DNSObjectDAO" Collapsed="true">
     <Position X="99.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAACAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAACIAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\DNSObject\DNSObjectDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ommp.dal.dao.DomainDAO" Collapsed="true">
     <Position X="99.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\DNSObject\FinalClasses\DomainDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -356,7 +358,7 @@
   <Class Name="ommp.dal.dao.IPObjectDAO" Collapsed="true">
     <Position X="101.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQQAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAQQAAAAAAAAAAAEAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\IPObject\IPObjectDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -370,7 +372,7 @@
   <Class Name="ommp.dal.dao.IPBlockv4DAO" Collapsed="true">
     <Position X="101.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\IPObject\FinalClasses\IPBlockv4DAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -392,7 +394,7 @@
   <Class Name="ommp.dal.dao.IPSubnetv4DAO" Collapsed="true">
     <Position X="103.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\IPObject\FinalClasses\IPSubnetv4DAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -400,7 +402,7 @@
   <Class Name="ommp.dal.dao.IPAddressv4DAO" Collapsed="true">
     <Position X="105.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\IPObject\FinalClasses\IPAddressv4DAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -408,14 +410,14 @@
   <Class Name="ommp.dal.dao.NetworkInterfaceDAO" Collapsed="true">
     <Position X="107.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAFAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAFAAAAAAAAAAAABAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\NetworkInterface\NetworkInterfaceDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ommp.dal.dao.FiberChannelInterfaceDAO" Collapsed="true">
     <Position X="107.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\NetworkInterface\FinalClasses\FiberChannelInterfaceDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -430,7 +432,7 @@
   <Class Name="ommp.dal.dao.LogicalInterfaceDAO" Collapsed="true">
     <Position X="107.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\NetworkInterface\FinalClasses\LogicalInterfaceDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -438,7 +440,7 @@
   <Class Name="ommp.dal.dao.PhysicalInterfaceDAO" Collapsed="true">
     <Position X="109.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\NetworkInterface\FinalClasses\PhysicalInterfaceDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -446,14 +448,14 @@
   <Class Name="ommp.dal.dao.ChangeOpDAO" Collapsed="true">
     <Position X="61.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAACAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAACAAAgAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Change\ChangeOpDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ommp.dal.dao.ChangeOpCreateDAO" Collapsed="true">
     <Position X="62" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Change\FinalClasses\ChangeOpCreateDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -468,7 +470,7 @@
   <Class Name="ommp.dal.dao.ChangeOpDeleteDAO" Collapsed="true">
     <Position X="64" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Change\FinalClasses\ChangeOpDeleteDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -483,7 +485,7 @@
   <Class Name="ommp.dal.dao.ChangeOpLinksAddRemoveDAO" Collapsed="true">
     <Position X="60" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Change\FinalClasses\ChangeOpLinksAddRemoveDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -491,7 +493,7 @@
   <Class Name="ommp.dal.dao.ChangeOpSetAttScalarDAO" Collapsed="true">
     <Position X="58" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Change\FinalClasses\ChangeOpSetAttScalarDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -499,14 +501,14 @@
   <Class Name="ommp.dal.dao.LicenceDAO" Collapsed="true">
     <Position X="112.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAAAAAAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>gAAAAAAAAAAgAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Licence\LicenceDAO.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ommp.dal.dao.OSLicenceDAO" Collapsed="true">
     <Position X="111.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Licence\FinalClasses\OSLicenceDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -514,30 +516,52 @@
   <Class Name="ommp.dal.dao.SoftwareLicenceDAO" Collapsed="true">
     <Position X="113.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\Licence\FinalClasses\SoftwareLicenceDAO.vb</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="ommp.dal.dao.GenericLinkDAO(Of T)" Collapsed="true">
+    <Position X="79.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAACAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LinkDAO\GenericLinkDAO.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ommp.dal.dao.GenericSimpleEntityDAO(Of T)" Collapsed="true">
+    <Position X="84" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\GenericSimpleEntityDAO.vb</FileName>
+      <NewMemberFileName>EntityDAO\GenericEntityDAO.vb</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="ommp.dal.dao.IEntityDAO" Collapsed="true">
-    <Position X="92.25" Y="0.75" Width="1.5" />
+    <Position X="76.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EntityDAO\IEntityDAO.vb</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="ommp.dal.dao.IBaseDAO" Collapsed="true">
-    <Position X="90.5" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAACAAAgAAAAIAIAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
-      <FileName>IBaseDAO.vb</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="ommp.dal.dao.ILinkDAO" Collapsed="true">
-    <Position X="90.5" Y="1.5" Width="1.5" />
+    <Position X="74.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAA=</HashCode>
       <FileName>LinkDAO\ILinkDAO.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ommp.dal.dao.IGenericEntityDAO(Of T)" Collapsed="true">
+    <Position X="76.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EntityDAO\IGenericEntityDAO.vb</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ommp.dal.dao.IGenericLinkDAO(Of T)" Collapsed="true">
+    <Position X="74.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LinkDAO\IGenericLinkDAO.vb</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="微软雅黑" Size="9" />

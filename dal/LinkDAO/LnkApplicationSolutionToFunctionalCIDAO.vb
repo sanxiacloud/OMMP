@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class LnkApplicationSolutionToFunctionalCIDAO
-        Inherits BaseDAO
+        Inherits GenericLinkDAO(Of ApplicationSolutionQT)
         Implements ILinkDAO
 
         Public Function Link(ByVal fromId As Integer, ByVal toId As Integer) As Boolean Implements ILinkDAO.Link

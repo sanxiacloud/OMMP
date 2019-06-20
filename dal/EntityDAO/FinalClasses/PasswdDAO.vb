@@ -3,8 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class PasswdDAO
-        Inherits BaseDAO
-
+        Inherits GenericSimpleEntityDAO(Of Passwd)
 
     End Class
 

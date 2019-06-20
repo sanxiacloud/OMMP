@@ -4,7 +4,7 @@ Imports Foxtable
 
 Namespace dal.dao
     Public Class ApplicationSolutionDAO
-        Inherits FunctionalCIDAO
+        Inherits FunctionalCIDAO(Of ApplicationSolution)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

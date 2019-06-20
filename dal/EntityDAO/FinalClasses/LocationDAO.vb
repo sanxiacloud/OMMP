@@ -3,8 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class LocationDAO
-        Inherits BaseDAO
-
+        Inherits GenericSimpleEntityDAO(Of Location)
 
     End Class
 

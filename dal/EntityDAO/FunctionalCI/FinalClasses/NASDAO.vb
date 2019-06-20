@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class NASDAO
-        Inherits DataCenterDeviceDAO
+        Inherits DataCenterDeviceDAO(Of NAS)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

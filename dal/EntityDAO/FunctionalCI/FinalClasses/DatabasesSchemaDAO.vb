@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class DatabasesSchemaDAO
-        Inherits FunctionalCIDAO
+        Inherits FunctionalCIDAO(Of DatabasesSchema)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean
@@ -39,6 +39,13 @@ Namespace dal.dao
             Return UpdateFunctionalCI(o) And UpdateObject(Of DatabasesSchema)(CType(o, DatabasesSchema)) And BuildJoinTable()
         End Function
 
+        Public Function Find(ByVal id As Integer) As DatabasesSchema
+            Return FindObject(Of DatabasesSchema)(id)
+        End Function
+
+        Public Function List(ByVal Optional filter As String = "", ByVal Optional sort As String = Nothing) As IList(Of DatabasesSchema)
+            Return FindList(Of DatabasesSchema)(filter, sort)
+        End Function
     End Class
 
 End Namespace

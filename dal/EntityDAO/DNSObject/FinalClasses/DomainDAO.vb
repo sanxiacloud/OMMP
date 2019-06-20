@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class DomainDAO
-        Inherits DNSObjectDAO
+        Inherits DNSObjectDAO(Of Domain)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

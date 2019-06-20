@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class IPInterfaceDAO
-        Inherits NetworkInterfaceDAO
+    Public MustInherit Class IPInterfaceDAO(Of T As New)
+        Inherits NetworkInterfaceDAO(Of T)
 
         Protected Function InsertIPInterface(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As IPInterface = CType(o, IPInterface)

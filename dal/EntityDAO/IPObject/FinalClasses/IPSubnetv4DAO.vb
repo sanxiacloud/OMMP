@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class IPSubnetv4DAO
-        Inherits IPSubnetDAO
+        Inherits IPSubnetDAO(Of IPSubnetv4)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

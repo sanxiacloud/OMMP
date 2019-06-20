@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class MiddlewareInstanceDAO
-        Inherits FunctionalCIDAO
+        Inherits FunctionalCIDAO(Of MiddlewareInstance)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

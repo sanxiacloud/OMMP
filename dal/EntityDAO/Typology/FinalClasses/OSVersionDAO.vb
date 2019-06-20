@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class OSVersionDAO
-        Inherits TypologyDAO
+        Inherits TypologyDAO(Of OSVersion)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

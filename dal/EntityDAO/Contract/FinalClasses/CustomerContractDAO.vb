@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class CustomerContractDAO
-        Inherits ContractDAO
+        Inherits ContractDAO(Of CustomerContract)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

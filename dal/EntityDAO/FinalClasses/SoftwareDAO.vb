@@ -3,8 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class SoftwareDAO
-        Inherits BaseDAO
-
+        Inherits GenericSimpleEntityDAO(Of Software)
 
     End Class
 

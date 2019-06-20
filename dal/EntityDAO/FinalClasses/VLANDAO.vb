@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class VLANDAO
-        Inherits BaseDAO
+        Inherits GenericSimpleEntityDAO(Of VLAN)
 
     End Class
 

@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class LogicalVolumeDAO
-        Inherits BaseDAO
+        Inherits GenericSimpleEntityDAO(Of LogicalVolume)
 
     End Class
 

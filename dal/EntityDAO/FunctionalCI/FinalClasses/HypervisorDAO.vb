@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class HypervisorDAO
-        Inherits VirtualHostDAO
+        Inherits VirtualHostDAO(Of Hypervisor)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

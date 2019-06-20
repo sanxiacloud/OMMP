@@ -3,8 +3,8 @@
 Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class SoftwareInstanceDAO
-        Inherits FunctionalCIDAO
+    Public MustInherit Class SoftwareInstanceDAO(Of T As New)
+        Inherits FunctionalCIDAO(Of T)
 
         Protected Function InsertSoftwareInstance(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As SoftwareInstance = CType(o, SoftwareInstance)

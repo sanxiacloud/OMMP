@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class IPAddressv4DAO
-        Inherits IPAddressDAO
+        Inherits IPAddressDAO(Of IPAddressv4)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

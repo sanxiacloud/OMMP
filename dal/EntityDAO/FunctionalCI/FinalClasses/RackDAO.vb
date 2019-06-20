@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class RackDAO
-        Inherits ConnectableCIDAO
+        Inherits ConnectableCIDAO(Of Rack)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

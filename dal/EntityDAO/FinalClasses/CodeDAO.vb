@@ -3,9 +3,8 @@ Imports Foxtable
 
 Namespace dal.dao
     Public Class CodeDAO
-        Inherits BaseDAO
+        Inherits GenericSimpleEntityDAO(Of Code)
 
-        ' 参考 OrganizationDAO
     End Class
 
 End Namespace

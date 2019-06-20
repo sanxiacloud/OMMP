@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class OSFamilyDAO
-        Inherits TypologyDAO
+        Inherits TypologyDAO(Of OSFamily)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean
@@ -20,6 +20,7 @@ Namespace dal.dao
             builder.Build()
             'Output.Show(builder.BuildSql())
         End Function
+
         Public Sub New()
             BuildJoinTable()
         End Sub

@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class IPAddressDAO
-        Inherits IPObjectDAO
+    Public MustInherit Class IPAddressDAO(Of T As New)
+        Inherits IPObjectDAO(Of T)
 
         Protected Function InsertIPAddress(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As IPAddress = CType(o, IPAddress)

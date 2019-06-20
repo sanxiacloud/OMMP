@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class FunctionalCIDAO
-        Inherits BaseDAO
+    Public MustInherit Class FunctionalCIDAO(Of T As New)
+        Inherits GenericEntityDAO(Of T)
 
         Protected Function InsertFunctionalCI(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As FunctionalCI = CType(o, FunctionalCI)

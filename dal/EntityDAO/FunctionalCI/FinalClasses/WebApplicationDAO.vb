@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class WebApplicationDAO
-        Inherits FunctionalCIDAO
+        Inherits FunctionalCIDAO(Of WebApplication)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

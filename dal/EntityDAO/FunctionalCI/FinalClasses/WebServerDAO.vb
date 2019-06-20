@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class WebServerDAO
-        Inherits SoftwareInstanceDAO
+        Inherits SoftwareInstanceDAO(Of WebServer)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

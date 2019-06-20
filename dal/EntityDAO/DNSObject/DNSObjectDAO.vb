@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class DNSObjectDAO
-        Inherits BaseDAO
+    Public MustInherit Class DNSObjectDAO(Of T As New)
+        Inherits GenericEntityDAO(Of T)
         Protected Function InsertDNSObject(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As DNSObject = CType(o, DNSObject)
             obj.finalclass = finalclass

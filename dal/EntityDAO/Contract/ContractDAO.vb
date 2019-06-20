@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class ContractDAO
-        Inherits BaseDAO
+    Public MustInherit Class ContractDAO(Of T As New)
+        Inherits GenericEntityDAO(Of T)
         Protected Function InsertContract(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As Contract = CType(o, Contract)
             obj.finalclass = finalclass

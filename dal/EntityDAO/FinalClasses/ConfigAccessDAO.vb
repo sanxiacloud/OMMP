@@ -1,9 +1,9 @@
 Imports ommp.dal.dto
-Imports Foxtable
+
 Namespace dal.dao
 
     Public Class ConfigAccessDAO
-        Inherits BaseDAO
+        Inherits GenericSimpleEntityDAO(Of ConfigAccess)
 
     End Class
 

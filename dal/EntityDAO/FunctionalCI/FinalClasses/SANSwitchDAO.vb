@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
 
     Public Class SANSwitchDAO
-        Inherits DataCenterDeviceDAO
+        Inherits DataCenterDeviceDAO(Of SANSwitch)
         Implements IEntityDAO
 
         Protected Overrides Function BuildJoinTable() As Boolean

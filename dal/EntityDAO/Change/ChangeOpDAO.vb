@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class ChangeOpDAO
-        Inherits BaseDAO
+    Public MustInherit Class ChangeOpDAO(Of T As New)
+        Inherits GenericEntityDAO(Of T)
 
         Protected Function InsertChangeOp(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As ChangeOp = CType(o, ChangeOp)

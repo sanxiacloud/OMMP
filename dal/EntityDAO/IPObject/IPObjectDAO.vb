@@ -1,8 +1,8 @@
 ﻿Imports ommp.dal.dto
 
 Namespace dal.dao
-    Public MustInherit Class IPObjectDAO
-        Inherits BaseDAO
+    Public MustInherit Class IPObjectDAO(Of T As New)
+        Inherits GenericEntityDAO(Of T)
         Protected Function InsertIPObject(ByVal o As Object, ByVal finalclass As String) As Integer
             Dim obj As IPObject = CType(o, IPObject)
             obj.finalclass = finalclass
