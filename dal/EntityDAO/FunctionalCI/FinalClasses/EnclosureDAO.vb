@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class EnclosureDAO
         Inherits ConnectableCIDAO(Of EnclosureQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of Enclosure)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New EnclosureQT()
@@ -31,20 +31,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As Enclosure = CType(o, Enclosure)
-            obj.id = InsertConnectableCI(o, obj.GetType().Name)
-            Return InsertObject(Of Enclosure)(obj) And BuildJoinTable()
+        Public Function Insert(o As Enclosure) As Integer Implements IEntityDAO(Of Enclosure).Insert
+            o.id = InsertConnectableCI(o, GetType(Enclosure).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateConnectableCI(o) And UpdateObject(Of Enclosure)(CType(o, Enclosure)) And BuildJoinTable()
+        Public Function Update(o As Enclosure) As Boolean Implements IEntityDAO(Of Enclosure).Update
+            Return UpdateConnectableCI(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Enclosure).Delete
             Return DeleteConnectableCI(id) And DeleteObject(Of Enclosure)(id) And BuildJoinTable()
         End Function
-
     End Class
 
 End Namespace

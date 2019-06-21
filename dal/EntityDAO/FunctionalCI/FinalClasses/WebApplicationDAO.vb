@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class WebApplicationDAO
         Inherits FunctionalCIDAO(Of WebApplicationQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of WebApplication)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New WebApplicationQT()
@@ -24,17 +24,16 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As WebApplication = CType(o, WebApplication)
-            obj.id = InsertFunctionalCI(o, obj.GetType().Name)
-            Return InsertObject(Of WebApplication)(CType(o, WebApplication)) And BuildJoinTable()
+        Public Function Insert(o As WebApplication) As Integer Implements IEntityDAO(Of WebApplication).Insert
+            o.id = InsertFunctionalCI(o, GetType(WebApplication).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateFunctionalCI(o) And UpdateObject(Of WebApplication)(CType(o, WebApplication)) And BuildJoinTable()
+        Public Function Update(o As WebApplication) As Boolean Implements IEntityDAO(Of WebApplication).Update
+            Return UpdateFunctionalCI(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of WebApplication).Delete
             Return DeleteFunctionalCI(id) And DeleteObject(Of WebApplication)(id) And BuildJoinTable()
         End Function
 
@@ -92,6 +91,7 @@ Namespace dal.dao
             Output.Show("webserver_identify = " & dto.webserver_identify)
             Output.Show("url = " & dto.url)
         End Sub
+
     End Class
 
 End Namespace

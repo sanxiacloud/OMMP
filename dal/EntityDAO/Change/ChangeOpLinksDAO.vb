@@ -10,13 +10,6 @@ Namespace dal.dao
             Return InsertObject(Of ChangeOpLinks)(obj)
         End Function
 
-        Protected Function UpdateChangeOpLinks(ByVal o As Object) As Boolean
-            Return UpdateObject(Of ChangeOpLinks)(CType(o, ChangeOpLinks))
-        End Function
-
-        Protected Function DeleteChangeOpLinks(ByVal id As Integer) As Boolean
-            Return DeleteObject(Of ChangeOpLinks)(id)
-        End Function
 
     End Class
 End Namespace

@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class RackDAO
         Inherits ConnectableCIDAO(Of RackQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of Rack)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New RackQT()
@@ -27,25 +27,22 @@ Namespace dal.dao
             'Output.Show(builder.BuildSql())
         End Function
 
-
         Public Sub New()
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As Rack = CType(o, Rack)
-            obj.id = InsertConnectableCI(o, obj.GetType().Name)
-            Return InsertObject(Of Rack)(CType(o, Rack)) And BuildJoinTable()
+        Public Function Insert(o As Rack) As Integer Implements IEntityDAO(Of Rack).Insert
+            o.id = InsertConnectableCI(o, GetType(Rack).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateConnectableCI(o) And UpdateObject(Of Rack)(CType(o, Rack)) And BuildJoinTable()
+        Public Function Update(o As Rack) As Boolean Implements IEntityDAO(Of Rack).Update
+            Return UpdateConnectableCI(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Rack).Delete
             Return DeleteConnectableCI(id) And DeleteObject(Of Rack)(id) And BuildJoinTable()
         End Function
-
     End Class
 
 End Namespace

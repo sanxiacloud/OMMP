@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class MiddlewareInstanceDAO
         Inherits FunctionalCIDAO(Of MiddlewareInstanceQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of MiddlewareInstance)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New MiddlewareInstanceQT()
@@ -25,17 +25,16 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As MiddlewareInstance = CType(o, MiddlewareInstance)
-            obj.id = InsertFunctionalCI(o, obj.GetType().Name)
-            Return InsertObject(Of MiddlewareInstance)(CType(o, MiddlewareInstance)) And BuildJoinTable()
+        Public Function Insert(o As MiddlewareInstance) As Integer Implements IEntityDAO(Of MiddlewareInstance).Insert
+            o.id = InsertFunctionalCI(o, GetType(MiddlewareInstance).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateFunctionalCI(o) And UpdateObject(Of MiddlewareInstance)(CType(o, MiddlewareInstance)) And BuildJoinTable()
+        Public Function Update(o As MiddlewareInstance) As Boolean Implements IEntityDAO(Of MiddlewareInstance).Update
+            Return UpdateFunctionalCI(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of MiddlewareInstance).Delete
             Return DeleteFunctionalCI(id) And DeleteObject(Of MiddlewareInstance)(id) And BuildJoinTable()
         End Function
     End Class

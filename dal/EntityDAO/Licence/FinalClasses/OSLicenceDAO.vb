@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class OSLicenceDAO
         Inherits LicenceDAO(Of OSLicenceQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of OSLicence)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New OSLicenceQT()
@@ -25,20 +25,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Insert(o As OSLicence) As Integer Implements IEntityDAO(Of OSLicence).Insert
+            o.id = InsertLicence(o, GetType(OSLicence).Name)
+            Return InsertObject(o) And BuildJoinTable()
+        End Function
+
+        Public Function Update(o As OSLicence) As Boolean Implements IEntityDAO(Of OSLicence).Update
+            Return UpdateLicence(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of OSLicence).Delete
             Return DeleteLicence(id) And DeleteObject(Of OSLicence)(id) And BuildJoinTable()
         End Function
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As OSLicence = CType(o, OSLicence)
-            obj.id = InsertLicence(o, obj.GetType().Name)
-            Return InsertObject(Of OSLicence)(CType(o, OSLicence)) And BuildJoinTable()
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateLicence(o) And UpdateObject(Of OSLicence)(CType(o, OSLicence)) And BuildJoinTable()
-        End Function
-
     End Class
 
 End Namespace

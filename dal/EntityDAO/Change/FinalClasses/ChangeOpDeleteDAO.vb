@@ -3,7 +3,7 @@ Imports Foxtable
 Namespace dal.dao
     Public Class ChangeOpDeleteDAO
         Inherits ChangeOpDAO(Of ChangeOpDeleteQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of ChangeOpDelete)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New ChangeOpDeleteQT()
@@ -24,18 +24,17 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Insert(o As ChangeOpDelete) As Integer Implements IEntityDAO(Of ChangeOpDelete).Insert
+            o.id = InsertChangeOp(o, GetType(ChangeOpDelete).Name)
+            Return InsertObject(o) And BuildJoinTable()
+        End Function
+
+        Public Function Update(o As ChangeOpDelete) As Boolean Implements IEntityDAO(Of ChangeOpDelete).Update
+            Return False ' 不实现更新方法
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ChangeOpDelete).Delete
             Return False  ' 不实现删除方法
-        End Function
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As ChangeOpDelete = CType(o, ChangeOpDelete)
-            obj.id = InsertChangeOp(o, obj.GetType().Name)
-            Return InsertObject(Of ChangeOpDelete)(CType(o, ChangeOpDelete)) And BuildJoinTable()
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return BuildJoinTable()  ' 不实现更新方法
         End Function
     End Class
 End Namespace

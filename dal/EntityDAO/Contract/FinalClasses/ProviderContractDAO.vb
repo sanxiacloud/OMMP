@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class ProviderContractDAO
         Inherits ContractDAO(Of ProviderContractQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of ProviderContract)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New ProviderContractQT()
@@ -25,20 +25,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Insert(o As ProviderContract) As Integer Implements IEntityDAO(Of ProviderContract).Insert
+            o.id = InsertContract(o, GetType(ProviderContract).Name)
+            Return InsertObject(o) And BuildJoinTable()
+        End Function
+
+        Public Function Update(o As ProviderContract) As Boolean Implements IEntityDAO(Of ProviderContract).Update
+            Return UpdateContract(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ProviderContract).Delete
             Return DeleteContract(id) And DeleteObject(Of ProviderContract)(id) And BuildJoinTable()
         End Function
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As ProviderContract = CType(o, ProviderContract)
-            obj.id = InsertContract(o, obj.GetType().Name)
-            Return InsertObject(Of ProviderContract)(CType(o, ProviderContract)) And BuildJoinTable()
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateContract(o) And UpdateObject(Of ProviderContract)(CType(o, ProviderContract)) And BuildJoinTable()
-        End Function
-
     End Class
 
 End Namespace

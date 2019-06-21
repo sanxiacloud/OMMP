@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class DBServerDAO
         Inherits SoftwareInstanceDAO(Of DBServerQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of DBServer)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New DBServerQT()
@@ -28,20 +28,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As DBServer = CType(o, DBServer)
-            obj.id = InsertSoftwareInstance(o, obj.GetType().Name)
-            Return InsertObject(Of DBServer)(CType(o, DBServer)) And BuildJoinTable()
+        Public Function Insert(o As DBServer) As Integer Implements IEntityDAO(Of DBServer).Insert
+            o.id = InsertSoftwareInstance(o, GetType(DBServer).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateSoftwareInstance(o) And UpdateObject(Of DBServer)(CType(o, DBServer)) And BuildJoinTable()
+        Public Function Update(o As DBServer) As Boolean Implements IEntityDAO(Of DBServer).Update
+            Return UpdateSoftwareInstance(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of DBServer).Delete
             Return DeleteSoftwareInstance(id) And DeleteObject(Of DBServer)(id) And BuildJoinTable()
         End Function
-
     End Class
 
 End Namespace

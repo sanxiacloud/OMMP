@@ -5,7 +5,7 @@ Imports Foxtable
 Namespace dal.dao
     Public Class ApplicationSolutionDAO
         Inherits FunctionalCIDAO(Of ApplicationSolutionQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of ApplicationSolution)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New ApplicationSolutionQT()
@@ -27,20 +27,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As ApplicationSolution = CType(o, ApplicationSolution)
-            obj.id = InsertFunctionalCI(o, obj.GetType().Name)
-            Return InsertObject(Of ApplicationSolution)(CType(o, ApplicationSolution)) And BuildJoinTable()
+        Public Function Insert(o As ApplicationSolution) As Integer Implements IEntityDAO(Of ApplicationSolution).Insert
+            o.id = InsertFunctionalCI(o, GetType(ApplicationSolution).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateFunctionalCI(o) And UpdateObject(Of ApplicationSolution)(CType(o, ApplicationSolution)) And BuildJoinTable()
+        Public Function Update(o As ApplicationSolution) As Boolean Implements IEntityDAO(Of ApplicationSolution).Update
+            Return UpdateFunctionalCI(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ApplicationSolution).Delete
             Return DeleteFunctionalCI(id) And DeleteObject(Of ApplicationSolution)(id) And BuildJoinTable()
         End Function
-
 
         ' 查询一个应用方案
         Private Sub TestFindObject()

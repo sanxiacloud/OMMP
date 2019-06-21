@@ -8,43 +8,43 @@ Namespace dal.dao
 
         Private Shared ReadOnly log As ILog = LogManager.GetLogger(Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-        ReadOnly Property CONNECTION_NAME() As String
+        Protected ReadOnly Property CONNECTION_NAME() As String
             Get
                 Return "CMDB"
             End Get
         End Property
 
-        ReadOnly Property C_ID() As String
+        Protected ReadOnly Property C_ID() As String
             Get
                 Return "id"
             End Get
         End Property
 
-        ReadOnly Property C__ISDELETED() As String
+        Protected ReadOnly Property C__ISDELETED() As String
             Get
                 Return "_IsDeleted"
             End Get
         End Property
 
-        ReadOnly Property C__IDENTIFY() As String
+        Protected ReadOnly Property C__IDENTIFY() As String
             Get
                 Return "_Identify"
             End Get
         End Property
 
-        ReadOnly Property C_FINALCLASS() As String
+        Protected ReadOnly Property C_FINALCLASS() As String
             Get
                 Return "finalclass"
             End Get
         End Property
 
-        ReadOnly Property S_LNK() As String
+        Protected ReadOnly Property S_LNK() As String
             Get
                 Return "Lnk"
             End Get
         End Property
 
-        ReadOnly Property S_TO() As String
+        Protected ReadOnly Property S_TO() As String
             Get
                 Return "To"
             End Get

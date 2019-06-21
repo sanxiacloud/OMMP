@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class OSFamilyDAO
         Inherits TypologyDAO(Of OSFamilyQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of OSFamily)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New OSFamilyQT()
@@ -25,18 +25,17 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Insert(ByVal o As OSFamily) As Integer Implements IEntityDAO(Of OSFamily).Insert
+            o.id = InsertTypology(o, GetType(OSFamily).Name)
+            Return InsertObject(o) And BuildJoinTable()
+        End Function
+
+        Public Function Update(o As OSFamily) As Boolean Implements IEntityDAO(Of OSFamily).Update
+            Return UpdateTypology(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of OSFamily).Delete
             Return DeleteTypology(id) And DeleteObject(Of OSFamily)(id) And BuildJoinTable()
-        End Function
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As OSFamily = CType(o, OSFamily)
-            obj.id = InsertTypology(o, obj.GetType().Name)
-            Return InsertObject(Of OSFamily)(CType(o, OSFamily)) And BuildJoinTable()
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateTypology(o) And UpdateObject(Of OSFamily)(CType(o, OSFamily)) And BuildJoinTable()
         End Function
     End Class
 

@@ -4,7 +4,7 @@ Imports Foxtable
 Namespace dal.dao
     Public Class VirtualMachineDAO
         Inherits VirtualDeviceDAO(Of VirtualMachineQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of VirtualMachine)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New VirtualMachineQT()
@@ -28,18 +28,17 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As VirtualMachine = CType(o, VirtualMachine)
-            obj.id = InsertVirtualDevice(o, obj.GetType().Name)
-            Return InsertObject(Of VirtualMachine)(CType(o, VirtualMachine)) And BuildJoinTable()
+        Public Function Insert(o As VirtualMachine) As Integer Implements IEntityDAO(Of VirtualMachine).Insert
+            o.id = InsertVirtualDevice(o, GetType(VirtualMachine).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Update(o As VirtualMachine) As Boolean Implements IEntityDAO(Of VirtualMachine).Update
+            Return UpdateVirtualDevice(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of VirtualMachine).Delete
             Return DeleteVirtualDevice(id) And DeleteObject(Of VirtualMachine)(id) And BuildJoinTable()
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateVirtualDevice(o) And UpdateObject(Of VirtualMachine)(CType(o, VirtualMachine)) And BuildJoinTable()
         End Function
 
         ' 添加一台虚拟机
@@ -123,5 +122,6 @@ Namespace dal.dao
             Output.Show("ram = " & dto.ram)
             Output.Show("IsDeleted = " & dto._IsDeleted)
         End Sub
+
     End Class
 End Namespace

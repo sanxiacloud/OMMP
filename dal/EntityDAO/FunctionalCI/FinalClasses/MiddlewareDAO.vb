@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class MiddlewareDAO
         Inherits SoftwareInstanceDAO(Of MiddlewareQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of Middleware)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New MiddlewareQT()
@@ -28,17 +28,16 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As Middleware = CType(o, Middleware)
-            obj.id = InsertSoftwareInstance(o, obj.GetType().Name)
-            Return InsertObject(Of Middleware)(CType(o, Middleware)) And BuildJoinTable()
+        Public Function Insert(o As Middleware) As Integer Implements IEntityDAO(Of Middleware).Insert
+            o.id = InsertSoftwareInstance(o, GetType(Middleware).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateSoftwareInstance(o) And UpdateObject(Of Middleware)(CType(o, Middleware)) And BuildJoinTable()
+        Public Function Update(o As Middleware) As Boolean Implements IEntityDAO(Of Middleware).Update
+            Return UpdateSoftwareInstance(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Middleware).Delete
             Return DeleteSoftwareInstance(id) And DeleteObject(Of Middleware)(id) And BuildJoinTable()
         End Function
     End Class

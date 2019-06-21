@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class DatabasesSchemaDAO
         Inherits FunctionalCIDAO(Of DatabasesSchemaQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of DatabasesSchema)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New DatabasesSchemaQT()
@@ -25,20 +25,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Insert(o As DatabasesSchema) As Integer Implements IEntityDAO(Of DatabasesSchema).Insert
+            o.id = InsertFunctionalCI(o, GetType(DatabasesSchema).Name)
+            Return InsertObject(o) And BuildJoinTable()
+        End Function
+
+        Public Function Update(o As DatabasesSchema) As Boolean Implements IEntityDAO(Of DatabasesSchema).Update
+            Return UpdateFunctionalCI(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of DatabasesSchema).Delete
             Return DeleteFunctionalCI(id) And DeleteObject(Of DatabasesSchema)(id) And BuildJoinTable()
         End Function
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As DatabasesSchema = CType(o, DatabasesSchema)
-            obj.id = InsertFunctionalCI(o, obj.GetType().Name)
-            Return InsertObject(Of DatabasesSchema)(CType(o, DatabasesSchema)) And BuildJoinTable()
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateFunctionalCI(o) And UpdateObject(Of DatabasesSchema)(CType(o, DatabasesSchema)) And BuildJoinTable()
-        End Function
-
     End Class
 
 End Namespace

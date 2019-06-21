@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class StorageSystemDAO
         Inherits DataCenterDeviceDAO(Of StorageSystemQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of StorageSystem)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New StorageSystemQT()
@@ -34,20 +34,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As StorageSystem = CType(o, StorageSystem)
-            obj.id = InsertDataCenterDevice(o, obj.GetType().Name)
-            Return InsertObject(Of StorageSystem)(CType(o, StorageSystem)) And BuildJoinTable()
+        Public Function Insert(o As StorageSystem) As Integer Implements IEntityDAO(Of StorageSystem).Insert
+            o.id = InsertDataCenterDevice(o, GetType(StorageSystem).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateDataCenterDevice(o) And UpdateObject(Of StorageSystem)(CType(o, StorageSystem)) And BuildJoinTable()
+        Public Function Update(o As StorageSystem) As Boolean Implements IEntityDAO(Of StorageSystem).Update
+            Return UpdateDataCenterDevice(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of StorageSystem).Delete
             Return DeleteDataCenterDevice(id) And DeleteObject(Of StorageSystem)(id) And BuildJoinTable()
         End Function
-
     End Class
 
 End Namespace

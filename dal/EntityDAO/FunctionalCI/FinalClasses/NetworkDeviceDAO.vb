@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class NetworkDeviceDAO
         Inherits DataCenterDeviceDAO(Of NetworkDeviceQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of NetworkDevice)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New NetworkDeviceQT()
@@ -34,17 +34,16 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As NetworkDevice = CType(o, NetworkDevice)
-            obj.id = InsertDataCenterDevice(o, obj.GetType().Name)
-            Return InsertObject(Of NetworkDevice)(CType(o, NetworkDevice)) And BuildJoinTable()
+        Public Function Insert(o As NetworkDevice) As Integer Implements IEntityDAO(Of NetworkDevice).Insert
+            o.id = InsertDataCenterDevice(o, GetType(NetworkDevice).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateDataCenterDevice(o) And UpdateObject(Of NetworkDevice)(CType(o, NetworkDevice)) And BuildJoinTable()
+        Public Function Update(o As NetworkDevice) As Boolean Implements IEntityDAO(Of NetworkDevice).Update
+            Return UpdateDataCenterDevice(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of NetworkDevice).Delete
             Return DeleteDataCenterDevice(id) And DeleteObject(Of NetworkDevice)(id) And BuildJoinTable()
         End Function
     End Class

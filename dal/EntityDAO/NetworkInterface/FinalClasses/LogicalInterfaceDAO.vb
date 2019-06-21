@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class LogicalInterfaceDAO
         Inherits IPInterfaceDAO(Of LogicalInterfaceQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of LogicalInterface)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New LogicalInterfaceQT()
@@ -28,21 +28,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As LogicalInterface = CType(o, LogicalInterface)
-            obj.id = InsertIPInterface(o, obj.GetType().Name)
-            Return InsertObject(Of LogicalInterface)(CType(o, LogicalInterface)) And BuildJoinTable()
+        Public Function Insert(o As LogicalInterface) As Integer Implements IEntityDAO(Of LogicalInterface).Insert
+            o.id = InsertIPInterface(o, GetType(LogicalInterface).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Update(o As LogicalInterface) As Boolean Implements IEntityDAO(Of LogicalInterface).Update
+            Return UpdateIPInterface(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of LogicalInterface).Delete
             Return DeleteIPInterface(id) And DeleteObject(Of LogicalInterface)(id) And BuildJoinTable()
         End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateIPInterface(o) And UpdateObject(Of LogicalInterface)(CType(o, LogicalInterface)) And BuildJoinTable()
-        End Function
-
-
     End Class
 
 End Namespace

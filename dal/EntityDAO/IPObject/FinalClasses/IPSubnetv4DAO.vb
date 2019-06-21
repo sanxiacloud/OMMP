@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class IPSubnetv4DAO
         Inherits IPSubnetDAO(Of IPSubnetv4QT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of IPSubnetv4)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New IPSubnetv4QT()
@@ -28,21 +28,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As IPSubnetv4 = CType(o, IPSubnetv4)
-            obj.id = InsertIPSubnet(o, obj.GetType().Name)
-            Return InsertObject(Of IPSubnetv4)(CType(o, IPSubnetv4)) And BuildJoinTable()
+        Public Function Insert(o As IPSubnetv4) As Integer Implements IEntityDAO(Of IPSubnetv4).Insert
+            o.id = InsertIPSubnet(o, GetType(IPSubnetv4).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Update(o As IPSubnetv4) As Boolean Implements IEntityDAO(Of IPSubnetv4).Update
+            Return UpdateIPSubnet(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of IPSubnetv4).Delete
             Return DeleteIPSubnet(id) And DeleteObject(Of IPSubnetv4)(id) And BuildJoinTable()
         End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateIPSubnet(o) And UpdateObject(Of IPSubnetv4)(CType(o, IPSubnetv4)) And BuildJoinTable()
-        End Function
-
-
     End Class
 
 End Namespace

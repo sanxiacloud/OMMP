@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class DomainDAO
         Inherits DNSObjectDAO(Of DomainQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of Domain)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New DomainQT()
@@ -25,20 +25,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Insert(o As Domain) As Integer Implements IEntityDAO(Of Domain).Insert
+            o.id = InsertDNSObject(o, GetType(Domain).Name)
+            Return InsertObject(o) And BuildJoinTable()
+        End Function
+
+        Public Function Update(o As Domain) As Boolean Implements IEntityDAO(Of Domain).Update
+            Return UpdateDNSObject(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Domain).Delete
             Return DeleteDNSObject(id) And DeleteObject(Of Domain)(id) And BuildJoinTable()
         End Function
-
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As Domain = CType(o, Domain)
-            obj.id = InsertDNSObject(o, obj.GetType().Name)
-            Return InsertObject(CType(o, Domain)) And BuildJoinTable()
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateDNSObject(o) And UpdateObject(CType(o, Domain)) And BuildJoinTable()
-        End Function
-
     End Class
 
 End Namespace

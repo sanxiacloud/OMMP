@@ -6,7 +6,7 @@ Namespace dal.dao
 
     Public Class FarmDAO
         Inherits VirtualHostDAO(Of FarmQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of Farm)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New FarmQT()
@@ -33,20 +33,21 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As Farm = CType(o, Farm)
-            obj.id = InsertVirtualHost(o, obj.GetType().Name)
-            Return InsertObject(Of Farm)(CType(o, Farm)) And BuildJoinTable()
+
+
+
+        Public Function Insert(o As Farm) As Integer Implements IEntityDAO(Of Farm).Insert
+            o.id = InsertVirtualHost(o, GetType(Farm).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Update(o As Farm) As Boolean Implements IEntityDAO(Of Farm).Update
+            Return UpdateVirtualHost(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Farm).Delete
             Return DeleteVirtualHost(id) And DeleteObject(Of Farm)(id) And BuildJoinTable()
         End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateVirtualHost(o) And UpdateObject(Of Farm)(CType(o, Farm)) And BuildJoinTable()
-        End Function
-
     End Class
 
 End Namespace

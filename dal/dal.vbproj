@@ -173,6 +173,7 @@
     <Compile Include="TEST\IUnitTest.vb" />
     <Compile Include="TEST\TestGenericSimpleEntityDAO.vb" />
     <Compile Include="TEST\TestOrganizationDAO.vb" />
+    <Compile Include="TEST\TestOSLicenceDAO.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

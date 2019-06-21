@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class PeripheralDAO
         Inherits ConnectableCIDAO(Of PeripheralQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of Peripheral)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New PeripheralQT()
@@ -31,17 +31,15 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As Peripheral = CType(o, Peripheral)
-            obj.id = InsertConnectableCI(o, obj.GetType().Name)
-            Return InsertObject(Of Peripheral)(obj) And BuildJoinTable()
+        Public Function Insert(o As Peripheral) As Integer Implements IEntityDAO(Of Peripheral).Insert
+            o.id = InsertConnectableCI(o, GetType(Peripheral).Name)
+            Return InsertObject(o) And BuildJoinTable()
+        End Function
+        Public Function Update(o As Peripheral) As Boolean Implements IEntityDAO(Of Peripheral).Update
+            Return UpdateConnectableCI(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateConnectableCI(o) And UpdateObject(Of Peripheral)(CType(o, Peripheral)) And BuildJoinTable()
-        End Function
-
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Peripheral).Delete
             Return DeleteConnectableCI(id) And DeleteObject(Of Peripheral)(id) And BuildJoinTable()
         End Function
 

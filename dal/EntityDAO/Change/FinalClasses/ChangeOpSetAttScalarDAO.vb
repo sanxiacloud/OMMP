@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class ChangeOpSetAttScalarDAO
         Inherits ChangeOpDAO(Of ChangeOpSetAttScalarQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of ChangeOpSetAttScalar)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New ChangeOpSetAttScalarQT()
@@ -25,20 +25,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
-            Return False  ' 不实现删除方法
+        Public Function Insert(o As ChangeOpSetAttScalar) As Integer Implements IEntityDAO(Of ChangeOpSetAttScalar).Insert
+            o.id = InsertChangeOp(o, GetType(ChangeOpSetAttScalar).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As ChangeOpSetAttScalar = CType(o, ChangeOpSetAttScalar)
-            obj.id = InsertChangeOp(o, obj.GetType().Name)
-            Return InsertObject(Of ChangeOpSetAttScalar)(CType(o, ChangeOpSetAttScalar)) And BuildJoinTable()
-        End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
+        Public Function Update(o As ChangeOpSetAttScalar) As Boolean Implements IEntityDAO(Of ChangeOpSetAttScalar).Update
             Return False  ' 不实现更新方法
         End Function
 
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ChangeOpSetAttScalar).Delete
+            Return False  ' 不实现删除方法
+        End Function
     End Class
 
 End Namespace

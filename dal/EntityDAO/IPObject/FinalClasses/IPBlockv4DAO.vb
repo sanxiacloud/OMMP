@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class IPBlockv4DAO
         Inherits IPBlockDAO(Of IPBlockv4QT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of IPBlockv4)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New IPBlockv4QT()
@@ -28,20 +28,18 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As IPBlockv4 = CType(o, IPBlockv4)
-            obj.id = InsertIPBlock(o, obj.GetType().Name)
-            Return InsertObject(Of IPBlockv4)(CType(o, IPBlockv4)) And BuildJoinTable()
+        Public Function Insert(o As IPBlockv4) As Integer Implements IEntityDAO(Of IPBlockv4).Insert
+            o.id = InsertIPBlock(o, GetType(IPBlockv4).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Public Function Update(o As IPBlockv4) As Boolean Implements IEntityDAO(Of IPBlockv4).Update
+            Return UpdateIPBlock(o) And UpdateObject(o) And BuildJoinTable()
+        End Function
+
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of IPBlockv4).Delete
             Return DeleteIPBlock(id) And DeleteObject(Of IPBlockv4)(id) And BuildJoinTable()
         End Function
-
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateIPBlock(o) And UpdateObject(Of IPBlockv4)(CType(o, IPBlockv4)) And BuildJoinTable()
-        End Function
-
     End Class
 
 End Namespace

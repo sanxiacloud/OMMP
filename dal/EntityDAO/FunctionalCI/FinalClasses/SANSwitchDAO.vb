@@ -4,7 +4,7 @@ Namespace dal.dao
 
     Public Class SANSwitchDAO
         Inherits DataCenterDeviceDAO(Of SANSwitchQT)
-        Implements IEntityDAO
+        Implements IEntityDAO(Of SANSwitch)
 
         Protected Overrides Function BuildJoinTable() As Boolean
             Dim qtObject As New SANSwitchQT()
@@ -34,17 +34,16 @@ Namespace dal.dao
             BuildJoinTable()
         End Sub
 
-        Public Function Insert(ByVal o As Object) As Integer Implements IEntityDAO.Insert
-            Dim obj As Server = CType(o, Server)
-            obj.id = InsertDataCenterDevice(o, obj.GetType().Name)
-            Return InsertObject(Of SANSwitch)(CType(o, SANSwitch)) And BuildJoinTable()
+        Public Function Insert(o As SANSwitch) As Integer Implements IEntityDAO(Of SANSwitch).Insert
+            o.id = InsertDataCenterDevice(o, GetType(SANSwitch).Name)
+            Return InsertObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Update(ByVal o As Object) As Boolean Implements IEntityDAO.Update
-            Return UpdateDataCenterDevice(o) And UpdateObject(Of SANSwitch)(CType(o, SANSwitch)) And BuildJoinTable()
+        Public Function Update(o As SANSwitch) As Boolean Implements IEntityDAO(Of SANSwitch).Update
+            Return UpdateDataCenterDevice(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(ByVal id As Integer) As Boolean Implements IEntityDAO.Delete
+        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of SANSwitch).Delete
             Return DeleteDataCenterDevice(id) And DeleteObject(Of SANSwitch)(id) And BuildJoinTable()
         End Function
 
