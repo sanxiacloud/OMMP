@@ -35,7 +35,7 @@ Namespace dal.dao
             Return UpdateLicence(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of SoftwareLicence).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of SoftwareLicence).Delete
             Return DeleteLicence(id) And DeleteObject(Of SoftwareLicence)(id) And BuildJoinTable()
         End Function
     End Class

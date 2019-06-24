@@ -34,7 +34,7 @@ Namespace dal.dao
             Return UpdateTypology(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of OSFamily).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of OSFamily).Delete
             Return DeleteTypology(id) And DeleteObject(Of OSFamily)(id) And BuildJoinTable()
         End Function
     End Class

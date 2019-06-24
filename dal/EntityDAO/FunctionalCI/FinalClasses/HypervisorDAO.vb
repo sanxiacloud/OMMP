@@ -40,7 +40,7 @@ Namespace dal.dao
             Return UpdateVirtualHost(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Hypervisor).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Hypervisor).Delete
             Return DeleteVirtualHost(id) And DeleteObject(Of Hypervisor)(id) And BuildJoinTable()
         End Function
     End Class

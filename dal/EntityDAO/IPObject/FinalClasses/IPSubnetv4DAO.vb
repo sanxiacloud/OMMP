@@ -37,7 +37,7 @@ Namespace dal.dao
             Return UpdateIPSubnet(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of IPSubnetv4).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of IPSubnetv4).Delete
             Return DeleteIPSubnet(id) And DeleteObject(Of IPSubnetv4)(id) And BuildJoinTable()
         End Function
     End Class

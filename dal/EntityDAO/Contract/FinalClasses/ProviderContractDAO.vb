@@ -34,7 +34,7 @@ Namespace dal.dao
             Return UpdateContract(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ProviderContract).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ProviderContract).Delete
             Return DeleteContract(id) And DeleteObject(Of ProviderContract)(id) And BuildJoinTable()
         End Function
     End Class

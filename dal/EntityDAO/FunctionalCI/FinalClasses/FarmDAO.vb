@@ -45,7 +45,7 @@ Namespace dal.dao
             Return UpdateVirtualHost(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Farm).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Farm).Delete
             Return DeleteVirtualHost(id) And DeleteObject(Of Farm)(id) And BuildJoinTable()
         End Function
     End Class

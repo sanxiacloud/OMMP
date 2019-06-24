@@ -34,7 +34,7 @@ Namespace dal.dao
             Return UpdateNetworkInterface(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of FiberChannelInterface).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of FiberChannelInterface).Delete
             Return DeleteNetworkInterface(id) And DeleteObject(Of FiberChannelInterface)(id) And BuildJoinTable()
         End Function
     End Class

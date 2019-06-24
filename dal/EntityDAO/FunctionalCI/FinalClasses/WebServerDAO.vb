@@ -37,7 +37,7 @@ Namespace dal.dao
             Return UpdateSoftwareInstance(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of WebServer).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of WebServer).Delete
             Return DeleteSoftwareInstance(id) And DeleteObject(Of WebServer)(id) And BuildJoinTable()
         End Function
     End Class

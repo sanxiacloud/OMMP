@@ -33,7 +33,7 @@ Namespace dal.dao
             Return False ' 不实现更新方法
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ChangeOpDelete).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ChangeOpDelete).Delete
             Return False  ' 不实现删除方法
         End Function
     End Class

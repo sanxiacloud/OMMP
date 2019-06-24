@@ -43,7 +43,7 @@ Namespace dal.dao
             Return UpdateDataCenterDevice(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of NAS).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of NAS).Delete
             Return DeleteDataCenterDevice(id) And DeleteObject(Of NAS)(id) And BuildJoinTable()
         End Function
     End Class

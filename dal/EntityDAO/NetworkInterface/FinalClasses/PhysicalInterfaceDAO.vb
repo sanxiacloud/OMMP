@@ -37,7 +37,7 @@ Namespace dal.dao
             Return UpdateIPInterface(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of PhysicalInterface).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of PhysicalInterface).Delete
             Return DeleteIPInterface(id) And DeleteObject(Of PhysicalInterface)(id) And BuildJoinTable()
         End Function
     End Class

@@ -34,7 +34,7 @@ Namespace dal.dao
             Return UpdateDNSObject(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Domain).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of Domain).Delete
             Return DeleteDNSObject(id) And DeleteObject(Of Domain)(id) And BuildJoinTable()
         End Function
     End Class

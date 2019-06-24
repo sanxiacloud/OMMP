@@ -37,7 +37,7 @@ Namespace dal.dao
             Return UpdateVirtualDevice(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of VirtualMachine).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of VirtualMachine).Delete
             Return DeleteVirtualDevice(id) And DeleteObject(Of VirtualMachine)(id) And BuildJoinTable()
         End Function
 

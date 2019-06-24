@@ -36,7 +36,7 @@ Namespace dal.dao
             Return UpdateFunctionalCI(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Private Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ApplicationSolution).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ApplicationSolution).Delete
             Return DeleteFunctionalCI(id) And DeleteObject(Of ApplicationSolution)(id) And BuildJoinTable()
         End Function
 
