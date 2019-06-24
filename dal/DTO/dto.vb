@@ -3362,8 +3362,8 @@ Namespace dal.dto
 
     Public Class VirtualMachine : Inherits VirtualDevice
         Private _id As Integer
-        Private _virtualhost_identify As Integer
-        Private _osfamily_identify As Integer
+		Private _virtualhost_identify As Integer
+		Private _osfamily_identify As Integer
         Private _oslicence_identify As Integer
         Private _osversion_identify As Integer
         Private _managementip_identify As Integer

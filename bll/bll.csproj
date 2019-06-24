@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ommp.bll</RootNamespace>
     <AssemblyName>ommp.bll</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -56,9 +56,17 @@
   <ItemGroup>
     <Compile Include="dto\ApplicationSolution.cs" />
     <Compile Include="dto\BaseDTO.cs" />
+    <Compile Include="dto\Host.cs" />
+    <Compile Include="dto\Organization.cs" />
+    <Compile Include="dto\structure\TreeNode.cs" />
+    <Compile Include="dto\structure\TreeNodes.cs" />
+    <Compile Include="service\HostService.cs" />
+    <Compile Include="service\OrganizationService.cs" />
+    <Compile Include="dto\VirtualMachine.cs" />
     <Compile Include="service\ApplicationSolutionService.cs" />
     <Compile Include="service\CommonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="service\VirtualMachineService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config">

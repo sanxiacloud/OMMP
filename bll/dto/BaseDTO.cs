@@ -12,7 +12,7 @@ namespace ommp.bll.dto
 		private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 		public bool NotChanged(BaseDTO other)
 		{
-			var type = this.GetType();
+			var type = GetType();
 			var otype = other.GetType();
 			if (type != otype)
 			{
@@ -25,7 +25,7 @@ namespace ommp.bll.dto
 					// !!! 无法用==进行比较，否则比较的是地址
 					if (!object.Equals(pi.GetValue(this, null), pi.GetValue(other, null)))
 					{
-						log.Info(string.Format("Found differ in attribute '{0}'", pi.Name));
+						log.Info(string.Format("比较'{0}'对象时在'{1}'属性中发现差异", type.Name, pi.Name));
 						return false;
 					}
 				}
@@ -42,11 +42,11 @@ namespace ommp.bll.dto
 			{
 				if (pi.GetValue(this, null) == null)
 				{
-					sb.Append(string.Format("'\t{0}({1})' is null\n", pi.Name, pi.PropertyType));
+					sb.Append(string.Format("\t'{0}'({1}) is null\n", pi.Name, pi.PropertyType));
 				}
 				else
 				{
-					sb.Append(string.Format("'\t{0}({1})' is '{2}'\n", pi.Name, pi.PropertyType, pi.GetValue(this, null)));
+					sb.Append(string.Format("\t'{0}'({1}) is '{2}'\n", pi.Name, pi.PropertyType, pi.GetValue(this, null)));
 				}		
 			}
 			return sb.ToString();

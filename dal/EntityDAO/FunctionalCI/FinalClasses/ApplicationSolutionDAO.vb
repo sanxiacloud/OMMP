@@ -36,12 +36,12 @@ Namespace dal.dao
             Return UpdateFunctionalCI(o) And UpdateObject(o) And BuildJoinTable()
         End Function
 
-        Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ApplicationSolution).Delete
-            Return DeleteFunctionalCI(id) And DeleteObject(Of ApplicationSolution)(id) And BuildJoinTable()
-        End Function
+		Public Function Delete(id As Integer) As Boolean Implements IEntityDAO(Of ApplicationSolution).Delete
+			Return DeleteFunctionalCI(id) And DeleteObject(Of ApplicationSolution)(id) And BuildJoinTable()
+		End Function
 
-        ' 查询一个应用方案
-        Private Sub TestFindObject()
+		' 查询一个应用方案
+		Private Sub TestFindObject()
             Dim dao As New ommp.dal.dao.ApplicationSolutionDAO()
             Dim result As Boolean = False
             Dim dto As ommp.dal.dto.ApplicationSolutionQT = dao.FindObject(Of ommp.dal.dto.ApplicationSolutionQT)(1897)

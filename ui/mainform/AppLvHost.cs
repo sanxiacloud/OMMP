@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using log4net;
+using ommp.bll.service;
+using ommp.bll.dto;
 using FT = Foxtable.OO_00oOO;
 using WF = Foxtable.WinForm;
 using Foxtable;
@@ -10,46 +13,43 @@ namespace ommp.ui
 {
 	public static class AppLvHost
 	{
-		public static void ReDraw(string appid=null)
+		private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+		public static void ReDraw(int appid=0)
 		{
+			log.Debug("In AppLvHost->Redraw:");
 			var form = FT.Forms["主窗口"];
-			if (appid == null)
+			if (appid == 0)
 			{
 				var row = ((WF.ListView)form.Controls["lv_app_app"]).Current;
-				var dr = (DataRow)row.Tag;
-				appid = dr["_Identify"].ToString();
+				var app = (ApplicationSolution)row.Tag;
+				appid = app.Identify;
 			}
+			
 			var lv = (WF.ListView)form.Controls["lv_app_dev_host"];
 			var pmSelected = ((WF.CheckBox)form.Controls["cb_app_dev_host_pm"]).Checked;
 			var vmSelected = ((WF.CheckBox)form.Controls["cb_app_dev_host_vm"]).Checked;
-			
+			log.Debug(string.Format("\tApplicationSolution ID is '{0}'", appid));
 			Clear();
 			
 			lv.StopRedraw();
 
 			var count = 0;
-			foreach (var drLK in FT.DataTables["LnkApplicationSolutionToFunctionalCI"].Select(string.Format("_IsDeleted=0 And applicationsolution_identify={0}", appid))) 
+			var hosts = HostService.ListByApplicationSolution(appid, vmSelected, pmSelected);
+			log.Debug(string.Format("\tGot {0} hosts", hosts.Count));
+			foreach (var host in hosts)
 			{
-				var drCI = FT.DataTables["FunctionalCI"].Find(string.Format("_IsDeleted=0 And _Identify={0}", (int)drLK["functionalci_identify"]));
-				if (drCI != null && (string)drCI["finalclass"] == "VirtualMachine" && vmSelected)
-				{
-					var row = lv.Rows.Add();
-					var drVM = FT.DataTables["VirtualMachine"].Find(string.Format("_IsDeleted=0 And id={0}", drLK["functionalci_identify"].ToString()));
-					var drIP = FT.DataTables["IPAddressv4"].Find(string.Format("_IsDeleted=0 And id={0}", drVM["managementip_identify"].ToString()));
-					count += 1;
-					row["type"] = "虚拟机";
-					row["name"] = drCI["name"].ToString();
-					row["ip"] = drIP["ip"].ToString();
-					row["start_date"] = drCI["move2production"].ToString();
-					row["description"] = drCI["description"].ToString();
-					row.Tag = drCI;
-				}
-				else if (drCI["finalclass"].ToString() == "Server" && pmSelected)
-				{
-
-				}				
+				log.Debug(string.Format("\tHost : {0}", host.ToString()));
+				var row = lv.Rows.Add();
+				count += 1;				
+				row["name"] = host.Name;
+				row["ip"] = host.IP;
+				row["start_date"] = host.Move2Production.ToString("yyyy-MM-dd");
+				row["description"] = host.Description;
+				row["type"] = host.TypeName;				
+				row.Tag = host;
 			}
-
+			
 			var tcDev = (WF.TabControl)form.Controls["tc_app_dev"];
 			var tabHost = tcDev.TabPages["host"];
 			tabHost.Text = string.Format("主机({0})", count);

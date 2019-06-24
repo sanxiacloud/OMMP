@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ommp.bll.service;
+using ommp.bll.dto;
+using ommp.bll.dto.structure;
 using FT = Foxtable.OO_00oOO;
 using WF = Foxtable.WinForm;
 using Foxtable;
@@ -41,37 +44,28 @@ namespace ommp.ui
 		{
 			var form = FT.Forms["主管部门下拉树"];
 			var self = (WF.TreeView)form.Controls["TreeView1"];
-			var dt = FT.DataTables["Organization"];
-			var drs = dt.Select(string.Format("name like '%{0}%' And _IsDeleted = false", filter), "code");
-			var rowCount = drs.Count;
 
 			self.StopRedraw();
-			self.Nodes.Clear();			
-			if (rowCount != 0)
+			self.Nodes.Clear();
+			var rTNode = OrganizationService.GetOrganizationTree(filter);
+			if (rTNode != null)
 			{
-				var drAnc = dt.Find(string.Format("code='{0}'", ((string)drs[0]["code"]).Substring(0, 2)));
-				var rnode = self.Nodes.Add((string)drAnc["code"], (string)drAnc["name"]);
-				rnode.Tag = drAnc["_Identify"].ToString();
-				for (int i = 0; i < rowCount; i++)
+				var queue = new Queue<(TreeNode<Organization>, WF.TreeNode)>();
+				var rtn = self.Nodes.Add(rTNode.Data.Code, rTNode.Data.Name);
+				rtn.Tag = rTNode.Data.Identify.ToString();
+				queue.Enqueue((rTNode, rtn));
+				while (queue.Count > 0)
 				{
-					var len = 5;
-					var dr = drs[i];
-					var pnode = rnode;
-					while (len <= ((string)dr["code"]).Length)
+					var (pNode, ptn) = queue.Dequeue();
+					for (int i = 0; i < pNode.Nodes.Count; i++)
 					{
-						drAnc = dt.Find(string.Format("code='{0}'", dr["code"].ToString().Substring(0, len)));
-						if (!pnode.Nodes.Contains((string)drAnc["code"]))
-						{
-							pnode = pnode.Nodes.Add((string)drAnc["code"], (string)drAnc["name"]);
-							pnode.Tag = drAnc["_Identify"].ToString();
-						}
-						else
-						{
-							pnode = pnode.Nodes[(string)drAnc["code"]];
-						}
-						len += 3;
+						var cNode = pNode.Nodes[i];
+						var ctn = ptn.Nodes.Add(cNode.Data.Code, cNode.Data.Name);
+						ctn.Tag = cNode.Data.Identify.ToString();
+						queue.Enqueue((cNode, ctn));
 					}
-				}
+				}			
+
 				if (filter != "")
 				{
 					self.ExpandAll();

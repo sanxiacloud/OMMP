@@ -4,20 +4,21 @@ using log4net;
 using FT = Foxtable.OO_00oOO;
 using MB = System.Windows.Forms.MessageBox;
 using WF = Foxtable.WinForm;
+using ommp.bll.service;
 using ommp.bll.dto;
 using service=ommp.bll.service;
 
 
 namespace ommp.ui
 {
-	public static class FormApplicationSolution
+	public class FormApplicationSolution
 	{
 		private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 		private static ModifyType type;
 		public static int OrgId { set; private get; }		
 		public static ApplicationSolution Origin { set; private get; }
-
+	
 		public static void Open(int orgId)
 		{
 			var self = FT.Forms["应用系统编辑"];
@@ -30,7 +31,8 @@ namespace ommp.ui
 		{
 			var self = FT.Forms["应用系统编辑"];
 			type = ModifyType.modify;
-			Origin = service.ApplicationSolutionService.Find(identify);
+			Origin = ApplicationSolutionService.Find(identify);
+			log.Debug(string.Format("origin application solution is {0}", Origin.ToString()));
 			OrgId = orgID;
 			self.Open();
 		}
@@ -87,6 +89,7 @@ namespace ommp.ui
 		#region event
 		public static void AfterLoad(FormEventArgs e)
 		{
+			//todo 通过bll、dal实现？？
 			((WF.ComboBox)e.Form.Controls["cb_sla"]).ComboList = FT.DataTables["Code"].GetComboListString("label", "[t] = '保障要求'", "v");
 			((WF.ComboBox)e.Form.Controls["cb_risk"]).ComboList = FT.DataTables["Code"].GetComboListString("label", "[t] = '风险评级'", "v");
 			((WF.ComboBox)e.Form.Controls["cb_stat"]).ComboList = FT.DataTables["Code"].GetComboListString("label", "[t] = '应用程序状态'", "v");
@@ -98,10 +101,9 @@ namespace ommp.ui
 				((WF.ComboBox)e.Form.Controls["cb_sla"]).SelectedIndex = Origin.CodeSla;
 				((WF.ComboBox)e.Form.Controls["cb_risk"]).SelectedIndex = Origin.CodeRiskRating;
 				((WF.ComboBox)e.Form.Controls["cb_stat"]).SelectedIndex = Origin.CodeApplicationStatus;
-				((WF.DateTimePicker)e.Form.Controls["dtp_mtp"]).Value = Origin.Move2Production;
-				// todo 改成通过bll获取org信息
-				var drOrg = FT.DataTables["Organization"].Find(string.Format("_Identify={0}", Origin.OrgID));
-				((WF.DropDownBox)e.Form.Controls["db_org"]).Value = (string)drOrg["name"];
+				((WF.DateTimePicker)e.Form.Controls["dtp_mtp"]).Value = Origin.Move2Production;				
+				var org = OrganizationService.Find(Origin.OrgID);				
+				((WF.DropDownBox)e.Form.Controls["db_org"]).Value = org.Name;
 				((WF.TextBox)e.Form.Controls["tb_notice"]).Value = Origin.Attention;
 			}
 			else
@@ -113,9 +115,8 @@ namespace ommp.ui
 				((WF.ComboBox)e.Form.Controls["cb_risk"]).SelectedIndex = 0;
 				((WF.ComboBox)e.Form.Controls["cb_stat"]).SelectedIndex = 1;
 				((WF.DateTimePicker)e.Form.Controls["dtp_mtp"]).Value = DateTime.Today;
-				// todo 改成通过bll获取org信息
-				var drOrg = FT.DataTables["Organization"].Find(string.Format("_Identify={0}", OrgId));
-				((WF.DropDownBox)e.Form.Controls["db_org"]).Value = (string)drOrg["name"];
+				var org = OrganizationService.Find(OrgId);
+				((WF.DropDownBox)e.Form.Controls["db_org"]).Value = org.Name;
 			}
 		}
 		#endregion event
@@ -155,14 +156,14 @@ namespace ommp.ui
 				drp.CloseDropdown();
 			}
 			drp.Value = drp.Text;
-			var dr = FT.DataTables["Organization"].Find(string.Format("name='{0}'", drp.Value));
-			if (dr is null)
+			var org = OrganizationService.FindByName((string)drp.Value);
+			if (org is null)
 			{
 				FormApplicationSolution.OrgId = -1;
 			}
 			else
 			{
-				FormApplicationSolution.OrgId = (int)dr["_Identify"];
+				FormApplicationSolution.OrgId = org.Identify;
 			}
 		}
 

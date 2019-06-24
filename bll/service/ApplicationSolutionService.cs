@@ -2,52 +2,93 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using log4net;
 using ommp.bll.dto;
+using ommp.bll.dto.structure;
 using ommp.dal.dao;
 using dato=ommp.dal.dto;
-using FT = Foxtable.OO_00oOO;
 
 namespace ommp.bll.service
 {
 	public class ApplicationSolutionService
 	{
+		private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 		static readonly ApplicationSolutionDAO odao;
 		static readonly LnkFunctionalCIToOrganizationDAO ldao;
+
 		static ApplicationSolutionService()
 		{
 			odao = new ApplicationSolutionDAO();
 			ldao = new LnkFunctionalCIToOrganizationDAO();
 		}
 
+		public static IList<ApplicationSolution> ListByOrganization(int orgid)
+		{
+			var aslist = new List<ApplicationSolution>();
+			var lnks = ldao.ListByRight(orgid);			
+			foreach (var lnk in lnks)
+			{
+				var app = odao.Find(lnk.functionalci_identify);
+				if (app != null)
+				{
+					aslist.Add(new ApplicationSolution(app, orgid));				
+				}				
+			}
+			return aslist;
+		}
+
+		public static IList<ApplicationSolution> ListByOrganizationTreeNode(TreeNode<Organization> rnode)
+		{
+			var aslist = new List<ApplicationSolution>();
+			var stack1 = new Stack<TreeNode<Organization>>();
+			var stack2 = new Stack<TreeNode<Organization>>();
+			stack1.Push(rnode);
+			TreeNode<Organization> curNode;
+			while (stack1.Count > 0)
+			{
+				curNode = stack1.Pop();
+				stack2.Push(curNode);
+				for (int i = 0; i < curNode.Nodes.Count; i++)
+				{
+					stack1.Push(curNode.Nodes[i]);
+				}
+			}
+			foreach (var node in stack2)
+			{
+				var org = node.Data;
+				var lnks = ldao.ListByRight(org.Identify);
+				foreach (var lnk in lnks)
+				{
+					var app = odao.Find(lnk.functionalci_identify);
+					if (app != null)
+					{
+						aslist.Add(new ApplicationSolution(app, org.Identify));
+					}
+				}
+			}
+			return aslist;
+		}
+
 		public static ApplicationSolution Find(int identify)
 		{
-			var obj = odao.FindObject <dato.ApplicationSolutionQT>(identify);
-			//todo 需切换为dal查询
-			var drLK = FT.DataTables["LnkFunctionalCIToOrganization"].Find(string.Format("_IsDeleted=0 And functionalci_identify={0}", identify));
-			return new ApplicationSolution
+			var obj = odao.Find(identify);
+			if (obj == null)
 			{
-				Identify = identify,
-				Name = obj.name,
-				Attention = obj.attention,
-				CodeSla = obj.code_sla,
-				CodeRiskRating = obj.code_risk_rating,
-				CodeApplicationStatus = obj.code_application_status,
-				Move2Production = obj.move2production,
-				OrgID = (int)drLK["organization_identify"]
-			};
+				return null;
+			}
+			var lk = ldao.ListByLeft(identify);
+			var orgid = 0;
+			if (lk != null)
+			{
+				orgid = lk[0].organization_identify;
+			}
+			return new ApplicationSolution(obj, orgid);			
 		}
 
 		public static (int oid, string desc) Create(ApplicationSolution o)
 		{
-			var obj = new dato.ApplicationSolution
-			{
-				name = o.Name,
-				code_application_status = o.CodeApplicationStatus,
-				code_risk_rating = o.CodeRiskRating,
-				code_sla = o.CodeSla,
-				attention = o.Attention,
-				move2production = o.Move2Production
-			};
+			var obj = o.GetDalDTO();
 			var oid = odao.Insert(obj);
 			if (oid != -1)
 			{
@@ -64,16 +105,7 @@ namespace ommp.bll.service
 		{
 			var code = -1;
 			var desc = "";
-			var obj = new dato.ApplicationSolution
-			{
-				name = o.Name,
-				code_application_status = o.CodeApplicationStatus,
-				code_risk_rating = o.CodeRiskRating,
-				code_sla = o.CodeSla,
-				attention = o.Attention,
-				move2production = o.Move2Production,
-				_Identify = o.Identify
-			};
+			var obj = o.GetDalDTO();
 			var ret = odao.Update(obj);
 			if (ret)
 			{

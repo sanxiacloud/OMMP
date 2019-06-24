@@ -15,12 +15,12 @@ Namespace dal.dao
         Sub New()
             ' LnkApplicationSolutionToFunctionalCI 从类名称中抽取 Lnk 与 To 分隔后的
             tableName = GetType(T).Name
-            Dim str As String() = tableName.Replace(S_LNK, "").Replace(S_TO, ",").Split(",")
-            leftColumnName = str(0).ToLower() & C__IDENTIFY.ToLower()
+			Dim str As String() = tableName.Replace(S_LNK, "").Replace(S_TO, ",").Split(",")
+			leftColumnName = str(0).ToLower() & C__IDENTIFY.ToLower()
             rightColumnName = str(1).ToLower() & C__IDENTIFY.ToLower()
         End Sub
 
-        Public Function ListByLeft(id As Integer) As IList(Of T)
+		Public Function ListByLeft(id As Integer) As IList(Of T)
             Return FindList(Of T)(String.Format("{0}={1}", leftColumnName, id), C__IDENTIFY)
         End Function
 
@@ -28,60 +28,73 @@ Namespace dal.dao
             Return FindList(Of T)(String.Format("{0}={1}", rightColumnName, id), C__IDENTIFY)
         End Function
 
-        Public Function Link(ByVal leftId As Integer, ByVal rightId As Integer) As Boolean
-            Dim item As New T()
-            Dim table_name As String = item.GetType().Name
-            Dim result As Boolean = False
+		Public Function Link(ByVal leftId As Integer, ByVal rightId As Integer) As Boolean
+			Dim type As Type = GetType(T)
+			Dim table_name As String = type.Name
+			Dim result As Boolean = False
 
-            Try
-                Dim dr As DataRow = DataTables(table_name).AddNew()
+			Try
+				Dim filter As String = String.Format("{0}=False AND {1}={2} AND {3}={4}", C__ISDELETED, leftColumnName, leftId, rightColumnName, rightId)
+				Dim dr As DataRow = DataTables(tableName).Find(filter)
 
-                For Each info As PropertyInfo In item.GetType().GetProperties()
-                    ' 默认存在对应的列 
-                    'DataTables(table_name).DataCols.Contains(leftColumnName)
-                    'DataTables(table_name).DataCols.Contains(rightColumnName)
-                    If info.Name.Equals(leftColumnName) Then
-                        dr(leftColumnName) = leftId
-                    ElseIf info.Name.Equals(rightColumnName) Then
-                        dr(rightColumnName) = rightId
-                    End If
-                Next
-                dr(C__ISDELETED) = False ' 默认设置为 False
-                dr.Load()
+				If dr Is Nothing Then
 
-                result = True
-            Catch ex As Exception
-                log.Error(table_name & "(DAO) -> Link ")
-                log.Error(ex.Message)
-                log.Error(ex.StackTrace)
-            End Try
+					dr = DataTables(table_name).AddNew()
 
-            Return result
-        End Function
+					For Each info As PropertyInfo In type.GetProperties()
+						' 默认存在对应的列 
+						'DataTables(table_name).DataCols.Contains(leftColumnName)
+						'DataTables(table_name).DataCols.Contains(rightColumnName)
+						If info.Name.Equals(leftColumnName) Then
+							dr(leftColumnName) = leftId
+						ElseIf info.Name.Equals(rightColumnName) Then
+							dr(rightColumnName) = rightId
+						End If
+					Next
 
-        Public Function UnLink(ByVal leftId As Integer, ByVal rightId As Integer) As Boolean
-            Dim obj As New T()
-            Dim result As Boolean = False
+					dr(C__ISDELETED) = False ' 默认设置为 False
+					dr.Load()
+				Else
+					log.Warn(String.Format("{0}(DAO) -> UnLink ", type.Name))
+					log.Warn(String.Format("\tLink '{0}'<->'{1}' already existed! Abort.", leftId, rightId))
+				End If
 
-            Try
-                Dim filter As String = String.Format("{0}={1}", leftColumnName, leftId)
-                filter = filter & " AND " & String.Format("{0}={1}", leftColumnName, rightId)
+				result = True
+			Catch ex As Exception
+				log.Error(table_name & "(DAO) -> Link ")
+				log.Error(ex.Message)
+				log.Error(ex.StackTrace)
+			End Try
 
-                Dim dr As DataRow = DataTables(tableName).Find(filter)
+			Return result
+		End Function
 
-                dr(C__ISDELETED) = True
-                dr.Load()
+		Public Function UnLink(ByVal leftId As Integer, ByVal rightId As Integer) As Boolean
+			Dim type As Type = GetType(T)
+			Dim result As Boolean = False
 
-                result = True
-            Catch ex As Exception
-                log.Error(obj.GetType().Name & "(DAO) -> UnLink ")
-                log.Error(ex.Message)
-                log.Error(ex.StackTrace)
-            End Try
+			Try
+				Dim filter As String = String.Format("{0}=False AND {1}={2} AND {3}={4}", C__ISDELETED, leftColumnName, leftId, rightColumnName, rightId)
+				Dim dr As DataRow = DataTables(tableName).Find(filter)
 
-            Return result
-        End Function
+				If dr Is Nothing Then
+					log.Warn(String.Format("{0}(DAO) -> UnLink ", type.Name))
+					log.Warn(String.Format("\tLink '{0}'<->'{1}' not existed!", leftId, rightId))
+				Else
+					dr(C__ISDELETED) = True
+					dr.Load()
+				End If
 
-    End Class
+				result = True
+			Catch ex As Exception
+				log.Error(type.Name & "(DAO) -> UnLink ")
+				log.Error(ex.Message)
+				log.Error(ex.StackTrace)
+			End Try
+
+			Return result
+		End Function
+
+	End Class
 
 End Namespace

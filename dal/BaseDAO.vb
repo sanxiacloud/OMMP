@@ -8,14 +8,15 @@ Namespace dal.dao
 
         Private Shared ReadOnly log As ILog = LogManager.GetLogger(Reflection.MethodBase.GetCurrentMethod().DeclaringType)
 
-        Protected ReadOnly Property CONNECTION_NAME() As String
+		Protected ReadOnly Property CONNECTION_NAME() As String
             Get
                 Return "CMDB"
             End Get
         End Property
 
         Protected ReadOnly Property C_ID() As String
-            Get
+
+			Get
                 Return "id"
             End Get
         End Property
@@ -137,15 +138,15 @@ Namespace dal.dao
                     End If
                 Next
 
-                log.Debug("1. filter = " & filter)
-                Dim dr As DataRow = DataTables(table_name).Find(filter)
+				'log.Debug("1. filter = " & filter)
+				Dim dr As DataRow = DataTables(table_name).Find(filter)
                 If dr IsNot Nothing Then
 
                     For Each info As System.Reflection.PropertyInfo In item.GetType().GetProperties()
                         If DataTables(table_name).DataCols.Contains(info.Name) Then
-                            log.Debug("2. " & info.Name & ":" & info.PropertyType.Name & " = " & info.GetValue(item, Nothing))
-                            ' finalclass 列 和 _IsDeleted 列不可修改
-                            If Not info.Name.Equals(C_FINALCLASS) Or info.Name.Equals(C__ISDELETED) Then
+							'log.Debug("2. " & info.Name & ":" & info.PropertyType.Name & " = " & info.GetValue(item, Nothing))
+							' finalclass 列 和 _IsDeleted 列不可修改
+							If Not info.Name.Equals(C_FINALCLASS) Or info.Name.Equals(C__ISDELETED) Then
                                 If (info.PropertyType Is GetType(String)) And info.GetValue(item, Nothing) IsNot Nothing Then
                                     dr(info.Name) = info.GetValue(item, Nothing)
                                 ElseIf (info.PropertyType Is GetType(Int32)) And Not info.GetValue(item, Nothing) = Nothing Then
@@ -180,8 +181,8 @@ Namespace dal.dao
 
                 For Each info As PropertyInfo In item.GetType().GetProperties()
                     If DataTables(table_name).DataCols.Contains(info.Name) Then
-                        log.Debug(info.Name & ":" & info.GetValue(item, Nothing))
-                        dr(info.Name) = info.GetValue(item, Nothing)
+						'log.Debug(info.Name & ":" & info.GetValue(item, Nothing))
+						dr(info.Name) = info.GetValue(item, Nothing)
                     End If
                 Next
                 dr(C__ISDELETED) = False ' 默认设置为 False
@@ -211,17 +212,17 @@ Namespace dal.dao
                 If DataTables(table_name).DataCols.Contains(C_ID) Then
                     col = C_ID
                 End If
-                log.Debug("table_name = " & table_name)
-                log.Debug("filter = " & filter & " AND " & C__ISDELETED & " = False")
-                Dim dr As DataRow = DataTables(table_name).Find(filter & " AND " & C__ISDELETED & " = False")
+				'log.Debug("table_name = " & table_name)
+				'log.Debug("filter = " & filter & " AND " & C__ISDELETED & " = False")
+				Dim dr As DataRow = DataTables(table_name).Find(filter & " AND " & C__ISDELETED & " = False")
 
                 If dr IsNot Nothing Then
                     For Each info As PropertyInfo In item.GetType().GetProperties()
-                        log.Debug("column_name = " & info.Name)
-                        If DataTables(table_name).DataCols.Contains(info.Name) Then
+						'log.Debug("column_name = " & info.Name)
+						If DataTables(table_name).DataCols.Contains(info.Name) Then
                             info.SetValue(item, dr(info.Name), Nothing)
                         ElseIf info.Name.Equals(C__IDENTIFY) Then
-                            log.Debug("_Identify = " & dr(C__IDENTIFY))
+                            'log.Debug("_Identify = " & dr(C__IDENTIFY))
                             info.SetValue(item, dr(C__IDENTIFY), Nothing)
                         End If
                     Next
